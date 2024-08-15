@@ -1,0 +1,40 @@
+<!-- Offcanvas Sidebar -->
+<!-- <div class="offcanvas offcanvas-start" id="demo">
+    <div class="offcanvas-header">
+      <h1 class="offcanvas-title"></h1>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <aside class="sidebar">
+        <h2>Recent Posts</h2>
+        {% for post in site.posts limit:5 %}
+        <p><a href="{{ post.url }}">{{ post.title }}</a></p>
+        {% endfor %}
+      </aside>
+    </div>
+  </div> -->
+  
+  <!-- Button to open the offcanvas sidebar -->
+  <!-- <button class="btn btn-offcanvas text-white bg-dark py-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
+    OPEN SIDEBAR
+  </button> -->
+
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header">
+    <!-- <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Offcanvas with body scrolling</h5> -->
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <aside class="sidebar">
+      <h2>Recent Posts</h2>
+      {% for post in site.posts limit:5 %}
+      <p><a href="{{ post.url }}">{{ post.title }}</a></p>
+      {% endfor %}
+    </aside>
+</div>
+</div>
+
+<button class="btn btn-offcanvas text-white bg-dark py-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+  OPEN SIDEBAR
+</button>

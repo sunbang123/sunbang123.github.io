@@ -29,7 +29,7 @@ github_username:  sunbang123
 
 author-profile:
   name: "김선영"
-  bio: "안녕하세요."
+  bio: "한세대학교 22학번 컴퓨터공학과"
   email: "ilikeksy99@gmail.com"
   linkedin: "sunyoung-kim-86a54b283"
   profile_image: "/assets/images/profile.jpg"  # 이미지 경로 설정
@@ -47,8 +47,12 @@ default_lang: 'ko'
 exclude_from_localization: ["assets/css", "assets/img"]
 parallel_localization: false
 
+
 sass:
   sourcemap: never
+  sass_dir: _sass
+  style: compressed # 컴파일된 CSS 파일을 압축하려면 이 옵션을 사용
+# sass:
 
 # Exclude from processing.
 # The following items will not be processed, by default.

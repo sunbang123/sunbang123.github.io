@@ -1,11 +1,25 @@
-<aside class="profile-sidebar">
+<div class="profile-sidebar">
     <div class="profile-image">
-      <img src="/assets/images/profile.jpg" alt="Profile Image">
+      <img width="250px" src="/assets/images/profile.jpg" alt="Profile Image">
     </div>
-    <h2>{{ site.author-profile.name }}</h2>
+    <h5>Profile {{ site.author-profile.name }}</h5>
     <p>{{ site.author-profile.bio }}</p>
-    <ul class="social-links">
-      <li><a href="https://linkedin.com/in/{{ site.author-profile.linkedin }}" target="_blank">LinkedIn</a></li>
+    <ul class="social-media-list d-flex">
+        {%- if site.author-profile.linkedin -%}
+        <li>
+          <a href="https://linkedin.com/in/{{ site.author-profile.linkedin }}" target="_blank">
+            <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#linkedin' | relative_url }}"></use></svg>
+          </a>
+        </li>
+        {%- endif -%}
+        {%- if site.github_username -%}
+        <li class="ps-1 pt-0">
+          <a class="text-decoration-none" href="https://github.com/{{ site.github_username| cgi_escape | escape }}">
+            <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#github' | relative_url }}"></use></svg>
+          </a>
+        </li>
+        {%- endif -%}
+
       <!-- 더 많은 소셜 링크 추가 가능 -->
     </ul>
-  </aside>
+</div>

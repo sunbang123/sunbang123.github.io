@@ -213,8 +213,11 @@ pre {
     height: 16px;
     display: inline-block;
     fill: #{$grey-color};
-    padding-right: 5px;
     vertical-align: text-top;
+}
+
+svg.svg-icon:hover {
+  fill: #{$grey-color-dark};
 }
 
 .social-media-list {

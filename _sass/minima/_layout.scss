@@ -1,7 +1,8 @@
 /**
  * Site header
  */
-.site-header {  min-height: $spacing-unit * 1.865;
+.site-header {  
+  // min-height: $spacing-unit * 1.865;
 
   // Positioning context for the mobile navigation icon
   position: relative;
@@ -23,7 +24,7 @@
 
 .site-nav {
   float: right;
-  line-height: $base-line-height * $base-font-size * 2.25;
+  // line-height: $base-line-height * $base-font-size * 2.25;
 
   .nav-trigger {
       display: none;
@@ -114,6 +115,7 @@
 .social-media-list {
   list-style: none;
   margin-left: 0;
+  padding:0;
 }
 
 .footer-col-wrapper {
@@ -255,16 +257,6 @@ custom
 
 */
 
-.wrapper{
-  background: white;
-  padding: 3em;
-}
-
-.profile-image > img{
-  border-radius: 50%;
-    width: 200px;
-}
-
 .background {
   position: fixed;
   top: -50%;
@@ -277,10 +269,54 @@ custom
     repeating-linear-gradient(
       45deg,
       rgba(255, 228, 196, 0.2) 0px,
-      rgba(255, 228, 196, 0.2) 20px,
-      transparent 20px,
-      transparent 40px
+      rgba(255, 228, 196, 0.2) 50px,
+      transparent 50px,
+      transparent 100px
     );
   background-blend-mode: overlay;
   z-index: -100;
+}
+
+.utterances {
+  max-width: unset !important;
+}
+
+.btn-offcanvas {
+  position: fixed;
+  top: 20vmin;
+  width: 50px;
+  border-radius: 0px 10px 10px 0px !important;
+  writing-mode: vertical-rl;
+  z-index:100;
+}
+
+
+@include media-query($on-palm) {
+  .btn-offcanvas{
+    display: none!important;
+  }
+}
+
+.profile-sidebar {
+  box-shadow: 5px 5px 0px;
+  border: 1px solid;
+  width: 25vmin;
+  margin-left: 30vmin;
+  margin-top: 5vmin;
+}
+
+.home {
+  width: 80vw;
+  margin: 3em 0 3em auto;
+  background: #000059;
+  padding: 10px;
+  box-shadow: 5px 5px #000;
+  color: #fff;
+}
+
+.post{
+  background: white;
+  width: 80vw;
+  margin: 3em 0 3em auto;
+  padding: 5vmin 8vmin;
 }
