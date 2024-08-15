@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-layout: custom_layout # custom_layout은 _layouts 폴더에 있는 파일 이름
+# custom_layout은 _layouts 폴더에 있는 파일 이름
 title: Sunyoung IT Blog 👩‍💻
 email: ilikeksy99@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
@@ -50,8 +50,8 @@ parallel_localization: false
 
 sass:
   sourcemap: never
-  # sass_dir: _sass
-  # style: compressed # 컴파일된 CSS 파일을 압축하려면 이 옵션을 사용
+  sass_dir: _sass
+  style: compressed # 컴파일된 CSS 파일을 압축하려면 이 옵션을 사용
 # sass:
 
 # Exclude from processing.
