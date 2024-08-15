@@ -1,10 +1,7 @@
 /**
  * Site header
  */
-.site-header {
-  border-top: 5px solid $grey-color-dark;
-  border-bottom: 1px solid $grey-color-light;
-  min-height: $spacing-unit * 1.865;
+.site-header {  min-height: $spacing-unit * 1.865;
 
   // Positioning context for the mobile navigation icon
   position: relative;
@@ -106,8 +103,6 @@
  * Site footer
  */
 .site-footer {
-  border-top: 1px solid $grey-color-light;
-  padding: $spacing-unit 0;
 }
 
 .footer-heading {
@@ -176,7 +171,6 @@
  * Page content
  */
 .page-content {
-  padding: $spacing-unit 0;
   flex: 1;
 }
 
@@ -252,4 +246,41 @@
       @include relative-font-size(1.125);
     }
   }
+}
+
+
+/*
+
+custom
+
+*/
+
+.wrapper{
+  background: white;
+  padding: 3em;
+}
+
+.profile-image > img{
+  border-radius: 50%;
+    width: 200px;
+}
+
+.background {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    url('../../assets/images/background.jpg') center/cover no-repeat,
+    linear-gradient(to right, #ffffff27 0%, #ffffff1b 100%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 228, 196, 0.2) 0px,
+      rgba(255, 228, 196, 0.2) 20px,
+      transparent 20px,
+      transparent 40px
+    );
+  background-blend-mode: overlay;
+  z-index: -100;
 }
