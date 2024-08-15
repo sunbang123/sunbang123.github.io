@@ -18,6 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
+layout: custom_layout # custom_layout은 _layouts 폴더에 있는 파일 이름
 title: Sunyoung IT Blog
 email: ilikeksy99@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
@@ -27,11 +28,12 @@ url: "https://sunbang123.github.io/" # the base hostname & protocol for your sit
 github_username:  sunbang123
 
 # Build settings
-theme: minima
+# theme: minima
 asset_url: /assets
 plugins:
   - jekyll-feed
   - jekyll-polyglot
+  - jekyll-seo-tag
 
 languages: ['ko', 'ja', 'en']
 default_lang: 'ko'
