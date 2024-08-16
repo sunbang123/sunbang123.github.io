@@ -37,3 +37,11 @@ tags:
 - 로컬 서버로 접속
     - http://localhost:4000
 - 여기까지 성공하면 이제 로컬에서 지킬 페이지를 열고 커스텀할 수 있다.😊
+
+5. 디렉토리와 git repository 연결
+- git init
+- git add .
+- git commit -m "first commit"
+- git branch -M main
+- git remote add origin https://github.com/[yourname]/[repositoryname].git
+- git push -u origin main
