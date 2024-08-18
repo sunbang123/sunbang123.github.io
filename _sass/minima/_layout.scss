@@ -102,9 +102,6 @@
 /**
  * Site footer
  */
-.site-footer {
-}
-
 .footer-heading {
   @include relative-font-size(1.125);
   margin-bottom: $spacing-unit / 2;
@@ -122,6 +119,14 @@
   color: $grey-color;
   margin-left: -$spacing-unit / 2;
   @extend %clearfix;
+  width: 90vw;
+  margin: auto;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.footer-col-wrapper a{
+  color: gainsboro;
 }
 
 .footer-col {
