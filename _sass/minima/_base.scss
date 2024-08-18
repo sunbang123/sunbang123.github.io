@@ -79,6 +79,7 @@ figcaption {
  */
 ul, ol {
   margin-left: $spacing-unit;
+  padding-left: 0!important;
 }
 
 li {

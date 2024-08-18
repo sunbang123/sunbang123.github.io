@@ -1,10 +1,11 @@
-<header class="site-header text-white bg-dark ps-3" role="banner">
+<header class="site-header" role="banner">
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
-    <a class="site-title text-white text-decoration-none" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
-
-    {%- if page_paths -%}
-      <nav class="site-nav">
+    <ul class="nav justify-content-center m-0">
+      <li><a class="site-title text-decoration-none" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a></li>
+    </ul>
+      {%- if page_paths -%}
+      <nav class="site-nav bg-dark">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
