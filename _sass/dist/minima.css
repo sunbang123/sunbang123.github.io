@@ -35,7 +35,7 @@ h1, h2, h3, h4, h5, h6,
 p, blockquote, pre,
 ul, ol, dl, figure,
 .highlight {
-  margin-bottom: calc($spacing-unit / 2);
+  margin-bottom: $spacing-unit / 2;
 }
 
 /**
@@ -112,7 +112,7 @@ a:hover {
 blockquote {
   color: #828282;
   border-left: 4px solid #e8e8e8;
-  padding-left: calc($spacing-unit / 2);
+  padding-left: $spacing-unit / 2;
   font-size: 18px;
   letter-spacing: -1px;
   font-style: italic;
@@ -161,8 +161,8 @@ pre > code {
   .wrapper {
     max-width: -webkit-calc(800px - (30px));
     max-width: calc(800px - (30px));
-    padding-right: calc($spacing-unit / 2);
-    padding-left: calc($spacing-unit / 2);
+    padding-right: $spacing-unit / 2;
+    padding-left: $spacing-unit / 2;
   }
 }
 
@@ -209,7 +209,7 @@ table tr:nth-child(even) {
   background-color: #f7f7f7;
 }
 table th, table td {
-  padding: calc($spacing-unit / 3) calc($spacing-unit / 2);
+  padding: $spacing-unit / 3 $spacing-unit / 2;
 }
 table th {
   background-color: #f0f0f0;
@@ -256,7 +256,7 @@ table td {
   .site-nav {
     position: absolute;
     top: 9px;
-    right: calc($spacing-unit / 2);
+    right: $spacing-unit / 2;
     background-color: #424242;
     border: 1px solid #e8e8e8;
     border-radius: 5px;
@@ -305,7 +305,7 @@ table td {
  */
 .footer-heading {
   font-size: 18px;
-  margin-bottom: calc($spacing-unit / 2);
+  margin-bottom: $spacing-unit / 2;
 }
 
 .contact-list,
@@ -323,8 +323,8 @@ table td {
 
 .footer-col {
   float: left;
-  margin-bottom: calc($spacing-unit / 2);
-  padding-left: calc($spacing-unit / 2);
+  margin-bottom: $spacing-unit / 2;
+  padding-left: $spacing-unit / 2;
 }
 
 .footer-col-1 {
