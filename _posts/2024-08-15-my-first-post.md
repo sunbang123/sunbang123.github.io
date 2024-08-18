@@ -17,7 +17,7 @@ tags:
 
 3. 지킬 페이지 생성
 - jekyll new [폴더이름]
-- ![alt text](/post_img/image.png)
+- <img src="/post_img/image.png" width="500px" alt="jekyll new blog cmd">
     - 설치 완료
 - _config.yml에 들어가보면 기본 테마인 minima가 적용된걸 볼 수 있음.
 ```
