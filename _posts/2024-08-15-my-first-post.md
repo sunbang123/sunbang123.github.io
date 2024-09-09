@@ -2,8 +2,8 @@
 layout: post
 title: "Git Pages 제작 - (1) 페이지 생성하기"
 date: 2024-08-15 23:08:15 +0900
-categories: Jekyll Git GitPages
-tags: 
+categories: Jekyll
+tags: Git GitPages
 ---
 
 1. 깃허브 리포지토리 생성
