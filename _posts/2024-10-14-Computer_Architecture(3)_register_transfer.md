@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Computer Architecture(3) - Register_Transfer"
+title: "Register_Transfer"
 date: 2024-10-14 16:10:47 +0900
 categories: 
-tags: 
+tags:  [computer-architecture, computer-science, theory]
 ---
 
 # Register transfer

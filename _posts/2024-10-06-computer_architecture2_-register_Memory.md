@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Computer Architecture(2) Register Memory"
+title: "Register Memory"
 date: 2024-10-06 15:11:20 +0900
 categories: 
-tags: 
+tags:  [computer-architecture, computer-science, theory]
 ---
 
 # 레지스터 메모리

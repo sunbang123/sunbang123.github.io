@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Computer architecture(1) - Digital Computer"
+title: "Digital Computer"
 date: 2024-10-04 19:38:57 +0900
 categories: 
-tags: 
+tags:  [computer-architecture, computer-science, theory]
 ---
 
 # 디지털 컴퓨터의 구조
