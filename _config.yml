@@ -76,6 +76,9 @@ tag_cloud:
 # 태그 메타데이터 표시 여부
 show_tag_metadata: true
 
+# URL 구조 설정
+permalink: /:title/
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
