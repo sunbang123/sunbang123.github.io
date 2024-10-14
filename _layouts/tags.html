@@ -1,0 +1,79 @@
+---
+layout: default
+title: Tags
+---
+
+<div class="tags-page mt-5">
+  <h1 class="page-heading">{{ page.title }}</h1>
+
+  <div class="tag-cloud mb-5">
+    {% assign tags = site.tags | sort %}
+    {% for tag in tags %}
+      {% assign tag_size = tag | last | size %}
+      <a href="#{{ tag[0] | slugify }}" class="tag-cloud-item tag-size-{{ tag_size }}">
+        {{ tag[0] }} <span class="tag-count">({{ tag_size }})</span>
+      </a>
+    {% endfor %}
+  </div>
+
+  <div class="tag-list">
+    {% for tag in tags %}
+      <div class="tag-section mb-5" id="{{ tag[0] | slugify }}">
+        <h2 class="tag-title">{{ tag[0] }}</h2>
+        <ul class="post-list p-0">
+          {% for post in tag[1] %}
+            <li class="mb-3">
+              {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+              <span class="post-meta">{{ post.date | date: date_format }}</span>
+              <h3 class="mb-0">
+                <a class="post-link text-decoration-none" href="{{ post.url | relative_url }}">
+                  {{ post.title | escape }}
+                </a>
+              </h3>
+              {%- if site.show_excerpts -%}
+                <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+              {%- endif -%}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .tag-cloud {
+    text-align: center;
+  }
+  .tag-cloud-item {
+    display: inline-block;
+    margin: 0.2em;
+    padding: 0.2em 0.5em;
+    background-color: #f8f9fa;
+    border-radius: 0.3em;
+    color: #495057;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  .tag-cloud-item:hover {
+    background-color: #e9ecef;
+  }
+  .tag-count {
+    font-size: 0.8em;
+    color: #6c757d;
+  }
+  .tag-title {
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.5em;
+  }
+  .post-excerpt {
+    font-size: 0.9em;
+    color: #6c757d;
+  }
+  .tag-size-1 { font-size: 0.8em; }
+  .tag-size-2 { font-size: 1em; }
+  .tag-size-3 { font-size: 1.2em; }
+  .tag-size-4 { font-size: 1.4em; }
+  .tag-size-5 { font-size: 1.6em; }
+</style>

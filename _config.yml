@@ -8,10 +8,6 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 #
-# If you need help with YAML syntax, here are some quick references for you:
-# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
-# https://learnxinyminutes.com/docs/yaml/
-#
 # Site settings
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
@@ -54,7 +50,31 @@ sass:
     - _sass
     - _sass/bootstrap/vendor
   style: compressed # 컴파일된 CSS 파일을 압축하려면 이 옵션을 사용
-# sass:
+
+# 태그 관련 새로운 설정
+tag_page_layout: tags
+tag_page_dir: tag
+tag_permalink_style: pretty
+
+# 태그 페이지 제목 (다국어 지원을 위해 각 언어별로 설정)
+tag_page_title: 
+  ko: "태그별 포스트"
+  ja: "タグ別の投稿"
+  en: "Posts by Tag"
+
+# 태그 구분자 설정
+tag_separator: ", "
+
+# 포스트당 최대 표시 태그 수 (0은 제한 없음)
+max_tags_per_post: 5
+
+# 태그 클라우드 설정
+tag_cloud:
+  min_font_size: 10
+  max_font_size: 20
+
+# 태그 메타데이터 표시 여부
+show_tag_metadata: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
