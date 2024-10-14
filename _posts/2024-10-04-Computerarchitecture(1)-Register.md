@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Digital Computer"
-date: 2024-10-04 19:38:57 +0900
+date: 2024-10-04 15:11:20 +0900
 categories: 
 tags:  [computer-architecture, computer-science, theory]
 ---
