@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Computer_architecture(2)_ Register_transfer_microoperation"
-date: 2024-10-06 15:11:20 +0900
+title: "Computer Architecture(3) - Register_Transfer"
+date: 2024-10-14 16:10:47 +0900
 categories: 
 tags: 
 ---
 
-# Register transfer와 microoperation
+# Register transfer
 
 ### 한학기동안 배울것
 
