@@ -91,7 +91,7 @@ tags:  [computer-architecture, computer-science, theory]
 
 - 2×4 디코더 2개로 3×8 디코더 구성 
 
-<img src="/post_img/image1014-04.png" width="500px">
+<img src="/post_img/image1014-04.png" width="300px">
 
 > 확장 디코더 
 
@@ -103,7 +103,7 @@ tags:  [computer-architecture, computer-science, theory]
 - 디코더와 반대되는 동작을 수행하는 회로 
 - 2n개의 입력값에 대해 n개의 2진 코드 출력 
 
-<img src="/post_img/image1014-05.png" width="500px">
+<img src="/post_img/image1014-05.png" width="300px">
 
 > 8대2진 인코더
 
@@ -138,13 +138,13 @@ tags:  [computer-architecture, computer-science, theory]
 
 - 4×1멀티플렉서 
 
-<img src="/post_img/image1014-06.png" width="500px">
+<img src="/post_img/image1014-06.png" width="300px">
 
 > 구성 : <그림 2-4> 
 
 - 4개의 입력 데이터가 각각 AND Gate에 입력되고 두개의 선택 입력에 의해 AND Gate의 출력들 중하나를  선택한다 
 
-<img src="/post_img/image1014-07.png" width="500px">
+<img src="/post_img/image1014-07.png" width="300px">
 
 > 4×1멀티플렉서에 대한 함수표 
 
@@ -195,7 +195,7 @@ Y0는 첫 번째 멀티플렉서의 출력입니다.
 
 인에이블 입력을 가지고 있는 네 개의 3X8 디코더와 하나의 2X4 디코더를 이용하여 5 X 32 디코더를 구성하고 그림 2-3과 같은 블럭도를 그려라
 
-<img src="/post_img/image1014-04.png" width="500px">
+<img src="/post_img/image1014-04.png" width="300px">
 
 
 > 그림 2-3 
