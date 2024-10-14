@@ -1,6 +1,5 @@
 ---
 layout: default
-title: Tags
 ---
 
 <div class="tags-page mt-5">
@@ -16,64 +15,67 @@ title: Tags
     {% endfor %}
   </div>
 
-  <div class="tag-list">
+  <div class="accordion" id="tagAccordion">
     {% for tag in tags %}
-      <div class="tag-section mb-5" id="{{ tag[0] | slugify }}">
-        <h2 class="tag-title">{{ tag[0] }}</h2>
-        <ul class="post-list p-0">
-          {% for post in tag[1] %}
-            <li class="mb-3">
-              {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-              <span class="post-meta">{{ post.date | date: date_format }}</span>
-              <h3 class="mb-0">
-                <a class="post-link text-decoration-none" href="{{ post.url | relative_url }}">
-                  {{ post.title | escape }}
-                </a>
-              </h3>
-              {%- if site.show_excerpts -%}
-                <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-              {%- endif -%}
-            </li>
-          {% endfor %}
-        </ul>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading-{{ tag[0] | slugify }}">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ tag[0] | slugify }}" aria-expanded="false" aria-controls="collapse-{{ tag[0] | slugify }}">
+            {{ tag[0] }} <span class="badge bg-secondary ms-2">{{ tag[1].size }}</span>
+          </button>
+        </h2>
+        <div id="collapse-{{ tag[0] | slugify }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ tag[0] | slugify }}" data-bs-parent="#tagAccordion">
+          <div class="accordion-body">
+            <ul class="list-unstyled">
+              {% for post in tag[1] %}
+                <li class="mb-3">
+                  {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+                  <span class="post-meta">{{ post.date | date: date_format }}</span>
+                  <h3 class="h5 mb-0">
+                    <a class="text-decoration-none" href="{{ post.url | relative_url }}">
+                      {{ post.title | escape }}
+                    </a>
+                  </h3>
+                  {%- if site.show_excerpts -%}
+                    <p class="post-excerpt small text-muted">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+                  {%- endif -%}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
       </div>
     {% endfor %}
   </div>
 </div>
 
-<style>
-  .tag-cloud {
-    text-align: center;
+{{ content }}
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  // URL의 해시를 확인하고 해당 아코디언 아이템을 펼칩니다.
+  const hash = window.location.hash;
+  if (hash) {
+    const targetCollapse = document.querySelector(hash);
+    if (targetCollapse) {
+      const collapse = new bootstrap.Collapse(targetCollapse);
+      collapse.show();
+      targetCollapse.scrollIntoView();
+    }
   }
-  .tag-cloud-item {
-    display: inline-block;
-    margin: 0.2em;
-    padding: 0.2em 0.5em;
-    background-color: #f8f9fa;
-    border-radius: 0.3em;
-    color: #495057;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
-  .tag-cloud-item:hover {
-    background-color: #e9ecef;
-  }
-  .tag-count {
-    font-size: 0.8em;
-    color: #6c757d;
-  }
-  .tag-title {
-    border-bottom: 2px solid #dee2e6;
-    padding-bottom: 0.3em;
-    margin-bottom: 0.5em;
-  }
-  .post-excerpt {
-    font-size: 0.9em;
-    color: #6c757d;
-  }
-  .tag-size-1 { font-size: 0.8em; }
-  .tag-size-2 { font-size: 1em; }
-  .tag-size-3 { font-size: 1.2em; }
-  .tag-size-4 { font-size: 1.4em; }
-  .tag-size-5 { font-size: 1.6em; }
-</style>
+
+  // 태그 클라우드 아이템 클릭 시 해당 아코디언 아이템을 펼칩니다.
+  const tagCloudItems = document.querySelectorAll('.tag-cloud-item');
+  tagCloudItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = e.currentTarget.getAttribute('href');
+      const targetCollapse = document.querySelector(targetId);
+      if (targetCollapse) {
+        const collapse = new bootstrap.Collapse(targetCollapse);
+        collapse.show();
+        targetCollapse.scrollIntoView();
+      }
+    });
+  });
+});
+</script>

@@ -1,0 +1,45 @@
+.tags-page {
+    width: 80vw;
+    margin: auto;
+
+    .tag-cloud {
+      text-align: center;
+  
+      .tag-cloud-item {
+        display: inline-block;
+        margin: 0.2em;
+        padding: 0.2em 0.5em;
+        background-color: #f8f9fa;
+        border-radius: 0.3em;
+        color: #495057;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+  
+        &:hover {
+          background-color: #e9ecef;
+        }
+  
+        .tag-count {
+          font-size: 0.8em;
+          color: #6c757d;
+        }
+      }
+    }
+  
+    .tag-title {
+      border-bottom: 2px solid #dee2e6;
+      padding-bottom: 0.3em;
+      margin-bottom: 0.5em;
+    }
+  
+    .post-excerpt {
+      font-size: 0.9em;
+      color: #6c757d;
+    }
+  
+    @for $i from 1 through 5 {
+      .tag-size-#{$i} {
+        font-size: 0.8em + $i * 0.2em;
+      }
+    }
+  }

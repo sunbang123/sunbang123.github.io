@@ -1,0 +1,48 @@
+.tags-page {
+  width: 80vw;
+  margin: auto;
+}
+.tags-page .tag-cloud {
+  text-align: center;
+}
+.tags-page .tag-cloud .tag-cloud-item {
+  display: inline-block;
+  margin: 0.2em;
+  padding: 0.2em 0.5em;
+  background-color: #f8f9fa;
+  border-radius: 0.3em;
+  color: #495057;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.tags-page .tag-cloud .tag-cloud-item:hover {
+  background-color: #e9ecef;
+}
+.tags-page .tag-cloud .tag-cloud-item .tag-count {
+  font-size: 0.8em;
+  color: #6c757d;
+}
+.tags-page .tag-title {
+  border-bottom: 2px solid #dee2e6;
+  padding-bottom: 0.3em;
+  margin-bottom: 0.5em;
+}
+.tags-page .post-excerpt {
+  font-size: 0.9em;
+  color: #6c757d;
+}
+.tags-page .tag-size-1 {
+  font-size: 1em;
+}
+.tags-page .tag-size-2 {
+  font-size: 1.2em;
+}
+.tags-page .tag-size-3 {
+  font-size: 1.4em;
+}
+.tags-page .tag-size-4 {
+  font-size: 1.6em;
+}
+.tags-page .tag-size-5 {
+  font-size: 1.8em;
+}
