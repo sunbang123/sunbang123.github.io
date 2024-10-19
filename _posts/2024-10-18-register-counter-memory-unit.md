@@ -12,7 +12,7 @@ tags:  [computer-architecture, computer-science, theory]
 - 기능: n비트의 2진 정보 저장
 - 예: 4비트 레지스터
 
-<img src="/post_img/image1014_edit-01.png" width="500px">
+<img src="/post_img/1018-1/image1018-01.png" width="500px">
 
 ### 특징
 - 공통 clock 입력으로 동시 동작
@@ -21,7 +21,7 @@ tags:  [computer-architecture, computer-science, theory]
 
 ## 2. 병렬 로드 레지스터
 
-<img src="/post_img/image1014_edit-02.png" width="500px">
+<img src="/post_img/1018-1/image1018-02.png" width="500px">
 
 - 주 클럭펄스 발생기 사용
 - Load 제어입력으로 클럭펄스 작용 결정
@@ -30,7 +30,7 @@ tags:  [computer-architecture, computer-science, theory]
 
 ## 3. 시프트 레지스터
 
-<img src="/post_img/image1014_edit-03.png" width="500px">
+<img src="/post_img/1018-1/image1018-03.png" width="500px">
 
 - 기능: 2진 정보를 단/양방향으로 이동
 - 구조: 플립플롭 간 연쇄적 연결
@@ -38,7 +38,7 @@ tags:  [computer-architecture, computer-science, theory]
 
 ### 병렬 로드 양방향 시프트 레지스터
 
-<img src="/post_img/image1014_edit-04.png" width="500px">
+<img src="/post_img/1018-1/image1018-04.png" width="500px">
 
 - 구성: 4 D-FF + 4x1 MUX
 - 기능:
@@ -47,11 +47,11 @@ tags:  [computer-architecture, computer-science, theory]
   3. 병렬 로드/출력
   4. 정보 유지 기능
 
-<img src="/post_img/image1014_edit-05.png" width="500px">
+<img src="/post_img/1018-1/image1018-05.png" width="500px">
 
 ### 응용
 
-<img src="/post_img/image1014_edit-06.png" width="500px">
+<img src="/post_img/1018-1/image1018-06.png" width="500px">
 
 - 주요 용도: 원격 시스템 간 데이터 전송
 
@@ -63,7 +63,7 @@ tags:  [computer-architecture, computer-science, theory]
 - 계수 범위: n비트 → 0 ~ (2^n - 1)
 
 ### 동기식 카운터
-<img src="/post_img/image1014_edit-07.png" width="500px">
+<img src="/post_img/1018-1/image1018-07.png" width="500px">
 
 - 특징: 모든 플립플롭에 공통 클럭 연결
 
@@ -71,7 +71,7 @@ tags:  [computer-architecture, computer-science, theory]
 - 특징: 첫 플립플롭의 출력이 다음 플립플롭의 클럭으로 연결
 
 ### 병렬 로드 2진 카운터
-<img src="/post_img/image1014_edit-08.png" width="500px">
+<img src="/post_img/1018-1/image1018-08.png" width="500px">
 
 - 기능: 초기값 설정 가능
 - 동작 모드:
@@ -79,7 +79,7 @@ tags:  [computer-architecture, computer-science, theory]
   2. Load (1) → 병렬 입력 로드
   3. Increment (1) → 오름차순 계수
 
-<img src="/post_img/image1014_edit-09.png" width="500px">
+<img src="/post_img/1018-1/image1018-09.png" width="500px">
 
 ## 5. 메모리 장치
 
@@ -94,7 +94,7 @@ tags:  [computer-architecture, computer-science, theory]
 - 1G = 2^30 Byte
 
 ### RAM (Random Access Memory)
-<img src="/post_img/image1014_edit-10.png" width="500px">
+<img src="/post_img/1018-1/image1018-10.png" width="500px">
 
 - 특징: 모든 워드에 동일한 접근 시간
 - 구성: 데이터 라인, 주소 라인, 제어 라인
@@ -103,7 +103,7 @@ tags:  [computer-architecture, computer-science, theory]
   - 읽기: 주소 지정 → Read 활성화
 
 ### ROM (Read Only Memory)
-<img src="/post_img/image1014_edit-11.png" width="500px">
+<img src="/post_img/1018-1/image1018-12.png" width="500px">
 
 - 특징: 내용 변경 불가, 읽기만 가능
 - 규격: m x n ROM (m: 워드 수, n: 비트 수)
