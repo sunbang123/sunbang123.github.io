@@ -63,3 +63,26 @@ tags:
 # Blocking
 
 # Non-blocking
+
+# System.Threading:
+
+- System.Threading 네임스페이스는 주로 스레드 및 동기화 관련 기능을 제공함.
+- 스레드를 직접 관리하고, 락, 뮤텍스, 이벤트 등을 이용하여 여러 스레드 간의 동기화를 처리한다.
+
+- 주요 클래스
+  - Thread: 직접 스레드를 생성하고 실행할 수 있습니다.
+  - Mutex, Semaphore, AutoResetEvent, ManualResetEvent: 스레드 동기화와 관련된 클래스입니다.
+  - Timer: 일정 시간마다 콜백을 실행할 수 있는 타이머를 제공합니다.
+
+# System.Threading.Tasks:
+
+- System.Threading.Tasks 네임스페이스는 주로 비동기 프로그래밍 및 병렬 작업 처리에 사용됨.
+- 작업(Task)을 통해 비동기 및 병렬 작업을 수행한다.
+- Task 기반 비동기 프로그래밍은 .NET의 async/await 키워드를 사용함
+
+- 주요 클래스:
+  - Task: 작업 단위로 비동기 코드를 실행할 수 있습니다.
+  - Task<T>: 특정 타입의 결과를 반환하는 비동기 작업을 수행할 수 있습니다.
+  - TaskFactory, TaskScheduler: 작업을 스케줄링하고 관리하는 데 사용됩니다.
+
+- ※<T>는 제네릭 타입 Generic Type을 정의할때 사용하는 타입 매개변수다. Type의 약자
