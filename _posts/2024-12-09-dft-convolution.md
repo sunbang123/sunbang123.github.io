@@ -43,6 +43,10 @@ Figure 1은 **노이즈 상태의 원본 이미지**이고, Figure 2는 해당 �
 ---
 
 ### 주요 작업 요약:
+
+
+<img src="/post_img/1209/image.png" width="500px">
+
 1. **원본 이미지 (Figure 1)**:
    - rand(256, 256)으로 생성된 랜덤 노이즈 이미지입니다.
    - 이는 단순히 예제용으로 생성한 데이터이며, 실제로는 원본 이미지 대신 카메라 데이터나 다른 형태의 이미지가 사용될 수 있습니다.
@@ -75,7 +79,3 @@ Figure 1은 **노이즈 상태의 원본 이미지**이고, Figure 2는 해당 �
   - 노이즈 제거 (Low-pass filter).
   - 경계 강조 (High-pass filter).
   - 주파수 대역 제한 등.
-
----
-
-<img src="/post_img/1209/image.png" width="500px">
