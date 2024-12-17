@@ -67,11 +67,19 @@ var evenList = arr.Where(v => v % 2 == 0).ToList();
 - **지연 실행**: `yield return`은 데이터를 하나씩 반환하며, 다음 요소를 요청받을 때까지 실행을 중지합니다. 이로 인해 메모리 사용량을 최소화할 수 있습니다.
 - **사용 시점**: 큰 데이터를 처리하거나 조건에 따라 데이터를 순차적으로 반환해야 할 때 유용합니다.
 
+#### **yield와 GetEnumerator**
+
+- `yield return`을 사용하면 컴파일러가 **자동으로 `IEnumerable`과 `IEnumerator`를 구현**해 줍니다.
+
+- `yield`를 사용하면 데이터를 순차적으로 반환하는 **상태 기계(state machine)**가 생성되어 `GetEnumerator`의 동작을 간단하게 처리합니다.
+
+
 #### **예제 코드**
 ```csharp
 IEnumerable<int> GetEvenNumbers(int[] arr)
 {
     foreach (var v in arr)
+    // `foreach`는 `IEnumerable` 또는 `IEnumerable<T>`를 구현한 모든 타입에서 사용할 수 있습니다. `List<T>`에 한정되지 않습니다.
     {
         if (v % 2 == 0)
         {
@@ -82,7 +90,7 @@ IEnumerable<int> GetEvenNumbers(int[] arr)
 
 var evenNumbers = GetEvenNumbers(new int[] { 1, 2, 3, 4, 5 });
 foreach (var num in evenNumbers)
-{
+{`
     Console.WriteLine(num);
 }
 ```
@@ -98,7 +106,24 @@ foreach (var num in evenNumbers)
 2. 데이터를 요청할 때만 조건 검사가 실행되므로 메모리 효율적입니다.
 3. 지연 실행의 대표적인 예시입니다.
 
+
+**컴파일 후 동작**:
+
+1. `GetEvenNumbers` 메서드는 `IEnumerable<int>`를 반환합니다.
+
+2. `yield return`은 **`IEnumerator` 객체**를 생성하고 상태를 저장합니다.
+
+3. `foreach` 루프가 `GetEnumerator()`를 호출하면 상태가 유지된 열거자가 실행됩니다.
+
+- `IEnumerable`을 구현하는 모든 컬렉션은 `GetEnumerator`를 통해 열거자(`IEnumerator`)를 반환합니다.
+
+- `yield`는 컴파일러가 `GetEnumerator` 메서드와 상태 관리를 자동으로 생성하도록 도와줍니다.
+
+- 복잡한 `IEnumerator` 구현 없이도 `yield`를 통해 간결하게 데이터를 순차적으로 반환할 수 있습니다.
+
 ---
+
+
 
 ## 3. **지연 실행 vs 즉시 실행**
 
@@ -176,6 +201,14 @@ class Program
             .ToList();                    // 즉시 실행 및 List 변환
 
         sortedEvenNumbers.ForEach(v => Console.WriteLine(v)); // 결과 출력
+
+        // int[] arr = { 30, 56, 78, 45, 12, 99, 33 };
+
+        // IEnumerable<int> sub1 = arr.OrderBy((v) => v);
+        // IEnumerable<int> sub2 = sub1.Where((v) => v % 2 == 0);
+        // List<int> lt = sub2.ToList();
+
+        // lt.ForEach((v) => { Console.WriteLine(v); });
     }
 }
 ```
