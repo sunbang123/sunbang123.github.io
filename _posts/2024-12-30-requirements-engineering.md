@@ -3,7 +3,7 @@ layout: post
 title: "Requirements engineering"
 date: 2024-12-30 17:47:11 +0900
 categories: 
-tags: 
+tags: [Processing, License]
 ---
 
 # 요구사항 확인
