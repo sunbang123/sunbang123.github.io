@@ -3,10 +3,10 @@ layout: post
 title: "Software development"
 date: 2024-12-26 19:38:11 +0900
 categories: 
-tags: Processing License
+tags: [Processing, License]
 ---
 
-# 정보처리기사 필기 정리 노트
+# 소프트웨어 개발 방법론
 
 ## 소프트웨어 유형
 
