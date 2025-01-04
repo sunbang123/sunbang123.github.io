@@ -6,7 +6,9 @@ categories:
 tags: [Processing, License]
 ---
 
-# 시스템 연동 설계 완벽 가이드 (출제빈도: 중)
+# 시스템 연동 설계 완벽 가이드 
+
+> 출제빈도: 중
 
 ## 1. 시스템 코드 설계
 
@@ -62,7 +64,7 @@ tags: [Processing, License]
 
 ### 웹서비스 연동
 
-<img src="/post_img/250103/image.png" width="500px">
+<img src="/post_img/250103/image.png" width="400px">
 
 * 네트워크 기반 연동 방식
 * 주요 구성요소:
