@@ -3,7 +3,7 @@ layout: post
 title: "DFT Convolution"
 date: 2024-12-09 16:49:50 +0900
 categories: 
-tags: 
+tags: [MATLAB, Digital Image Processing]
 ---
 
 # **DFT 기반 Convolution**

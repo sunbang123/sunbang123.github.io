@@ -3,7 +3,7 @@ layout: post
 title: "Discrete fourier"
 date: 2024-12-09 14:42:39 +0900
 categories: 
-tags: 
+tags: [MATLAB, Digital Image Processing]
 ---
 
 # 푸리에 변환의 핵심 수식
