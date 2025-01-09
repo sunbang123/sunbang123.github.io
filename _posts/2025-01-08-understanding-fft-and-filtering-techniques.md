@@ -26,7 +26,6 @@ fft(a)   % row vector 결과
 
 ![alt text](/post_img/250108/image.png)
 
-
 ### 1.2 순환 합성곱(Circular Convolution)
 
 순환 합성곱은 주파수 영역에서의 중요한 연산입니다:
