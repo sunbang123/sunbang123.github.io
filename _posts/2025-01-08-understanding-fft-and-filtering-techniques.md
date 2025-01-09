@@ -24,7 +24,7 @@ fft(a')  % column vector로 변환
 fft(a)   % row vector 결과
 ```
 
-![alt text](post_img/250108/image.png)
+![alt text](/post_img/250108/image.png)
 
 
 ### 1.2 순환 합성곱(Circular Convolution)
@@ -48,7 +48,7 @@ fft(a').*fft(b');
 ifft(ans)'
 ```
 
-![alt text](post_img/250108/image-1.png)
+![alt text](/post_img/250108/image-1.png)
 
 ### 1.3 푸리에 변환의 이동성(Shifting)
 시프팅 특성을 보여주는 중요한 예제입니다:
@@ -78,7 +78,7 @@ af = fftshift(fft2(a));
 figure, fftshow(af, 'log');
 ```
 
-![alt text](post_img/250108/image-2.png)
+![alt text](/post_img/250108/image-2.png)
 
 ### 2.2 마름모 패턴 생성
 ```matlab
@@ -89,7 +89,7 @@ bf = fftshift(fft2(b));
 figure, fftshow(bf, 'log');
 ```
 
-![alt text](post_img/250108/image-3.png)
+![alt text](/post_img/250108/image-3.png)
 
 ### 2.3 원형 패턴 생성
 ```matlab
@@ -101,7 +101,7 @@ cf = fftshift(fft2(c));
 figure, fftshow(cf, 'log');
 ```
 
-![alt text](post_img/250108/image-4.png)
+![alt text](/post_img/250108/image-4.png)
 
 ## 3. 주파수 영역 필터링
 
@@ -125,7 +125,7 @@ cfli=ifft2(cfl);
 figure, fftshow(cfli, 'abs');
 ```
 
-![alt text](post_img/250108/image-5.png)
+![alt text](/post_img/250108/image-5.png)
 
 ### 3.2 고주파 통과 필터링(High-pass Filtering)
 ```matlab
@@ -144,7 +144,7 @@ cfhi=ifft2(cfh);
 figure, fftshow(cfhi, 'abs');
 ```
 
-![alt text](post_img/250108/image-6.png)
+![alt text](/post_img/250108/image-6.png)
 
 ### 3.3 대역 제거 필터링(Band-reject Filtering)
 
@@ -163,7 +163,7 @@ cfhi=ifft2(cfh);
 figure, fftshow(cfhi, 'abs');
 ```
 
-![alt text](post_img/250108/image-7.png)
+![alt text](/post_img/250108/image-7.png)
 
 ### 3.4 가우시안 필터링
 
@@ -233,7 +233,7 @@ tfi = ifft2(tf);
 figure(6), fftshow(tfi);
 ```
 
-![alt text](post_img/250108/image-8.png)
+![alt text](/post_img/250108/image-8.png)
 
 ## 결론
 

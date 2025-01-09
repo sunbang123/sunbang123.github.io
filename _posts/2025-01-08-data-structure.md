@@ -162,6 +162,9 @@ tags: [Processing, License]
 ## 비선형구조 상세 설명
 
 ### 트리(Tree)
+
+![alt text](/post_img/250108-1/image.png)
+
 - 1:N 계층 구조
 - 특징:
   - 간선(Edge, Branch)으로 연결
@@ -175,6 +178,9 @@ tags: [Processing, License]
 - 형제(Sibling) 노드
 
 #### 구조 관련 용어
+
+![alt text](/post_img/250108-1/image-1.png)
+
 - 노드의 크기
 - 노드의 깊이
 - 노드의 높이
@@ -184,6 +190,9 @@ tags: [Processing, License]
 - 트리의 차수
 
 #### 이진트리 종류
+
+![alt text](/post_img/250108-1/image-2.png)
+
 1. **전 이진트리**
    - 형제노드가 0개 또는 2개
 
@@ -195,14 +204,20 @@ tags: [Processing, License]
    - 모든 형제노드가 2개
 
 #### 트리 순회 방식
+
+![alt text](/post_img/250108-1/image-3.png)
+
 1. **중위 순회**
    - 좌측자식 → 부모 → 우측자식
+   - G -> D -> H -> B -> E -> A -> F -> C
 
 2. **전위 순회**
    - 부모 → 좌측자식 → 우측자식
+   - A -> B -> D -> G -> H -> E -> C -> F
 
 3. **후위 순회**
    - 좌측자식 → 우측자식 → 부모
+   - G -> H -> D -> E -> B -> F -> C -> A
 
 ### 그래프(Graph)
 - N:M 다대다 구조
@@ -236,7 +251,11 @@ tags: [Processing, License]
 - <A,B>와 <B,A>는 다른 표현
 - 최대 간선수: n(n-1)
 
+![alt text](/post_img/250108-1/image-4.png)
+
 #### 무방향 그래프
 - 방향성 없음
 - (A,B)와 (B,A)는 동일 표현
 - 최대 간선수: n(n-1)/2
+
+![alt text](/post_img/250108-1/image-5.png)
