@@ -9,10 +9,10 @@ layout: default
   {{ content }}
 
   {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
+    <h2 class="post-list-heading animated-title">{{ page.list_title | default: "Posts" }}</h2>
     <ul class="post-list p-0">
       {%- for post in site.posts -%}
-      <li>
+      <li class="post-item">
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
         <span class="post-meta">{{ post.date | date: date_format }}</span>
         <h3>
@@ -31,3 +31,38 @@ layout: default
   {%- endif -%}
 
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 제목 애니메이션
+    gsap.from('.animated-title', {
+        duration: 1,
+        y: -50,
+        opacity: 0,
+        ease: 'power3.out'
+    });
+
+    // 포스트 아이템들을 배치(batch)로 처리
+    const posts = gsap.utils.toArray('.post-item');
+    const batchSize = 3; // 한 번에 처리할 포스트 수
+    
+    for(let i = 0; i < posts.length; i += batchSize) {
+        const batch = posts.slice(i, i + batchSize);
+        
+        gsap.from(batch, {
+            scrollTrigger: {
+                trigger: batch[0],
+                start: 'top bottom-=100',
+                toggleActions: 'play none none none'
+            },
+            x: -30,
+            opacity: 0,
+            duration: 0.4,
+            stagger: 0.1,
+            ease: 'power2.out'
+        });
+    }
+});
+</script>
