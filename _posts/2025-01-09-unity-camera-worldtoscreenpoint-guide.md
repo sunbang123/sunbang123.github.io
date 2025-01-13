@@ -2,8 +2,8 @@
 layout: post
 title: "Unity camera WorldToScreenPoint guide"
 date: 2025-01-09 23:38:24 +0900
-categories: [Unity, Game Theory, C#]
-tags: 
+categories: 
+tags: [Unity, Game Theory, C#]
 ---
 
 # Unity Camera WorldToScreenPoint 가이드
