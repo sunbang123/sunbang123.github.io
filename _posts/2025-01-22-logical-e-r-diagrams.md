@@ -3,7 +3,7 @@ layout: post
 title: "Logical E-R diagrams"
 date: 2025-01-22 16:02:52 +0900
 categories: 
-tags: 
+tags: [Processing, License]
 ---
 
 # 논리 E-R 다이어그램 완벽 가이드
