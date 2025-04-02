@@ -64,21 +64,7 @@ chore: 게시글 태그 업데이트
 
 ---
 
-## 5. 대괄호 vs 콜론 스타일 비교
-
-| 스타일 | 예시 | 추천 여부 | 비고 |
-|--------|------|------------|------|
-| 대괄호 | [add] 기능 추가 | △       | 개인 기록용으로는 OK, 자동화에는 비권장 |
-| 콜론   | feat: 기능 추가 | ✅      | 오픈소스/팀 작업/자동화에서 표준 |
-
-### 대괄호 스타일이 허용되는 경우:
-- 혼자만 쓰는 프로젝트일 때
-- 팀 내에서 컨벤션으로 정한 경우
-- 메시지 일관성과 가독성을 유지할 수 있다면 문제 없음
-
----
-
-## 6. 커밋 메시지 작성 요령 요약
+## 5. 커밋 메시지 작성 요령 요약
 
 | 요령 | 설명 |
 |------|------|
@@ -90,7 +76,7 @@ chore: 게시글 태그 업데이트
 
 ---
 
-## 7. 유명 오픈소스 예시 (콜론 스타일 사용)
+## 6. 유명 오픈소스 예시 (콜론 스타일 사용)
 | 프로젝트 | 커밋 예시 |
 |----------|------------|
 | Angular | `fix(router): handle null route` |
@@ -101,7 +87,7 @@ chore: 게시글 태그 업데이트
 
 ---
 
-## 8. SEO 관점에서의 커밋 블로그 작성 팁
+## 7. SEO 관점에서의 커밋 블로그 작성 팁
 Git 관련 커밋 메시지 작성법을 블로그로 정리할 때, 다음 요소들을 고려하면 검색 노출(SEO)에 더 유리합니다.
 
 ### ✅ 제목(Title)에 키워드 포함하기
@@ -139,9 +125,62 @@ Git 관련 커밋 메시지 작성법을 블로그로 정리할 때, 다음 요�
 
 ---
 
-## 9. 마무리
-커밋 메시지는 단순한 메모가 아니라 **소통의 도구**입니다. 
-특히 팀 프로젝트나 공개 레포에서는 더욱 중요해집니다. 목적에 따라 스타일을 선택하되, 일관성을 유지하고 목적이 명확한 메시지를 작성하는 것이 가장 중요합니다.
+## 8. 터미널에서 디테일한 커밋 메시지 작성법
+### ✅ 방법 1: 한 줄 메시지 + 설명 추가
+```bash
+git commit -m "docs: add blog post about writing good Git commit messages" \
+            -m "Includes best practices, format examples, style comparisons, and SEO tips."
+```
 
-Git 블로그를 작성할 때는 **기술적인 내용 + 검색 최적화(SEO)** 모두를 고려해서, 더 많은 개발자들에게 유용하게 전달될 수 있도록 구성하는 것이 좋습니다.
+### ✅ 방법 2: 기본 에디터에서 직접 작성
+```bash
+git commit
+```
+이후 열리는 에디터에 아래와 같이 입력:
+```
+docs: add blog post about writing good Git commit messages
 
+- Introduced best practices for writing clear commit messages
+- Explained the Conventional Commits format with examples
+- Compared [bracket] style and colon-based commit prefixes
+- Added SEO tips for optimizing blog visibility on Google
+```
+
+### ✅ 이전 커밋 메시지 수정하기 (푸시 전)
+```bash
+git commit --amend
+```
+기존 메시지를 수정할 수 있으며, 푸시 전에만 사용하는 것이 안전합니다.
+
+---
+
+## 10. Vim 에디터에서 커밋 메시지 저장/종료 방법
+Git에서 `git commit` 시 열리는 기본 텍스트 에디터는 보통 **Vim**입니다.
+
+> 작동 예시
+
+![alt text](/post_img/250403/image.png)
+
+- O를 누르면 끼워넣기 활성화
+- ESC를 누르면 저장 혹은 종료할수 있음.
+
+| 동작 | 명령어 |
+|------|--------|
+| 저장 후 종료 | `:wq` + Enter |
+| 저장 없이 종료 | `:q!` + Enter |
+| 저장만 하기 | `:w` + Enter |
+| 저장 후 종료 (빠른 방법) | `Shift + ZZ` |
+
+### ✅ 기본 에디터 변경 방법
+#### Nano로 변경 (간단한 인터페이스)
+```bash
+git config --global core.editor "nano"
+```
+
+--
+
+## 11. 마무리
+커밋 메시지는 단순한 메모가 아니라 **소통의 도구**라고 한다.
+목적에 따라 스타일을 선택하되, 일관성을 유지하고 목적이 명확한 메시지를 작성하는 것이 가장 중요할거같다. ^^
+
+Git 블로그를 작성할 때는 **기술적인 내용 + 검색 최적화(SEO)** 모두를 고려해서, 더 많은 개발자들에게 유용하게 전달될 수 있도록 구성해야겠다!
