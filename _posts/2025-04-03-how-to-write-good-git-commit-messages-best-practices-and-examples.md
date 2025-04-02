@@ -46,19 +46,22 @@ GitHub 또는 Git을 사용하는 개발에서 커밋 메시지는 **소스 코�
 
 ### 기존:
 ```
-[add] c.txt 파일을 생성하고 추가함
-[update] 두 파일을 수정함
+add new posting about processing engineering
+new post upload (깃 서버 운영)
+contents 재업로드
+정보처리기사 실기 기출 정리
 ```
 
 ### 개선:
 ```
-feat: 안내 텍스트 추가 (c.txt)
-refactor: 중복 코드 제거 및 문장 정리 (a.txt, b.txt)
+docs: 정보처리기사 실기 기출 정리 포스트 추가
+feat: 깃 서버 운영 관련 신규 포스트 업로드
+chore: 기존 포스트 내용 재업로드 및 리포맷
 ```
 
 ### 콘텐츠 중심 커밋 예시:
 ```
-feat: 정보처리기사 실기 포스트 업로드
+docs: 정보처리기사 실기 포스트 업로드
 docs: 포스트 이미지 경로 수정
 chore: 게시글 태그 업데이트
 ```
