@@ -3,7 +3,7 @@ layout: post
 title: "Server program / interface"
 date: 2025-04-03 01:58:52 +0900
 categories: 
-tags: 
+tags: [Processing, License]
 ---
 
 # 정보처리기사 실기시험 내용 정리
