@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pixelsperunit"
+title: "Pixels per unit"
 date: 2025-05-09 14:50:34 +0900
 categories: 
 tags: [Unity]
