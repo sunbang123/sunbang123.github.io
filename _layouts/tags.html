@@ -9,36 +9,55 @@ layout: default
     {% assign tags = site.tags | sort %}
     {% for tag in tags %}
       {% assign tag_size = tag | last | size %}
-      <a href="#{{ tag[0] | slugify }}" class="tag-cloud-item" data-tag-size="{{ tag_size }}">
+      <button class="tag-cloud-item" data-tag="{{ tag[0] | slugify }}" data-tag-size="{{ tag_size }}">
         {{ tag[0] }} 
         <span class="tag-count">{{ tag_size }}</span>
-      </a>
+      </button>
     {% endfor %}
   </div>
 
-  <div class="tags-grid" id="tagAccordion">
+  <div class="tags-container">
     {% for tag in tags %}
-      <div class="tag-card" id="{{ tag[0] | slugify }}">
+      <div class="tag-section" id="{{ tag[0] | slugify }}" style="display: none;">
         <div class="tag-header">
           <h2 class="tag-title">{{ tag[0] }}</h2>
           <span class="tag-badge">{{ tag[1].size }}</span>
         </div>
         <div class="tag-content">
-          {% for post in tag[1] %}
-            <article class="post-item">
-              {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-              <time class="post-date">{{ post.date | date: date_format }}</time>
-              <h3 class="post-title">
-                <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-              </h3>
-              {%- if site.show_excerpts -%}
-                <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-              {%- endif -%}
-            </article>
-          {% endfor %}
+          <div class="posts-grid" data-post-count="{{ tag[1].size }}">
+            {% for post in tag[1] %}
+              <article class="post-card">
+                <div class="post-card-content">
+                  <time class="post-date">
+                    {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+                    {{ post.date | date: date_format }}
+                  </time>
+                  <h3 class="post-title">
+                    <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+                  </h3>
+                  {%- if site.show_excerpts -%}
+                    <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+                  {%- endif -%}
+                  
+                  {% if post.tags %}
+                    <div class="post-tags">
+                      {% for tag in post.tags limit: 3 %}
+                        <span class="post-tag">{{ tag }}</span>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+              </article>
+            {% endfor %}
+          </div>
         </div>
       </div>
     {% endfor %}
+  </div>
+
+  <!-- 안내 메시지 -->
+  <div class="info-message text-center mt-4" id="infoMessage">
+    <p class="text-muted">위의 태그를 클릭하여 관련 포스트를 확인하세요</p>
   </div>
 </div>
 
@@ -70,10 +89,11 @@ layout: default
   border-radius: 30px;
   background: white;
   color: #2b8483;
-  text-decoration: none;
+  border: none;
   font-weight: 500;
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  cursor: pointer;
 }
 
 .tag-cloud-item:hover {
@@ -81,6 +101,13 @@ layout: default
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   background: #2b8483;
   color: white;
+}
+
+.tag-cloud-item.active {
+  background: #2b8483;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(43, 132, 131, 0.3);
 }
 
 .tag-count {
@@ -91,23 +118,33 @@ layout: default
   margin-left: 0.5rem;
 }
 
-.tags-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 1rem;
+.tag-cloud-item.active .tag-count {
+  background: rgba(255,255,255,0.2);
 }
 
-.tag-card {
+.tags-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tag-section {
   background: white;
   border-radius: 16px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   overflow: hidden;
-  transition: transform 0.3s ease;
+  margin-bottom: 2rem;
+  animation: slideDown 0.3s ease-out;
 }
 
-.tag-card:hover {
-  transform: translateY(-5px);
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .tag-header {
@@ -135,29 +172,69 @@ layout: default
   padding: 1.5rem;
 }
 
-.post-item {
-  padding: 1rem 0;
-  border-bottom: 1px solid #eee;
+/* 포스트 그리드 스타일 */
+.posts-grid {
+  display: grid;
+  gap: 1rem;
 }
 
-.post-item:last-child {
-  border-bottom: none;
+.posts-grid[data-post-count="1"] {
+  grid-template-columns: 1fr;
+}
+
+.posts-grid[data-post-count="2"] {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.posts-grid[data-post-count="3"] {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.posts-grid[data-post-count="4"] {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.posts-grid:not([data-post-count="1"]):not([data-post-count="2"]):not([data-post-count="3"]):not([data-post-count="4"]) {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.post-card {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.post-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-color: #2b8483;
+}
+
+.post-card-content {
+  padding: 1.25rem;
 }
 
 .post-date {
-  color: #666;
-  font-size: 0.9rem;
+  color: #6c757d;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 .post-title {
-  margin: 0.5rem 0;
+  margin: 0 0 0.75rem 0;
   font-size: 1.1rem;
+  line-height: 1.4;
 }
 
 .post-title a {
-  color: #333;
+  color: #212529;
   text-decoration: none;
   transition: color 0.2s ease;
+  font-weight: 600;
 }
 
 .post-title a:hover {
@@ -165,9 +242,34 @@ layout: default
 }
 
 .post-excerpt {
-  color: #666;
+  color: #6c757d;
   font-size: 0.9rem;
-  margin: 0.5rem 0 0;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.post-tag {
+  background: rgba(43, 132, 131, 0.1);
+  color: #2b8483;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.info-message {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.info-message.hidden {
+  opacity: 0;
 }
 
 @media (max-width: 768px) {
@@ -175,53 +277,95 @@ layout: default
     font-size: 2rem;
   }
   
-  .tags-grid {
-    grid-template-columns: 1fr;
+  .tag-content {
+    padding: 1rem;
+  }
+  
+  .post-card-content {
+    padding: 1rem;
+  }
+  
+  .posts-grid,
+  .posts-grid[data-post-count="2"],
+  .posts-grid[data-post-count="3"],
+  .posts-grid[data-post-count="4"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 992px) and (min-width: 769px) {
+  .posts-grid[data-post-count="3"] {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  gsap.registerPlugin(ScrollTrigger);
+  if (typeof gsap !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
 
-  // 태그 클라우드 애니메이션
-  gsap.from('.tag-cloud-item', {
-    duration: 0.5,
-    y: 20,
-    opacity: 0,
-    stagger: 0.03,
-    ease: 'power2.out'
-  });
-
-  // 태그 카드 애니메이션
-  gsap.utils.toArray('.tag-card').forEach((card, i) => {
-    gsap.from(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: 'top bottom-=100',
-        toggleActions: 'play none none none'
-      },
-      y: 50,
+    // 태그 클라우드 애니메이션
+    gsap.from('.tag-cloud-item', {
+      duration: 0.5,
+      y: 20,
       opacity: 0,
-      duration: 0.6,
-      delay: i % 3 * 0.1
+      stagger: 0.03,
+      ease: 'power2.out'
+    });
+  }
+
+  // 태그 토글 기능
+  const tagButtons = document.querySelectorAll('.tag-cloud-item');
+  const tagSections = document.querySelectorAll('.tag-section');
+  const infoMessage = document.getElementById('infoMessage');
+  let activeTag = null;
+
+  tagButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const tagId = this.dataset.tag;
+      const targetSection = document.getElementById(tagId);
+      
+      // 이미 활성화된 태그를 다시 클릭하면 닫기
+      if (activeTag === tagId) {
+        closeActiveTag();
+        return;
+      }
+      
+      // 다른 태그들 비활성화
+      tagButtons.forEach(btn => btn.classList.remove('active'));
+      tagSections.forEach(section => section.style.display = 'none');
+      
+      // 현재 태그 활성화
+      this.classList.add('active');
+      targetSection.style.display = 'block';
+      activeTag = tagId;
+      
+      // 안내 메시지 숨기기
+      infoMessage.classList.add('hidden');
+      
+      // 해당 섹션으로 스크롤
+      setTimeout(() => {
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 100);
     });
   });
 
-  // 스무스 스크롤
-  document.querySelectorAll('.tag-cloud-item').forEach(item => {
-    item.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetId = item.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      if(targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop - 100,
-          behavior: 'smooth'
-        });
-      }
-    });
+  function closeActiveTag() {
+    tagButtons.forEach(btn => btn.classList.remove('active'));
+    tagSections.forEach(section => section.style.display = 'none');
+    activeTag = null;
+    infoMessage.classList.remove('hidden');
+  }
+
+  // ESC 키로 닫기
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && activeTag) {
+      closeActiveTag();
+    }
   });
 });
 </script>
