@@ -84,7 +84,7 @@ layout: default
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
-                    <h1 class="display-4 fw-bold mb-3">{{ page.title }}</h1>
+                    <h1 class="display-6 fw-bold mb-3">{{ page.title }}</h1>
                     <p class="lead mb-4">{{ page.description }}</p>
                     
                     <!-- Project Meta Info -->
@@ -118,7 +118,7 @@ layout: default
                         </a>
                         {% endif %}
                         {% if page.github_url %}
-                        <a href="{{ page.github_url }}" class="btn btn-outline-light btn-lg" target="_blank">
+                        <a href="{{ page.github_url }}" class="btn btn-dark btn-lg text-white" target="_blank">
                             <i class="fab fa-github me-2"></i>GitHub 보기
                         </a>
                         {% endif %}
@@ -170,18 +170,13 @@ layout: default
 
     <!-- Navigation Buttons -->
     <div class="nav-buttons">
-        <a href="/project/" class="btn btn-primary">
-            <i class="fas fa-th-large"></i>
+        <a href="/project/" class="btn btn-primary text-white">
+            <i class="bi bi-backspace"></i>
         </a>
         <a href="#" class="btn btn-secondary back-to-top">
-            <i class="fas fa-arrow-up"></i>
+            <i class="bi bi-arrow-up-circle"></i>
         </a>
     </div>
-
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
     
     <script>
         // Back to top functionality

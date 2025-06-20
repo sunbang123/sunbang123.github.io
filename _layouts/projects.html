@@ -44,9 +44,12 @@ layout: default
         }
         
         .gradient-bg {
-            background: linear-gradient(45deg, #2b848325, #27459925);
+            background: linear-gradient(45deg, #00a3a190, #0043ff90);
+            border: 1px solid lightgray;
+            color: white;
+            font-weight: bold;
         }
-        
+                
         .glass-effect {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -73,7 +76,7 @@ layout: default
         }
         
         .add-project-card:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgb(232 223 239 / 70%);
             border-color: rgba(255, 255, 255, 0.6);
         }
     </style>
@@ -83,7 +86,7 @@ layout: default
         <div class="container">
             <!-- Header Section -->
             <div class="text-center mb-5">
-                <h1 class="display-3 fw-bold mb-4">
+                <h1 class="display-6 fw-bold mb-4">
                     <i class="fas fa-rocket me-3"></i>{{ page.title }}
                 </h1>
                 <div class="lead-50 mx-auto" style="max-width: 600px;">
