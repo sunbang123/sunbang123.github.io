@@ -1,0 +1,207 @@
+---
+layout: default
+---
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            background: linear-gradient(45deg, #622b8415, #3c279915);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .project-header {
+            background: linear-gradient(45deg, #622b8415, #3c279915);
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .project-content {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .project-meta {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .nav-buttons {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+        }
+        
+        .nav-buttons .btn {
+            margin-left: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .image-gallery img {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+        
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .tech-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Project Header -->
+    <div class="project-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold mb-3">{{ page.title }}</h1>
+                    <p class="lead mb-4">{{ page.description }}</p>
+                    
+                    <!-- Project Meta Info -->
+                    <div class="d-flex justify-content-center align-items-center flex-wrap gap-3 mb-4">
+                        <span class="badge bg-light text-dark fs-6">
+                            <i class="fas fa-calendar me-2"></i>{{ page.date | date: "%Y년 %m월" }}
+                        </span>
+                        {% if page.status %}
+                        <span class="badge 
+                            {% if page.status == 'completed' %}bg-success
+                            {% elsif page.status == 'in-progress' %}bg-warning
+                            {% elsif page.status == 'planned' %}bg-info
+                            {% endif %} fs-6">
+                            {{ page.status | replace: 'completed', '완료' | replace: 'in-progress', '진행중' | replace: 'planned', '계획중' }}
+                        </span>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Tech Stack -->
+                    <div class="mb-4">
+                        {% for tag in page.tags %}
+                        <span class="badge bg-secondary me-2 mb-2 fs-6">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        {% if page.demo_url %}
+                        <a href="{{ page.demo_url }}" class="btn btn-light btn-lg" target="_blank">
+                            <i class="fas fa-external-link-alt me-2"></i>라이브 데모
+                        </a>
+                        {% endif %}
+                        {% if page.github_url %}
+                        <a href="{{ page.github_url }}" class="btn btn-outline-light btn-lg" target="_blank">
+                            <i class="fab fa-github me-2"></i>GitHub 보기
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- Main Project Image -->
+                {% if page.thumbnail %}
+                <div class="text-center mb-5">
+                    <img src="{{ page.thumbnail }}" alt="{{ page.title }}" class="img-fluid rounded shadow-lg" style="max-height: 400px;">
+                </div>
+                {% endif %}
+                
+                <!-- Project Content -->
+                <div class="project-content">
+                    {{ content }}
+                </div>
+                
+                <!-- Project Navigation -->
+                <div class="row mt-5">
+                    <div class="col-6">
+                        {% assign prev_project = site.projects | sort: 'date' | where_exp: "project", "project.date < page.date" | last %}
+                        {% if prev_project %}
+                        <a href="{{ prev_project.url }}" class="btn btn-outline-primary">
+                            <i class="fas fa-chevron-left me-2"></i>이전 프로젝트
+                            <br><small class="text-muted">{{ prev_project.title }}</small>
+                        </a>
+                        {% endif %}
+                    </div>
+                    <div class="col-6 text-end">
+                        {% assign next_project = site.projects | sort: 'date' | where_exp: "project", "project.date > page.date" | first %}
+                        {% if next_project %}
+                        <a href="{{ next_project.url }}" class="btn btn-outline-primary">
+                            다음 프로젝트<i class="fas fa-chevron-right ms-2"></i>
+                            <br><small class="text-muted">{{ next_project.title }}</small>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+        <a href="/project/" class="btn btn-primary">
+            <i class="fas fa-th-large"></i>
+        </a>
+        <a href="#" class="btn btn-secondary back-to-top">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    
+    <script>
+        // Back to top functionality
+        document.querySelector('.back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Show/hide back to top button
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.style.opacity = '1';
+            } else {
+                backToTop.style.opacity = '0.5';
+            }
+        });
+    </script>
+</body>
+</html>

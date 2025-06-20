@@ -474,13 +474,6 @@ custom
     display: none !important;
   }
 }
-.profile-sidebar {
-  box-shadow: 5px 5px 0px;
-  border: 1px solid;
-  width: 25vmin;
-  margin-left: 30vmin;
-  margin-top: 5vmin;
-}
 
 .home {
   width: 80vw;

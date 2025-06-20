@@ -28,6 +28,7 @@ author-profile:
   bio: "한세대학교 22학번 컴퓨터공학과"
   email: "ilikeksy99@gmail.com"
   linkedin: "sunyoung-kim-86a54b283"
+  youtube: "UCfFOEhFPrz3EoLfflhr1NGA"
   profile_image: "/assets/images/profile.jpg"  # 이미지 경로 설정
 
 # Build settings
@@ -78,6 +79,19 @@ show_tag_metadata: true
 
 # URL 구조 설정
 permalink: /:title/
+
+# 기존 Jekyll 설정에 추가
+collections:
+  projects:
+    output: true
+    permalink: /project/:name/
+
+defaults:
+  - scope:
+      path: "_projects"
+      type: "projects"
+    values:
+      layout: "project"
 
 # Exclude from processing.
 # The following items will not be processed, by default.
