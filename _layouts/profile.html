@@ -7,12 +7,6 @@ layout: default
     <h1 class="post-title pt-5">Profile</h1>
   </header>
 
-    <div class="profile-image">
-      <div class="container">
-              <img width="250px" src="/assets/images/profile.jpg" alt="인물" class="soft-filter">
-        <div class="overlay"></div>
-      </div>
-    </div>
     <h5>Profile {{ site.author-profile.name }}</h5>
     <p>{{ site.author-profile.bio }}</p>
     <ul class="social-media-list d-flex">
@@ -32,7 +26,7 @@ layout: default
         {%- endif -%}
         {%- if site.author-profile.youtube -%}
         <li class="ps-1 pt-0">
-          <a class="text-decoration-none" href="https://www.youtube.com/channel/{{ author-profile.youtube }}">
+          <a class="text-decoration-none" href="https://www.youtube.com/channel/{{ author-profile.youtube | UCfFOEhFPrz3EoLfflhr1NGA }}">
             <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#youtube' | relative_url }}"></use></svg>
           </a>
         </li>
