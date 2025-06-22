@@ -188,6 +188,7 @@ tags: ["Computer Network", "computer-science"]
 ## 🎫 토큰 구조
 
 ### 토큰 필드 구성 (총 24 bits)
+
 | Starting delimiter | Access control | Ending delimiter |
 |:-----------------:|:-------------:|:---------------:|
 |     8 bits        |     8 bits    |     8 bits      |
