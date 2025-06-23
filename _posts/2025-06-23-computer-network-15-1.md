@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Computer network 15"
+title: "Computer network 15-1"
 date: 2025-06-23 06:33:37 +0900
 categories: 
 tags: ["Computer Network", "computer-science"] 
