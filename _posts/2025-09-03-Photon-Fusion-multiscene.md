@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Photon Fusion 2 멀티씬 네트워킹 완전 가이드"
-date: 2025-08-03 13:46:16 +0900
+date: 2025-09-03 19:43:16 +0900
 categories: 
 tags: ["Unity", "C#", "SDK"]
 ---
