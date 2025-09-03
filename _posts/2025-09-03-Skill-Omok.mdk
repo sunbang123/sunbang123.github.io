@@ -1,0 +1,222 @@
+---
+layout: post
+title: "Game development perfect guide"
+date: 2025-09-03 19:00:00 +0900
+categories: 
+tags: ["Unity", "C#"]
+---
+
+초고속 병렬 처리로 구현하는 3D 오목(스킬 포함) 승리 판정 – Unity C# Job System + Burst 설계 보고서 (Transform 기반 탐색 포함)
+
+플랫폼: Unity 2021.3+ (또는 2022/2023 LTS), .NET 4.x
+
+핵심 기술: C# Job System, Burst Compiler, Unity.Collections (NativeArray/NativeReference), Unity.Mathematics
+
+
+---
+
+1) 배경과 목표
+
+3D 오목은 보드가 N×N×N 이며, 한 수를 둘 때마다 13개 방향(축 3, 면 대각 6, 공간 대각 4)에서 연속 개수를 확인해야 한다. 여기에 스킬(예: 한 개 무시, 와일드카드, 방해돌, 연속 제한 증폭 등)이 도입되면 계산량이 증가한다.
+
+본 보고서는 Unity 메인 스레드 비의존 순수 연산으로 승리 판정을 수행하고, Job System + Burst로 초고속 병렬화하는 설계/구현 지침을 제시한다. 추가로, 보드가 Unity Transform 기반으로 배치된 경우 동일한 간격 거리를 기준으로 간단하게 탐색하는 방법도 포함한다.
+
+성능 목표 (지향)
+
+단일 수 판정: < 50µs @ N=15, 스킬 단순
+(50µs = 0.00005초, 매우 짧은 계산 시간 단위로, 초보자는 "눈 깜짝할 사이보다 훨씬 빠른 속도"라고 이해하면 됨)
+
+배치 판정(동시 다수 수/시나리오): 선형 확장, 60FPS 유지
+
+
+
+---
+
+2) 데이터 모델 (Job System 버전)
+
+2.1 보드 저장 형식
+
+NativeArray<int> 1차원 배열, 값: 0=빈칸, 1=흑, 2=백, 3=와일드카드(옵션)
+
+인덱싱: idx = x + y*Size + z*Size*Size
+
+
+struct Board3D
+{
+    public NativeArray<int> Cells; // length = Size*Size*Size
+    public int Size;
+    public int StrideY;
+    public int StrideZ;
+
+    public int Index(int x, int y, int z) => x + y*StrideY + z*StrideZ;
+}
+
+2.2 스킬/규칙 파라미터
+
+public struct SkillRules
+{
+    public int needed;
+    public int skipAllowance;
+    public int blockerValue;
+    public bool treatWildcardAsAny;
+}
+
+
+---
+
+3) 방향 벡터 정의 (13개)
+
+static readonly int3[] Dirs = new int3[]
+{
+    new int3(1,0,0),  new int3(0,1,0),  new int3(0,0,1),
+    new int3(1,1,0),  new int3(1,-1,0),
+    new int3(1,0,1),  new int3(1,0,-1),
+    new int3(0,1,1),  new int3(0,1,-1),
+    new int3(1,1,1),  new int3(1,1,-1), new int3(1,-1,1), new int3(1,-1,-1)
+};
+
+
+---
+
+4) 알고리즘 개요
+
+마지막 수(last) 기준 판정을 기본으로 한다. 각 방향 d에 대해:
+
+1. count = 1
+
+
+2. +d 전진하며 판정
+
+
+3. -d 전진하며 판정
+
+
+4. count >= needed 면 승리
+
+
+
+스킬은 탐색 루프에 상태 머신으로 반영한다.
+
+
+---
+
+5) Job System 설계 (요약)
+
+단일 수 판정 → IJob
+
+대량 판정 → IJobParallelFor
+
+Burst 컴파일러로 벡터화, 브랜치 최소화
+
+
+(Job = 유니티의 멀티스레드 작업 단위. IJob은 단일 연산, IJobParallelFor는 배열처럼 반복되는 큰 작업을 여러 CPU 코어에서 나눠 실행하는 방식)
+
+> 코드 예시는 원 보고서에 상세히 포함됨.
+
+
+
+
+---
+
+6) Burst 최적화 포인트
+
+브랜치 최소화, unsigned 경계 검사
+(분기문 if/else를 줄이면 CPU가 명령어를 더 빠르게 실행할 수 있음)
+
+stride 기반 연속 메모리 접근
+(데이터를 메모리에 연속으로 배치하면 캐시 효율이 올라가 속도가 빨라짐)
+
+규칙 구조체 값 전달
+(Job에 규칙을 값으로 넘기면 매번 참조하지 않아도 되어 더 빠름)
+
+Release 빌드에서 Safety Checks Off
+(안전 검사 기능을 끄면 약간 위험하지만 속도가 크게 향상됨)
+
+
+
+---
+
+7) Transform 기반 단순 탐색 방법
+
+보드가 실제 Unity Transform 오브젝트로 배치돼 있다면, 각 돌의 Transform.position을 이용해 동일한 격자 간격으로 탐색할 수 있다.
+
+기본 원리
+
+기준 돌 위치 = origin
+
+방향 벡터 = dir (정규화)
+
+간격 거리 = cellSize
+
+탐색 루프: pos = origin + dir * step * cellSize
+
+
+예시 코드
+
+bool CheckWinByTransform(Transform lastMove, int player, float cellSize, int needed)
+{
+    Vector3 origin = lastMove.position;
+
+    foreach (var dir in directions) // 13개 방향 단위 벡터
+    {
+        int count = 1;
+        count += CountDirection(origin, dir, player, cellSize, needed - count);
+        count += CountDirection(origin, -dir, player, cellSize, needed - count);
+        if (count >= needed)
+            return true;
+    }
+    return false;
+}
+
+int CountDirection(Vector3 origin, Vector3 dir, int player, float cellSize, int maxNeeded)
+{
+    int count = 0;
+    for (int step = 1; step <= maxNeeded; step++)
+    {
+        Vector3 pos = origin + dir * step * cellSize;
+        var stone = FindStoneAtPosition(pos); // 좌표→보드 매핑 캐싱 권장
+        if (stone != null && stone.Player == player)
+            count++;
+        else
+            break;
+    }
+    return count;
+}
+
+특징
+
+구현 단순, 직관적
+
+Transform 탐색을 직접 하면 느리므로 좌표→돌 매핑 캐싱 필요
+
+Job System 방식과 달리 간단 규칙/소규모 보드에 적합
+
+
+
+---
+
+8) 테스트 & 검증 계획
+
+Job System 판정과 Transform 기반 판정 결과 일치 여부 검증
+
+스킬 규칙(스킵, 와일드카드, 차단 돌 등) 적용 케이스 테스트
+
+성능 비교: Transform 방식은 직관적이지만 대규모 병렬에는 Job System이 유리
+
+
+
+---
+
+9) 결론
+
+스킬 포함 3D 오목 승리 판정은 Job System + Burst로 병렬화할 때 가장 효율적이다.
+
+단순/소규모 보드에서는 Transform 기반 동일 간격 탐색 방식으로 간단히 구현 가능하다.
+
+프로젝트 요구사항에 따라 두 방식을 혼합 적용 가능하다.
+
+
+
+
+💡 이 게시글은 GPT가 제작했습니다.
+
