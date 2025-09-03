@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Game development perfect guide"
+title: "초고속 병렬 처리로 구현하는 3D 오목(스킬 포함) 승리 판정"
 date: 2025-09-03 19:00:00 +0900
 categories: 
 tags: ["Unity", "C#"]
