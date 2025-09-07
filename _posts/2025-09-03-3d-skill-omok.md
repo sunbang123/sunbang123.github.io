@@ -1,349 +1,529 @@
 ---
 layout: post
-title: "초고속 병렬 처리로 3D 오목(스킬 포함) 승리 판정 구현하기"
+title: "Transform 기반으로 구현하는 3D 그래픽 오목 승리 판정"
 date: 2025-09-03 19:20:00 +0900
 categories: 
 tags: ["Unity", "C#"]
 ---
 
-# 초고속 병렬 처리로 구현하는 3D 오목(스킬 포함) 승리 판정
+# Transform 기반으로 구현하는 3D 그래픽 오목 승리 판정
 
-> **Unity C# Job System + Burst 설계 보고서 (Transform 기반 탐색 포함)**
+> **Unity Transform + Dictionary 최적화 설계 보고서 (스킬 시스템 포함)**
 
 ---
 
-## 💻 Job System & Burst 코드 언어
+## 📋 프로젝트 개요
 
-### C# 기반 개발
-Job System과 Burst 모두 **순수 C# 코드**로 작성됩니다. 별도의 새로운 언어나 문법을 배울 필요가 없습니다.
+**플랫폼**: Unity 2021.3+ (또는 2022/2023 LTS)  
+**게임 유형**: 2D 평면 오목을 3D 그래픽으로 표현  
+**보드 크기**: 15×15 또는 19×19 평면 격자  
+**핵심 기술**: Transform 좌표 기반 탐색, Dictionary 캐싱, 스킬 시스템
 
-#### Job System 예시
+### 🎯 성능 목표
+
+- **단일 수 판정**: < 1ms @ 15×15 보드
+- **메모리 효율**: O(n) 공간 복잡도 (n = 놓인 돌 개수)
+- **구현 복잡도**: 낮음 (직관적이고 유지보수 쉬움)
+
+> 💡 **왜 Transform 기반인가?** 평면 오목은 4방향만 체크하면 되므로 단순하고 직관적인 Transform 방식이 가장 적합합니다!
+
+---
+
+## 🌟 배경과 목표
+
+일반적인 오목은 **2D 평면 보드**에서 진행되며, 승리 조건 확인을 위해 **4개 방향**만 검사하면 됩니다:
+
+- **가로**: 좌 ↔ 우
+- **세로**: 상 ↔ 하  
+- **대각선1**: 좌상 ↔ 우하 (↙ ↔ ↗)
+- **대각선2**: 우상 ↔ 좌하 (↖ ↔ ↘)
+
+### 추가 복잡성: 스킬 시스템
+
+스킬이 도입되면 일부 돌을 판정에서 제외하는 특별한 규칙을 처리해야 합니다:
+- **스킬 대상 돌**: 특정 스킬에 의해 영향받은 돌은 승리 판정에서 제외
+- **고정 승리 조건**: 항상 5개 연속으로만 승리 (변경 없음)
+
+**본 보고서의 목적**: Unity 3D 환경에서 Transform을 활용한 직관적이면서도 효율적인 승리 판정 시스템을 설계합니다.
+
+---
+
+## 🏗️ 핵심 아키텍처
+
+### 1. 데이터 구조 설계
+
+**BoardManager 클래스:**
 ```csharp
-using Unity.Collections;
-using Unity.Jobs;
-
-public struct WinCheckJob : IJob
+public class BoardManager : MonoBehaviour
 {
-    [ReadOnly] public NativeArray<int> boardData;
-    public NativeReference<bool> result;
+    [Header("보드 설정")]
+    public int boardSize = 15;
+    public float gridSize = 1f; // 격자 간격
+    public Transform boardCenter; // 보드 중심점
+
+    [Header("돌 설정")]  
+    public GameObject blackStonePrefab;
+    public GameObject whiteStonePrefab;
+
+    // 핵심: 위치별 돌 빠른 검색용 Dictionary
+    private Dictionary<Vector2Int, Stone> stoneMap = new Dictionary<Vector2Int, Stone>();
     
-    public void Execute()
+    // 게임 상태
+    private int currentPlayer = 1; // 1=흑돌, 2=백돌
+}
+```
+
+**Stone 클래스:**
+```csharp
+[System.Serializable]
+public class Stone : MonoBehaviour
+{
+    public int player; // 1=흑돌, 2=백돌
+    public Vector2Int gridPosition; // 보드상 격자 좌표
+    
+    [Header("스킬 효과")]
+    public bool isAffectedBySkill = false; // 스킬에 의해 영향받은 돌
+}
+```
+
+### 2. 좌표 변환 시스템
+
+**좌표 변환 시스템:**
+```csharp
+public class CoordinateSystem
+{
+    private Vector3 boardCenter;
+    private float gridSize;
+    private int boardSize;
+    
+    // 월드 좌표 → 격자 좌표
+    public Vector2Int WorldToGrid(Vector3 worldPos)
     {
-        // 일반적인 C# 코드로 작성
-        for (int i = 0; i < boardData.Length; i++)
+        Vector3 offset = worldPos - boardCenter;
+        int x = Mathf.RoundToInt(offset.x / gridSize) + boardSize / 2;
+        int z = Mathf.RoundToInt(offset.z / gridSize) + boardSize / 2;
+        return new Vector2Int(x, z);
+    }
+    
+    // 격자 좌표 → 월드 좌표  
+    public Vector3 GridToWorld(Vector2Int gridPos)
+    {
+        float x = (gridPos.x - boardSize / 2) * gridSize;
+        float z = (gridPos.y - boardSize / 2) * gridSize;
+        return boardCenter + new Vector3(x, 0, z);
+    }
+    
+    // 격자 범위 검증
+    public bool IsValidPosition(Vector2Int pos)
+    {
+        return pos.x >= 0 && pos.x < boardSize && pos.y >= 0 && pos.y < boardSize;
+    }
+}
+```
+
+---
+
+## 🎯 승리 판정 핵심 알고리즘
+
+### 1. 기본 승리 체크
+
+**메인 승리 판정 함수:**
+```csharp
+public bool CheckWinCondition(Transform lastStone, int player)
+{
+    Vector2Int gridPos = coordinateSystem.WorldToGrid(lastStone.position);
+    
+    // 4개 방향 벡터 정의
+    Vector2Int[] directions = {
+        new Vector2Int(1, 0),   // 가로 →
+        new Vector2Int(0, 1),   // 세로 ↑  
+        new Vector2Int(1, 1),   // 대각선1 ↗
+        new Vector2Int(1, -1)   // 대각선2 ↘
+    };
+
+    foreach (var direction in directions)
+    {
+        int consecutiveCount = 1; // 현재 돌 포함
+        
+        // 정방향 카운트
+        consecutiveCount += CountInDirection(gridPos, direction, player);
+        
+        // 역방향 카운트  
+        consecutiveCount += CountInDirection(gridPos, -direction, player);
+        
+        // 승리 조건 확인 (항상 5개)
+        if (consecutiveCount >= 5)
         {
-            if (boardData[i] == 1) // 흑돌 체크
+            return true;
+        }
+    }
+    
+    return false;
+}
+```
+
+**방향별 카운트 함수:**
+```csharp
+private int CountInDirection(Vector2Int startPos, Vector2Int direction, int player)
+{
+    int count = 0;
+    Vector2Int currentPos = startPos;
+    
+    for (int step = 1; step <= 4; step++) // 최대 4칸까지만 체크
+    {
+        currentPos += direction;
+        
+        // 보드 범위 체크
+        if (!coordinateSystem.IsValidPosition(currentPos))
+            break;
+            
+        // 해당 위치의 돌 확인
+        if (stoneMap.TryGetValue(currentPos, out Stone stone))
+        {
+            // 스킬에 영향받은 돌은 카운트하지 않음
+            if (stone.isAffectedBySkill)
             {
-                // 승리 조건 확인 로직
+                break; // 스킬 영향 돌을 만나면 연속 중단
+            }
+            
+            if (stone.player == player)
+                count++;
+            else
+                break; // 다른 색 돌
+        }
+        else
+        {
+            break; // 빈 공간
+        }
+    }
+    
+    return count;
+}
+```
+
+### 2. 스킬 시스템이 적용된 승리 판정
+
+**스킬 규칙 정의:**
+```csharp
+[System.Serializable]
+public class SkillSettings
+{
+    [Header("스킬 영향 돌 처리")]
+    public bool ignoreAffectedStones = true; // 스킬 영향 돌을 판정에서 제외
+    
+    [Header("고정 승리 조건")]
+    public int requiredCount = 5; // 항상 5개로 고정
+}
+```
+
+**스킬이 적용된 승리 체크:**
+```csharp
+public bool CheckWinWithSkills(Transform lastStone, int player, SkillSettings skillSettings)
+{
+    Vector2Int gridPos = coordinateSystem.WorldToGrid(lastStone.position);
+    Vector2Int[] directions = {
+        new Vector2Int(1, 0), new Vector2Int(0, 1),
+        new Vector2Int(1, 1), new Vector2Int(1, -1)
+    };
+
+    foreach (var direction in directions)
+    {
+        int totalCount = 1; // 현재 돌 포함
+        
+        // 스킬 규칙이 적용된 방향별 카운트
+        totalCount += CountWithSkillRules(gridPos, direction, player, skillSettings);
+        totalCount += CountWithSkillRules(gridPos, -direction, player, skillSettings);
+        
+        // 항상 5개로 승리 판정
+        if (totalCount >= 5)
+        {
+            return true;
+        }
+    }
+    
+    return false;
+}
+```
+
+**스킬 규칙 적용된 카운트:**
+```csharp
+private int CountWithSkillRules(Vector2Int startPos, Vector2Int direction, int player, SkillSettings skillSettings)
+{
+    int count = 0;
+    Vector2Int currentPos = startPos;
+    
+    for (int step = 1; step <= 4; step++)
+    {
+        currentPos += direction;
+        
+        if (!coordinateSystem.IsValidPosition(currentPos))
+            break;
+            
+        if (stoneMap.TryGetValue(currentPos, out Stone stone))
+        {
+            // 스킬에 영향받은 돌은 판정에서 제외
+            if (stone.isAffectedBySkill && skillSettings.ignoreAffectedStones)
+            {
+                break; // 연속 중단
+            }
+            
+            // 같은 색 돌
+            if (stone.player == player)
+            {
+                count++;
+            }
+            else
+            {
+                break; // 다른 색 돌
+            }
+        }
+        else
+        {
+            break; // 빈 공간
+        }
+    }
+    
+    return count;
+}
+```
+
+---
+
+## 🎮 돌 놓기 시스템
+
+### 1. 기본 돌 배치
+
+**돌 배치 메인 함수:**
+```csharp
+public bool PlaceStone(Vector3 worldPosition, int player)
+{
+    Vector2Int gridPos = coordinateSystem.WorldToGrid(worldPosition);
+    
+    // 이미 돌이 있는 위치인지 확인
+    if (stoneMap.ContainsKey(gridPos))
+    {
+        Debug.LogWarning("이미 돌이 놓인 위치입니다!");
+        return false;
+    }
+    
+    // 돌 생성
+    GameObject stonePrefab = GetStonePrefab(player);
+    Vector3 exactWorldPos = coordinateSystem.GridToWorld(gridPos);
+    GameObject stoneObj = Instantiate(stonePrefab, exactWorldPos, Quaternion.identity);
+    
+    // Stone 컴포넌트 설정
+    Stone stone = stoneObj.GetComponent<Stone>();
+    stone.player = player;
+    stone.gridPosition = gridPos;
+    
+    // Dictionary에 저장 (빠른 검색용)
+    stoneMap[gridPos] = stone;
+    
+    // 승리 조건 체크
+    if (CheckWinCondition(stoneObj.transform, player))
+    {
+        OnGameWin(player);
+        return true;
+    }
+    
+    // 턴 교체
+    currentPlayer = (currentPlayer == 1) ? 2 : 1;
+    return true;
+}
+```
+
+**돌 프리팹 선택:**
+```csharp
+private GameObject GetStonePrefab(int player)
+{
+    return player switch
+    {
+        1 => blackStonePrefab,
+        2 => whiteStonePrefab,
+        _ => blackStonePrefab
+    };
+}
+```
+
+### 2. 스킬 효과 적용
+
+**스킬 효과 적용 함수:**
+```csharp
+public void ApplySkillEffect(Vector2Int targetPosition)
+{
+    if (stoneMap.TryGetValue(targetPosition, out Stone targetStone))
+    {
+        // 스킬에 의해 영향받은 돌로 표시
+        targetStone.isAffectedBySkill = true;
+        
+        // 시각적 효과 적용 (예: 색상 변경, 이펙트 등)
+        ApplyVisualEffect(targetStone);
+        
+        Debug.Log($"스킬 효과가 {targetPosition} 위치의 돌에 적용되었습니다.");
+    }
+}
+```
+
+**스킬 효과 제거:**
+```csharp
+public void RemoveSkillEffect(Vector2Int targetPosition)
+{
+    if (stoneMap.TryGetValue(targetPosition, out Stone targetStone))
+    {
+        targetStone.isAffectedBySkill = false;
+        RemoveVisualEffect(targetStone);
+        
+        Debug.Log($"스킬 효과가 {targetPosition} 위치의 돌에서 제거되었습니다.");
+    }
+}
+```
+
+**시각적 효과 처리:**
+```csharp
+private void ApplyVisualEffect(Stone stone)
+{
+    // 스킬 영향 돌의 시각적 표시 (예: 반투명, 색상 변경 등)
+    Renderer renderer = stone.GetComponent<Renderer>();
+    if (renderer != null)
+    {
+        Color color = renderer.material.color;
+        color.a = 0.5f; // 반투명 처리
+        renderer.material.color = color;
+    }
+}
+
+private void RemoveVisualEffect(Stone stone)
+{
+    // 원래 상태로 복원
+    Renderer renderer = stone.GetComponent<Renderer>();
+    if (renderer != null)
+    {
+        Color color = renderer.material.color;
+        color.a = 1f; // 불투명 처리
+        renderer.material.color = color;
+    }
+}
+```
+
+---
+
+## 🔧 입력 처리 시스템
+
+**마우스 클릭으로 돌 놓기:**
+```csharp
+public class InputHandler : MonoBehaviour
+{
+    public BoardManager boardManager;
+    public Camera mainCamera;
+    
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0)) // 좌클릭
+        {
+            HandleMouseClick();
+        }
+    }
+    
+    private void HandleMouseClick()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            Vector3 clickPosition = hit.point;
+            int currentPlayer = boardManager.GetCurrentPlayer();
+            
+            boardManager.PlaceStone(clickPosition, currentPlayer);
+        }
+    }
+}
+```
+
+**터치 입력 지원:**
+```csharp
+private void HandleTouchInput()
+{
+    if (Input.touchCount > 0)
+    {
+        Touch touch = Input.GetTouch(0);
+        
+        if (touch.phase == TouchPhase.Began)
+        {
+            Ray ray = mainCamera.ScreenPointToRay(touch.position);
+            
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                Vector3 touchPosition = hit.point;
+                int currentPlayer = boardManager.GetCurrentPlayer();
+                
+                boardManager.PlaceStone(touchPosition, currentPlayer);
             }
         }
     }
 }
 ```
 
-#### Burst 컴파일러 적용
+---
+
+## 🎯 성능 최적화 팁
+
+**Dictionary 활용한 빠른 검색:**
 ```csharp
-[BurstCompile] // 이 속성만 추가하면 초고속 컴파일!
-public struct FastWinCheckJob : IJob
+// ❌ 느린 방법: 모든 돌 순회
+foreach (Stone stone in allStones)
 {
-    public NativeArray<int> data;
-    
-    public void Execute()
-    {
-        // 똑같은 C# 코드지만 Burst가 C++ 수준으로 최적화
-        for (int i = 0; i < data.Length; i++)
-        {
-            data[i] = math.max(data[i], 0); // Unity.Mathematics 사용
-        }
-    }
+    if (stone.gridPosition == targetPosition)
+        return stone;
+}
+
+// ✅ 빠른 방법: Dictionary 직접 접근 O(1)
+if (stoneMap.TryGetValue(targetPosition, out Stone stone))
+{
+    return stone;
 }
 ```
 
-### 🚫 Burst 제약사항
-
-**사용 불가능한 C# 기능들:**
+**메모리 효율적인 방향 벡터:**
 ```csharp
-// ❌ 가비지 컬렉션 생성 코드
-string text = "Hello World";
-List<int> managedList = new List<int>();
-GameObject unityObject;
-
-// ❌ 참조 타입
-class MyClass { }
-object someObject;
-
-// ❌ 예외 처리
-try { } catch { }
-```
-
-**사용 가능한 C# 기능들:**
-```csharp
-// ✅ 기본 데이터 타입
-int number = 42;
-float value = 3.14f;
-bool flag = true;
-
-// ✅ Unity.Collections
-NativeArray<int> nativeArray;
-NativeReference<bool> nativeRef;
-
-// ✅ Unity.Mathematics  
-float3 position = new float3(1, 2, 3);
-int3 direction = new int3(1, 0, 0);
-
-// ✅ 구조체 (struct)
-public struct GameState
-{
-    public int player;
-    public float3 position;
-}
-```
-
-### 💡 핵심 이해사항
-
-- **언어**: 100% C# 문법
-- **제약**: "**제한된 C#**" - 성능을 위해 일부 기능 제한
-- **학습 곡선**: C# 개발자라면 즉시 시작 가능
-- **성능**: Burst가 C# 코드를 네이티브 수준으로 컴파일
-
----
-
-## 📋 프로젝트 개요
-
-**플랫폼**: Unity 2021.3+ (또는 2022/2023 LTS), .NET 4.x  
-**핵심 기술**: C# Job System, Burst Compiler, Unity.Collections, Unity.Mathematics  
-**개발 언어**: 100% C# 코드 (제약사항 있음)
-
-### 🎯 성능 목표
-
-- **단일 수 판정**: < 50μs @ N=15, 스킬 단순
-- **배치 판정**: 선형 확장, 60FPS 유지
-
-> 💡 **50μs는 얼마나 빠른가?** 눈 깜짝할 사이(0.1초)보다 2000배 빠른 속도입니다!
-
----
-
-## 🌟 배경과 목표
-
-3D 오목은 일반 오목과 달리 **N×N×N** 3차원 보드에서 진행되며, 한 수를 둘 때마다 **13개 방향**에서 연속성을 확인해야 합니다:
-
-- **축 방향**: 3개 (X, Y, Z)
-- **면 대각선**: 6개 (XY, XZ, YZ 평면)
-- **공간 대각선**: 4개 (3차원 대각선)
-
-### 추가 복잡성
-
-스킬 시스템이 도입되면 계산량이 급격히 증가합니다:
-- 한 개 무시하기
-- 와일드카드 돌
-- 방해 돌 설치
-- 연속 제한 증폭
-
-**본 보고서의 목적**: Unity 메인 스레드와 독립적인 순수 연산으로 승리 판정을 수행하고, Job System + Burst로 초고속 병렬화하는 완전한 설계 가이드를 제시합니다.
-
----
-
-## 🔧 데이터 모델 설계
-
-### 보드 저장 구조
-
-3차원 보드를 1차원 배열로 효율적으로 저장합니다:
-
-```csharp
-struct Board3D
-{
-    public NativeArray<int> Cells; // length = Size³
-    public int Size;
-    public int StrideY;  // Size
-    public int StrideZ;  // Size²
-
-    public int Index(int x, int y, int z) => x + y*StrideY + z*StrideZ;
-}
-```
-
-**셀 값 정의**:
-- `0`: 빈칸
-- `1`: 흑돌
-- `2`: 백돌  
-- `3`: 와일드카드 (옵션)
-
-### 스킬 규칙 파라미터
-
-```csharp
-public struct SkillRules
-{
-    public int needed;              // 승리에 필요한 연속 개수
-    public int skipAllowance;       // 건너뛸 수 있는 빈칸 개수
-    public int blockerValue;        // 차단하는 돌의 값
-    public bool treatWildcardAsAny; // 와일드카드를 모든 돌로 취급
-}
-```
-
----
-
-## 🧭 방향 벡터 정의
-
-3D 공간에서의 13개 탐색 방향:
-
-```csharp
-static readonly int3[] Directions = new int3[]
-{
-    // 축 방향 (3개)
-    new int3(1,0,0),  new int3(0,1,0),  new int3(0,0,1),
-    
-    // 면 대각선 (6개)
-    new int3(1,1,0),  new int3(1,-1,0),
-    new int3(1,0,1),  new int3(1,0,-1),
-    new int3(0,1,1),  new int3(0,1,-1),
-    
-    // 공간 대각선 (4개)
-    new int3(1,1,1),  new int3(1,1,-1), 
-    new int3(1,-1,1), new int3(1,-1,-1)
+// ✅ static readonly로 메모리 절약
+private static readonly Vector2Int[] Directions = {
+    new Vector2Int(1, 0), new Vector2Int(0, 1),
+    new Vector2Int(1, 1), new Vector2Int(1, -1)
 };
 ```
 
----
-
-## ⚡ 알고리즘 핵심 로직
-
-### 기본 승리 판정 흐름
-
-마지막에 둔 돌(`last`) 기준으로 판정합니다:
-
-1. **초기화**: `count = 1` (현재 돌)
-2. **정방향 탐색**: `+direction`으로 전진하며 연속 개수 카운트
-3. **역방향 탐색**: `-direction`으로 전진하며 연속 개수 카운트  
-4. **승리 체크**: `count >= needed` 이면 승리
-
-### 스킬 적용
-
-탐색 루프에 **상태 머신** 패턴을 적용하여 다양한 스킬 규칙을 처리합니다.
-
----
-
-## 🚀 Job System 병렬 처리 설계
-
-### 작업 유형별 Job 선택
-
-| 작업 유형 | Job 인터페이스 | 용도 |
-|-----------|---------------|------|
-| 단일 수 판정 | `IJob` | 한 번의 승리 판정 |
-| 대량 판정 | `IJobParallelFor` | 여러 시나리오 동시 처리 |
-
-### Job 구현 예시
-
+**조기 종료 최적화:**
 ```csharp
-[BurstCompile]
-public struct WinCheckJob : IJob
-{
-    [ReadOnly] public Board3D board;
-    [ReadOnly] public int3 lastMove;
-    [ReadOnly] public int player;
-    [ReadOnly] public SkillRules rules;
-    
-    public NativeReference<bool> result;
-
-    public void Execute()
-    {
-        result.Value = CheckWinCondition(board, lastMove, player, rules);
-    }
-}
-```
-
----
-
-## ⚡ Burst 최적화 전략
-
-### 핵심 최적화 포인트
-
-1. **브랜치 최소화**
-   ```csharp
-   // ❌ 느린 방식
-   if (x >= 0 && x < size) { ... }
-   
-   // ✅ 빠른 방식  
-   if ((uint)x < (uint)size) { ... }
-   ```
-
-2. **Stride 기반 메모리 접근**
-   - 연속적인 메모리 패턴으로 캐시 효율성 극대화
-   - `NativeArray`의 순차적 접근 패턴 활용
-
-3. **값 전달 구조체**
-   ```csharp
-   // 참조 대신 값 복사로 성능 향상
-   public void Execute(SkillRules rules) // struct 값 전달
-   ```
-
-4. **안전성 체크 비활성화**
-   ```csharp
-   #if !UNITY_EDITOR
-   [BurstCompile(CompileSynchronously = true, DisableSafetyChecks = true)]
-   #endif
-   ```
-
----
-
-## 🎮 Transform 기반 단순 탐색
-
-소규모 프로젝트나 프로토타입용 직관적인 방법입니다.
-
-### 기본 원리
-
-- **기준점**: 마지막에 둔 돌의 `Transform.position`
-- **탐색**: 정해진 간격(`cellSize`)으로 각 방향 탐색
-- **매핑**: 3D 좌표 → 게임 오브젝트
-
-### 구현 예시
-
-```csharp
-bool CheckWinByTransform(Transform lastMove, int player, float cellSize, int needed)
-{
-    Vector3 origin = lastMove.position;
-
-    foreach (var dir in directions) // 13개 방향 단위 벡터
-    {
-        int count = 1;
-        count += CountDirection(origin, dir, player, cellSize, needed - count);
-        count += CountDirection(origin, -dir, player, cellSize, needed - count);
-        
-        if (count >= needed)
-            return true;
-    }
-    return false;
-}
-
-int CountDirection(Vector3 origin, Vector3 dir, int player, float cellSize, int maxNeeded)
+private int CountInDirection(Vector2Int startPos, Vector2Int direction, int player)
 {
     int count = 0;
-    for (int step = 1; step <= maxNeeded; step++)
+    Vector2Int currentPos = startPos;
+    
+    // 최대 4칸만 체크 (5연속 확인용)
+    for (int step = 1; step <= 4; step++)
     {
-        Vector3 pos = origin + dir * step * cellSize;
-        var stone = FindStoneAtPosition(pos); // 🔥 캐싱 필수!
+        currentPos += direction;
         
-        if (stone != null && stone.Player == player)
-            count++;
-        else
+        // 범위 체크로 조기 종료
+        if (!coordinateSystem.IsValidPosition(currentPos))
             break;
+            
+        if (stoneMap.TryGetValue(currentPos, out Stone stone))
+        {
+            if (stone.player == player && !stone.isAffectedBySkill)
+                count++;
+            else
+                break; // 다른 돌이면 즉시 중단
+        }
+        else
+        {
+            break; // 빈 공간이면 즉시 중단
+        }
     }
+    
     return count;
 }
 ```
-
-### ⚠️ Transform 방식 주의사항
-
-- **성능**: 직접 Transform 탐색은 느림 → **좌표↔돌 매핑 캐싱** 필수
-- **용도**: 간단한 규칙, 소규모 보드에 적합
-- **확장성**: 대규모 병렬 처리에는 Job System이 우수
-
----
-
-## 🔍 성능 비교표
-
-| 방식 | 구현 복잡도 | 성능 | 확장성 | 메모리 효율 |
-|------|------------|------|--------|------------|
-| **Job System + Burst** | 높음 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
-| **Transform 기반** | 낮음 | ⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐ |
 
 ---
 
@@ -351,33 +531,74 @@ int CountDirection(Vector3 origin, Vector3 dir, int player, float cellSize, int 
 
 ### 필수 테스트 케이스
 
-1. **정확성 검증**
-   - Job System vs Transform 기반 결과 일치성
-   - 엣지 케이스 (보드 경계, 코너)
-
-2. **스킬 규칙 테스트**
-   - 스킵 허용 개수
-   - 와일드카드 처리
-   - 차단 돌 효과
-
-3. **성능 벤치마크**
-   - 보드 크기별 처리 시간
-   - 병렬 처리 확장성
-   - 메모리 사용량
-
-### 테스트 코드 예시
-
+**정확성 검증:**
 ```csharp
 [Test]
-public void TestWinCondition_JobVsTransform()
+public void TestBasicWinCondition()
 {
-    // 동일한 보드 상태에서 두 방식 결과 비교
-    bool jobResult = RunJobSystemCheck();
-    bool transformResult = RunTransformCheck();
+    // 기본 5연속 승리 조건 테스트
+    BoardManager board = new BoardManager();
     
-    Assert.AreEqual(jobResult, transformResult);
+    // 가로 5연속 테스트
+    for (int i = 0; i < 5; i++)
+    {
+        board.PlaceStone(new Vector3(i, 0, 0), 1);
+    }
+    
+    Assert.IsTrue(board.CheckWinCondition(lastStone, 1));
 }
 ```
+
+**스킬 시스템 테스트:**
+```csharp
+[Test]
+public void TestSkillAffectedStones()
+{
+    // 스킬 영향 돌이 승리 판정에서 제외되는지 테스트
+    BoardManager board = new BoardManager();
+    
+    // 5연속 배치
+    for (int i = 0; i < 5; i++)
+    {
+        board.PlaceStone(new Vector3(i, 0, 0), 1);
+    }
+    
+    // 중간 돌에 스킬 효과 적용
+    board.ApplySkillEffect(new Vector2Int(2, 0));
+    
+    // 승리 조건이 false가 되어야 함
+    Assert.IsFalse(board.CheckWinWithSkills(lastStone, 1, skillSettings));
+}
+```
+
+**성능 벤치마크:**
+```csharp
+[Test]
+public void BenchmarkWinCheck()
+{
+    BoardManager board = SetupRandomBoard(15, 100); // 15x15, 100개 돌
+    
+    Stopwatch sw = Stopwatch.StartNew();
+    
+    for (int i = 0; i < 1000; i++)
+    {
+        board.CheckWinCondition(randomStone, 1);
+    }
+    
+    sw.Stop();
+    Assert.Less(sw.ElapsedMilliseconds / 1000f, 1f); // 평균 1ms 이하
+}
+```
+
+---
+
+## 🔍 Transform vs 다른 방식 비교
+
+| 방식 | 구현 복잡도 | 성능 | 확장성 | 메모리 효율 | 추천도 |
+|------|------------|------|--------|------------|-------|
+| **Transform + Dictionary** | 낮음 | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **Raycast 기반** | 중간 | ⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ |
+| **Job System + Burst** | 높음 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ |
 
 ---
 
@@ -388,25 +609,25 @@ public void TestWinCondition_JobVsTransform()
 | 프로젝트 규모 | 권장 방식 | 이유 |
 |--------------|----------|-----|
 | **소규모/프로토타입** | Transform 기반 | 빠른 개발, 직관적 |
-| **중대규모/상용** | Job System + Burst | 최고 성능, 확장성 |
-| **하이브리드** | 혼합 사용 | 개발 단계별 적용 |
+| **중규모/일반 게임** | Transform + Dictionary | 최적의 성능/개발 균형 |
+| **대규모/고성능** | Job System 고려 | 극한 최적화 필요시만 |
 
 ### ✨ 핵심 인사이트
 
-1. **스킬 포함 3D 오목**의 승리 판정은 **Job System + Burst**로 병렬화할 때 최대 효율을 달성합니다.
+1. **평면 오목**에서는 **Transform + Dictionary 조합**이 가장 실용적이고 효율적입니다.
 
-2. **Transform 기반 방식**은 구현이 직관적이지만, 좌표-오브젝트 매핑 캐싱이 성능의 핵심입니다.
+2. **Dictionary 캐싱**이 성능의 핵심 - O(1) 검색으로 빠른 돌 찾기가 가능합니다.
 
-3. **프로젝트 요구사항**에 따라 두 방식을 **적절히 혼합**하여 개발 속도와 성능을 모두 확보할 수 있습니다.
+3. **스킬 시스템**은 간단한 bool 플래그로 충분히 구현 가능하며, 복잡한 최적화는 불필요합니다.
 
 ---
 
 ### 🎯 최종 성능 목표 달성
 
-- ✅ **단일 수 판정**: < 50μs
-- ✅ **배치 판정**: 60FPS 유지  
-- ✅ **메모리 효율**: NativeArray 활용
-- ✅ **확장성**: 병렬 처리 지원
+- ✅ **단일 수 판정**: < 1ms @ 15×15 보드
+- ✅ **메모리 효율**: O(n) 공간 복잡도
+- ✅ **구현 단순성**: 직관적이고 유지보수 쉬움
+- ✅ **확장성**: 스킬 시스템 지원
 
 ---
 
