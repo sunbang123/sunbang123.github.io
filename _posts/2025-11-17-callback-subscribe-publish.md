@@ -19,7 +19,9 @@ tags:  ["Software-Development"]
 이벤트는 “특정 순간에 발생하는 신호”이고,
 구독자는 그 신호를 듣고 있다가 반응합니다.
 
+```
 button.OnClick += HandleClick;
+```
 
 이 구조가 좋은 이유:
 
@@ -68,8 +70,10 @@ OnClick?.Invoke();
 
 버튼 예시:
 
+```
 if (isClicked)
     OnClick?.Invoke();
+```
 
 이 순간이 바로 “이벤트 발생 시점”.
 
@@ -123,33 +127,36 @@ if (isClicked)
 
 📌 MulticastDelegate 내부 필드(개념)
 
+```
 Delegate
  ├─ target              // 메서드를 호출할 객체 (this)
  ├─ method              // 실제 메서드 주소(Method Pointer)
  ├─ _invocationList     // 멀티캐스트일 경우 저장되는 델리게이트 배열
  └─ _invocationCount    // invocationList 크기
-
+```
 
 ---
 
 📌 단일 델리게이트 구조
 
+```
 [Delegate]
   target -> 객체 or null
   method -> 함수 주소
   _invocationList -> null
-
+```
 
 ---
 
 📌 멀티캐스트 구조 (A += B += C)
 
+```
 [Delegate]
   target           -> 첫 메서드의 대상 객체
   method           -> 첫 메서드 주소
   _invocationList  -> [A, B, C]  // 델리게이트 배열
   _invocationCount -> 3
-
+```
 
 ---
 
@@ -159,18 +166,16 @@ Invoke() 는 내부적으로 다음 순서를 수행한다:
 
 1. _invocationList 를 가져온다
 
-
 2. 저장된 델리게이트들을 순서대로 반복
-
 
 3. 각 델리게이트의 method + target 조합을 실행
 
-
-
+```
 foreach(delegate d in _invocationList)
 {
     call d.method on d.target
 }
+```
 
 즉, Invoke가 “마법”이 아니라
 함수 포인터 배열을 돌며 하나씩 호출하는 메서드일 뿐이다.
@@ -184,29 +189,31 @@ foreach(delegate d in _invocationList)
 오히려 약간 더 비싸다.
 
 
-
 왜 연산이 줄지 않을까?
 
 둘 다 해야 하는 실제 작업은 동일하다:
 
+```
 A 호출
-
 B 호출
-
 C 호출
-
+```
 
 즉 필수 호출 개수 자체는 변하지 않음 → 호출은 3번 그대로.
 
 직접 호출
 
+```
 A();
 B();
 C();
+```
 
 멀티캐스트 델리게이트
 
+```
 handlers?.Invoke(); // 내부에서 A, B, C 각각 호출
+```
 
 → 둘 다 최종적으로 함수는 똑같이 3번 실행됨.
 
