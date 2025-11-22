@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C# LINQ"
-date: 2025-11-22 23:13:00 +0900
+date: 2025-11-22 00:13:00 +0900
 categories: 
 tags:  ["C#"]
 ---
