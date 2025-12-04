@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
   {%- include head.html -%}
+  {% if site.google_site_verification %}
+    <meta name="google-site-verification" content="{{ site.google_site_verification }}" />
+  {% endif %}
   <body>
     {%- include header.html -%}
     {%- include offcanvas.html -%}
