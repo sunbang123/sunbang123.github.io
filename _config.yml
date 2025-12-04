@@ -31,7 +31,7 @@ author-profile:
   youtube: "UCfFOEhFPrz3EoLfflhr1NGA"
 
 # 구글 검색어
-google-site-verification: "e51F6SpZbz_x6ubkOKLTeqEzuMBZ6XgKJYAzEOe7fEI"
+google-site-verification: e51F6SpZbz_x6ubkOKLTeqEzuMBZ6XgKJYAzEOe7fEI
 
 # Build settings
 # theme: minima
@@ -115,4 +115,5 @@ defaults:
 #   - vendor/gems/
 
 #   - vendor/ruby/
+
 
