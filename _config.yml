@@ -29,7 +29,9 @@ author-profile:
   email: "ilikeksy99@gmail.com"
   linkedin: "sunyoung-kim-86a54b283"
   youtube: "UCfFOEhFPrz3EoLfflhr1NGA"
-  profile_image: "/assets/images/profile.jpg"  # 이미지 경로 설정
+
+# 구글 검색어
+google-site-verification: e51F6SpZbz_x6ubkOKLTeqEzuMBZ6XgKJYAzEOe7fEI
 
 # Build settings
 # theme: minima
@@ -111,4 +113,5 @@ defaults:
 #   - vendor/bundle/
 #   - vendor/cache/
 #   - vendor/gems/
+
 #   - vendor/ruby/
