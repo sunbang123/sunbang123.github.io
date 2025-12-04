@@ -10,13 +10,14 @@
   {%- endif -%}
   <!-- Bootstrap CSS -->
   <!-- <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}"> -->
+  {% if site.google_site_verification %}
+    <meta name="google-site-verification" content="{{ site.google_site_verification }}" />
+  {% endif %}
+  <meta name="google-site-verification" content="e51F6SpZbz_x6ubkOKLTeqEzuMBZ6XgKJYAzEOe7fEI" />
   <!-- cusror CSS -->
   <style type="text/css">* {cursor: url(https://cur.cursors-4u.net/cursors/cur-9/cur270.cur), auto !important;}</style><a href="https://www.cursors-4u.com/cursor/2011/12/01/light-brown-pointer.html" target="_blank" title="Light Brown Pointer"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Light Brown Pointer" style="position:absolute; top: 0px; right: 0px;" /></a>
   <!-- gsap -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  {% if site.google_site_verification %}
-    <meta name="google-site-verification" content="{{ site.google_site_verification }}" />
-  {% endif %}
   
 </head>
