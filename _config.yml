@@ -47,6 +47,7 @@ exclude_from_localization: ["assets/css", "assets/img"]
 parallel_localization: false
 
 sass:
+  quiet_deps: true
   sourcemap: never
   sass_dir: _sass
   load_paths:
