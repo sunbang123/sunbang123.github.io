@@ -8,7 +8,7 @@
       <h5>Recent Posts</h5>
       <ul class="list-group list-group-flush m-0">
         {% for post in site.posts limit:5 %}
-        <li class="list-group-item text"><a class="text-decoration-none" href="{{ post.url }}">{{ post.title }}</a></li>
+        <li class="list-group-item text"><a class="text-decoration-none text-white" href="{{ post.url }}">{{ post.title }}</a></li>
         {% endfor %}
       </ul>
     </aside>
@@ -16,5 +16,5 @@
 </div>
 
 <button class="btn btn-offcanvas py-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
-  <i class="bi bi-journal-text fs-3"></i>
+  <i class="bi bi-journal-text fs-3 text-white"></i>
 </button>

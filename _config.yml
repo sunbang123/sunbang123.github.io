@@ -117,4 +117,48 @@ defaults:
 
 #   - vendor/ruby/
 
-
+tag_categories:
+  컴퓨터 과학:
+    - Computer Network
+    - computer-architecture
+    - computer-science
+    - Algorithm
+    - theory
+    - Game Theory
+  
+  개발 도구 & 환경:
+    - Git
+    - git-pages
+    - jekyll
+    - SDK
+    - License
+  
+  프로그래밍 & 개발:
+    - C#
+    - Programming
+    - Software-Development
+    - Code-Patterns
+    - Test
+    - Maintenance
+  
+  게임 개발:
+    - Unity
+    - Unreal
+    - Game Development
+  
+  특수 분야:
+    - Digital Image Processing
+    - MATLAB
+    - Processing
+    - Artificial Intelligence
+    - AI
+  
+  보안:
+    - Industrial Security
+  
+  웹 개발:
+    - web-development
+  
+  기타:
+    - To-Do
+    - 오답노트

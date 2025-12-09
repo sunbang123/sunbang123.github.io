@@ -5,28 +5,99 @@ layout: default
 <div class="tags-page mt-5">
   <h1 class="page-heading text-gradient">{{ page.title }}</h1>
 
-  <div class="tag-cloud mb-5">
-    {% assign tags = site.tags | sort %}
-    {% for tag in tags %}
-      {% assign tag_size = tag | last | size %}
-      <button class="tag-cloud-item" data-tag="{{ tag[0] | slugify }}" data-tag-size="{{ tag_size }}">
-        {{ tag[0] }} 
-        <span class="tag-count">{{ tag_size }}</span>
-      </button>
+  <!-- 카테고리별 태그 클라우드 -->
+  <div class="categories-container mb-5">
+    {% assign tag_categories = site.tag_categories %}
+    {% assign all_tags = site.tags | sort %}
+    {% assign used_tags = "" | split: "" %}
+
+    {% for category in tag_categories %}
+      {% assign category_tag_count = 0 %}
+      {% for tag_name in category[1] %}
+        {% for site_tag in all_tags %}
+          {% if site_tag[0] == tag_name %}
+            {% assign category_tag_count = category_tag_count | plus: site_tag[1].size %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+
+      <div class="category-group">
+        <div class="category-header" data-category="{{ category[0] | slugify }}">
+          <div class="category-title-wrapper">
+            <span class="category-icon">▶</span>
+            <h3 class="category-title">{{ category[0] }}</h3>
+            <span class="category-count">({{ category[1].size }})</span>
+          </div>
+        </div>
+        <div class="tag-cloud" data-category-content="{{ category[0] | slugify }}" style="display: none;">
+          {% for tag_name in category[1] %}
+            {% for site_tag in all_tags %}
+              {% if site_tag[0] == tag_name %}
+                {% assign tag_size = site_tag[1].size %}
+                {% assign used_tags = used_tags | push: tag_name %}
+                <button class="tag-cloud-item" data-tag="{{ site_tag[0] | slugify }}" data-tag-size="{{ tag_size }}">
+                  {{ site_tag[0] }} 
+                  <span class="tag-count">{{ tag_size }}</span>
+                </button>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
     {% endfor %}
+
+    <!-- 미분류 태그들 (기타) -->
+    {% assign has_uncategorized = false %}
+    {% for site_tag in all_tags %}
+      {% unless used_tags contains site_tag[0] %}
+        {% assign has_uncategorized = true %}
+        {% break %}
+      {% endunless %}
+    {% endfor %}
+
+    {% if has_uncategorized %}
+      {% assign uncategorized_count = 0 %}
+      {% for site_tag in all_tags %}
+        {% unless used_tags contains site_tag[0] %}
+          {% assign uncategorized_count = uncategorized_count | plus: 1 %}
+        {% endunless %}
+      {% endfor %}
+
+      <div class="category-group">
+        <div class="category-header" data-category="uncategorized">
+          <div class="category-title-wrapper">
+            <span class="category-icon">▶</span>
+            <h3 class="category-title">기타</h3>
+            <span class="category-count">({{ uncategorized_count }})</span>
+          </div>
+        </div>
+        <div class="tag-cloud" data-category-content="uncategorized" style="display: none;">
+          {% for site_tag in all_tags %}
+            {% unless used_tags contains site_tag[0] %}
+              {% assign tag_size = site_tag[1].size %}
+              <button class="tag-cloud-item" data-tag="{{ site_tag[0] | slugify }}" data-tag-size="{{ tag_size }}">
+                {{ site_tag[0] }} 
+                <span class="tag-count">{{ tag_size }}</span>
+              </button>
+            {% endunless %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
   </div>
 
+  <!-- 태그별 포스트 섹션 -->
   <div class="tags-container">
-    {% for tag in tags %}
+    {% for tag in all_tags %}
       <div class="tag-section" id="{{ tag[0] | slugify }}" style="display: none;">
         <div class="tag-header">
           <h2 class="tag-title">{{ tag[0] }}</h2>
           <span class="tag-badge">{{ tag[1].size }}</span>
         </div>
         <div class="tag-content">
-          <div class="posts-grid" data-post-count="{{ tag[1].size }}">
+          <div class="posts-grid" data-post-count="{{ tag[1].size }}" data-initial-show="10">
             {% for post in tag[1] %}
-              <article class="post-card">
+              <article class="post-card" data-index="{{ forloop.index }}">
                 <div class="post-card-content">
                   <time class="post-date">
                     {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
@@ -50,6 +121,16 @@ layout: default
               </article>
             {% endfor %}
           </div>
+          
+          <!-- 더보기 버튼 (10개 이상일 때만) -->
+          {% if tag[1].size > 10 %}
+            <div class="load-more-container text-center mt-3">
+              <button class="btn-load-more">
+                <span class="load-more-text">더보기</span>
+                <span class="remaining-count">({{ tag[1].size | minus: 10 }}개 남음)</span>
+              </button>
+            </div>
+          {% endif %}
         </div>
       </div>
     {% endfor %}
@@ -57,302 +138,122 @@ layout: default
 
   <!-- 안내 메시지 -->
   <div class="info-message text-center mt-4" id="infoMessage">
-    <p class="text-muted">위의 태그를 클릭하여 관련 포스트를 확인하세요</p>
+    <p class="text-muted">카테고리를 펼친 후 태그를 클릭하여 관련 포스트를 확인하세요</p>
   </div>
 </div>
 
 {{ content }}
 
-<style>
-.text-gradient {
-  background: linear-gradient(45deg, #2b8483, #899927);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-align: center;
-  font-size: 3rem;
-  margin-bottom: 2rem;
-  line-height: 2;
-}
-
-.tag-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  justify-content: center;
-  padding: 2rem;
-  background: rgba(78, 84, 200, 0.05);
-  border-radius: 16px;
-}
-
-.tag-cloud-item {
-  padding: 0.5rem 1.2rem;
-  border-radius: 30px;
-  background: white;
-  color: #2b8483;
-  border: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  cursor: pointer;
-}
-
-.tag-cloud-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  background: #2b8483;
-  color: white;
-}
-
-.tag-cloud-item.active {
-  background: #2b8483;
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(43, 132, 131, 0.3);
-}
-
-.tag-count {
-  background: rgba(78, 84, 200, 0.1);
-  padding: 0.2rem 0.6rem;
-  border-radius: 15px;
-  font-size: 0.85em;
-  margin-left: 0.5rem;
-}
-
-.tag-cloud-item.active .tag-count {
-  background: rgba(255,255,255,0.2);
-}
-
-.tags-container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.tag-section {
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  overflow: hidden;
-  margin-bottom: 2rem;
-  animation: slideDown 0.3s ease-out;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.tag-header {
-  background: linear-gradient(45deg, #2b8483, #899927);
-  color: white;
-  padding: 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.tag-title {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-.tag-badge {
-  background: rgba(255,255,255,0.2);
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-}
-
-.tag-content {
-  padding: 1.5rem;
-}
-
-/* 포스트 그리드 스타일 */
-.posts-grid {
-  display: grid;
-  gap: 1rem;
-}
-
-.posts-grid[data-post-count="1"] {
-  grid-template-columns: 1fr;
-}
-
-.posts-grid[data-post-count="2"] {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.posts-grid[data-post-count="3"] {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.posts-grid[data-post-count="4"] {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.posts-grid:not([data-post-count="1"]):not([data-post-count="2"]):not([data-post-count="3"]):not([data-post-count="4"]) {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
-.post-card {
-  background: #f8f9fa;
-  border: 1px solid #e9ecef;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  overflow: hidden;
-}
-
-.post-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  border-color: #2b8483;
-}
-
-.post-card-content {
-  padding: 1.25rem;
-}
-
-.post-date {
-  color: #6c757d;
-  font-size: 0.85rem;
-  font-weight: 500;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.post-title {
-  margin: 0 0 0.75rem 0;
-  font-size: 1.1rem;
-  line-height: 1.4;
-}
-
-.post-title a {
-  color: #212529;
-  text-decoration: none;
-  transition: color 0.2s ease;
-  font-weight: 600;
-}
-
-.post-title a:hover {
-  color: #2b8483;
-}
-
-.post-excerpt {
-  color: #6c757d;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  margin: 0 0 1rem 0;
-}
-
-.post-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.post-tag {
-  background: rgba(43, 132, 131, 0.1);
-  color: #2b8483;
-  padding: 0.25rem 0.5rem;
-  border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-
-.info-message {
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
-}
-
-.info-message.hidden {
-  opacity: 0;
-}
-
-@media (max-width: 768px) {
-  .text-gradient {
-    font-size: 2rem;
-  }
-  
-  .tag-content {
-    padding: 1rem;
-  }
-  
-  .post-card-content {
-    padding: 1rem;
-  }
-  
-  .posts-grid,
-  .posts-grid[data-post-count="2"],
-  .posts-grid[data-post-count="3"],
-  .posts-grid[data-post-count="4"] {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-@media (max-width: 992px) and (min-width: 769px) {
-  .posts-grid[data-post-count="3"] {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-</style>
-
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  if (typeof gsap !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-
-    // 태그 클라우드 애니메이션
-    gsap.from('.tag-cloud-item', {
-      duration: 0.5,
-      y: 20,
-      opacity: 0,
-      stagger: 0.03,
-      ease: 'power2.out'
-    });
-  }
-
-  // 태그 토글 기능
+document.addEventListener('DOMContentLoaded', () => {
+  const categoryHeaders = document.querySelectorAll('.category-header');
   const tagButtons = document.querySelectorAll('.tag-cloud-item');
   const tagSections = document.querySelectorAll('.tag-section');
   const infoMessage = document.getElementById('infoMessage');
   let activeTag = null;
 
+  // 카테고리 접기/펼치기
+  categoryHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+      const categoryId = header.dataset.category;
+      const content = document.querySelector(`[data-category-content="${categoryId}"]`);
+      const icon = header.querySelector('.category-icon');
+
+      if (content.style.display === 'none') {
+        content.style.display = 'flex';
+        icon.textContent = '▼';
+        header.classList.add('expanded');
+      } else {
+        content.style.display = 'none';
+        icon.textContent = '▶';
+        header.classList.remove('expanded');
+      }
+    });
+  });
+
+  // 태그 클릭
   tagButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      const tagId = this.dataset.tag;
+    button.addEventListener('click', () => {
+      const tagId = button.dataset.tag;
       const targetSection = document.getElementById(tagId);
-      
-      // 이미 활성화된 태그를 다시 클릭하면 닫기
+
+      if (!targetSection) return;
+
       if (activeTag === tagId) {
         closeActiveTag();
         return;
       }
-      
-      // 다른 태그들 비활성화
+
       tagButtons.forEach(btn => btn.classList.remove('active'));
       tagSections.forEach(section => section.style.display = 'none');
-      
-      // 현재 태그 활성화
-      this.classList.add('active');
+
+      button.classList.add('active');
       targetSection.style.display = 'block';
       activeTag = tagId;
-      
-      // 안내 메시지 숨기기
       infoMessage.classList.add('hidden');
-      
-      // 해당 섹션으로 스크롤
-      setTimeout(() => {
-        targetSection.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }, 100);
+
+      // 포스트 초기화 (처음 10개만 표시)
+      initializePosts(targetSection);
+
+      // 자동 스크롤 제거됨
     });
   });
+
+  function initializePosts(section) {
+    const postsGrid = section.querySelector('.posts-grid');
+    const loadMoreBtn = section.querySelector('.btn-load-more');
+    const postCards = postsGrid.querySelectorAll('.post-card');
+    const initialShow = parseInt(postsGrid.dataset.initialShow) || 10;
+
+    // 모든 포스트 숨기기
+    postCards.forEach((card, index) => {
+      if (index < initialShow) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    // 더보기 버튼 이벤트
+    if (loadMoreBtn) {
+      const newBtn = loadMoreBtn.cloneNode(true);
+      loadMoreBtn.parentNode.replaceChild(newBtn, loadMoreBtn);
+      
+      newBtn.addEventListener('click', () => {
+        loadMorePosts(section);
+      });
+    }
+  }
+
+  function loadMorePosts(section) {
+    const postsGrid = section.querySelector('.posts-grid');
+    const loadMoreBtn = section.querySelector('.btn-load-more');
+    const postCards = postsGrid.querySelectorAll('.post-card');
+    const loadCount = 10;
+
+    let visibleCount = 0;
+    postCards.forEach(card => {
+      if (card.style.display !== 'none') visibleCount++;
+    });
+
+    let loaded = 0;
+    postCards.forEach((card, index) => {
+      if (index >= visibleCount && index < visibleCount + loadCount) {
+        card.style.display = 'block';
+        loaded++;
+      }
+    });
+
+    visibleCount += loaded;
+    const remaining = postCards.length - visibleCount;
+
+    if (remaining <= 0) {
+      loadMoreBtn.style.display = 'none';
+    } else {
+      const remainingSpan = loadMoreBtn.querySelector('.remaining-count');
+      remainingSpan.textContent = `(${remaining}개 남음)`;
+    }
+  }
 
   function closeActiveTag() {
     tagButtons.forEach(btn => btn.classList.remove('active'));
@@ -361,8 +262,7 @@ document.addEventListener('DOMContentLoaded', function() {
     infoMessage.classList.remove('hidden');
   }
 
-  // ESC 키로 닫기
-  document.addEventListener('keydown', function(e) {
+  document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && activeTag) {
       closeActiveTag();
     }

@@ -1,6 +1,61 @@
 ---
 layout: default
 ---
+
+<section id="diagonalHero" class="hero-section position-relative overflow-hidden">
+    <div class="diagonal-bg position-absolute w-100 h-100"></div>
+
+    <div class="container py-5 py-md-6 z-1 position-relative">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-lg-6 mb-5 mb-lg-0 text-white text-center text-lg-start">
+                <h1 class="display-3 fw-bold mb-4 animate-title">
+                  안녕하세요✨ <span class="gradient-text"><br>개발자 김선영입니다.</span>
+                </h1>
+                <p class="lead mb-4 text-light opacity-75 animate-subtitle">
+                  창의적이고 효율적인 프로그래밍 솔루션을 제공하는 블로그를 목표로 하고있습니다.
+                </p>
+                <div class="cta-buttons d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
+                    <a href="https://github.com/sunbang123" class="btn btn-secondary btn-lg shadow-lg btn-hover-grow text-white" role="button">
+                        github 바로가기
+                    </a>
+                    <a href="mailto:ilikeksy99@gmail.com" class="btn btn-outline-light btn-lg btn-hover-shadow" role="button">
+                        이메일 문의
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-5 text-center">
+                <div class="visual-element mx-auto animate-visual" aria-hidden="true">
+                  <svg class="diagonal-shape" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+
+                      <!-- 잘라낼 도형을 clipPath로 정의 -->
+                      <defs>
+                          <clipPath id="clipShape">
+                              <path d="M0 10 L100 0 L100 90 L0 100 L0 10Z" />
+                          </clipPath>
+
+                          <linearGradient id="gradientMain" x1="0%" y1="0%" x2="100%" y2="100%">
+                              <stop offset="0%" style="stop-color:#00c6ff;stop-opacity:1" />
+                              <stop offset="100%" style="stop-color:#0072ff;stop-opacity:1" />
+                          </linearGradient>
+                      </defs>
+
+                      <!-- 배경 도형 -->
+                      <path d="M0 10 L100 0 L100 90 L0 100 L0 10Z" fill="url(#gradientMain)" />
+
+                      <!-- PNG 로고를 도형 모양으로 잘라서 넣기 -->
+                      <image href="/assets/images/thumbnail/blogimg.png"
+                            x="0" y="0"
+                            width="100" height="100"
+                            clip-path="url(#clipShape)" />
+                  </svg>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 <div class="home mt-5">
   {%- if page.title -%}
     <h1 class="page-heading animated-title">{{ page.title }}</h1>
@@ -13,7 +68,7 @@ layout: default
     <div class="search-container mb-4">
       <div class="search-wrapper">
         <input type="text" id="searchInput" placeholder="포스트 제목이나 내용으로 검색하세요..." class="search-input" aria-label="포스트 검색">
-        <div class="search-icon" aria-hidden="true">🔍</div>
+        <div class="search-icon" aria-hidden="true"><i class="bi bi-search"></i></div>
         <button class="search-clear" id="clearSearch" style="display: none;" aria-label="검색어 지우기" tabindex="0">×</button>
       </div>
       <div class="search-stats" id="searchStats">총 {{ site.posts.size }}개의 포스트</div>
@@ -48,7 +103,7 @@ layout: default
           {{ post.date | date: date_format }}
         </time>
         <h3>
-          <a class="post-link text-decoration-none" href="{{ post.url | relative_url }}">
+          <a class="post-link text-decoration-none text-white" href="{{ post.url | relative_url }}">
             {{ post.title | escape }}
           </a>
         </h3>
@@ -90,7 +145,7 @@ layout: default
       </nav>
       
       <!-- 더 보기 버튼 (무한 스크롤 스타일) -->
-      <button class="btn btn-primary load-more-btn" id="loadMoreBtn" style="display: none;">
+      <button class="btn btn-secondary load-more-btn" id="loadMoreBtn" style="display: none;">
         <span class="load-more-text">더 보기</span>
         <span class="load-more-count"></span>
       </button>
@@ -140,7 +195,7 @@ layout: default
 
 .simple-view .post-meta {
   font-size: 0.85rem;
-  color: #666;
+  color: #b9b9b9;
 }
 
 .simple-view .post-tags {
@@ -153,7 +208,7 @@ layout: default
 }
 
 .post-excerpt-wrapper {
-  color: #666;
+  color: #b9b9b9;
   font-size: 0.9rem;
   line-height: 1.5;
   margin-bottom: 0.5rem;
@@ -165,8 +220,8 @@ layout: default
 
 .post-tag {
   display: inline-block;
-  background: #e9ecef;
-  color: #495057;
+  background: #888888;
+  color: #ffffff;
   padding: 0.2rem 0.6rem;
   margin: 0.1rem 0.2rem 0.1rem 0;
   border-radius: 15px;
@@ -554,5 +609,134 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+});
+</script>
+
+
+
+<!---->
+
+<style>
+/* Hero 섹션 기본 스타일 */
+.hero-section {
+    min-height: 5vh;
+    background-color: #1a1a2e; /* 어두운 배경 */
+    padding-bottom: 8rem; /* 비스듬한 배경이 침범할 공간 확보 */
+}
+
+/* 대각선 배경 요소: clip-path를 사용해 아랫부분을 대각선으로 자릅니다. */
+.diagonal-bg {
+    top: 0;
+    left: 0;
+    /* 그라데이션으로 멋진 배경색 지정 */
+    background: linear-gradient(135deg, #1a1a2e 0%, #162447 100%); 
+    
+    /* 대각선 모양 만들기 (왼쪽 아래에서 오른쪽 위로 10% 정도 비스듬) */
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+    transition: all 0.5s ease-out; /* JavaScript 인터랙션용 전환 효과 */
+}
+
+/* 텍스트 그라데이션 */
+.gradient-text {
+    background: linear-gradient(45deg, #fca8ff, #ffc1c1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+/* 시각적 요소 (SVG) 스타일 */
+.visual-element {
+    max-width: 400px;
+    height: auto;
+    transform: rotate(-5deg); /* 비스듬한 효과 */
+    transition: transform 0.5s ease-out;
+}
+
+.diagonal-shape {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 15px 40px rgba(0, 114, 255, 0.4);
+    border-radius: 10px;
+}
+
+/* 버튼 인터랙션 */
+.btn-hover-grow {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-hover-grow:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 114, 255, 0.6) !important;
+}
+
+.btn-hover-shadow {
+    transition: box-shadow 0.3s ease;
+    border-color: rgba(255, 255, 255, 0.5);
+    color: white;
+}
+.btn-hover-shadow:hover {
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+    border-color: white;
+}
+
+/* 애니메이션 기본 상태 (숨김) */
+.animate-title, .animate-subtitle, .animate-visual {
+    opacity: 0;
+    transform: translateY(20px);
+}
+</style>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const heroSection = document.getElementById('diagonalHero');
+    const diagonalBg = document.querySelector('.diagonal-bg');
+    const visualElement = document.querySelector('.visual-element');
+
+    // 1. 마우스 움직임에 따른 배경 미세 이동 효과 (Parallax)
+    heroSection.addEventListener('mousemove', (e) => {
+        const rect = heroSection.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;  // 0 to 1
+        const y = (e.clientY - rect.top) / rect.height; // 0 to 1
+
+        const moveX = (x - 0.5) * 15; // -7.5px to 7.5px
+        const moveY = (y - 0.5) * 15;
+
+        // 대각선 배경 움직임
+        diagonalBg.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        
+        // 시각적 요소 움직임
+        visualElement.style.transform = `translate(${-moveX * 0.5}px, ${-moveY * 0.5}px) rotate(-5deg)`;
+    });
+
+    // 2. 스크롤 시 콘텐츠 나타나는 애니메이션
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // 제목 애니메이션
+                document.querySelector('.animate-title').style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                document.querySelector('.animate-title').style.opacity = 1;
+                document.querySelector('.animate-title').style.transform = 'translateY(0)';
+
+                // 부제 애니메이션 (딜레이)
+                setTimeout(() => {
+                    document.querySelector('.animate-subtitle').style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                    document.querySelector('.animate-subtitle').style.opacity = 1;
+                    document.querySelector('.animate-subtitle').style.transform = 'translateY(0)';
+                }, 300);
+
+                // 시각적 요소 애니메이션 (딜레이)
+                 setTimeout(() => {
+                    document.querySelector('.animate-visual').style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                    document.querySelector('.animate-visual').style.opacity = 1;
+                    document.querySelector('.animate-visual').style.transform = 'translateY(0) rotate(-5deg)';
+                }, 600);
+                
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    observer.observe(heroSection);
 });
 </script>

@@ -13,26 +13,22 @@ layout: default
     
     <style>
         body {
-            background: linear-gradient(45deg, #622b8415, #3c279915);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         .project-header {
-            background: linear-gradient(45deg, #622b8415, #3c279915);
             padding: 4rem 0;
             margin-bottom: 3rem;
         }
         
         .project-content {
-            background: white;
+            background: #40404078;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             padding: 2rem;
             margin-bottom: 2rem;
         }
         
         .project-meta {
-            background: #f8f9fa;
             border-radius: 10px;
             padding: 1.5rem;
             margin-bottom: 2rem;
@@ -64,7 +60,6 @@ layout: default
         }
         
         .tech-item {
-            background: #f8f9fa;
             padding: 1rem;
             border-radius: 8px;
             text-align: center;
@@ -118,7 +113,7 @@ layout: default
                         </a>
                         {% endif %}
                         {% if page.github_url %}
-                        <a href="{{ page.github_url }}" class="btn btn-dark btn-lg text-white" target="_blank">
+                        <a href="{{ page.github_url }}" class="btn btn-secondary btn-lg text-white" target="_blank">
                             <i class="fab fa-github me-2"></i>GitHub 보기
                         </a>
                         {% endif %}
@@ -170,7 +165,7 @@ layout: default
 
     <!-- Navigation Buttons -->
     <div class="nav-buttons">
-        <a href="/project/" class="btn btn-primary text-white">
+        <a href="/project/" class="btn btn-secondary text-white">
             <i class="bi bi-backspace"></i>
         </a>
         <a href="#" class="btn btn-secondary back-to-top">
