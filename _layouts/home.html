@@ -209,6 +209,9 @@ layout: default
             border: 2px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            position: relative;
+            user-select: none;
         }
 
         .icon-item:hover {
@@ -216,6 +219,17 @@ layout: default
             background: rgba(255, 255, 255, 0.15);
             border-color: rgba(167, 139, 250, 0.5);
             box-shadow: 0 20px 50px rgba(167, 139, 250, 0.4);
+        }
+
+        .icon-item.clicked {
+            animation: iconBounce 0.4s ease;
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(0.8) rotate(-10deg); }
+            50% { transform: scale(1.3) rotate(10deg); }
+            75% { transform: scale(0.9) rotate(-5deg); }
         }
 
         .icon-slider:hover .icon-track {
@@ -363,6 +377,155 @@ layout: default
             to { opacity: 1; }
         }
 
+        /* ==================================== */
+        /* 🌟 게임 효과 스타일 🌟 */
+        /* ==================================== */
+
+        /* 파티클 버스트 */
+        .particle-burst {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .burst-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: burstOut 0.8s ease-out forwards;
+        }
+
+        @keyframes burstOut {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* 점수 팝업 */
+        .score-popup {
+            position: fixed;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(167, 139, 250, 0.8),
+                         0 0 40px rgba(167, 139, 250, 0.6);
+            pointer-events: none;
+            z-index: 9999;
+            animation: scoreFloat 1s ease-out forwards;
+        }
+
+        @keyframes scoreFloat {
+            0% {
+                transform: translateY(0) scale(0.5);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+                transform: translateY(-20px) scale(1.2);
+            }
+            100% {
+                transform: translateY(-100px) scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        /* 충격파 */
+        .shockwave {
+            position: fixed;
+            border: 3px solid rgba(167, 139, 250, 0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            animation: shockwaveExpand 0.6s ease-out forwards;
+        }
+
+        @keyframes shockwaveExpand {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+            100% {
+                width: 200px;
+                height: 200px;
+                opacity: 0;
+            }
+        }
+
+        /* 화면 플래시 */
+        .screen-flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(167, 139, 250, 0.4) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 9997;
+            animation: flashEffect 0.3s ease-out;
+        }
+
+        @keyframes flashEffect {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        
+        /* 🏆 화면 귀퉁이 Total Score (스타일 제거됨 - 이제 사용되지 않음) */
+        /* .total-score, .total-score-label, .total-score-value 스타일 제거됨 */
+
+
+        /* ==================================== */
+        /* 🌟 배경 점수/콤보 스타일 🌟 */
+        /* ==================================== */
+        .background-score-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none; /* 클릭 이벤트가 아래 요소에 전달되도록 설정 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 5; /* 배경 요소와 콘텐츠 사이에 배치 */
+            opacity: 0.25; /* 투명도를 낮춰 배경처럼 보이게 합니다. */
+            text-align: center;
+            transition: opacity 0.5s ease;
+        }
+
+        /* 배경으로 표시될 총 점수 */
+        .background-total-score {
+            font-size: 8vw; /* 화면 크기에 비례하여 크게 표시 */
+            font-weight: 900;
+            color: #a78bfa;
+            line-height: 1;
+            text-shadow: 0 0 50px rgba(167, 139, 250, 0.5); /* 은은한 네온 효과 */
+            margin-bottom: 20px;
+        }
+
+        /* 배경으로 표시될 콤보 */
+        .background-combo-display {
+            font-size: 10vw; /* 화면 크기에 비례하여 매우 크게 표시 */
+            font-weight: 900;
+            color: #ffd700;
+            line-height: 1;
+            text-shadow: 0 0 60px rgba(255, 215, 0, 0.8);
+            animation: backgroundComboPulse 2s infinite ease-in-out;
+            display: none; /* 초기 숨김 */
+        }
+
+        @keyframes backgroundComboPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+        
         /* 반응형 */
         @media (max-width: 768px) {
             .hero-greeting {
@@ -397,6 +560,14 @@ layout: default
                 min-width: 80px;
                 padding: 1rem;
             }
+            
+            .background-total-score {
+                font-size: 12vw;
+            }
+            
+            .background-combo-display {
+                font-size: 15vw;
+            }
         }
 
         @media (max-width: 480px) {
@@ -408,46 +579,39 @@ layout: default
 </head>
 <body>
     <section class="hero-section">
-        <!-- 파티클 배경 -->
         <div class="particles" id="particles"></div>
         
-        <!-- 그라데이션 오버레이 -->
         <div class="gradient-overlay"></div>
         
-        <!-- 대각선 배경 -->
         <div class="diagonal-bg"></div>
 
-        <!-- 글로우 효과 -->
         <div class="glow-effect" style="top: 20%; left: 50%; transform: translateX(-50%);"></div>
         <div class="glow-effect" style="bottom: 20%; left: 50%; transform: translateX(-50%);"></div>
 
+        <div class="background-score-overlay" id="backgroundScoreOverlay">
+            </div>
+
         <div class="hero-content">
-            <!-- 인사말 -->
             <div class="hero-greeting">
                 ✨ WELCOME ✨
             </div>
 
-            <!-- 메인 타이틀 -->
             <h1 class="hero-title">
                 Hi 👋, I'm Kim SunYeong
                 <span class="typing-cursor"></span>
             </h1>
 
-            <!-- 장식 라인 -->
             <div class="decorative-line"></div>
 
-            <!-- 서브타이틀 -->
             <p class="hero-subtitle">
-                창의적이고 효율적인 솔루션
+                개발자 / 컨텐츠 크리에이터
             </p>
 
-            <!-- 설명 -->
             <p class="hero-description">
-                프로그래밍을 통해 문제를 해결하고, 아이디어를 현실로 만드는<br>
-                개발자의 여정을 함께 나누는 공간입니다
+                게임 개발, 아트, 프로그래밍 등 다양한 주제를 다루며<br>
+                제공하는 블로그입니다.
             </p>
 
-            <!-- 아이콘 슬라이더 -->
             <div class="icon-slider">
                 <div class="icon-track">
                     <div class="icon-item">💻</div>
@@ -458,7 +622,6 @@ layout: default
                     <div class="icon-item">🔥</div>
                     <div class="icon-item">✨</div>
                     <div class="icon-item">🎯</div>
-                    <!-- 반복 -->
                     <div class="icon-item">💻</div>
                     <div class="icon-item">🚀</div>
                     <div class="icon-item">⚡</div>
@@ -470,18 +633,16 @@ layout: default
                 </div>
             </div>
 
-            <!-- 버튼 -->
             <div class="button-container">
-                <a href="https://github.com/sunbang123" class="btn-custom btn-primary-custom text-white">
+                <a href="https://github.com/sunbang123" class="btn-custom btn-primary-custom">
                     🚀 GitHub 바로가기
                 </a>
-                <a href="/article/" class="btn-custom btn-outline-custom text-white">
+                <a href="/article/" class="btn-custom btn-outline-custom">
                     📚 블로그 글 보러가기 
                 </a>
             </div>
         </div>
 
-        <!-- 스크롤 인디케이터 -->
         <div class="scroll-indicator">
             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color: white;">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
@@ -489,11 +650,9 @@ layout: default
         </div>
     </section>
 
-    <!-- About & Archive Section -->
     <section class="about-archive-section">
         <div class="container">
             <div class="row">
-                <!-- About Section -->
                 <div class="col-lg-6 mb-5">
                     <div class="about-card">
                         <h2 class="section-title">
@@ -516,7 +675,6 @@ layout: default
                     </div>
                 </div>
 
-                <!-- Recent Commits Section -->
                 <div class="col-lg-6 mb-5">
                     <div class="commits-card">
                         <h2 class="section-title">
@@ -536,7 +694,7 @@ layout: default
     </section>
 
     <style>
-        /* About & Archive Section */
+        /* About & Archive Section (스타일은 유지) */
         .about-archive-section {
             background: linear-gradient(180deg, #16213e 0%, #0f1419 100%);
             padding: 6rem 0;
@@ -727,20 +885,6 @@ layout: default
             text-align: center;
             font-weight: 600;
         }
-
-        @media (max-width: 768px) {
-            .about-archive-section {
-                padding: 3rem 0;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-
-            .about-text {
-                font-size: 1rem;
-            }
-        }
     </style>
 
     <script>
@@ -789,74 +933,228 @@ layout: default
             }
         });
 
-</script>
-<script>
-// loadCommits 함수 전체를 다음 코드로 대체합니다.
+        // ========== 게임 효과 시스템 (Total Score/Combo 배경화 적용) ==========
+        let totalScore = 0;
+        let comboCount = 0;
+        let comboTimer = null;
 
-async function loadCommits() {
-    const container = document.getElementById('commitsContainer');
-    const dataPath = '/_data/commits_data.json'; // 생성된 정적 JSON 파일 경로 (Jekyll 환경 가정)
-    
-    // 로딩 스피너 유지
-    // container.innerHTML = '<div class="loading-spinner"><div class="spinner"></div><p>Loading commits...</p></div>';
-    
-    try {
-        // 1. 서버에 미리 저장된 정적 JSON 파일 요청
-        const res = await fetch(dataPath);
-        
-        // 파일이 없거나 오류 발생 시 오류 메시지 표시
-        if (!res.ok) {
-            if (res.status === 404) {
-                 throw new Error("커밋 데이터 파일(commits_data.json)을 찾을 수 없습니다. GitHub Actions 실행 상태를 확인하세요.");
+        const backgroundScoreOverlay = document.getElementById('backgroundScoreOverlay');
+
+        // 1. 배경 총 점수 표시 생성 및 초기화
+        const backgroundTotalScoreDisplay = document.createElement('div');
+        backgroundTotalScoreDisplay.className = 'background-total-score';
+        backgroundTotalScoreDisplay.textContent = '0';
+        backgroundScoreOverlay.appendChild(backgroundTotalScoreDisplay);
+
+        // 2. 배경 콤보 표시 생성 (초기에는 숨김)
+        const backgroundComboDisplay = document.createElement('div');
+        backgroundComboDisplay.className = 'background-combo-display';
+        backgroundComboDisplay.style.display = 'none'; // 초기 숨김
+        backgroundScoreOverlay.appendChild(backgroundComboDisplay);
+
+
+        // 이모지별 효과 설정
+        const emojiEffects = {
+            '💻': { color: '#3b82f6', score: 10, text: 'CODE!' },
+            '🚀': { color: '#ec4899', score: 20, text: 'LAUNCH!' },
+            '⚡': { color: '#fbbf24', score: 15, text: 'POWER!' },
+            '🎨': { color: '#8b5cf6', score: 12, text: 'ART!' },
+            '📱': { color: '#10b981', score: 10, text: 'MOBILE!' },
+            '🔥': { color: '#f97316', score: 25, text: 'FIRE!' },
+            '✨': { color: '#a78bfa', score: 30, text: 'SPARKLE!' },
+            '🎯': { color: '#ef4444', score: 50, text: 'BULLSEYE!' }
+        };
+
+        // 파티클 버스트 효과
+        function createParticleBurst(x, y, color, count = 15) {
+            const burst = document.createElement('div');
+            burst.className = 'particle-burst';
+            burst.style.left = x + 'px';
+            burst.style.top = y + 'px';
+
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'burst-particle';
+                particle.style.backgroundColor = color;
+                
+                const angle = (Math.PI * 2 * i) / count;
+                const distance = 100 + Math.random() * 50;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+                
+                particle.style.setProperty('--tx', tx + 'px');
+                particle.style.setProperty('--ty', ty + 'px');
+                
+                burst.appendChild(particle);
             }
-            throw new Error(`파일 로드 실패: ${res.status}`);
+
+            document.body.appendChild(burst);
+            setTimeout(() => burst.remove(), 1000);
         }
 
-        const allCommits = await res.json();
-        
-        // 2. HTML 구성
-        let html = '';
-        let currentRepo = '';
-
-        // 최근 15개 커밋만 표시 (선택 사항)
-        const recentCommits = allCommits.slice(0, 15); 
-
-        if (recentCommits.length === 0) {
-             container.innerHTML = '<p class="error-message">커밋 데이터가 없습니다. Actions 빌드 후 데이터를 확인해주세요.</p>';
-             return;
+        // 충격파 효과
+        function createShockwave(x, y) {
+            const shockwave = document.createElement('div');
+            shockwave.className = 'shockwave';
+            shockwave.style.left = (x - 100) + 'px';
+            shockwave.style.top = (y - 100) + 'px';
+            document.body.appendChild(shockwave);
+            setTimeout(() => shockwave.remove(), 600);
         }
 
-        recentCommits.forEach(commit => {
-            if (commit.repo !== currentRepo) {
-                html += `<h3 style="margin-top: 1.5rem; color: #fff;">📦 ${commit.repo}</h3>`;
-                currentRepo = commit.repo;
+        // 화면 플래시 효과
+        function createScreenFlash() {
+            const flash = document.createElement('div');
+            flash.className = 'screen-flash';
+            document.body.appendChild(flash);
+            setTimeout(() => flash.remove(), 300);
+        }
+
+        // 점수 팝업
+        function showScorePopup(x, y, score, text, color) {
+            const popup = document.createElement('div');
+            popup.className = 'score-popup';
+            popup.textContent = `+${score} ${text}`;
+            popup.style.left = x + 'px';
+            popup.style.top = y + 'px';
+            popup.style.color = color;
+            document.body.appendChild(popup);
+            setTimeout(() => popup.remove(), 1000);
+        }
+
+        // 콤보 표시 업데이트
+        function updateCombo() {
+            comboCount++;
+
+            if (comboCount >= 3) {
+                // 배경 콤보 업데이트
+                backgroundComboDisplay.textContent = `COMBO x${comboCount}`;
+                backgroundComboDisplay.style.display = 'block';
+
+                // 5콤보 이상일 때 화면 플래시
+                if (comboCount % 5 === 0) {
+                    createScreenFlash();
+                }
+            } else {
+                backgroundComboDisplay.style.display = 'none';
             }
 
-            // 날짜 포맷팅 (ISO 문자열에서 변환)
-            const dateObj = new Date(commit.date);
-            const dateStr = dateObj.toLocaleDateString('ko-KR');
-            const sha = commit.sha.substring(0, 7);
-            const message = commit.message.split('\n')[0];
+            // 콤보 타이머 리셋
+            clearTimeout(comboTimer);
+            comboTimer = setTimeout(() => {
+                comboCount = 0;
+                backgroundComboDisplay.style.display = 'none';
+            }, 2000); // 콤보 지속 시간 2초
+        }
 
-            html += `
-                <div class="commit-item">
-                    <div class="commit-message">${message}</div>
-                    <div class="commit-meta">
-                        <span class="commit-author">👤 ${commit.author}</span>
-                        <span class="commit-date">📅 ${dateStr}</span>
-                        <span class="commit-sha">${sha}</span>
-                    </div>
-                </div>
-            `;
+        // 총 점수 업데이트 (배경 점수만 업데이트)
+        function updateTotalScore(points) {
+            totalScore += points * (comboCount >= 3 ? comboCount : 1);
+            
+            // 1. 배경 점수 업데이트
+            backgroundTotalScoreDisplay.textContent = totalScore.toLocaleString();
+            
+            // 화면 귀퉁이 점수 업데이트 로직은 제거됨
+        }
+
+        // 이모지 클릭 이벤트
+        document.querySelectorAll('.icon-item').forEach(icon => {
+            icon.addEventListener('click', function(e) {
+                const emoji = this.textContent.trim();
+                const effect = emojiEffects[emoji];
+                
+                if (!effect) return;
+
+                const rect = this.getBoundingClientRect();
+                const x = rect.left + rect.width / 2;
+                const y = rect.top + rect.height / 2;
+
+                // 아이콘 애니메이션
+                this.classList.add('clicked');
+                setTimeout(() => this.classList.remove('clicked'), 400);
+
+                // 효과 실행
+                createParticleBurst(x, y, effect.color);
+                createShockwave(x, y);
+                showScorePopup(x, y, effect.score, effect.text, effect.color);
+                updateCombo();
+                updateTotalScore(effect.score);
+
+                // 애니메이션 일시 정지/재개
+                const track = document.querySelector('.icon-track');
+                track.style.animationPlayState = 'paused';
+                setTimeout(() => {
+                    track.style.animationPlayState = 'running';
+                }, 200);
+            });
         });
-        
-        container.innerHTML = html;
 
-    } catch (error) {
-        console.error(error);
-        container.innerHTML = `<p class="error-message">커밋 정보를 불러오는데 실패했습니다: ${error.message}</p>`;
-    }
-}
 
-loadCommits();
+        // ===========================================
+        // Recent Activity (GitHub Commits) 로직
+        // ===========================================
+        async function loadCommits() {
+            const container = document.getElementById('commitsContainer');
+            const dataPath = '/_data/commits_data.json'; // 생성된 정적 JSON 파일 경로 (Jekyll 환경 가정)
+            
+            try {
+                // 1. 서버에 미리 저장된 정적 JSON 파일 요청
+                const res = await fetch(dataPath);
+                
+                // 파일이 없거나 오류 발생 시 오류 메시지 표시
+                if (!res.ok) {
+                    if (res.status === 404) {
+                        throw new Error("커밋 데이터 파일(commits_data.json)을 찾을 수 없습니다. GitHub Actions 실행 상태를 확인하세요.");
+                    }
+                    throw new Error(`파일 로드 실패: ${res.status}`);
+                }
+
+                const allCommits = await res.json();
+                
+                // 2. HTML 구성
+                let html = '';
+                let currentRepo = '';
+
+                // 최근 15개 커밋만 표시 (선택 사항)
+                const recentCommits = allCommits.slice(0, 15); 
+
+                if (recentCommits.length === 0) {
+                      container.innerHTML = '<p class="error-message">커밋 데이터가 없습니다. Actions 빌드 후 데이터를 확인해주세요.</p>';
+                      return;
+                }
+
+                recentCommits.forEach(commit => {
+                    if (commit.repo !== currentRepo) {
+                        html += `<h3 style="margin-top: 1.5rem; color: #fff;">📦 ${commit.repo}</h3>`;
+                        currentRepo = commit.repo;
+                    }
+
+                    // 날짜 포맷팅 (ISO 문자열에서 변환)
+                    const dateObj = new Date(commit.date);
+                    const dateStr = dateObj.toLocaleDateString('ko-KR');
+                    const sha = commit.sha.substring(0, 7);
+                    const message = commit.message.split('\n')[0];
+
+                    html += `
+                        <div class="commit-item">
+                            <div class="commit-message">${message}</div>
+                            <div class="commit-meta">
+                                <span class="commit-author">👤 ${commit.author}</span>
+                                <span class="commit-date">📅 ${dateStr}</span>
+                                <span class="commit-sha">${sha}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+
+            } catch (error) {
+                console.error(error);
+                container.innerHTML = `<p class="error-message">커밋 정보를 불러오는데 실패했습니다: ${error.message}</p>`;
+            }
+        }
+
+        loadCommits();
     </script>
+</body>
