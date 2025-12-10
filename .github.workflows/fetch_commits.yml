@@ -1,0 +1,66 @@
+# 파일 경로: .github/workflows/fetch_commits.yml
+name: Fetch GitHub Commits
+
+on:
+  push:
+    branches:
+      - master # 또는 main 브랜치 이름
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *' # 매일 자정에 실행하여 데이터 업데이트
+
+jobs:
+  fetch_and_save:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: sudo apt-get install -y jq # JSON 처리를 위한 도구 설치
+
+      - name: Fetch and process commits
+        id: fetch
+        env:
+          GITHUB_USERNAME: sunbang123
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN_FOR_ACTIONS }} # 1단계에서 저장한 Secret 사용
+        run: |
+          # -----------------------------------------------------
+          # GitHub API 호출: 리포지토리 및 커밋 데이터 가져오기
+          # -----------------------------------------------------
+          REPOS_URL="https://api.github.com/users/${GITHUB_USERNAME}/repos?type=owner"
+          
+          REPO_NAMES=$(curl -s -H "Authorization: token ${GITHUB_PAT}" $REPOS_URL | jq -r '.[].name')
+          
+          ALL_COMMITS="[]"
+          
+          for REPO_NAME in $REPO_NAMES; do
+              COMMITS_URL="https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/commits?per_page=5"
+              
+              COMMITS=$(curl -s -H "Authorization: token ${GITHUB_PAT}" $COMMITS_URL | jq --arg repo "$REPO_NAME" '.[] | {
+                  repo: $repo,
+                  message: .commit.message, 
+                  author: .commit.author.name, 
+                  date: .commit.author.date,
+                  sha: .sha
+              }')
+              
+              if [ -n "$COMMITS" ]; then
+                  for COMMIT in $COMMITS; do
+                      ALL_COMMITS=$(echo "$ALL_COMMITS" | jq --argjson commit "$COMMIT" '. + [$commit]')
+                  done
+              fi
+          done
+          
+          # 날짜 역순으로 정렬
+          FINAL_DATA=$(echo "$ALL_COMMITS" | jq 'sort_by(.date) | reverse')
+
+          # _data 폴더에 저장 (Jekyll/Static Site 접근 가능)
+          mkdir -p _data
+          echo "$FINAL_DATA" > _data/commits_data.json
+          
+      - name: Commit and push if changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Automatic commit: Update recent GitHub activity data"
+          files: _data/commits_data.json
