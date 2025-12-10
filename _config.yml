@@ -15,7 +15,7 @@
 # in the templates via {{ site.myvariable }}.
 
 # custom_layout은 _layouts 폴더에 있는 파일 이름
-title: Sunyoung IT Blog 👩‍💻
+title: Tech Blog 👩‍💻
 email: ilikeksy99@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   코딩 개발 블로그

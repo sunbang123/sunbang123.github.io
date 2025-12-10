@@ -1,8 +1,40 @@
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+
   <div class="offcanvas-header">
-    <!-- <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Offcanvas with body scrolling</h5> -->
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Profile</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
+    <article class="post">
+
+    <h5>{{ site.author-profile.name }}</h5>
+    <p>{{ site.author-profile.bio }}</p>
+    <ul class="social-media-list d-flex">
+        {%- if site.author-profile.linkedin -%}
+        <li>
+          <a href="https://linkedin.com/in/{{ site.author-profile.linkedin }}" target="_blank">
+            <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#linkedin' | relative_url }}"></use></svg>
+          </a>
+        </li>
+        {%- endif -%}
+        {%- if site.github_username -%}
+        <li class="ps-1 pt-0">
+          <a class="text-decoration-none" href="https://github.com/{{ site.github_username| cgi_escape | escape }}">
+            <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#github' | relative_url }}"></use></svg>
+          </a>
+        </li>
+        {%- endif -%}
+        {%- if site.author-profile.youtube -%}
+        <li class="ps-1 pt-0">
+          <a class="text-decoration-none" href="https://www.youtube.com/channel/UCfFOEhFPrz3EoLfflhr1NGA" target="_blank">
+            <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#youtube' | relative_url }}"></use></svg>
+          </a>
+        </li>
+        {%- endif -%}
+
+      <!-- 더 많은 소셜 링크 추가 가능 -->
+    </ul>
+
+</article>
   <div class="offcanvas-body">
     <aside class="sidebar">
       <h5>Recent Posts</h5>

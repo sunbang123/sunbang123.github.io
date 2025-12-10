@@ -8,10 +8,11 @@
 // }
 
 .site-header {
-    background-color: $background-color;
+    background-color: #131421eb;
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .site-title {
@@ -317,7 +318,7 @@ custom
 }
 
 .home {
-  max-width: 1300px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 1rem;
   word-wrap: break-word; /* 또는 overflow-wrap: break-word; */

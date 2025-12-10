@@ -1,5 +1,5 @@
 ---
-layout: profile
-title: Profile
-permalink: /profile/
+layout: article
+title: Article
+permalink: /article/
 ---
