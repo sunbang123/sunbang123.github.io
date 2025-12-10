@@ -3,7 +3,7 @@ layout: post
 title: "How_to_use_signleton"
 date: 2025-12-11 01:36:53 +0900
 categories: 
-tags: 
+tags: Unity
 ---
 
 ## 🛠️ Unity 개발자의 생존 가이드: 지긋지긋한 Null 참조 오류, 싱글턴으로 박멸하기
