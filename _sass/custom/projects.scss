@@ -1,0 +1,69 @@
+
+body {
+    min-height: 100vh;
+}
+
+.project-card {
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.project-thumbnail {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(45deg, #2b848325, #27459925);
+}
+
+.project-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-thumbnail img {
+    transform: scale(1.05);
+}
+
+.gradient-bg {
+    background: linear-gradient(45deg, #00a3a190, #0043ff90);
+    border: 1px solid lightgray;
+    color: white;
+    font-weight: bold;
+}
+        
+.glass-effect {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.project-date {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.status-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+}
+
+.add-project-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 3px dashed rgba(255, 255, 255, 0.4);
+    min-height: 400px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.add-project-card:hover {
+    background: rgba(232, 223, 239, 0.7);
+    border-color: rgba(255, 255, 255, 0.6);
+}

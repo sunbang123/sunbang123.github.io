@@ -1,210 +1,121 @@
 ---
 layout: default
 ---
-
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} - {{ site.title }}</title>
-    
-    <style>
-        body {
-            min-height: 100vh;
-        }
-        
-        .project-card {
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-        
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-        
-        .project-thumbnail {
-            height: 200px;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(45deg, #2b848325, #27459925);
-        }
-        
-        .project-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .project-card:hover .project-thumbnail img {
-            transform: scale(1.05);
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(45deg, #00a3a190, #0043ff90);
-            border: 1px solid lightgray;
-            color: white;
-            font-weight: bold;
-        }
-                
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
-        
-        .project-date {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .status-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 10;
-        }
-        
-        .add-project-card {
-            background: rgba(255, 255, 255, 0.1);
-            border: 3px dashed rgba(255, 255, 255, 0.4);
-            min-height: 400px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .add-project-card:hover {
-            background: rgb(232 223 239 / 70%);
-            border-color: rgba(255, 255, 255, 0.6);
-        }
-    </style>
-</head>
-<body>
-    <div class="container-fluid py-5">
-        <div class="wrapper">
-            <!-- Header Section -->
-            <div class="text-center mb-5">
-                <h1 class="display-6 fw-bold mb-4">
-                    <i class="fas fa-rocket me-3"></i>{{ page.title }}
-                </h1>
-                <div class="lead-50 mx-auto" style="max-width: 600px;">
-                    {{ content }}
-                </div>
-            </div>
-
-            <!-- Projects Grid -->
-            <div class="row g-4">
-                {% assign sorted_projects = site.projects | sort: 'date' | reverse %}
-                {% for project in sorted_projects %}
-                <div class="col-lg-4 col-md-6">
-                    <div class="card project-card glass-effect border-0 rounded-4 shadow-lg h-100">
-                        <div class="project-thumbnail rounded-top-4 d-flex align-items-center justify-content-center position-relative">
-                            <!-- 상태 배지 -->
-                            {% if project.status %}
-                            <div class="status-badge">
-                                {% if project.status == 'completed' %}
-                                <span class="badge bg-success">완료</span>
-                                {% elsif project.status == 'in-progress' %}
-                                <span class="badge bg-warning">진행중</span>
-                                {% elsif project.status == 'planned' %}
-                                <span class="badge bg-info">계획중</span>
-                                {% endif %}
-                            </div>
-                            {% endif %}
-                            
-                            {% if project.thumbnail %}
-                                <img src="{{ project.thumbnail }}" alt="{{ project.title }}" class="rounded-top-4">
-                            {% else %}
-                                <i class="{{ project.icon | default: 'fas fa-code' }}" style="font-size: 3rem;"></i>
-                            {% endif %}
-                        </div>
-                        <div class="card-body p-4">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h5 class="card-title fw-bold text-gray-800 mb-0">{{ project.title }}</h5>
-                                <small class="text-muted project-date">{{ project.date | date: "%Y.%m" }}</small>
-                            </div>
-                            <p class="card-text text-muted mb-3">
-                                {{ project.description }}
-                            </p>
-                            <div class="mb-3">
-                                {% for tag in project.tags %}
-                                <span class="badge gradient-bg me-2 mb-1">{{ tag }}</span>
-                                {% endfor %}
-                            </div>
-                            <div class="d-flex gap-2">
-                                {% if project.demo_url %}
-                                <a href="{{ project.demo_url }}" class="btn gradient-bg flex-fill btn-sm" target="_blank">
-                                    <i class="fas fa-external-link-alt me-1"></i>데모
-                                </a>
-                                {% endif %}
-                                {% if project.github_url %}
-                                <a href="{{ project.github_url }}" class="btn btn-outline-dark flex-fill btn-sm" target="_blank">
-                                    <i class="fab fa-github me-1"></i>GitHub
-                                </a>
-                                {% endif %}
-                                {% if project.url %}
-                                <a href="{{ project.url }}" class="btn btn-outline-primary flex-fill btn-sm">
-                                    <i class="fas fa-info-circle me-1"></i>자세히
-                                </a>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-                
-                <!-- Add New Project Card -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="add-project-card rounded-4 d-flex flex-column align-items-center justify-content-center text-center p-4">
-                        <i class="fas fa-plus-circle mb-3" style="font-size: 4rem; opacity: 0.7;"></i>
-                        <h5 class="mb-2">새 프로젝트 추가</h5>
-                        <p class="text-black-50">새로운 프로젝트를 추가해보세요</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 통계 정보 -->
-            <div class="row mt-5">
-                <div class="col-md-12">
-                    <div class="glass-effect rounded-4 p-4 text-center">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <h3 class="text-primary">{{ site.projects.size }}</h3>
-                                <p class="text-muted mb-0">총 프로젝트</p>
-                            </div>
-                            <div class="col-md-3">
-                                <h3 class="text-success">{{ site.projects | where: 'status', 'completed' | size }}</h3>
-                                <p class="text-muted mb-0">완료된 프로젝트</p>
-                            </div>
-                            <div class="col-md-3">
-                                <h3 class="text-warning">{{ site.projects | where: 'status', 'in-progress' | size }}</h3>
-                                <p class="text-muted mb-0">진행중인 프로젝트</p>
-                            </div>
-                            <div class="col-md-3">
-                                <h3 class="text-info">{{ site.projects | where: 'status', 'planned' | size }}</h3>
-                                <p class="text-muted mb-0">계획중인 프로젝트</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Footer -->
-            <div class="text-center mt-5 pt-4">
-                <p class=>
-                    <i class="fas fa-heart text-danger me-2"></i>
-                    지속적으로 성장하고 학습하는 개발자입니다.
-                </p>
+<div class="container-fluid py-5">
+    <div class="wrapper">
+        <!-- Header Section -->
+        <div class="text-center mb-5">
+            <h1 class="display-6 fw-bold mb-4">
+                <i class="fas fa-rocket me-3"></i>{{ page.title }}
+            </h1>
+            <div class="lead-50 mx-auto" style="max-width: 600px;">
+                {{ content }}
             </div>
         </div>
+
+        <!-- Projects Grid -->
+        <div class="row g-4">
+            {% assign sorted_projects = site.projects | sort: 'date' | reverse %}
+            {% for project in sorted_projects %}
+            <div class="col-lg-4 col-md-6">
+                <div class="card project-card glass-effect border-0 rounded-4 shadow-lg h-100">
+                    <div class="project-thumbnail rounded-top-4 d-flex align-items-center justify-content-center position-relative">
+                        <!-- 상태 배지 -->
+                        {% if project.status %}
+                        <div class="status-badge">
+                            {% if project.status == 'completed' %}
+                            <span class="badge bg-success">완료</span>
+                            {% elsif project.status == 'in-progress' %}
+                            <span class="badge bg-warning">진행중</span>
+                            {% elsif project.status == 'planned' %}
+                            <span class="badge bg-info">계획중</span>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                        
+                        {% if project.thumbnail %}
+                            <img src="{{ project.thumbnail }}" alt="{{ project.title }}" class="rounded-top-4">
+                        {% else %}
+                            <i class="{{ project.icon | default: 'fas fa-code' }}" style="font-size: 3rem;"></i>
+                        {% endif %}
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title fw-bold text-gray-800 mb-0">{{ project.title }}</h5>
+                            <small class="text-muted project-date">{{ project.date | date: "%Y.%m" }}</small>
+                        </div>
+                        <p class="card-text text-muted mb-3">
+                            {{ project.description }}
+                        </p>
+                        <div class="mb-3">
+                            {% for tag in project.tags %}
+                            <span class="badge gradient-bg me-2 mb-1">{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="d-flex gap-2">
+                            {% if project.demo_url %}
+                            <a href="{{ project.demo_url }}" class="btn gradient-bg flex-fill btn-sm" target="_blank">
+                                <i class="fas fa-external-link-alt me-1"></i>데모
+                            </a>
+                            {% endif %}
+                            {% if project.github_url %}
+                            <a href="{{ project.github_url }}" class="btn btn-outline-dark flex-fill btn-sm" target="_blank">
+                                <i class="fab fa-github me-1"></i>GitHub
+                            </a>
+                            {% endif %}
+                            {% if project.url %}
+                            <a href="{{ project.url }}" class="btn btn-outline-primary flex-fill btn-sm">
+                                <i class="fas fa-info-circle me-1"></i>자세히
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+            <!-- Add New Project Card -->
+            <div class="col-lg-4 col-md-6">
+                <div class="add-project-card rounded-4 d-flex flex-column align-items-center justify-content-center text-center p-4">
+                    <i class="fas fa-plus-circle mb-3" style="font-size: 4rem; opacity: 0.7;"></i>
+                    <h5 class="mb-2">새 프로젝트 추가</h5>
+                    <p class="text-black-50">새로운 프로젝트를 추가해보세요</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 통계 정보 -->
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <div class="glass-effect rounded-4 p-4 text-center">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h3 class="text-primary">{{ site.projects.size }}</h3>
+                            <p class="text-muted mb-0">총 프로젝트</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h3 class="text-success">{{ site.projects | where: 'status', 'completed' | size }}</h3>
+                            <p class="text-muted mb-0">완료된 프로젝트</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h3 class="text-warning">{{ site.projects | where: 'status', 'in-progress' | size }}</h3>
+                            <p class="text-muted mb-0">진행중인 프로젝트</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h3 class="text-info">{{ site.projects | where: 'status', 'planned' | size }}</h3>
+                            <p class="text-muted mb-0">계획중인 프로젝트</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-5 pt-4">
+            <p class=>
+                <i class="fas fa-heart text-danger me-2"></i>
+                지속적으로 성장하고 학습하는 개발자입니다.
+            </p>
+        </div>
     </div>
-    
-    <script>
-        // Add project card click event
-        document.querySelector('.add-project-card').addEventListener('click', function() {
-            window.open('https://github.com/sunbang123?tab=repositories', '_blank');
-        });
-    </script>
-</body>
-</html>
+</div>
