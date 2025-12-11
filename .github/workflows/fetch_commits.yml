@@ -19,14 +19,13 @@ jobs:
       - name: Setup SSH Key
         uses: webfactory/ssh-agent@v0.9.0
         with:
-          # 👇 등록한 Secret 이름과 정확히 일치하는지 다시 확인하세요.
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }} 
+          ssh-private-key: ${{ secrets.ACTIONS_DEPLOY_KEY }} 
 
       # 2. 코드 체크아웃 (SSH를 사용하도록 설정)
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ssh-key: ${{ secrets.DEPLOY_KEY }}
+          ssh-key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           fetch-depth: 0 
 
       - name: Install dependencies
