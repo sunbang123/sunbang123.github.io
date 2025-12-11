@@ -1,20 +1,247 @@
 ---
 layout: default
 ---
-<article class="post">
+<style>
+ @keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+ }
 
-  <header class="post-header">
-    <h1 class="post-title pt-5">{{ page.title | escape }}</h1>
-  </header>
+ @keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+ }
 
+ @keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.5); }
+ }
+
+ .post {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+  background-size: 200% 200%;
+  animation: gradient-shift 15s ease infinite;
+  min-height: 100vh;
+  padding: 2rem;
+  color: #e2e8f0;
+ }
+
+ .post-header {
+  text-align: center;
+  padding: 3rem 0;
+  position: relative;
+ }
+
+ .post-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #a78bfa, #ec4899, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  padding-top: 2rem;
+  animation: float 3s ease-in-out infinite;
+  text-shadow: 0 0 40px rgba(167, 139, 250, 0.5);
+ }
+
+ .post-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  line-height: 1.9;
+  font-size: 1.05rem;
+  animation: glow 3s ease-in-out infinite;
+  color: #e2e8f0;
+ }
+
+ .post-content h1, .post-content h2, .post-content h3 {
+  color: #a78bfa;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+ }
+
+ .post-content a {
+  color: #f472b6;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(244, 114, 182, 0.3);
+  transition: all 0.3s ease;
+ }
+
+ .post-content a:hover {
+  color: #ec4899;
+  border-bottom-color: #ec4899;
+  text-shadow: 0 0 10px rgba(236, 72, 153, 0.5);
+ }
+
+ .post-content p {
+  margin-bottom: 1.2rem;
+ }
+
+ .post-footer {
+  max-width: 800px;
+  margin: 3rem auto 0;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(88, 28, 135, 0.4), rgba(49, 46, 129, 0.4));
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(236, 72, 153, 0.3);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+ }
+
+ .footer-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, #a78bfa, #ec4899);
+  margin: 1.5rem auto;
+  border-radius: 2px;
+ }
+
+ .post-footer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.1) 0%, transparent 70%);
+  animation: float 6s ease-in-out infinite;
+ }
+
+ .post-footer p {
+  position: relative;
+  z-index: 1;
+  margin: 0.8rem 0;
+  font-size: 1rem;
+  color: #cbd5e1;
+ }
+
+ .post-footer a {
+  color: #a78bfa;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0 4px;
+ }
+
+ .post-footer a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #a78bfa, #ec4899);
+  transition: width 0.3s ease;
+ }
+
+ .post-footer a:hover {
+  color: #ec4899;
+  text-shadow: 0 0 10px rgba(236, 72, 153, 0.5);
+ }
+
+ .post-footer a:hover::after {
+  width: 100%;
+ }
+
+ .ai-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.2));
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  margin: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: default;
+ }
+
+ .ai-badge:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(236, 72, 153, 0.3));
+  box-shadow: 0 5px 20px rgba(167, 139, 250, 0.4);
+ }
+
+ .ai-icon {
+  width: 20px;
+  height: 20px;
+  animation: float 2s ease-in-out infinite;
+ }
+
+ .sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #a78bfa;
+  border-radius: 50%;
+  animation: sparkle 2s ease-in-out infinite;
+ }
+
+ @keyframes sparkle {
+  0%, 100% { 
+   opacity: 0;
+   transform: scale(0) rotate(0deg);
+  }
+  50% { 
+   opacity: 1;
+   transform: scale(1) rotate(180deg);
+  }
+ }
+
+ .sparkle:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+ .sparkle:nth-child(2) { top: 20%; right: 15%; animation-delay: 0.5s; }
+ .sparkle:nth-child(3) { bottom: 30%; left: 10%; animation-delay: 1s; }
+ .sparkle:nth-child(4) { bottom: 15%; right: 25%; animation-delay: 1.5s; }
+</style>
+
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+
+<header class="post-header">
+ <h1 class="post-title pt-5">{{ page.title | escape }}</h1>
+</header>
+
+<div class="p-2">
   <div class="post-content">
-    {{ content }}
+  {{ content }}
   </div>
 
   <div class="post-footer">
-    <p >이 페이지는 Jekyll을 사용하여 커스텀 생성되었습니다.</p>
-    <p >이 사이트의 소스 코드는 <a href="https://github.com/sunbang123/sunbang123.github.io">GitHub</a>에서 확인할 수 있습니다.</p>
+  <p>이 블로그는 기본 테마인 minima를 바탕으로 커스텀 생성되었습니다.</p>
+  <p>
+    Git Pages jekyll minima(기본 테마) 생성 방법에 대한 포스팅은
+    <a href="/GitPages(1)/">여기를 클릭하세요</a>
+  </p>
+  
+  <div class="footer-divider"></div>
+  
+  <div style="margin: 1.5rem 0;">
+    <p style="font-size: 0.95rem; color: #cbd5e1; margin-bottom: 1rem;">테마 제작에 도움을 준 AI</p>
+    <span class="ai-badge">
+    <img class="ai-icon" src="https://img.icons8.com/?size=100&id=zQjzFjPpT2Ek&format=png&color=000000" alt="Claude Icon">
+    Claude
+    </span>
+    <span class="ai-badge">
+    <img class="ai-icon" src="https://img.icons8.com/?size=100&id=rnK88i9FvAFO&format=png&color=000000" alt="Gemini Icon">
+    Gemini
+    </span>
   </div>
 
-</article>
-
+  <div class="footer-divider"></div>
+  
+  <p style="margin-top: 1.5rem; font-size: 0.95rem;">
+    소스 코드는 
+    <a href="https://github.com/sunbang123/sunbang123.github.io">GitHub</a>에서 확인하세요
+  </p>
+  </div>
+</div>
