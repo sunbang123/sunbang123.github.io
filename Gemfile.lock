@@ -25,6 +25,9 @@ GEM
     google-protobuf (4.33.2-x86-mingw32)
       bigdecimal
       rake (>= 13)
+    google-protobuf (4.33.2-x86_64-linux-gnu)
+      bigdecimal
+      rake (>= 13)
     http_parser.rb (0.8.0)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
@@ -88,6 +91,8 @@ GEM
       rake (>= 13)
     sass-embedded (1.95.0-x64-mingw-ucrt)
       google-protobuf (~> 4.31)
+    sass-embedded (1.95.0-x86_64-linux-gnu)
+      google-protobuf (~> 4.31)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc (2.4.0-x64-mingw32)
@@ -107,6 +112,7 @@ PLATFORMS
   x64-mingw32
   x64-unknown
   x86-mingw32
+  x86_64-linux
 
 DEPENDENCIES
   http_parser.rb (~> 0.6.0)
