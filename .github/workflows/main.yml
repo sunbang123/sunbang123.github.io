@@ -1,0 +1,82 @@
+# 파일 경로: .github/workflows/fetch_commits.yml
+name: Fetch GitHub Commits
+
+on:
+  push:
+    branches:
+      - master # 또는 main 브랜치 이름
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  fetch_and_save:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. SSH 키 설정
+      - name: Setup SSH Key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }} # 2단계에서 저장한 Private Key 사용
+
+      # 2. 코드 체크아웃 (SSH를 사용하도록 설정)
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
+          fetch-depth: 0 # 전체 커밋 내역을 가져옴
+
+      - name: Install dependencies
+        run: sudo apt-get install -y jq
+
+      # 3. Fetch and process commits (PAT를 사용했던 부분은 그대로 유지하거나 GITHUB_TOKEN으로 대체)
+      - name: Fetch and process commits
+        id: fetch
+        env:
+          GITHUB_USERNAME: sunbang123
+          # PAT 대신 Actions 기본 토큰 사용 (Deploy Key는 리포지토리 자체 접근에 사용)
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        run: |
+          # -----------------------------------------------------
+          # API 호출: GITHUB_TOKEN을 사용하여 Rate Limit 해결
+          # -----------------------------------------------------
+          # PAT를 사용한 이전 코드 대신 GitHub Actions가 자동으로 제공하는
+          # ${{ secrets.GITHUB_TOKEN }}을 사용합니다.
+          # 이 토큰은 Actions가 실행되는 동안 인증을 제공합니다.
+          REPOS_URL="https://api.github.com/users/${GITHUB_USERNAME}/repos?type=owner"
+          
+          # PAT 대신 GITHUB_TOKEN 환경 변수 사용
+          REPO_NAMES=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" $REPOS_URL | jq -r '.[].name')
+          
+          ALL_COMMITS="[]"
+          
+          for REPO_NAME in $REPO_NAMES; do
+              COMMITS_URL="https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/commits?per_page=5"
+              
+              COMMITS=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" $COMMITS_URL | jq --arg repo "$REPO_NAME" '.[] | {
+                  repo: $repo,
+                  message: .commit.message, 
+                  author: .commit.author.name, 
+                  date: .commit.author.date,
+                  sha: .sha
+              }')
+              
+              if [ -n "$COMMITS" ]; then
+                  for COMMIT in $COMMITS; do
+                      ALL_COMMITS=$(echo "$ALL_COMMITS" | jq --argjson commit "$COMMIT" '. + [$commit]')
+                  done
+              fi
+          done
+          
+          FINAL_DATA=$(echo "$ALL_COMMITS" | jq 'sort_by(.date) | reverse')
+
+          mkdir -p _data
+          echo "$FINAL_DATA" > _data/commits_data.json
+          
+      # 5. 커밋 및 푸시 (Deploy Key를 사용하여 변경 사항 푸시)
+      - name: Commit and push if changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Automatic commit: Update recent GitHub activity data"
+          files: _data/commits_data.json
+          # Deploy Key를 사용했기 때문에 이 액션도 정상적으로 푸시할 수 있습니다.
