@@ -10,7 +10,10 @@ on:
   workflow_dispatch: # 수동 실행을 위한 트리거
   schedule:
     - cron: '0 0 * * *' # 매일 자정에 자동 실행
-
+    
+permissions:
+  contents: write
+  
 jobs:
   fetch_and_save:
     runs-on: ubuntu-latest
