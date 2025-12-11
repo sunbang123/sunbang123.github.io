@@ -4,8 +4,13 @@ name: Build Jekyll Site with Ruby 3.2
 
 on:
   push:
-    branches: ["main"] # 👈 주 브랜치 이름이 'main'인지 'master'인지 확인하고 수정하세요.
+    branches: ["main"]
   workflow_dispatch:
+
+permissions:
+  contents: read   
+  pages: write     
+  id-token: write  
 
 jobs:
   build:
@@ -13,32 +18,28 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4 # v3 대신 최신 v4 사용
+        uses: actions/checkout@v4
 
       - name: Setup Ruby 3.2
         uses: ruby/setup-ruby@v1
         with:
-          # 🚨 핵심: Ruby 버전을 3.2로 명시하여 버전 충돌 문제 해결
           ruby-version: '3.2' 
           bundler-cache: true 
 
       - name: Install dependencies
-        run: bundle install --jobs 4 --retry 3 # 에러 시 재시도 추가
+        run: bundle install --jobs 4 --retry 3 
 
       - name: Add Linux platform lock
-        # 🚨 핵심: Windows에서 push한 경우 Linux 플랫폼을 추가하여 호환성 오류 해결
         run: bundle lock --add-platform x86_64-linux
 
       - name: Build Jekyll site
         run: bundle exec jekyll build
 
-      # 빌드 결과물 업로드 (GitHub Pages 배포를 위해 필요)
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./_site # Jekyll의 기본 빌드 디렉토리
+          path: ./_site
 
-  # GitHub Pages 서비스에 배포하는 단계 (내장 워크플로우를 모방)
   deploy:
     environment:
       name: github-pages
@@ -48,4 +49,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4 # Pages 전용 Deploy Action 사용
+        uses: actions/deploy-pages@v4
