@@ -16,12 +16,17 @@
       </label>
 
       <div class="trigger">
-        {%- for path in page_paths -%}
+        <a class="page-link" href="/">Home</a>
+        <a class="page-link" href="/article/">글 목록</a>
+        <a class="page-link" href="/project/">프로젝트</a>
+        <a class="page-link" href="/tags/">태그</a>
+        <a class="page-link" href="/about/">소개</a>
+        <!-- {%- for path in page_paths -%}
           {%- assign my_page = site.pages | where: "path", path | first -%}
           {%- if my_page.title -%}
           <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
           {%- endif -%}
-        {%- endfor -%}
+        {%- endfor -%} -->
       </div>
     </nav>
   {%- endif -%}
