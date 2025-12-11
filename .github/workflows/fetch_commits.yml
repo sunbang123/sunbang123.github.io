@@ -34,12 +34,12 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get install -y jq
 
-      # 3. Fetch and process commits
+# 3. Fetch and process commits
       - name: Fetch and process commits
         id: fetch
         env:
           GITHUB_USERNAME: sunbang123
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Actions 기본 토큰 사용 (안전)
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           REPOS_URL="https://api.github.com/users/${GITHUB_USERNAME}/repos?type=owner"
           REPO_NAMES=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" $REPOS_URL | jq -r '.[].name')
@@ -49,23 +49,26 @@ jobs:
           for REPO_NAME in $REPO_NAMES; do
               COMMITS_URL="https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/commits?per_page=5"
               
-              COMMITS=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" $COMMITS_URL | jq --arg repo "$REPO_NAME" '.[] | {
-                  repo: $repo,
-                  message: .commit.message, 
-                  author: .commit.author.name, 
-                  date: .commit.author.date,
-                  sha: .sha
-              }')
+              COMMITS_RAW_DATA=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" $COMMITS_URL | jq -c --arg repo "$REPO_NAME" '
+                  .[] | {
+                      repo: $repo,
+                      message: .commit.message, 
+                      author: .commit.author.name, 
+                      date: .commit.author.date,
+                      sha: .sha
+                  }
+              ')
               
-              if [ -n "$COMMITS" ]; then
-                  for COMMIT in $COMMITS; do
-                      ALL_COMMITS=$(echo "$ALL_COMMITS" | jq --argjson commit "$COMMIT" '. + [$commit]')
-                  done
+              if [ -n "$COMMITS_RAW_DATA" ]; then
+                  NEW_COMMITS_ARRAY=$(echo "$COMMITS_RAW_DATA" | jq -s '.')
+                  
+                  ALL_COMMITS=$(echo "$ALL_COMMITS" | jq --argjson new_commits "$NEW_COMMITS_ARRAY" '. + $new_commits')
               fi
           done
           
+          # 최종 데이터를 날짜 역순으로 정렬합니다.
           FINAL_DATA=$(echo "$ALL_COMMITS" | jq 'sort_by(.date) | reverse')
-
+          
           mkdir -p _data
           echo "$FINAL_DATA" > _data/commits_data.json
           
