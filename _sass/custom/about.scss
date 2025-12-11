@@ -13,14 +13,14 @@
   50% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.5); }
  }
 
- .post {
-  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
-  background-size: 200% 200%;
-  animation: gradient-shift 15s ease infinite;
-  min-height: 100vh;
-  padding: 2rem;
-  color: #e2e8f0;
- }
+//  .post {
+//   background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+//   background-size: 200% 200%;
+//   animation: gradient-shift 15s ease infinite;
+//   min-height: 100vh;
+//   padding: 2rem;
+//   color: #e2e8f0;
+//  }
 
  .post-header {
   text-align: center;
@@ -28,10 +28,9 @@
   position: relative;
  }
 
- .post-title {
-  font-size: 3.5rem;
+ h1.post-title {
   font-weight: 800;
-  background: linear-gradient(to right, #a78bfa, #ec4899, #f472b6);
+  background: white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -50,13 +49,15 @@
   border-radius: 20px;
   border: 1px solid rgba(167, 139, 250, 0.2);
   line-height: 1.9;
-  font-size: 1.05rem;
   animation: glow 3s ease-in-out infinite;
   color: #e2e8f0;
  }
 
+ .post-content>h1 {
+    font-size: 2em;
+}
+
  .post-content h1, .post-content h2, .post-content h3 {
-  color: #a78bfa;
   margin-top: 2rem;
   margin-bottom: 1rem;
  }

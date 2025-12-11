@@ -53,9 +53,9 @@ layout: default
         
         <!-- 태그는 항상 표시 -->
         {%- if post.tags and post.tags.size > 0 -%}
-          <div class="post-tags" role="list" aria-label="포스트 태그">
+          <div class="post-tags mb-3" role="list" aria-label="포스트 태그">
             {%- for tag in post.tags limit: 3 -%}
-              <span class="post-tag" role="listitem">{{ tag | escape }}</span>
+              <span class="post-tag tech-badge mb-2" role="listitem">{{ tag | escape }}</span>
             {%- endfor -%}
             {%- if post.tags.size > 3 -%}
               <span class="post-tag-more">+{{ post.tags.size | minus: 3 }}</span>

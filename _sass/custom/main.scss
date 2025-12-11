@@ -616,7 +616,8 @@ body {
     margin-bottom: 2rem;
 }
 
-.tech-stack {
+.about-content>.tech-stack
+{
     display: flex;
     flex-wrap: wrap;
     gap: 0.8rem;

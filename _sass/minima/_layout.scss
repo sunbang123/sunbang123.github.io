@@ -328,7 +328,7 @@ custom
 .post{
   max-width: 800px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 0.5rem;
   word-wrap: break-word; /* 또는 overflow-wrap: break-word; */
   word-break: break-word; /* 단어가 길 경우 줄바꿈 */
 }
@@ -350,8 +350,6 @@ search style
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding: 1rem;
-  background-color: #888888;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
