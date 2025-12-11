@@ -704,7 +704,7 @@ layout: default
         .about-card, .commits-card {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 20px;
-            padding: 2.5rem;
+            padding: 1.5rem;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -1134,10 +1134,13 @@ layout: default
                     const dateStr = dateObj.toLocaleDateString('ko-KR');
                     const sha = commit.sha.substring(0, 7);
                     const message = commit.message.split('\n')[0];
+                    const commitUrl = `https://github.com/sunbang123/${commit.repo}/commit/${commit.sha}`;
 
                     html += `
                         <div class="commit-item">
-                            <div class="commit-message">${message}</div>
+                            <a href="${commitUrl}" target="_blank" title="${message} 커밋 상세 보기">
+                                <div class="commit-message">${message}</div>
+                            </a>
                             <div class="commit-meta">
                                 <span class="commit-author">👤 ${commit.author}</span>
                                 <span class="commit-date">📅 ${dateStr}</span>
