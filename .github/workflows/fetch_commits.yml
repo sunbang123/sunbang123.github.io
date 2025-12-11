@@ -2,18 +2,19 @@
 name: Fetch GitHub Commits
 
 on:
-  # 'on' 하위 항목은 모두 같은 레벨로 들여쓰기 해야 합니다.
   push:
     branches:
-      # 사용하는 주 브랜치가 'master'가 아닌 'main'이라면 'main'으로 수정하세요.
       - master 
-  workflow_dispatch: # 수동 실행을 위한 트리거
+  # 수동 실행을 위한 트리거
+  workflow_dispatch: 
+  # 매일 자정에 자동 실행
   schedule:
-    - cron: '0 0 * * *' # 매일 자정에 자동 실행
+    - cron: '0 0 * * *' 
     
+# 파일 생성 및 푸시를 위한 권한 부여 (필수)
 permissions:
   contents: write
-  
+
 jobs:
   fetch_and_save:
     runs-on: ubuntu-latest
@@ -22,6 +23,7 @@ jobs:
       - name: Setup SSH Key
         uses: webfactory/ssh-agent@v0.9.0
         with:
+          # Secret 이름 확인 후 사용: 'ACTIONS_DEPLOY_KEY'
           ssh-private-key: ${{ secrets.ACTIONS_DEPLOY_KEY }} 
 
       # 2. 코드 체크아웃 (SSH를 사용하도록 설정)
@@ -31,48 +33,64 @@ jobs:
           ssh-key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           fetch-depth: 0 
 
+      # jq 설치 (JSON 처리를 위해 필요)
       - name: Install dependencies
         run: sudo apt-get install -y jq
 
-# 3. Fetch and process commits
+      # 3. GitHub API를 통해 커밋 데이터를 가져와 JSON 파일로 처리
       - name: Fetch and process commits
         id: fetch
         env:
           GITHUB_USERNAME: sunbang123
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          REPOS_URL="https://api.github.com/users/${GITHUB_USERNAME}/repos?type=owner"
-          REPO_NAMES=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" $REPOS_URL | jq -r '.[].name')
-          
+          REPOS_URL="https://api.github.com/users/${GITHUB_USERNAME}/repos" 
+
+          REPO_NAMES_RAW=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" $REPOS_URL)
+
+          if echo "$REPO_NAMES_RAW" | jq -e '.[].name' > /dev/null 2>&1; then
+              REPO_NAMES=$(echo "$REPO_NAMES_RAW" | jq -r '.[].name')
+          else
+              echo "Error: Failed to fetch repositories. Check username, or API Rate Limit."
+              echo "API Response: $REPO_NAMES_RAW"
+              # 이 단계에서 실패 시, 워크플로우를 중단합니다.
+              exit 1 
+          fi
+
           ALL_COMMITS="[]"
           
           for REPO_NAME in $REPO_NAMES; do
               COMMITS_URL="https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/commits?per_page=5"
               
-              COMMITS_RAW_DATA=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" $COMMITS_URL | jq -c --arg repo "$REPO_NAME" '
-                  .[] | {
-                      repo: $repo,
-                      message: .commit.message, 
-                      author: .commit.author.name, 
-                      date: .commit.author.date,
-                      sha: .sha
-                  }
-              ')
-              
-              if [ -n "$COMMITS_RAW_DATA" ]; then
-                  NEW_COMMITS_ARRAY=$(echo "$COMMITS_RAW_DATA" | jq -s '.')
+              COMMITS_RAW_DATA=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" $COMMITS_URL)
+
+              if echo "$COMMITS_RAW_DATA" | jq -e '.[0].sha' > /dev/null 2>&1; then
+
+                  COMMITS=$(echo "$COMMITS_RAW_DATA" | jq -c --arg repo "$REPO_NAME" '
+                      .[] | {
+                          repo: $repo,
+                          message: .commit.message, 
+                          author: .commit.author.name, 
+                          date: .commit.author.date,
+                          sha: .sha
+                      }
+                  ')
                   
-                  ALL_COMMITS=$(echo "$ALL_COMMITS" | jq --argjson new_commits "$NEW_COMMITS_ARRAY" '. + $new_commits')
+                  if [ -n "$COMMITS" ]; then
+                      NEW_COMMITS_ARRAY=$(echo "$COMMITS" | jq -s '.')
+                      ALL_COMMITS=$(echo "$ALL_COMMITS" | jq --argjson new_commits "$NEW_COMMITS_ARRAY" '. + $new_commits')
+                  fi
+              else
+                  echo "Warning: Skipped repository $REPO_NAME (No commits or API error)."
               fi
           done
           
-          # 최종 데이터를 날짜 역순으로 정렬합니다.
           FINAL_DATA=$(echo "$ALL_COMMITS" | jq 'sort_by(.date) | reverse')
           
           mkdir -p _data
           echo "$FINAL_DATA" > _data/commits_data.json
           
-      # 5. 커밋 및 푸시
+      # 5. 변경된 JSON 파일을 자동 커밋 및 푸시
       - name: Commit and push if changed
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
