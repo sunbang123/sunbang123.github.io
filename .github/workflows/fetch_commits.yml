@@ -83,9 +83,13 @@ jobs:
           # 날짜순으로 정렬 (최신순)
           FINAL_DATA=$(jq 'sort_by(.date) | reverse' "$TEMP_COMMITS_FILE")
           
+          # 마지막 업데이트 시간 추가
+          CURRENT_TIME=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          FINAL_WITH_TIME=$(echo "$FINAL_DATA" | jq --arg time "$CURRENT_TIME" '. + [{"last_updated": $time}]')
+          
           # 결과 저장
           mkdir -p _data
-          echo "$FINAL_DATA" > _data/commits_data.json
+          echo "$FINAL_WITH_TIME" > _data/commits_data.json
           
           # 임시 파일 삭제
           rm -f "$TEMP_COMMITS_FILE"
@@ -97,3 +101,4 @@ jobs:
         with:
           commit_message: "Automatic commit: Update recent GitHub activity data"
           file_pattern: _data/commits_data.json
+          skip_dirty_check: true
