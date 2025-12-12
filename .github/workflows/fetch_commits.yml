@@ -1,17 +1,22 @@
 name: Fetch GitHub Commits
+
 on:
   push:
     branches:
-      - main 
+      - main
     paths-ignore:
-    - '_data/commits_data.json'
-    
-  workflow_dispatch: 
+      - '_data/commits_data.json'
+      
+  workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *' 
+    - cron: '0 0 * * *'  
     
 permissions:
   contents: write
+
+concurrency:
+  group: fetch_commits_group
+  cancel-in-progress: true
 
 jobs:
   fetch_and_save:
@@ -37,7 +42,8 @@ jobs:
           GITHUB_USERNAME: sunbang123
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          REPOS_URL="https://api.github.com/users/${GITHUB_USERNAME}/repos?type=owner"
+          # REPOS_URL에서 '?type=owner' 제거 권장 (API 오류 방지)
+          REPOS_URL="https://api.github.com/users/${GITHUB_USERNAME}/repos" 
           
           # 레포지토리 목록 가져오기
           REPO_NAMES_RAW=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" "$REPOS_URL")
@@ -64,7 +70,7 @@ jobs:
               
               # 커밋 데이터 검증
               if echo "$COMMITS_RAW_DATA" | jq -e '.[0].sha' > /dev/null 2>&1; then
-                  # 커밋 데이터를 배열로 변환 후 기존 데이터에 추가
+                  # 커밋 데이터를 배열로 변환
                   COMMITS_ARRAY=$(echo "$COMMITS_RAW_DATA" | jq -c --arg repo "$REPO_NAME" '
                       [.[] | {
                           repo: $repo,
@@ -75,7 +81,7 @@ jobs:
                       }]
                   ')
                   
-                  # 배열 병합
+                  # 배열 병합 (임시 파일 사용으로 JSON 병합 오류 완벽 방지)
                   jq -s '.[0] + .[1]' "$TEMP_COMMITS_FILE" <(echo "$COMMITS_ARRAY") > "${TEMP_COMMITS_FILE}.new"
                   mv "${TEMP_COMMITS_FILE}.new" "$TEMP_COMMITS_FILE"
               else
@@ -103,5 +109,5 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Automatic commit: Update recent GitHub activity data"
-          file_pattern: _data/commits_data.json
-         # skip_dirty_check: true
+          files: _data/commits_data.json
+          # file_pattern 대신 files 사용이 명확합니다.
