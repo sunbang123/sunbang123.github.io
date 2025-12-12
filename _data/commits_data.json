@@ -1,5 +1,12 @@
 [
   {
+    "repo": "2D_RPG",
+    "message": "Create README.md",
+    "author": "김선영",
+    "date": "2025-12-12T02:01:40Z",
+    "sha": "930e4d8dbb0a6a9ed853b9f566a9d8199fdf42d6"
+  },
+  {
     "repo": "MonstersInDungeon",
     "message": "fix: 안드로이드 빌드시 로비화면 에셋 로드 안되는 오류 해결 (#43)",
     "author": "김선영",
@@ -56,13 +63,6 @@
     "sha": "37c3a59559f1e9e3c4bed247de97520a38227ec2"
   },
   {
-    "repo": "Funkin",
-    "message": "Host `README.md` images on the repository",
-    "author": "TechnikTil",
-    "date": "2025-10-16T23:53:07Z",
-    "sha": "668681250489b6a452ed20b915e51e4ba67a5073"
-  },
-  {
     "repo": "ClickerTycoon",
     "message": "Merge pull request #12 from sunbang123/sun\n\nfeat: 상점 로직 업데이트, 원거리 딜러 로직",
     "author": "김선영",
@@ -98,27 +98,6 @@
     "sha": "472bb176a05c7e01904e6d5db25a3a9e5d523b5f"
   },
   {
-    "repo": "Funkin",
-    "message": "Merge to sync commit histories",
-    "author": "Hundrec",
-    "date": "2025-09-18T17:33:29Z",
-    "sha": "e62c5a223c406db56ff13aba12bdc837fab59124"
-  },
-  {
-    "repo": "Funkin",
-    "message": "Merge changes from main",
-    "author": "Hundrec",
-    "date": "2025-09-18T17:28:01Z",
-    "sha": "5fc74911214ee7cfe791616e29e8f0dc4631220e"
-  },
-  {
-    "repo": "Funkin",
-    "message": "KoloInDaKrib",
-    "author": "Hundrec",
-    "date": "2025-09-18T17:27:42Z",
-    "sha": "9598455118c685178e385e0f6292409b25d42ba0"
-  },
-  {
     "repo": "OddOmok-Renewal",
     "message": "Update README.md",
     "author": "김선영",
@@ -152,13 +131,6 @@
     "author": "김선영",
     "date": "2025-09-13T04:47:14Z",
     "sha": "34501c37a9b33f60529adab092000f4a10f4aab2"
-  },
-  {
-    "repo": "Funkin",
-    "message": "contribute I guess",
-    "author": "Nightfall-16",
-    "date": "2025-09-10T11:32:09Z",
-    "sha": "0e4b9753a04650b9f9229915cc82140c09f1452a"
   },
   {
     "repo": "capstone_project",
@@ -292,6 +264,13 @@
     "author": "김선영",
     "date": "2025-03-28T09:38:32Z",
     "sha": "4a3331a22d305dd638f3c7c62d581cbb77bf09f0"
+  },
+  {
+    "repo": "sample-repository",
+    "message": "initialize commit",
+    "author": "김선영",
+    "date": "2025-03-19T01:38:18Z",
+    "sha": "c54acd1d0a51a5d1b5ab520d2dd93507191090fb"
   },
   {
     "repo": "portfolio",
@@ -817,5 +796,8 @@
     "author": "Loloara",
     "date": "2022-05-21T02:09:11Z",
     "sha": "ae04d6208df49e236c5f20e512ecbac72d767333"
+  },
+  {
+    "last_updated": "2025-12-12T02:14:18Z"
   }
 ]
