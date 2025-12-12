@@ -101,4 +101,4 @@ jobs:
         with:
           commit_message: "Automatic commit: Update recent GitHub activity data"
           file_pattern: _data/commits_data.json
-          skip_dirty_check: true
+         # skip_dirty_check: true
