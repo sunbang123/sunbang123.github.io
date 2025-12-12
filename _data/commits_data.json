@@ -1,6 +1,13 @@
 [
   {
     "repo": "2D_RPG",
+    "message": "test2",
+    "author": "김선영",
+    "date": "2025-12-12T03:06:23Z",
+    "sha": "5ed7c2cac4ff5784b016217a09e5163a71fd8068"
+  },
+  {
+    "repo": "2D_RPG",
     "message": "Create README.md",
     "author": "김선영",
     "date": "2025-12-12T02:01:40Z",
@@ -728,6 +735,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2025-12-12T03:03:55Z"
+    "last_updated": "2025-12-12T03:07:51Z"
   }
 ]
