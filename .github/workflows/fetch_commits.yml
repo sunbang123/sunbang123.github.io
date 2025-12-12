@@ -42,15 +42,14 @@ jobs:
           GITHUB_USERNAME: sunbang123
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # REPOS_URL에서 '?type=owner' 제거 권장 (API 오류 방지)
-          REPOS_URL="https://api.github.com/users/${GITHUB_USERNAME}/repos" 
-          
+          REPOS_URL="https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=pushed&direction=desc"
+          EXCLUDED_REPO="${GITHUB_USERNAME}.github.io"
           # 레포지토리 목록 가져오기
           REPO_NAMES_RAW=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" "$REPOS_URL")
           
           # API 응답 검증
           if echo "$REPO_NAMES_RAW" | jq -e '.[].name' > /dev/null 2>&1; then
-              REPO_NAMES=$(echo "$REPO_NAMES_RAW" | jq -r '.[].name')
+          REPO_NAMES=$(echo "$REPO_NAMES_RAW" | jq -r '.[].name' | grep -v -w "$EXCLUDED_REPO")
           else
               echo "Error: Failed to fetch repositories. Check username or API Rate Limit."
               echo "API Response: $REPO_NAMES_RAW"
