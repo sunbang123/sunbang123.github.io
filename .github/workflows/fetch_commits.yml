@@ -2,7 +2,7 @@ name: Fetch GitHub Commits
 on:
   push:
     branches:
-      - master 
+      - main 
   workflow_dispatch: 
   schedule:
     - cron: '0 0 * * *' 
