@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - main 
+    paths-ignore:
+    - '_data/commits_data.json'
+    
   workflow_dispatch: 
   schedule:
     - cron: '0 0 * * *' 
