@@ -1,5 +1,14 @@
 [
   {
+    "type": "issue",
+    "repo": "UnitySystem",
+    "title": "Issue Test",
+    "state": "open",
+    "date": "2025-12-14T04:26:39Z",
+    "url": "https://github.com/sunbang123/UnitySystem/issues/1",
+    "number": 1
+  },
+  {
     "type": "pull_request",
     "repo": "MonstersInDungeon",
     "title": "fix: 안드로이드 빌드 시 로비화면 에셋 로드 안되는 오류 해결",
@@ -108,6 +117,6 @@
     "number": 1
   },
   {
-    "last_updated": "2025-12-14T04:23:09Z"
+    "last_updated": "2025-12-14T04:28:11Z"
   }
 ]
