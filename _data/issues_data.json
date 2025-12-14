@@ -1,0 +1,113 @@
+[
+  {
+    "type": "pull_request",
+    "repo": "MonstersInDungeon",
+    "title": "fix: 안드로이드 빌드 시 로비화면 에셋 로드 안되는 오류 해결",
+    "state": "closed",
+    "date": "2025-12-09T12:07:00Z",
+    "url": "https://github.com/sunbang123/MonstersInDungeon/pull/43",
+    "number": 43
+  },
+  {
+    "type": "pull_request",
+    "repo": "MonstersInDungeon",
+    "title": "Sunyoung",
+    "state": "closed",
+    "date": "2025-12-07T12:54:41Z",
+    "url": "https://github.com/sunbang123/MonstersInDungeon/pull/42",
+    "number": 42
+  },
+  {
+    "type": "pull_request",
+    "repo": "MonstersInDungeon",
+    "title": "System: 스토리모드, 세이브 로드, feat: 아이템 인벤토리 완성, Error: Addressable 씬 로드",
+    "state": "closed",
+    "date": "2025-12-06T20:18:15Z",
+    "url": "https://github.com/sunbang123/MonstersInDungeon/pull/41",
+    "number": 41
+  },
+  {
+    "type": "pull_request",
+    "repo": "MonstersInDungeon",
+    "title": "main 내려받기",
+    "state": "closed",
+    "date": "2025-12-05T01:15:45Z",
+    "url": "https://github.com/sunbang123/MonstersInDungeon/pull/40",
+    "number": 40
+  },
+  {
+    "type": "pull_request",
+    "repo": "MonstersInDungeon",
+    "title": "Sunyoung",
+    "state": "closed",
+    "date": "2025-12-02T16:18:05Z",
+    "url": "https://github.com/sunbang123/MonstersInDungeon/pull/39",
+    "number": 39
+  },
+  {
+    "type": "pull_request",
+    "repo": "ClickerTycoon",
+    "title": "merge",
+    "state": "closed",
+    "date": "2025-10-13T11:56:46Z",
+    "url": "https://github.com/sunbang123/ClickerTycoon/pull/13",
+    "number": 13
+  },
+  {
+    "type": "pull_request",
+    "repo": "ClickerTycoon",
+    "title": "feat: 상점 로직 업데이트, 원거리 딜러 로직",
+    "state": "closed",
+    "date": "2025-10-13T03:16:30Z",
+    "url": "https://github.com/sunbang123/ClickerTycoon/pull/12",
+    "number": 12
+  },
+  {
+    "type": "pull_request",
+    "repo": "ClickerTycoon",
+    "title": "Minseok",
+    "state": "closed",
+    "date": "2025-10-13T02:25:30Z",
+    "url": "https://github.com/sunbang123/ClickerTycoon/pull/11",
+    "number": 11
+  },
+  {
+    "type": "pull_request",
+    "repo": "ClickerTycoon",
+    "title": "에셋 수정완료",
+    "state": "closed",
+    "date": "2025-10-10T02:40:17Z",
+    "url": "https://github.com/sunbang123/ClickerTycoon/pull/10",
+    "number": 10
+  },
+  {
+    "type": "pull_request",
+    "repo": "ClickerTycoon",
+    "title": "Sun",
+    "state": "closed",
+    "date": "2025-10-10T02:38:13Z",
+    "url": "https://github.com/sunbang123/ClickerTycoon/pull/9",
+    "number": 9
+  },
+  {
+    "type": "pull_request",
+    "repo": "Apple_Game",
+    "title": "Bug Fix",
+    "state": "closed",
+    "date": "2025-03-28T10:04:02Z",
+    "url": "https://github.com/sunbang123/Apple_Game/pull/1",
+    "number": 1
+  },
+  {
+    "type": "pull_request",
+    "repo": "capstone_project",
+    "title": "플레이 규칙을 설명하는 동영상 입니다.",
+    "state": "closed",
+    "date": "2025-03-18T14:24:50Z",
+    "url": "https://github.com/sunbang123/capstone_project/pull/1",
+    "number": 1
+  },
+  {
+    "last_updated": "2025-12-14T04:23:09Z"
+  }
+]
