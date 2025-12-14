@@ -1,0 +1,121 @@
+---
+layout: default
+---
+
+<div class="home mt-5">
+
+  {{ content }}
+
+  {%- if site.posts.size > 0 -%}
+    <!-- 검색 기능 -->
+    <div class="search-container mb-4">
+      <div class="search-wrapper">
+        <input type="text" id="searchInput" placeholder="포스트 제목이나 내용으로 검색하세요..." class="search-input" aria-label="포스트 검색">
+        <div class="search-icon" aria-hidden="true"><i class="bi bi-search"></i></div>
+        <button class="search-clear" id="clearSearch" style="display: none;" aria-label="검색어 지우기" tabindex="0">×</button>
+      </div>
+      <div class="search-stats" id="searchStats">총 {{ site.posts.size }}개의 포스트</div>
+    </div>
+
+    <!-- 보기 옵션 -->
+    <div class="view-controls mb-3">
+      <div class="view-options">
+        <button id="toggleView" class="btn btn-outline-secondary btn-sm">
+          <span id="toggleText">📋 간단히 보기</span>
+        </button>
+        <select id="postsPerPage" class="form-select form-select-sm d-inline-block" style="width: auto;">
+          <option value="5">5개씩 보기</option>
+          <option value="10" selected>10개씩 보기</option>
+          <option value="20">20개씩 보기</option>
+          <option value="all">전체 보기</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- 포스트 목록 -->
+    <ul class="post-list p-0" role="list" id="postList">
+      {%- for post in site.posts -%}
+      <li class="post-item" 
+          data-title="{{ post.title | downcase | escape }}"
+          data-content="{{ post.excerpt | strip_html | downcase | escape }}"
+          data-tags="{{ post.tags | join: ' ' | downcase | escape }}"
+          data-index="{{ forloop.index0 }}"
+          role="listitem">
+        {%- assign date_format = site.minima.date_format | default: "%Y년 %m월 %d일" -%}
+        <time class="post-meta" datetime="{{ post.date | date_to_xmlschema }}">
+          {{ post.date | date: date_format }}
+        </time>
+        <h3>
+          <a class="post-link text-decoration-none text-white" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
+        </h3>
+        
+        <!-- 태그는 항상 표시 -->
+        {%- if post.tags and post.tags.size > 0 -%}
+          <div class="post-tags mb-3" role="list" aria-label="포스트 태그">
+            {%- for tag in post.tags limit: 3 -%}
+              <span class="post-tag tech-badge mb-2" role="listitem">{{ tag | escape }}</span>
+            {%- endfor -%}
+            {%- if post.tags.size > 3 -%}
+              <span class="post-tag-more">+{{ post.tags.size | minus: 3 }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+        
+        <!-- 상세 내용 (상세히 보기 모드에서만 표시) -->
+        <div class="post-details">
+          {%- if site.show_excerpts and post.excerpt -%}
+            <div class="post-excerpt-wrapper">
+              {{ post.excerpt | strip_html | truncatewords: 30 }}
+            </div>
+          {%- elsif post.content -%}
+            <div class="post-excerpt-wrapper">
+              {{ post.content | strip_html | truncatewords: 30 }}
+            </div>
+          {%- endif -%}
+        </div>
+      </li>
+      {%- endfor -%}
+    </ul>
+
+    <!-- 페이징 -->
+    <div class="pagination-container text-center mt-4" id="paginationContainer">
+      <nav aria-label="포스트 페이지 네비게이션">
+        <ul class="pagination justify-content-center" id="pagination">
+          <!-- 페이징 버튼들이 JavaScript로 생성됩니다 -->
+        </ul>
+      </nav>
+      
+      <!-- 더 보기 버튼 (무한 스크롤 스타일) -->
+      <button class="btn btn-secondary load-more-btn" id="loadMoreBtn" style="display: none;">
+        <span class="load-more-text">더 보기</span>
+        <span class="load-more-count"></span>
+      </button>
+    </div>
+
+    <!-- 검색 결과 없음 -->
+    <div class="no-results" id="noResults" style="display: none;" role="status" aria-live="polite">
+      <div class="no-results-content">
+        <div class="no-results-icon" aria-hidden="true">🔍</div>
+        <h3>검색 결과가 없습니다</h3>
+        <p>다른 키워드로 다시 검색해보세요</p>
+      </div>
+    </div>
+
+    <!-- RSS 구독 -->
+    <div class="rss-subscribe mt-4">
+      <p>
+        <a href="{{ "/feed.xml" | relative_url }}" class="text-decoration-none">
+          📡 RSS로 구독하기
+        </a>
+      </p>
+    </div>
+  {%- else -%}
+    <div class="no-posts-message text-center">
+      <h2>아직 포스트가 없습니다</h2>
+      <p>첫 번째 포스트를 작성해보세요!</p>
+    </div>
+  {%- endif -%}
+</div>
+

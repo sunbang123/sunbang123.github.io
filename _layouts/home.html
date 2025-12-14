@@ -1,68 +1,128 @@
 ---
 layout: default
 ---
-<div class="home mt-5">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
-
-  {{ content }}
-
-  {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading animated-title">{{ page.list_title | default: "Posts" }}</h2>
-    <ul class="post-list p-0">
-      {%- for post in site.posts -%}
-      <li class="post-item">
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <h3>
-          <a class="post-link text-decoration-none" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
-      </li>
-      {%- endfor -%}
-    </ul>
-
-    <p class="rss-subscribe">subscribe <a class="text-decoration-none" href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
-  {%- endif -%}
-
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    gsap.registerPlugin(ScrollTrigger);
-
-    // 제목 애니메이션
-    gsap.from('.animated-title', {
-        duration: 1,
-        y: -50,
-        opacity: 0,
-        ease: 'power3.out'
-    });
-
-    // 포스트 아이템들을 배치(batch)로 처리
-    const posts = gsap.utils.toArray('.post-item');
-    const batchSize = 3; // 한 번에 처리할 포스트 수
-    
-    for(let i = 0; i < posts.length; i += batchSize) {
-        const batch = posts.slice(i, i + batchSize);
+<body>
+    <section class="hero-section">
+        <div class="particles" id="particles"></div>
         
-        gsap.from(batch, {
-            scrollTrigger: {
-                trigger: batch[0],
-                start: 'top bottom-=100',
-                toggleActions: 'play none none none'
-            },
-            x: -30,
-            opacity: 0,
-            duration: 0.4,
-            stagger: 0.1,
-            ease: 'power2.out'
-        });
-    }
-});
-</script>
+        <div class="gradient-overlay"></div>
+        
+        <div class="diagonal-bg"></div>
+
+        <div class="glow-effect" style="top: 20%; left: 50%; transform: translateX(-50%);"></div>
+        <div class="glow-effect" style="bottom: 20%; left: 50%; transform: translateX(-50%);"></div>
+
+        <div class="background-score-overlay" id="backgroundScoreOverlay">
+            </div>
+
+        <div class="hero-content">
+            <div class="hero-greeting">
+                ✨ WELCOME ✨
+            </div>
+
+            <h1 class="hero-title">
+                Hi 👋, I'm Kim SunYeong
+                <span class="typing-cursor"></span>
+            </h1>
+
+            <div class="decorative-line"></div>
+
+            <p class="hero-subtitle">
+                개발자 / 컨텐츠 크리에이터
+            </p>
+
+            <p class="hero-description">
+                게임 개발, 아트, 프로그래밍 등 다양한 주제를 다루며<br>
+                제공하는 블로그입니다.
+            </p>
+
+            <div class="icon-slider">
+                <div class="icon-track">
+                    <div class="icon-item">💻</div>
+                    <div class="icon-item">🚀</div>
+                    <div class="icon-item">⚡</div>
+                    <div class="icon-item">🎨</div>
+                    <div class="icon-item">📱</div>
+                    <div class="icon-item">🔥</div>
+                    <div class="icon-item">✨</div>
+                    <div class="icon-item">🎯</div>
+                    <div class="icon-item">💻</div>
+                    <div class="icon-item">🚀</div>
+                    <div class="icon-item">⚡</div>
+                    <div class="icon-item">🎨</div>
+                    <div class="icon-item">📱</div>
+                    <div class="icon-item">🔥</div>
+                    <div class="icon-item">✨</div>
+                    <div class="icon-item">🎯</div>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <a href="https://github.com/sunbang123" class="btn-custom btn-primary-custom">
+                    🚀 GitHub 바로가기
+                </a>
+                <a href="/article/" class="btn-custom btn-outline-custom">
+                    📚 블로그 글 보러가기 
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color: white;">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section class="about-archive-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-5">
+                    <div class="about-card">
+                        <h2 class="section-title">
+                            <span class="title-icon">👨‍💻</span>
+                            About
+                        </h2>
+                        <div class="about-content">
+                            <p class="about-text">
+                                저는 누구일까요?👀<br>
+                                2025년 기준 프로그래밍을 시작한지 4년차가 된 주니어 개발자입니다.
+                                웹 개발을 통해 프로그래밍을 접했고 현재는 유니티 엔진으로 게임을 제작하고 있습니다.
+                                저는 현재 취업 준비중이고 취업하기 전에 공모전에 당선되는것과 플레이 스토어에 출시하는것이 목표입니다.
+
+                                <br>
+                                <br>
+                                <span style="color: #a78bfa !important;">#경기도 #여자 #99년생 #4년제 #컴퓨터 공학</span><br>
+                            </p>
+                            <div class="tech-stack">
+                                <span class="tech-badge">Game</span>
+                                <span class="tech-badge">Art</span>
+                                <span class="tech-badge">Programming</span>
+                            </div>
+                            <a href="https://sunyeong.itch.io/" class="source-link text-white" target="_blank">
+                                👾 itch.io 컨텐츠 보러가기
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-5">
+                    <div class="commits-card">
+                        <h2 class="section-title">
+                            <span class="title-icon">📝</span>
+                            Recent Activity
+                        </h2>
+                        <div class="commits-container" id="commitsContainer">
+                            <div class="loading-spinner">
+                                <div class="spinner"></div>
+                                <p>Loading commits...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</body>

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="{{ page.lang | default: site.lang | default: "en" }}" data-theme="dark">
   {%- include head.html -%}
+  {% if site.google_site_verification %}
+    <meta name="google-site-verification" content="{{ site.google_site_verification }}" />
+  {% endif %}
   <body>
     {%- include header.html -%}
     {%- include offcanvas.html -%}
@@ -11,6 +14,11 @@
     <div class="background"></div>
     <!-- Bootstrap JS -->
     <script src="{{ '/assets/javascripts/bootstrap.js' | relative_url }}"></script>
+    <script src="{{ '/assets/javascripts/custom/home.js' | relative_url }}"></script>
+    <script src="{{ '/assets/javascripts/custom/project.js' | relative_url }}"></script>
+    <script src="{{ '/assets/javascripts/custom/projects.js' | relative_url }}"></script>
+    <script src="{{ '/assets/javascripts/custom/tags.js' | relative_url }}"></script>
+    <script src="{{ '/assets/javascripts/custom/article.js' | relative_url }}"></script>
     {%- include header-scroll.html -%}
   </body>
 </html>

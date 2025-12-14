@@ -1,0 +1,16 @@
+// _sass/code-explainer.scss
+.code-block-wrapper {
+    position: relative;
+    
+    .explain-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    
+    &:hover .explain-btn {
+        opacity: 1;
+    }
+}

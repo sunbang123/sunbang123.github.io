@@ -1,0 +1,101 @@
+---
+layout: default
+---
+<!-- Project Header -->
+<div class="project-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-6 fw-bold mb-3">{{ page.title }}</h1>
+                <p class="lead mb-4">{{ page.description }}</p>
+                
+                <!-- Project Meta Info -->
+                <div class="d-flex justify-content-center align-items-center flex-wrap gap-3 mb-4">
+                    <span class="badge bg-light text-dark fs-6">
+                        <i class="fas fa-calendar me-2"></i>{{ page.date | date: "%Y년 %m월" }}
+                    </span>
+                    {% if page.status %}
+                    <span class="badge 
+                        {% if page.status == 'completed' %}bg-success
+                        {% elsif page.status == 'in-progress' %}bg-warning
+                        {% elsif page.status == 'planned' %}bg-info
+                        {% endif %} fs-6">
+                        {{ page.status | replace: 'completed', '완료' | replace: 'in-progress', '진행중' | replace: 'planned', '계획중' }}
+                    </span>
+                    {% endif %}
+                </div>
+                
+                <!-- Tech Stack -->
+                <div class="mb-4">
+                    {% for tag in page.tags %}
+                    <span class="badge bg-secondary me-2 mb-2 fs-6">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    {% if page.demo_url %}
+                    <a href="{{ page.demo_url }}" class="btn btn-light btn-lg" target="_blank">
+                        <i class="fas fa-external-link-alt me-2"></i>라이브 데모
+                    </a>
+                    {% endif %}
+                    {% if page.github_url %}
+                    <a href="{{ page.github_url }}" class="btn btn-secondary btn-lg text-white" target="_blank">
+                        <i class="fab fa-github me-2"></i>GitHub 보기
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <!-- Main Project Image -->
+            {% if page.thumbnail %}
+            <div class="text-center mb-5">
+                <img src="{{ page.thumbnail }}" alt="{{ page.title }}" class="img-fluid rounded shadow-lg" style="max-height: 400px;">
+            </div>
+            {% endif %}
+            
+            <!-- Project Content -->
+            <div class="project-content">
+                {{ content }}
+            </div>
+            
+            <!-- Project Navigation -->
+            <div class="row mt-5">
+                <div class="col-6">
+                    {% assign prev_project = site.projects | sort: 'date' | where_exp: "project", "project.date < page.date" | last %}
+                    {% if prev_project %}
+                    <a href="{{ prev_project.url }}" class="btn btn-outline-primary">
+                        <i class="fas fa-chevron-left me-2"></i>이전 프로젝트
+                        <br><small class="text-muted">{{ prev_project.title }}</small>
+                    </a>
+                    {% endif %}
+                </div>
+                <div class="col-6 text-end">
+                    {% assign next_project = site.projects | sort: 'date' | where_exp: "project", "project.date > page.date" | first %}
+                    {% if next_project %}
+                    <a href="{{ next_project.url }}" class="btn btn-outline-primary">
+                        다음 프로젝트<i class="fas fa-chevron-right ms-2"></i>
+                        <br><small class="text-muted">{{ next_project.title }}</small>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Navigation Buttons -->
+<div class="nav-buttons">
+    <a href="/project/" class="btn btn-secondary text-white">
+        <i class="bi bi-backspace"></i>
+    </a>
+    <a href="#" class="btn btn-secondary back-to-top">
+        <i class="bi bi-arrow-up-circle"></i>
+    </a>
+</div>

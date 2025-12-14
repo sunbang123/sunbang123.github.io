@@ -1,0 +1,765 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Hero 섹션 - 세로 중심 레이아웃 */
+.hero-section {
+    min-height: 85vmin;
+    background: linear-gradient(180deg, #0a0e27 0%, #1a1a2e 50%, #16213e 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 애니메이션 배경 파티클 */
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 15s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.3; }
+    25% { transform: translateY(-100px) translateX(50px) scale(1.2); opacity: 0.6; }
+    50% { transform: translateY(-50px) translateX(-30px) scale(0.8); opacity: 0.4; }
+    75% { transform: translateY(-150px) translateX(80px) scale(1.1); opacity: 0.5; }
+}
+
+/* 그라데이션 오버레이 */
+.gradient-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 30%, rgba(124, 58, 237, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 50% 70%, rgba(59, 130, 246, 0.2) 0%, transparent 50%);
+    z-index: 2;
+}
+
+/* 대각선 배경 */
+.diagonal-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(124, 58, 237, 0.1) 0%, transparent 100%);
+    z-index: 2;
+}
+
+/* 컨텐츠 컨테이너 - 세로 중심 정렬 */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* 강화된 타이포그래피 */
+.hero-greeting {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.2s forwards, gradientShift 3s ease infinite;
+    font-family: 'Poppins', 'Noto Sans KR', sans-serif;
+    background: linear-gradient(135deg, #a78bfa 0%, #ec4899 50%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+}
+
+.hero-subtitle {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.4s forwards;
+    letter-spacing: 0.05em;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 3rem;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.6s forwards;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 텍스트 애니메이션 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* 타이핑 효과 커서 */
+.typing-cursor {
+    display: inline-block;
+    width: 4px;
+    height: 1em;
+    background: #a78bfa;
+    margin-left: 10px;
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* 아이콘 슬라이더 */
+.icon-slider {
+    position: relative;
+    max-width: 600px;
+    margin: 3rem auto;
+    overflow: hidden;
+    padding: 2rem 0;
+    opacity: 0;
+    animation: fadeInScale 1s ease-out 0.8s forwards;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.icon-track {
+    display: flex;
+    gap: 2rem;
+    animation: slide 20s linear infinite;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.icon-item {
+    font-size: 4rem;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+}
+
+.icon-item:hover {
+    transform: scale(1.2) translateY(-10px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(167, 139, 250, 0.5);
+    box-shadow: 0 20px 50px rgba(167, 139, 250, 0.4);
+}
+
+.icon-item.clicked {
+    animation: iconBounce 0.4s ease;
+}
+
+@keyframes iconBounce {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(0.8) rotate(-10deg); }
+    50% { transform: scale(1.3) rotate(10deg); }
+    75% { transform: scale(0.9) rotate(-5deg); }
+}
+
+.icon-slider:hover .icon-track {
+    animation-play-state: paused;
+}
+
+/* 버튼 컨테이너 */
+.button-container {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 1s forwards;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+/* 버튼 스타일 */
+.btn-custom {
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    min-width: 280px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.btn-primary-custom {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+}
+
+.btn-primary-custom:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.7);
+}
+
+.btn-primary-custom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 100%);
+    transition: left 0.5s ease;
+}
+
+.btn-primary-custom:hover::before {
+    left: 100%;
+}
+
+.btn-outline-custom {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.btn-outline-custom:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: white;
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+}
+
+/* 글로우 효과 */
+.glow-effect {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
+    filter: blur(80px);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+/* 스크롤 인디케이터 */
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
+}
+
+.scroll-indicator svg {
+    width: 35px;
+    height: 35px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.scroll-indicator:hover svg {
+    opacity: 1;
+}
+
+/* 스파크 효과 */
+.sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1); }
+}
+
+/* 장식 라인 */
+.decorative-line {
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #a78bfa, transparent);
+    margin: 2rem auto;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* ==================================== */
+/* 🌟 게임 효과 스타일 🌟 */
+/* ==================================== */
+
+/* 파티클 버스트 */
+.particle-burst {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.burst-particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: burstOut 0.8s ease-out forwards;
+}
+
+@keyframes burstOut {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+    }
+}
+
+/* 점수 팝업 */
+.score-popup {
+    position: fixed;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(167, 139, 250, 0.8),
+                    0 0 40px rgba(167, 139, 250, 0.6);
+    pointer-events: none;
+    z-index: 9999;
+    animation: scoreFloat 1s ease-out forwards;
+}
+
+@keyframes scoreFloat {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1.2);
+    }
+    100% {
+        transform: translateY(-100px) scale(0.8);
+        opacity: 0;
+    }
+}
+
+/* 충격파 */
+.shockwave {
+    position: fixed;
+    border: 3px solid rgba(167, 139, 250, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    animation: shockwaveExpand 0.6s ease-out forwards;
+}
+
+@keyframes shockwaveExpand {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        width: 200px;
+        height: 200px;
+        opacity: 0;
+    }
+}
+
+/* 화면 플래시 */
+.screen-flash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, rgba(167, 139, 250, 0.4) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 9997;
+    animation: flashEffect 0.3s ease-out;
+}
+
+@keyframes flashEffect {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* 🏆 화면 귀퉁이 Total Score (스타일 제거됨 - 이제 사용되지 않음) */
+/* .total-score, .total-score-label, .total-score-value 스타일 제거됨 */
+
+
+/* ==================================== */
+/* 🌟 배경 점수/콤보 스타일 🌟 */
+/* ==================================== */
+.background-score-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* 클릭 이벤트가 아래 요소에 전달되도록 설정 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 5; /* 배경 요소와 콘텐츠 사이에 배치 */
+    opacity: 0.25; /* 투명도를 낮춰 배경처럼 보이게 합니다. */
+    text-align: center;
+    transition: opacity 0.5s ease;
+}
+
+/* 배경으로 표시될 총 점수 */
+.background-total-score {
+    font-size: 8vw; /* 화면 크기에 비례하여 크게 표시 */
+    font-weight: 900;
+    color: #a78bfa;
+    line-height: 1;
+    text-shadow: 0 0 50px rgba(167, 139, 250, 0.5); /* 은은한 네온 효과 */
+    margin-bottom: 20px;
+}
+
+/* 배경으로 표시될 콤보 */
+.background-combo-display {
+    font-size: 10vw; /* 화면 크기에 비례하여 매우 크게 표시 */
+    font-weight: 900;
+    color: #ffd700;
+    line-height: 1;
+    text-shadow: 0 0 60px rgba(255, 215, 0, 0.8);
+    animation: backgroundComboPulse 2s infinite ease-in-out;
+    display: none; /* 초기 숨김 */
+}
+
+@keyframes backgroundComboPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .hero-greeting {
+        font-size: 1rem;
+        letter-spacing: 0.2em;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .btn-custom {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        min-width: 240px;
+    }
+
+    .icon-slider {
+        max-width: 100%;
+    }
+
+    .icon-item {
+        font-size: 3rem;
+        min-width: 80px;
+        padding: 1rem;
+    }
+    
+    .background-total-score {
+        font-size: 12vw;
+    }
+    
+    .background-combo-display {
+        font-size: 15vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.5rem;
+    }
+}
+/* About & Archive Section (스타일은 유지) */
+.about-archive-section {
+    background: linear-gradient(180deg, #16213e 0%, #0f1419 100%);
+    padding: 6rem 0;
+    position: relative;
+}
+
+.about-card, .commits-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.about-card:hover, .commits-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 70px rgba(102, 126, 234, 0.2);
+    border-color: rgba(167, 139, 250, 0.3);
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.title-icon {
+    font-size: 2rem;
+}
+
+.about-text {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.about-content>.tech-stack
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+}
+
+.tech-badge {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+    color: #a78bfa;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid rgba(167, 139, 250, 0.3);
+    transition: all 0.3s ease;
+}
+
+.tech-badge:hover {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.4) 0%, rgba(118, 75, 162, 0.4) 100%);
+    transform: translateY(-2px);
+}
+
+.source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.source-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+    color: #a78bfa;
+}
+
+/* Commits Container */
+.commits-container {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.commits-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.commits-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.commits-container::-webkit-scrollbar-thumb {
+    background: rgba(167, 139, 250, 0.5);
+    border-radius: 10px;
+}
+
+.commits-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(167, 139, 250, 0.8);
+}
+
+.commit-item {
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid #667eea;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.commit-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(5px);
+    border-left-color: #a78bfa;
+}
+
+.commit-message {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.commit-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.commit-author {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.commit-date {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.commit-sha {
+    font-family: monospace;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(167, 139, 250, 0.2);
+    border-top-color: #a78bfa;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.error-message {
+    color: #f87171;
+    padding: 2rem;
+    text-align: center;
+    font-weight: 600;
+}

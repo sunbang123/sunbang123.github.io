@@ -5,223 +5,141 @@ layout: default
 <div class="tags-page mt-5">
   <h1 class="page-heading text-gradient">{{ page.title }}</h1>
 
-  <div class="tag-cloud mb-5">
-    {% assign tags = site.tags | sort %}
-    {% for tag in tags %}
-      {% assign tag_size = tag | last | size %}
-      <a href="#{{ tag[0] | slugify }}" class="tag-cloud-item" data-tag-size="{{ tag_size }}">
-        {{ tag[0] }} 
-        <span class="tag-count">{{ tag_size }}</span>
-      </a>
+  <!-- 카테고리별 태그 클라우드 -->
+  <div class="categories-container mb-5">
+    {% assign tag_categories = site.tag_categories %}
+    {% assign all_tags = site.tags | sort %}
+    {% assign used_tags = "" | split: "" %}
+
+    {% for category in tag_categories %}
+      {% assign category_tag_count = 0 %}
+      {% for tag_name in category[1] %}
+        {% for site_tag in all_tags %}
+          {% if site_tag[0] == tag_name %}
+            {% assign category_tag_count = category_tag_count | plus: site_tag[1].size %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+
+      <div class="category-group">
+        <div class="category-header" data-category="{{ category[0] | slugify }}">
+          <div class="category-title-wrapper">
+            <span class="category-icon">▶</span>
+            <h3 class="category-title">{{ category[0] }}</h3>
+            <span class="category-count">({{ category[1].size }})</span>
+          </div>
+        </div>
+        <div class="tag-cloud" data-category-content="{{ category[0] | slugify }}" style="display: none;">
+          {% for tag_name in category[1] %}
+            {% for site_tag in all_tags %}
+              {% if site_tag[0] == tag_name %}
+                {% assign tag_size = site_tag[1].size %}
+                {% assign used_tags = used_tags | push: tag_name %}
+                <button class="tag-cloud-item" data-tag="{{ site_tag[0] | slugify }}" data-tag-size="{{ tag_size }}">
+                  {{ site_tag[0] }} 
+                  <span class="tag-count">{{ tag_size }}</span>
+                </button>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
     {% endfor %}
+
+    <!-- 미분류 태그들 (기타) -->
+    {% assign has_uncategorized = false %}
+    {% for site_tag in all_tags %}
+      {% unless used_tags contains site_tag[0] %}
+        {% assign has_uncategorized = true %}
+        {% break %}
+      {% endunless %}
+    {% endfor %}
+
+    {% if has_uncategorized %}
+      {% assign uncategorized_count = 0 %}
+      {% for site_tag in all_tags %}
+        {% unless used_tags contains site_tag[0] %}
+          {% assign uncategorized_count = uncategorized_count | plus: 1 %}
+        {% endunless %}
+      {% endfor %}
+
+      <div class="category-group">
+        <div class="category-header" data-category="uncategorized">
+          <div class="category-title-wrapper">
+            <span class="category-icon">▶</span>
+            <h3 class="category-title">기타</h3>
+            <span class="category-count">({{ uncategorized_count }})</span>
+          </div>
+        </div>
+        <div class="tag-cloud" data-category-content="uncategorized" style="display: none;">
+          {% for site_tag in all_tags %}
+            {% unless used_tags contains site_tag[0] %}
+              {% assign tag_size = site_tag[1].size %}
+              <button class="tag-cloud-item" data-tag="{{ site_tag[0] | slugify }}" data-tag-size="{{ tag_size }}">
+                {{ site_tag[0] }} 
+                <span class="tag-count">{{ tag_size }}</span>
+              </button>
+            {% endunless %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
   </div>
 
-  <div class="tags-grid" id="tagAccordion">
-    {% for tag in tags %}
-      <div class="tag-card" id="{{ tag[0] | slugify }}">
+  <!-- 태그별 포스트 섹션 -->
+  <div class="tags-container">
+    {% for tag in all_tags %}
+      <div class="tag-section" id="{{ tag[0] | slugify }}" style="display: none;">
         <div class="tag-header">
           <h2 class="tag-title">{{ tag[0] }}</h2>
           <span class="tag-badge">{{ tag[1].size }}</span>
         </div>
         <div class="tag-content">
-          {% for post in tag[1] %}
-            <article class="post-item">
-              {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-              <time class="post-date">{{ post.date | date: date_format }}</time>
-              <h3 class="post-title">
-                <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-              </h3>
-              {%- if site.show_excerpts -%}
-                <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-              {%- endif -%}
-            </article>
-          {% endfor %}
+          <div class="posts-grid" data-post-count="{{ tag[1].size }}" data-initial-show="10">
+            {% for post in tag[1] %}
+              <article class="post-card" data-index="{{ forloop.index }}">
+                <div class="post-card-content">
+                  <time class="post-date">
+                    {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+                    {{ post.date | date: date_format }}
+                  </time>
+                  <h3 class="post-title">
+                    <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+                  </h3>
+                  {%- if site.show_excerpts -%}
+                    <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+                  {%- endif -%}
+                  
+                  {% if post.tags %}
+                    <div class="post-tags">
+                      {% for tag in post.tags limit: 3 %}
+                        <span class="post-tag">{{ tag }}</span>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+          
+          <!-- 더보기 버튼 (10개 이상일 때만) -->
+          {% if tag[1].size > 10 %}
+            <div class="load-more-container text-center mt-3">
+              <button class="btn-load-more">
+                <span class="load-more-text">더보기</span>
+                <span class="remaining-count">({{ tag[1].size | minus: 10 }}개 남음)</span>
+              </button>
+            </div>
+          {% endif %}
         </div>
       </div>
     {% endfor %}
   </div>
+
+  <!-- 안내 메시지 -->
+  <div class="info-message text-center mt-4" id="infoMessage">
+    <p class="text-muted">카테고리를 펼친 후 태그를 클릭하여 관련 포스트를 확인하세요</p>
+  </div>
 </div>
 
 {{ content }}
-
-<style>
-.text-gradient {
-  background: linear-gradient(45deg, #2b8483, #899927);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-align: center;
-  font-size: 3rem;
-  margin-bottom: 2rem;
-  line-height: 2;
-}
-
-.tag-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  justify-content: center;
-  padding: 2rem;
-  background: rgba(78, 84, 200, 0.05);
-  border-radius: 16px;
-}
-
-.tag-cloud-item {
-  padding: 0.5rem 1.2rem;
-  border-radius: 30px;
-  background: white;
-  color: #2b8483;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.tag-cloud-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  background: #2b8483;
-  color: white;
-}
-
-.tag-count {
-  background: rgba(78, 84, 200, 0.1);
-  padding: 0.2rem 0.6rem;
-  border-radius: 15px;
-  font-size: 0.85em;
-  margin-left: 0.5rem;
-}
-
-.tags-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 1rem;
-}
-
-.tag-card {
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.tag-card:hover {
-  transform: translateY(-5px);
-}
-
-.tag-header {
-  background: linear-gradient(45deg, #2b8483, #899927);
-  color: white;
-  padding: 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.tag-title {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-.tag-badge {
-  background: rgba(255,255,255,0.2);
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-}
-
-.tag-content {
-  padding: 1.5rem;
-}
-
-.post-item {
-  padding: 1rem 0;
-  border-bottom: 1px solid #eee;
-}
-
-.post-item:last-child {
-  border-bottom: none;
-}
-
-.post-date {
-  color: #666;
-  font-size: 0.9rem;
-}
-
-.post-title {
-  margin: 0.5rem 0;
-  font-size: 1.1rem;
-}
-
-.post-title a {
-  color: #333;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.post-title a:hover {
-  color: #2b8483;
-}
-
-.post-excerpt {
-  color: #666;
-  font-size: 0.9rem;
-  margin: 0.5rem 0 0;
-}
-
-@media (max-width: 768px) {
-  .text-gradient {
-    font-size: 2rem;
-  }
-  
-  .tags-grid {
-    grid-template-columns: 1fr;
-  }
-}
-</style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  gsap.registerPlugin(ScrollTrigger);
-
-  // 태그 클라우드 애니메이션
-  gsap.from('.tag-cloud-item', {
-    duration: 0.5,
-    y: 20,
-    opacity: 0,
-    stagger: 0.03,
-    ease: 'power2.out'
-  });
-
-  // 태그 카드 애니메이션
-  gsap.utils.toArray('.tag-card').forEach((card, i) => {
-    gsap.from(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: 'top bottom-=100',
-        toggleActions: 'play none none none'
-      },
-      y: 50,
-      opacity: 0,
-      duration: 0.6,
-      delay: i % 3 * 0.1
-    });
-  });
-
-  // 스무스 스크롤
-  document.querySelectorAll('.tag-cloud-item').forEach(item => {
-    item.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetId = item.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      if(targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop - 100,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-});
-</script>

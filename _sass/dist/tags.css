@@ -1,6 +1,7 @@
 .tags-page {
-  width: 80vw;
-  margin: auto;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
 }
 .tags-page .tag-cloud {
   text-align: center;

@@ -15,12 +15,12 @@
 # in the templates via {{ site.myvariable }}.
 
 # custom_layout은 _layouts 폴더에 있는 파일 이름
-title: Sunyoung IT Blog 👩‍💻
+title: Tech Blog 👩‍💻
 email: ilikeksy99@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   코딩 개발 블로그
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://sunbang123.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://sunbang123.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  sunbang123
 
 author-profile:
@@ -28,7 +28,10 @@ author-profile:
   bio: "한세대학교 22학번 컴퓨터공학과"
   email: "ilikeksy99@gmail.com"
   linkedin: "sunyoung-kim-86a54b283"
-  profile_image: "/assets/images/profile.jpg"  # 이미지 경로 설정
+  youtube: "UCfFOEhFPrz3EoLfflhr1NGA"
+
+# 구글 검색어
+google-site-verification: e51F6SpZbz_x6ubkOKLTeqEzuMBZ6XgKJYAzEOe7fEI
 
 # Build settings
 # theme: minima
@@ -37,6 +40,7 @@ plugins:
   - jekyll-feed
   - jekyll-polyglot
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 languages: ['ko', 'ja', 'en']
 default_lang: 'ko'
@@ -44,6 +48,7 @@ exclude_from_localization: ["assets/css", "assets/img"]
 parallel_localization: false
 
 sass:
+  quiet_deps: true
   sourcemap: never
   sass_dir: _sass
   load_paths:
@@ -79,6 +84,19 @@ show_tag_metadata: true
 # URL 구조 설정
 permalink: /:title/
 
+# 기존 Jekyll 설정에 추가
+collections:
+  projects:
+    output: true
+    permalink: /project/:name/
+
+defaults:
+  - scope:
+      path: "_projects"
+      type: "projects"
+    values:
+      layout: "project"
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
@@ -97,4 +115,56 @@ permalink: /:title/
 #   - vendor/bundle/
 #   - vendor/cache/
 #   - vendor/gems/
+
 #   - vendor/ruby/
+
+tag_categories:
+  컴퓨터 과학:
+    - Computer Network
+    - computer-architecture
+    - computer-science
+    - Algorithm
+    - theory
+    - Game Theory
+  
+  개발 도구 & 환경:
+    - Git
+    - git-pages
+    - jekyll
+    - SDK
+    - License
+  
+  프로그래밍 & 개발:
+    - C#
+    - Programming
+    - Software-Development
+    - Code-Patterns
+    - Test
+    - Maintenance
+  
+  게임 개발:
+    - Unity
+    - Unreal
+    - Game Development
+  
+  특수 분야:
+    - Digital Image Processing
+    - MATLAB
+    - Processing
+    - Artificial Intelligence
+    - AI
+  
+  보안:
+    - Industrial Security
+  
+  웹 개발:
+    - web-development
+  
+  기타:
+    - To-Do
+
+    - 오답노트
+
+# Jekyll이 빌드할 때 포함할 파일/폴더
+include:
+  - _data

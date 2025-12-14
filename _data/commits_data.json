@@ -1,0 +1,740 @@
+[
+  {
+    "repo": "UnitySystem",
+    "message": "feat: 아이템 데이터 불러오기 기능 구현중...",
+    "author": "sunbang123",
+    "date": "2025-12-13T14:35:44Z",
+    "sha": "24f8673ed3e49bd9901bd2c4f4a0165a0094a921"
+  },
+  {
+    "repo": "2D_RPG",
+    "message": "test2",
+    "author": "김선영",
+    "date": "2025-12-12T03:06:23Z",
+    "sha": "5ed7c2cac4ff5784b016217a09e5163a71fd8068"
+  },
+  {
+    "repo": "2D_RPG",
+    "message": "Create README.md",
+    "author": "김선영",
+    "date": "2025-12-12T02:01:40Z",
+    "sha": "930e4d8dbb0a6a9ed853b9f566a9d8199fdf42d6"
+  },
+  {
+    "repo": "UnitySystem",
+    "message": "feat: 씬로드 후 설정 버튼 열고닫기, Mute Toggle\n\n- UI Controller\n- UserDataManager",
+    "author": "sunbang123",
+    "date": "2025-12-11T10:24:58Z",
+    "sha": "4babdb1f18cc2e12ef53c04d00c6da8ca1681b77"
+  },
+  {
+    "repo": "MonstersInDungeon",
+    "message": "fix: 안드로이드 빌드시 로비화면 에셋 로드 안되는 오류 해결 (#43)",
+    "author": "김선영",
+    "date": "2025-12-09T12:07:06Z",
+    "sha": "5b934ea8531dcc45742005b269ed457707de41a7"
+  },
+  {
+    "repo": "UnitySystem",
+    "message": "Test: UI manager 작동 테스트\n\nfeat: 버튼 오류 해결됨",
+    "author": "leehansan9963-cmyk",
+    "date": "2025-12-08T12:41:52Z",
+    "sha": "618b579f7cd924be5fe241d39f9dacd4630e9d16"
+  },
+  {
+    "repo": "UnitySystem",
+    "message": "feat: 251203 UI시스템 구현",
+    "author": "leehansan9963-cmyk",
+    "date": "2025-12-08T12:30:05Z",
+    "sha": "f1efb6919165e4b265cbb813c85f9ce812e0ec39"
+  },
+  {
+    "repo": "MonstersInDungeon",
+    "message": "Merge branch 'Sunyoung'",
+    "author": "sunbang123",
+    "date": "2025-12-08T09:03:03Z",
+    "sha": "cae3193cfe8e1807dc6e9475053b9f0ee3598589"
+  },
+  {
+    "repo": "MonstersInDungeon",
+    "message": "fix: 퀘스트도 튜토리얼이 끝나면 안뜨도록",
+    "author": "sunbang123",
+    "date": "2025-12-07T04:31:35Z",
+    "sha": "d6f8c1309ffd98ee2f26f7c0c994516c4cc3059c"
+  },
+  {
+    "repo": "MonstersInDungeon",
+    "message": "fix: 로딩 오류 수정, 튜토리얼 완료 후 선택한 원소로 모습 변환",
+    "author": "sunbang123",
+    "date": "2025-12-07T04:21:46Z",
+    "sha": "18151473c96196fcd1dc9da15393128f8b97500f"
+  },
+  {
+    "repo": "MonstersInDungeon",
+    "message": "System: 스토리모드, 세이브 로드, feat: 아이템 인벤토리 완성, Error: Addressable 씬 로드 (#41)\n\n* feat: BattleSystem 구조화, 공격받으면 체력이 닳도록 구현\n\n* feat: PoisonArea 간소화 전투상황/비전투상황일때 플레이어 HP 정보 공유\n\n* feat: 지속 독 데미지 추가\n\n* feat: 폴더 정리 및 로딩씬 제작\n\n* fix: main와 충돌 해결, 중독상태 색상 돌아오기 버그 수정\n\n* feat: Enemy와 Player가 Unit을 상속받도록해서 중복코드 줄임.\n\n* feat: UI 비율 조정\n\n* style: 스토리 이미지 업로드\n\n* feat: 인벤토리 매니저 제작 & 구현대기\n\n* feat: 아이템을 주으면 인벤토리에 들어가는 기능 추가\n\n* feat: 스토리모드 제작완료, 아이템슬롯 배틀에적용\n\n- AI코드라 스토리모드의 textmanager는 유지보수 어려운 다중 if문에 너무 긴 코드임. 고쳐야함.\n\n* Style: Story 대사 제작\n\n* docs: 나머지 스토리대사 업로드\n\n* feat: Addressable 등록, 씬 로딩에 사용\n\n* feat: 튜토리얼 구현, 유저 데이터 불러오기 구현중\n\n* error: 세이브 로드 기능 구현중 참조오류발생\n\n* fix: BootScene을 제작해서 Addressable 씬로드 오류를 잡는중...\n\nerror: Addressable 씬로드 때문에 싱글톤 오브젝트가 파괴됬음.\n\n---------\n\nCo-authored-by: asonost97-oss <asonost97@gmail.com>",
+    "author": "김선영",
+    "date": "2025-12-06T20:19:03Z",
+    "sha": "ae49ea4cd0ec9175771eeb50cfdf38bae9d93f3f"
+  },
+  {
+    "repo": "UnitySystem",
+    "message": "feat: 비동기로딩 및 유저데이터 인터페이스",
+    "author": "leehansan9963-cmyk",
+    "date": "2025-11-28T12:46:37Z",
+    "sha": "19c3c70b3cec69469ec3fe99e75647e62784ca16"
+  },
+  {
+    "repo": "study_report",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2025-11-28T11:59:53Z",
+    "sha": "e28337c6c10ef474aa3c8df9faf40565b7db608b"
+  },
+  {
+    "repo": "study_report",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2025-11-28T11:59:12Z",
+    "sha": "01b686ab7f65b433b849b947ddfb283fc8979185"
+  },
+  {
+    "repo": "study_report",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2025-11-28T11:14:36Z",
+    "sha": "ef67d89227a0ff1f52d5515fc0eaf2879a39d09e"
+  },
+  {
+    "repo": "study_report",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2025-11-28T11:14:18Z",
+    "sha": "9b9c38294fce249108767daceced41463e8b618d"
+  },
+  {
+    "repo": "study_report",
+    "message": "Delete AfterEffects directory",
+    "author": "김선영",
+    "date": "2025-11-28T10:59:14Z",
+    "sha": "fe81f1ab4594ef473002eb1c0d779f3657d20e9c"
+  },
+  {
+    "repo": "UnityLessonTurnBattle",
+    "message": "feat: Initialize Sample Project\n\nTurn Battle",
+    "author": "leehansan9963-cmyk",
+    "date": "2025-11-28T10:02:03Z",
+    "sha": "db6ae45f662e4703324cfd72e3f08b6445dc40ca"
+  },
+  {
+    "repo": "UnityLessonTurnBattle",
+    "message": "Initial commit",
+    "author": "김선영",
+    "date": "2025-11-28T10:00:10Z",
+    "sha": "ad7f80bcac4a5acb66e4c2cebad6453fa85f830d"
+  },
+  {
+    "repo": "2D_RPG",
+    "message": "feat: 플레이어 이동 및 점프",
+    "author": "sunbang123",
+    "date": "2025-11-27T01:39:41Z",
+    "sha": "e5875b79e52142ec3f76dab7770d9264770ce02a"
+  },
+  {
+    "repo": "TurnBattle",
+    "message": "feat: 오늘은 여기까지",
+    "author": "leehansan9963-cmyk",
+    "date": "2025-11-26T12:03:05Z",
+    "sha": "ce7ba03f1153830505c523d641c5f055c8f482f1"
+  },
+  {
+    "repo": "2D_RPG",
+    "message": "Initial commit",
+    "author": "김선영",
+    "date": "2025-11-26T02:02:37Z",
+    "sha": "5dfaae5331febc97da5e2c25c2303191f65c86d2"
+  },
+  {
+    "repo": "TurnBattle",
+    "message": "feat:251124 lesson turnbattle system",
+    "author": "leehansan9963-cmyk",
+    "date": "2025-11-24T12:50:29Z",
+    "sha": "1ca7f98ea6365291dba8daef368ef9520412a3e9"
+  },
+  {
+    "repo": "TurnBattle",
+    "message": "feat: 251119",
+    "author": "leehansan9963-cmyk",
+    "date": "2025-11-19T12:51:28Z",
+    "sha": "4dd3ed664bc0f5386e68568960e8bca745a0caae"
+  },
+  {
+    "repo": "TurnBattle",
+    "message": "Initial commit",
+    "author": "김선영",
+    "date": "2025-11-19T12:00:26Z",
+    "sha": "2942ebb4aac943fe8c2e8707309e8b6d11639421"
+  },
+  {
+    "repo": "ClickerTycoon",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2025-11-16T07:32:02Z",
+    "sha": "37c3a59559f1e9e3c4bed247de97520a38227ec2"
+  },
+  {
+    "repo": "sunbang123",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2025-11-14T10:03:36Z",
+    "sha": "9e015c7a4368659f626d33a951089addf943d1ed"
+  },
+  {
+    "repo": "ClickerTycoon",
+    "message": "Merge pull request #12 from sunbang123/sun\n\nfeat: 상점 로직 업데이트, 원거리 딜러 로직",
+    "author": "김선영",
+    "date": "2025-10-13T03:16:37Z",
+    "sha": "72a4a6de8ae6a752b5ae51b5c021a7f7168784bf"
+  },
+  {
+    "repo": "ClickerTycoon",
+    "message": "fix: UI업데이트, 유닛 데이터 저장 버그 해결",
+    "author": "김선영",
+    "date": "2025-10-13T03:15:22Z",
+    "sha": "4838c9f37eb3d3a93a34673c38958c3b3a2fbc58"
+  },
+  {
+    "repo": "ClickerTycoon",
+    "message": "Merge pull request #11 from sunbang123/minseok\n\nMinseok",
+    "author": "김선영",
+    "date": "2025-10-13T02:26:58Z",
+    "sha": "3e346963499f4bfbcf12f44c285fa2ccaa9f2837"
+  },
+  {
+    "repo": "ClickerTycoon",
+    "message": "test: merge test",
+    "author": "김선영",
+    "date": "2025-10-13T02:26:30Z",
+    "sha": "7c23cda1d4ab24f1616ddf1c166966f465a3c1c9"
+  },
+  {
+    "repo": "2DShootingGame",
+    "message": "Initial commit",
+    "author": "김선영",
+    "date": "2025-10-01T14:14:10Z",
+    "sha": "472bb176a05c7e01904e6d5db25a3a9e5d523b5f"
+  },
+  {
+    "repo": "OddOmok-Renewal",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2025-09-15T10:19:02Z",
+    "sha": "68b094613258c756dc8e0f9b3f08d86dec039c96"
+  },
+  {
+    "repo": "OddOmok-Renewal",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2025-09-15T10:18:31Z",
+    "sha": "c17d1cb35ede40f8d80afc7a286a56e644432c55"
+  },
+  {
+    "repo": "OddOmok-Renewal",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2025-09-14T18:03:42Z",
+    "sha": "5c4c9b8bfbf6ed9ff4b915e0f38f17204d019407"
+  },
+  {
+    "repo": "OddOmok-Renewal",
+    "message": "docs: Create README.md",
+    "author": "김선영",
+    "date": "2025-09-14T18:03:16Z",
+    "sha": "faa41356befbf384927c0b3d38d07f4dfed86797"
+  },
+  {
+    "repo": "OddOmok-Renewal",
+    "message": "feat: 오목 승리조건 검사 완료, 승패화면 UI추가",
+    "author": "김선영",
+    "date": "2025-09-13T04:47:14Z",
+    "sha": "34501c37a9b33f60529adab092000f4a10f4aab2"
+  },
+  {
+    "repo": "sunbang123",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2025-09-11T11:27:59Z",
+    "sha": "5fcdeb0a294a17e394561029792b6fb32d1853cc"
+  },
+  {
+    "repo": "capstone_project",
+    "message": "README.md 업데이트",
+    "author": "김선영",
+    "date": "2025-09-08T03:58:38Z",
+    "sha": "278bae40e45e794f60ffb914cf34a89d523093e2"
+  },
+  {
+    "repo": "Sunbang_Engine",
+    "message": "feat: Win Main test",
+    "author": "sunbang123",
+    "date": "2025-07-11T11:07:56Z",
+    "sha": "5353d23e142772efcd718480614ba71db9d3c92a"
+  },
+  {
+    "repo": "Sunbang_Engine",
+    "message": "초기 커밋.",
+    "author": "sunbang123",
+    "date": "2025-07-11T09:54:23Z",
+    "sha": "0fbb87644afef4dab989dcb7fe55d5648442e0d6"
+  },
+  {
+    "repo": "Sunbang_Engine",
+    "message": ".gitattributes 및 .gitignore을(를) 추가합니다.",
+    "author": "sunbang123",
+    "date": "2025-07-11T09:54:22Z",
+    "sha": "e6bbd87e646361cab0b1ab58f8acdce908c0710f"
+  },
+  {
+    "repo": "Guessing-Game",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2025-06-25T12:19:50Z",
+    "sha": "14bf102e736b00b5bd54dbf5051a6e9a260b68d3"
+  },
+  {
+    "repo": "Guessing-Game",
+    "message": "docs: Update README - game rules, play video.md",
+    "author": "김선영",
+    "date": "2025-06-25T12:19:31Z",
+    "sha": "47532cc8dc957dc18b47b8f45082fa9a7795fd16"
+  },
+  {
+    "repo": "Guessing-Game",
+    "message": "feat: 같은그림 맞추기, 타이머, 재시작",
+    "author": "김선영",
+    "date": "2025-06-25T12:06:43Z",
+    "sha": "d7238ebe5eebf17b99590d9d1a0098256c98609a"
+  },
+  {
+    "repo": "Guessing-Game",
+    "message": "Initial commit",
+    "author": "김선영",
+    "date": "2025-06-25T11:41:15Z",
+    "sha": "b95204e9cc1a48e72a6534b5d56bfa1a47066382"
+  },
+  {
+    "repo": "WinFormsPingPong",
+    "message": "style: change image",
+    "author": "sunbang123",
+    "date": "2025-06-25T08:14:39Z",
+    "sha": "21aa7c97948d40b364ac16185562a28fe1bd037b"
+  },
+  {
+    "repo": "sunbang123",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2025-06-25T07:02:46Z",
+    "sha": "29e4694ffc85ec0c7a964b4e0cd7340633cba295"
+  },
+  {
+    "repo": "sunbang123",
+    "message": "README.md 업데이트",
+    "author": "김선영",
+    "date": "2025-06-20T13:05:00Z",
+    "sha": "23fb7eec253a28f675dc1f89f24a26f871f0d5b4"
+  },
+  {
+    "repo": "sunbang123",
+    "message": "README.md 업데이트",
+    "author": "김선영",
+    "date": "2025-06-20T13:04:09Z",
+    "sha": "041e0ffdba07a430b1259d5fdb3235826094ccda"
+  },
+  {
+    "repo": "bitcoin_trading_simulation",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2025-06-20T00:19:11Z",
+    "sha": "efaa7b0cdb0faf266555ea8a857ba653b0063bef"
+  },
+  {
+    "repo": "capstone_project",
+    "message": "feat: 기말 업로드\n\n- 재도전, 수락 기능 구현\n- GPGS 구글플레이 게임서비스로 업적, 유저정보 구현\n- 인벤토리 구현\n- 아이템 구현\n- 로딩 바 구현\n- 게임내 프로필 이미지, 정보 추가\n- MMR 시스템 추가\n- 채팅 기능 추가",
+    "author": "김선영",
+    "date": "2025-06-18T02:22:48Z",
+    "sha": "f633c3f2461546053db1f42e5afc7d65032585a8"
+  },
+  {
+    "repo": "capstone_project",
+    "message": "Update .gitignore",
+    "author": "김선영",
+    "date": "2025-06-18T01:41:30Z",
+    "sha": "3b37a97c633c8a1d43e77e4bd0513e7af8666625"
+  },
+  {
+    "repo": "bitcoin_trading_simulation",
+    "message": "Merge pull request #58 from kimhaneu1/gyuseong2\n\nrefactor: restructure order, asset dto",
+    "author": "Gyuseong2",
+    "date": "2025-06-11T02:21:02Z",
+    "sha": "83eeecac876e1f42d47daa92af255c935f27ba86"
+  },
+  {
+    "repo": "bitcoin_trading_simulation",
+    "message": "refactor: restructure order, asset dto",
+    "author": "choigyuseong",
+    "date": "2025-06-11T02:20:30Z",
+    "sha": "9f476bbc79ae0c6b6e8199d94ee6e19a54bc23c2"
+  },
+  {
+    "repo": "bitcoin_trading_simulation",
+    "message": "docs: 시연영상 업로드 (#57)\n\n* docs: 시연영상 업로드",
+    "author": "김선영",
+    "date": "2025-06-10T16:15:31Z",
+    "sha": "765af0b0ba3575137dc3069f508a646ab03e0bb2"
+  },
+  {
+    "repo": "bitcoin_trading_simulation",
+    "message": "일단 여까지만.. (#56)\n\n* feat: 회원가입 -> 로그인 이동. 서버디버그패널로 회원가입 여부 확인\n\n주소 끝에 붙는 엔드포인트 틀리지말기!",
+    "author": "김선영",
+    "date": "2025-06-10T16:04:32Z",
+    "sha": "3dbcd78b2b4214cfe3c468218c9231f987d2358e"
+  },
+  {
+    "repo": "WinFormsPingPong",
+    "message": "feat: initialize winform pingpong",
+    "author": "Administrator",
+    "date": "2025-06-08T09:20:03Z",
+    "sha": "5b875d1ed4ec6699bdcd1f9ac279e1376ce8e743"
+  },
+  {
+    "repo": "WinFormsPingPong",
+    "message": ".gitattributes 및 .gitignore을(를) 추가합니다.",
+    "author": "Administrator",
+    "date": "2025-06-08T09:20:01Z",
+    "sha": "f9f85fe93de47fa8e5ee806958160a2599177662"
+  },
+  {
+    "repo": "capstone_project",
+    "message": "feat: Game Logic with New UI\n\n- 사라지는 기능\n- 새로운 UI (슬라임)",
+    "author": "김선영",
+    "date": "2025-04-16T04:46:27Z",
+    "sha": "6ba9f4031553769720040baa6936f6aec894a937"
+  },
+  {
+    "repo": "capstone_project",
+    "message": "Merge pull request #12 from sunbang123/main\n\nPrototype UI, Scene, Logic",
+    "author": "김선영",
+    "date": "2025-04-10T14:22:50Z",
+    "sha": "bbef0d1c7ed8c61342649640ae28574a88454acd"
+  },
+  {
+    "repo": "Apple_Game",
+    "message": "Update GameController.cs",
+    "author": "김선영",
+    "date": "2025-03-28T10:55:38Z",
+    "sha": "66bb23f9af6ba8349d745ed95e8f59a1524a1c4f"
+  },
+  {
+    "repo": "Apple_Game",
+    "message": "Merge pull request #1 from sunbang123/bugfix\n\nBug Fix",
+    "author": "김선영",
+    "date": "2025-03-28T10:04:08Z",
+    "sha": "d6686bf420495f78b382162e8c3a432e83b09371"
+  },
+  {
+    "repo": "Apple_Game",
+    "message": "Bug Fix\n\n- 게임 재시작 버튼 클릭하는 소리가 안나는 버그 해결\n- 재시작 버튼을 누르면 Score 패널이 안 사라지는 버그 해결",
+    "author": "김선영",
+    "date": "2025-03-28T10:01:46Z",
+    "sha": "4a24ca370020c8241a95d4a4face4268d6e2570e"
+  },
+  {
+    "repo": "Apple_Game",
+    "message": "Delete Assets/TextMesh Pro directory",
+    "author": "김선영",
+    "date": "2025-03-28T09:39:59Z",
+    "sha": "e4a46440ce600cb65e5502020159885814716c7f"
+  },
+  {
+    "repo": "Apple_Game",
+    "message": "게임 완성\n\n- UI (일러스트, 시작 리셋 재시작버튼)\n- 점수계산 기능구현\n- 시간 제한 기능구현",
+    "author": "김선영",
+    "date": "2025-03-28T09:38:32Z",
+    "sha": "4a3331a22d305dd638f3c7c62d581cbb77bf09f0"
+  },
+  {
+    "repo": "sample-repository",
+    "message": "initialize commit",
+    "author": "김선영",
+    "date": "2025-03-19T01:38:18Z",
+    "sha": "c54acd1d0a51a5d1b5ab520d2dd93507191090fb"
+  },
+  {
+    "repo": "spring_crud",
+    "message": "회원조회 로직 구현\n\n* 진행사항 *\n- UserController에 /{id} 엔드포인트 추가, 특정 회원 조회 요청 처리\n- UserService에 getUserById 메서드 추가. 회원 정보 조회 로직 구현\n- 회원이 존재하지 않을 경우 예외처리\n- Postman HTTP 요청 성공 (http://localhost:8080/api/users/{id} -> Get 요청)\n- SQL 테이블에서 회원 데이터 조회 확인.",
+    "author": "김선영",
+    "date": "2025-03-04T23:37:55Z",
+    "sha": "5dcdecf78544af640596ab8cbbfa275073a7db38"
+  },
+  {
+    "repo": "spring_crud",
+    "message": "보안 강화 및 코드 간결화\n\n* 변경 사항 *\n- allowPublicKeyRetrieval=true 옵션 추가로 보안 강화 (런타임 에러 해결용도)\n- Lombok @Getter와 @Setter 사용으로 코드",
+    "author": "김선영",
+    "date": "2025-03-03T21:15:09Z",
+    "sha": "3b7d0a6a196675cf75d469c2183656b3b8c94c41"
+  },
+  {
+    "repo": "spring_crud",
+    "message": "회원가입 로직 구현\n\n* 진행사항 *\n- UserController에 /signup 엔드포인트 추가. 회원가입 요청 처리\n- UserService에 registerUser 메서드 추가. 회원 정보 저장 로직 구현\n- 로깅 추가하여 회원가입 요청 데이터 확인\n- Postman HTTP 요청 성공 (http://localhost:8080/api/users/signup -> Post 주소)\n- SQL 테이블에 데이터베이스 저장 확인됨.",
+    "author": "김선영",
+    "date": "2025-03-03T07:31:34Z",
+    "sha": "3f0d3058f8db707b89cf1d84e143343322bbc9dc"
+  },
+  {
+    "repo": "spring_crud",
+    "message": "java 파일 생성 및 디렉토리 구조 구성\n\n* 변경사항 *\n- 디렉토리 구조를 MVC 패턴에 맞게 수정\n- spring_crud 디렉토리 아래에 다음과 같이 구성:\n  - controller: UserController.java\n  - entity: User.java\n  - repository: UserRepository.java\n  - service: UserService.java",
+    "author": "김선영",
+    "date": "2025-03-01T10:09:00Z",
+    "sha": "ac31c848438faa17c049f9131f3186d6cd32a50b"
+  },
+  {
+    "repo": "spring_crud",
+    "message": "application.yml 구성\n\n* 구성사항 *\n1. 데이터베이스 연결(MySQL) localhost:3306의 spring_member에 연결. 비밀번호는 환경변수 사용.\n2. JPA 설정(스키마 자동 업데이트/쿼리를 콘솔에 출력/포맷팅)\n3. 서버 설정: 8080 포트를 사용함.",
+    "author": "김선영",
+    "date": "2025-03-01T09:16:34Z",
+    "sha": "a8beb9b2111f615ea2bd3156f251a010b3142cb0"
+  },
+  {
+    "repo": "SQL",
+    "message": "set constraint",
+    "author": "김선영",
+    "date": "2025-01-17T08:04:08Z",
+    "sha": "ee0e7215457aba5bf1cb9006814a8eb430e8fc6b"
+  },
+  {
+    "repo": "SQL",
+    "message": "create table 'movies'",
+    "author": "김선영",
+    "date": "2025-01-17T07:28:05Z",
+    "sha": "9ef0d38079756f8a4a18fb566177e3db8bd37c2a"
+  },
+  {
+    "repo": "SQL",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2025-01-17T06:05:55Z",
+    "sha": "da4c38062435013ba884a9a199897468c771d375"
+  },
+  {
+    "repo": "SQL",
+    "message": "Initial commit",
+    "author": "김선영",
+    "date": "2025-01-17T06:05:10Z",
+    "sha": "502673c1178f661bf1028f3307c798c4b0cebe4b"
+  },
+  {
+    "repo": "portfolio",
+    "message": "Merge branch 'main' of https://github.com/sunbang123/Portfolio",
+    "author": "sunbang123",
+    "date": "2025-01-10T16:29:48Z",
+    "sha": "84b6c587cfb82c0eac3349f5efe8f1cd6c83d10c"
+  },
+  {
+    "repo": "portfolio",
+    "message": "edit",
+    "author": "sunbang123",
+    "date": "2025-01-10T16:29:35Z",
+    "sha": "d0a527189efc7bdc44b08535a710e14532d00978"
+  },
+  {
+    "repo": "portfolio",
+    "message": "Update hugo.yml",
+    "author": "김선영",
+    "date": "2025-01-10T13:48:04Z",
+    "sha": "a1262198eb34138472ad10fab27c1dddfed64a3e"
+  },
+  {
+    "repo": "portfolio",
+    "message": "Create hugo.yml",
+    "author": "김선영",
+    "date": "2025-01-10T13:43:33Z",
+    "sha": "d0c09035d801b5722906dd3c80c8294684166f9c"
+  },
+  {
+    "repo": "portfolio",
+    "message": "tailwind css로 원페이지 포트폴리오 프로토타입 생성",
+    "author": "sunbang123",
+    "date": "2025-01-10T13:32:55Z",
+    "sha": "49002d5456b159883a19285bd510d950797c8c60"
+  },
+  {
+    "repo": "CodingTest",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2024-12-29T13:21:37Z",
+    "sha": "ca4fe06751dda397e55f9382cf82d3cb02aa2934"
+  },
+  {
+    "repo": "CodingTest",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2024-12-29T13:21:13Z",
+    "sha": "4391c9f8b0be91520e08b4c916a15340c0a46e3b"
+  },
+  {
+    "repo": "Hansei",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2024-12-29T13:15:26Z",
+    "sha": "208e754967b991521091cd74574a54ceb19cdfaf"
+  },
+  {
+    "repo": "Hansei",
+    "message": "Initial commit",
+    "author": "김선영",
+    "date": "2024-12-29T13:14:40Z",
+    "sha": "a12fc3ce04f9547bf5ec5d526f154a56bef99a94"
+  },
+  {
+    "repo": "Smart_device",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2024-11-27T08:03:20Z",
+    "sha": "ba210b2692873ded0c1e3fa1cdfca4f5c0806746"
+  },
+  {
+    "repo": "Graduation_Project",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2024-09-18T23:22:38Z",
+    "sha": "ed127a21f16c5f26a0f3b521a3c9ce5c6d922d1a"
+  },
+  {
+    "repo": "Graduation_Project",
+    "message": "Initial commit",
+    "author": "김선영",
+    "date": "2024-09-10T21:03:50Z",
+    "sha": "537c2e4703ec4817f883008e111ff6d7e48ac872"
+  },
+  {
+    "repo": "embedded",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2024-09-07T07:16:38Z",
+    "sha": "6a9fcb9a6c92e0d3530cc23e7081c511953f2dc0"
+  },
+  {
+    "repo": "embedded",
+    "message": "Initial commit",
+    "author": "김선영",
+    "date": "2024-09-07T07:15:22Z",
+    "sha": "dc7a97f9b4af8d65d3c54350991c40706e82898d"
+  },
+  {
+    "repo": "toonflix",
+    "message": "detail 안열리는 오류 수정",
+    "author": "sunbang123",
+    "date": "2024-08-11T16:43:53Z",
+    "sha": "5d6b0c2913034a1c070ee9c86bfd0fa0cefa6268"
+  },
+  {
+    "repo": "toonflix",
+    "message": "now playing, coming soon 구현 프로토타입 최종 완성",
+    "author": "sunbang123",
+    "date": "2024-08-11T15:48:37Z",
+    "sha": "635f0bbacfb2d4c7c86f89937e290c95350eeb5c"
+  },
+  {
+    "repo": "toonflix",
+    "message": "detail api 불러오기 + ui 구현",
+    "author": "sunbang123",
+    "date": "2024-08-11T14:11:21Z",
+    "sha": "fa314da2c5fd126b55d18348e06b1e8581af6408"
+  },
+  {
+    "repo": "toonflix",
+    "message": "web 개발환경에서 스크롤 안되는 문제 해결",
+    "author": "sunbang123",
+    "date": "2024-08-11T10:46:53Z",
+    "sha": "cfac4e91462cf75f08b65d382b54d356ab8a603d"
+  },
+  {
+    "repo": "toonflix",
+    "message": "detail screen util 추가",
+    "author": "sunbang123",
+    "date": "2024-08-11T10:13:59Z",
+    "sha": "a2beb22d419327feadd1bafcfddfdb1aa61a3990"
+  },
+  {
+    "repo": "nwitter-reloaded",
+    "message": "호스팅 업데이트",
+    "author": "sunbang123",
+    "date": "2024-07-18T05:31:47Z",
+    "sha": "8f57e6a2281d4019bda3e2da8ac2b8df0131d635"
+  },
+  {
+    "repo": "nwitter-reloaded",
+    "message": "호스팅 완료, 레이아웃 여백 추가",
+    "author": "sunbang123",
+    "date": "2024-07-18T05:02:21Z",
+    "sha": "b7d6458333e35b3621962a00719dae0d7d865ccb"
+  },
+  {
+    "repo": "nwitter-reloaded",
+    "message": "deploy 오류나는 부분 수정",
+    "author": "sunbang123",
+    "date": "2024-07-18T04:55:50Z",
+    "sha": "a9894724c3eb020cead0eae0f5f51c026bf89fe8"
+  },
+  {
+    "repo": "nwitter-reloaded",
+    "message": "ui 최종 수정",
+    "author": "sunbang123",
+    "date": "2024-07-18T04:54:06Z",
+    "sha": "01ff369b4a222df61aed014e7cf99dfc8dd06960"
+  },
+  {
+    "repo": "nwitter-reloaded",
+    "message": "ui 수정",
+    "author": "sunbang123",
+    "date": "2024-07-17T17:43:09Z",
+    "sha": "55107be0e29f300dd8cad73344665864ff4b17fd"
+  },
+  {
+    "repo": "CodingTest",
+    "message": "Initial commit",
+    "author": "김선영",
+    "date": "2024-07-07T05:58:19Z",
+    "sha": "16570713b098f62a820864cf9c9ab28e4ae4526d"
+  },
+  {
+    "repo": "api_example",
+    "message": "api 예제 만들기 작업 업로드",
+    "author": "sunbang123",
+    "date": "2024-07-04T08:16:39Z",
+    "sha": "131ded18790afbdaf8affc0f3cc034d7e4237ccc"
+  },
+  {
+    "repo": "huggingface",
+    "message": "허깅페이스 연동",
+    "author": "sunbang123",
+    "date": "2024-06-30T03:29:59Z",
+    "sha": "00506f9b0470bbb76355b4195eb4adbc32cce4cc"
+  },
+  {
+    "repo": "Smart_device",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2023-03-16T04:22:39Z",
+    "sha": "7ef9df778e0b0998faa69ee8452216db50632f55"
+  },
+  {
+    "repo": "Smart_device",
+    "message": "Initial commit",
+    "author": "김선영",
+    "date": "2023-03-10T07:19:05Z",
+    "sha": "1faca05094b514cc7f772626267821fb1752d45f"
+  },
+  {
+    "last_updated": "2025-12-14T00:58:39Z"
+  }
+]

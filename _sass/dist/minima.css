@@ -17,7 +17,6 @@ dl, dd, ol, ul, figure {
 body {
   font: 400 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   color: #111;
-  background-color: #fdfdfd;
   -webkit-text-size-adjust: 100%;
   -webkit-font-feature-settings: "kern" 1;
   -moz-font-feature-settings: "kern" 1;
@@ -207,13 +206,12 @@ table {
   border: 1px solid #e8e8e8;
 }
 table tr:nth-child(even) {
-  background-color: #f7f7f7;
+  background-color: #828282;
 }
 table th, table td {
   padding: 10px 15px;
 }
 table th {
-  background-color: #f0f0f0;
   border: 1px solid #dedede;
   border-bottom-color: #c9c9c9;
 }
@@ -254,6 +252,7 @@ table td {
 }
 @media screen and (max-width: 600px) {
   .site-nav {
+    z-index: 1;
     position: absolute;
     top: 9px;
     right: 15px;
@@ -271,16 +270,13 @@ table td {
     cursor: pointer;
   }
   .site-nav .menu-icon {
-    display: block;
-    float: right;
-    width: 36px;
-    height: 26px;
-    line-height: 0;
-    padding-top: 10px;
-    text-align: center;
-  }
-  .site-nav .menu-icon > svg {
-    fill: #e8e8e8;
+      display: block;
+      float: right;
+      width: 36px;
+      height: 36px;
+      line-height: 1;
+      padding-top: 10px;
+      text-align: center;
   }
   .site-nav input ~ .trigger {
     clear: both;
@@ -422,27 +418,33 @@ table td {
   margin-bottom: 30px;
 }
 .post-content h2 {
-  font-size: 32px;
+  font-size: 1.75em;
+  line-height: 1.5;
 }
 @media screen and (max-width: 800px) {
   .post-content h2 {
-    font-size: 28px;
+    font-size: 1.75em;
+    line-height: 1.5;
   }
 }
 .post-content h3 {
-  font-size: 26px;
+  font-size: 1.75em;
+  line-height: 1.5;
 }
 @media screen and (max-width: 800px) {
   .post-content h3 {
-    font-size: 22px;
+    font-size: 1.75em;
+    line-height: 1.5;
   }
 }
 .post-content h4 {
-  font-size: 20px;
+  font-size: 0.8em;
+  line-height: 1.5;
 }
 @media screen and (max-width: 800px) {
   .post-content h4 {
-    font-size: 18px;
+    font-size: 0.8em;
+    line-height: 1.5;
   }
 }
 
@@ -474,16 +476,8 @@ custom
     display: none !important;
   }
 }
-.profile-sidebar {
-  box-shadow: 5px 5px 0px;
-  border: 1px solid;
-  width: 25vmin;
-  margin-left: 30vmin;
-  margin-top: 5vmin;
-}
 
 .home {
-  width: 80vw;
   margin: auto;
   word-wrap: break-word;
   /* 또는 overflow-wrap: break-word; */
@@ -492,8 +486,6 @@ custom
 }
 
 .post {
-  background: white;
-  width: 80vw;
   margin: auto;
   word-wrap: break-word;
   /* 또는 overflow-wrap: break-word; */
