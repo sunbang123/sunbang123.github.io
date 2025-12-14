@@ -1,0 +1,128 @@
+---
+layout: project
+title: "뭔가 이상한 오목"
+date: 2024-06-18
+description: "변칙적인 규칙과 판타지 컨셉을 넣은 신개념 오목 게임을 제작해보았습니다."
+thumbnail: "/assets/images/thumbnail/odd-omok.png"
+icon: "fas fa-code"
+tags: ["Unity", "GPGS", "Photon-Fusion"]
+demo_url: "https://youtu.be/_HIJov-ouEw?feature=shared"
+github_url: "https://github.com/sunbang123/capstone_project"
+status: "in-progress"
+---
+
+# Odd Omok
+
+### Game Title: 뭔가 이상한 오목
+
+> Rulebook Preview 이미지
+
+<img src="https://github.com/user-attachments/assets/44f65338-9256-4869-b59b-49b78ba0f82b" width="300px">
+<img src="https://github.com/user-attachments/assets/8ab0c64a-4121-413b-80cf-192461bfe662" width="300px">
+
+> <h4><a href="https://github.com/kimhaneu1/capstone_project/wiki/Rulebook">상세한 규칙 보러가기</a></h4>
+
+* * *
+
+### 게임의 탄생
+
+"재미있는 게임을 개발하자!" 라는 마음가짐으로 아이디어 노트에 여러 게임을 적었습니다.
+
+변칙적인 규칙을 넣은 머리를 쓰는 게임을 만들고자 사라지는 오목을 구상했습니다.
+
+두명이서 시작한 아이디어 회의로 저희 게임은 탄생했습니다. ☺️
+
+
+## Project Overview
+
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/06855903-9246-41ef-8f36-0c119ab53b73" />
+
+## Project Document
+
+목표: [Rulebook](https://github.com/kimhaneu1/capstone_project/wiki/Rulebook)
+
+[뭔가 이상한 오목 UI 구성기획서.pptx](https://github.com/kimhaneu1/CapstoneProject/raw/refs/heads/kimhaneu1-add-docs/docs/%EB%AD%94%EA%B0%80%20%EC%9D%B4%EC%83%81%ED%95%9C%20%EC%98%A4%EB%AA%A9%20UI%20%EA%B5%AC%EC%84%B1%EA%B8%B0%ED%9A%8D%EC%84%9C.pptx)
+
+## Tech Stack
+
+- platform: **Unity**
+- Language: **C#**
+- Dedicated Server: Photon
+- Database: 뒤끝
+
+
+## Project Term
+
+> 2025.03 ~ 2025.06
+
+- 팀장 : 김하늘
+- 팀원 : 김선영
+
+##### [3월1주차](/kimhaneu1/capstone_project/wiki/3월1주차)
+
+##### [3월2주차](/kimhaneu1/capstone_project/wiki/3월2주차)
+
+##### [3월3주차](/kimhaneu1/capstone_project/wiki/3월3주차)
+
+- 하늘: Script 구조 제작
+
+- 선영: UI 요소 제작
+
+##### [3월4주차](/kimhaneu1/capstone_project/wiki/3월4주차)
+
+- 하늘: Photon 연동, 게임씬 제작
+- 선영: DOTween 제작
+
+##### [4월1주차](/kimhaneu1/capstone_project/wiki/4월1주차)
+
+- 하늘: 게임 로직(클라, 서버) 제작
+- 선영: 이미지 UI 제작
+
+##### [4월2주차](/kimhaneu1/capstone_project/wiki/4월2주차)
+
+- 하늘: 게임 로직(클라, 서버) 제작
+- 선영: 이미지 UI 제작
+
+##### [4월 3주차](/kimhaneu1/capstone_project/wiki/4월3주차)
+
+- 하늘: 게임 로직 구현(재대결)
+- 선영: 머티리얼 제작
+
+##### [4월 4주차](/kimhaneu1/capstone_project/wiki/4월4주차)
+
+- 하늘: 중간발표
+- 선영: 중간발표
+
+##### [4월 5주차](/kimhaneu1/capstone_project/wiki/4월5주차)
+
+- 하늘: UI 첨삭
+- 선영: UI Shader Graph 적용
+
+##### [5월 1주차](/kimhaneu1/capstone_project/wiki/5월1주차)
+
+- 하늘: UI 첨삭
+- 선영: 추가 UI Shader Graph, 이미지 제작
+
+##### [5월 2주차](/kimhaneu1/capstone_project/wiki/5월2주차)
+
+- 하늘: 구글 플레이 콘솔 연동 테스트
+- 선영: 추가 UI Shader Graph 제작
+
+##### [5월 3주차](/kimhaneu1/capstone_project/wiki/5월3주차)
+
+- 하늘: UI 기획안 제작
+- 선영: UI 기획안 제작
+
+##### [5월 4주차](/kimhaneu1/capstone_project/wiki/5월4주차)
+
+##### Play 엑스포 참석
+- 하늘: 인벤토리 슬롯 제작, 구글플레이 내부테스트
+- 선영: UI 기획안 수정
+
+##### [6월 1주차](/kimhaneu1/capstone_project/wiki/6월1주차)
+
+
+##### [6월 2주차](/kimhaneu1/capstone_project/wiki/6월2주차)
+
+
+##### [6월 3주차](/kimhaneu1/capstone_project/wiki/6월3주차)

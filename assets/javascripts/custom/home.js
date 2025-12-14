@@ -200,62 +200,129 @@ document.querySelectorAll('.icon-item').forEach(icon => {
     });
 });
 
-
 // ===========================================
-// Recent Activity (GitHub Commits) 로직
+// Recent Activity (Mixed: Commits, Issues, Releases)
 // ===========================================
-async function loadCommits() {
+async function loadActivities() {
     const container = document.getElementById('commitsContainer');
-    const dataPath = '/_data/commits_data.json'; // 생성된 정적 JSON 파일 경로 (Jekyll 환경 가정)
+    const GITHUB_USERNAME = 'sunbang123';
     
+    // 1. 가져올 파일들의 경로 설정
+    const files = [
+        { type: 'commit', path: '/_data/commits_data.json' },
+        { type: 'issue',  path: '/_data/issues_data.json' },
+        { type: 'release', path: '/_data/releases_data.json' }
+    ];
+
     try {
-        // 1. 서버에 미리 저장된 정적 JSON 파일 요청
-        const res = await fetch(dataPath);
-        
-        // 파일이 없거나 오류 발생 시 오류 메시지 표시
-        if (!res.ok) {
-            if (res.status === 404) {
-                throw new Error("커밋 데이터 파일(commits_data.json)을 찾을 수 없습니다. GitHub Actions 실행 상태를 확인하세요.");
+        // 2. 병렬로 모든 데이터 요청
+        const results = await Promise.all(files.map(async (file) => {
+            try {
+                const res = await fetch(file.path);
+                if (!res.ok) return []; 
+                const data = await res.json();
+                // last_updated 등 불필요한 데이터 제거
+                const validData = data.filter(item => item.repo !== undefined);
+                return validData.map(item => ({ ...item, dataType: file.type }));
+            } catch (e) {
+                console.warn(`${file.path} 로드 실패`, e);
+                return [];
             }
-            throw new Error(`파일 로드 실패: ${res.status}`);
+        }));
+
+        const allActivities = results.flat();
+
+        // [추가] 내 이름이 여러 개로 보일 때 하나로 통일하는 함수
+        function normalizeAuthor(name) {
+            // 여기에 커밋에 찍히는 내 다른 이름들을 배열로 적어주세요
+            // 예: ['Sunbang', 'Sunbang Lee', 'tjsqkd'] 
+            // 팁: 그냥 내 레포지토리니까 웬만하면 다 나라고 가정하고 싶다면 로직을 단순화해도 됩니다.
+            
+            // 1. 내 GitHub 아이디와 같으면 통과
+            if (name === GITHUB_USERNAME) return name;
+
+            // 2. 내 컴퓨터 닉네임들이라면 'sunbang123'으로 변경 (필요한 경우 이름 추가)
+            const myAliases = ['Sunbang', 'sunbang', 'admin']; 
+            if (myAliases.includes(name)) return GITHUB_USERNAME;
+
+            // 3. 만약 그냥 전부 'sunbang123'으로 통일하고 싶다면 아래 주석을 해제하세요
+            return GITHUB_USERNAME; 
+            
+            // return name; // 다른 사람일 경우 원래 이름 표시
         }
 
-        const allCommits = await res.json();
-        
-        // 2. HTML 구성
+        // 4. 데이터 정규화
+        const normalizedData = allActivities.map(item => {
+            let title, url, meta, icon, badgeColor;
+            const date = new Date(item.date); 
+            // 작성자 이름 통일 적용
+            const author = normalizeAuthor(item.author || 'Me');
+
+            if (item.dataType === 'commit') {
+                title = item.message.split('\n')[0];
+                url = `https://github.com/${GITHUB_USERNAME}/${item.repo}/commit/${item.sha}`;
+                meta = item.sha.substring(0, 7);
+                icon = 'Commit';
+                badgeColor = '#64b4f684'; 
+            } else if (item.dataType === 'issue') {
+                const isPR = item.type === 'pull_request'; 
+                title = item.title;
+                url = item.url;
+                meta = `#${item.number}`;
+                icon = isPR ? 'PR' : 'Issue';
+                badgeColor = isPR ? '#81c78485' : '#ffb84d85'; 
+            } else if (item.dataType === 'release') {
+                title = item.name || item.tag;
+                url = item.url;
+                meta = item.tag;
+                icon = 'Release';
+                badgeColor = '#ba68c885';
+            }
+
+            return {
+                date: date,
+                repo: item.repo,
+                author: author, // 통일된 이름 사용
+                title, url, meta, icon, badgeColor
+            };
+        });
+
+        // 5. 날짜 내림차순 정렬 (최신순)
+        normalizedData.sort((a, b) => b.date - a.date);
+
+        const recentActivities = normalizedData.slice(0, 20);
+
+        if (recentActivities.length === 0) {
+            container.innerHTML = '<p class="error-message">최근 활동 데이터가 없습니다.</p>';
+            return;
+        }
+
+        // 6. HTML 구성
         let html = '';
         let currentRepo = '';
 
-        // 최근 15개 커밋만 표시 (선택 사항)
-        const recentCommits = allCommits.slice(0, 15); 
-
-        if (recentCommits.length === 0) {
-                container.innerHTML = '<p class="error-message">커밋 데이터가 없습니다. Actions 빌드 후 데이터를 확인해주세요.</p>';
-                return;
-        }
-
-        recentCommits.forEach(commit => {
-            if (commit.repo !== currentRepo) {
-                html += `<h3 style="margin-top: 1.5rem; color: #fff;">📦 ${commit.repo}</h3>`;
-                currentRepo = commit.repo;
+        recentActivities.forEach(item => {
+            if (item.repo !== currentRepo) {
+                html += `<h3 style="margin-top: 1.5rem; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom:5px;">📂 ${item.repo}</h3>`;
+                currentRepo = item.repo;
             }
 
-            // 날짜 포맷팅 (ISO 문자열에서 변환)
-            const dateObj = new Date(commit.date);
-            const dateStr = dateObj.toLocaleDateString('ko-KR');
-            const sha = commit.sha.substring(0, 7);
-            const message = commit.message.split('\n')[0];
-            const commitUrl = `https://github.com/sunbang123/${commit.repo}/commit/${commit.sha}`;
+            const dateStr = item.date.toLocaleDateString('ko-KR');
+            const badgeStyle = `display:inline-block; font-size:0.75rem; padding:2px 6px; border-radius:4px; color:#fff; background-color:${item.badgeColor}; margin-right:5px; vertical-align:middle;`;
 
             html += `
-                <div class="commit-item">
-                    <a href="${commitUrl}" target="_blank" title="${message} 커밋 상세 보기">
-                        <div class="commit-message">${message}</div>
+                <div class="commit-item" style="margin-bottom: 10px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                    <a href="${item.url}" target="_blank" style="text-decoration:none; color:inherit;">
+                        <div class="commit-message" style="font-weight:bold; margin-bottom:4px;">
+                            <span style="${badgeStyle}">${item.icon}</span> ${item.title}
+                        </div>
                     </a>
-                    <div class="commit-meta">
-                        <span class="commit-author">👤 ${commit.author}</span>
+                    <div class="commit-meta" style="font-size:0.85rem; color:#aaa;">
+                        <span class="commit-author">👤 ${item.author}</span>
+                        <span style="margin: 0 5px;">•</span>
                         <span class="commit-date">📅 ${dateStr}</span>
-                        <span class="commit-sha">${sha}</span>
+                        <span style="margin: 0 5px;">•</span>
+                        <span class="commit-sha" style="font-family:monospace;">${item.meta}</span>
                     </div>
                 </div>
             `;
@@ -265,8 +332,8 @@ async function loadCommits() {
 
     } catch (error) {
         console.error(error);
-        container.innerHTML = `<p class="error-message">커밋 정보를 불러오는데 실패했습니다: ${error.message}</p>`;
+        container.innerHTML = `<p class="error-message">활동 정보를 불러오는데 실패했습니다: ${error.message}</p>`;
     }
 }
 
-loadCommits();
+loadActivities();

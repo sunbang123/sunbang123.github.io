@@ -1,69 +1,192 @@
-
-body {
-    min-height: 100vh;
+/* =========================================
+   1. 기본 레이아웃 및 섹션 스타일
+   ========================================= */
+.activity-section {
+    background: rgba(30, 30, 46, 0.95);
+    border-radius: 16px;
+    padding: 1.5em;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative; 
 }
 
-.project-card {
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
+/* 섹션 헤더 (제목 + 버튼) */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-.project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+.header-left { display: flex; align-items: center; }
+.section-icon { font-size: 1.5rem; margin-right: 12px; }
+.section-title { font-size: 1.3rem; font-weight: 600; color: #e0e0e0; }
+
+/* 제목 옆 숫자 뱃지 */
+.count-badge {
+    font-size: 0.85rem;
+    background: rgba(255,255,255,0.1);
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 8px;
+    color: #a0a0a0;
+    vertical-align: middle;
+    font-weight: normal;
 }
 
-.project-thumbnail {
-    height: 200px;
-    position: relative;
+/* =========================================
+   2. 슬라이더 트랙 및 컨테이너
+   ========================================= */
+.slider-container {
     overflow: hidden;
-    background: linear-gradient(45deg, #2b848325, #27459925);
-}
-
-.project-thumbnail img {
+    position: relative;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+    padding: 0;
 }
 
-.project-card:hover .project-thumbnail img {
-    transform: scale(1.05);
+/* A. 가로 슬라이더 (프로젝트용) */
+.horizontal-track {
+    display: flex;
+    flex-direction: row;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 100%;
 }
 
-.gradient-bg {
-    background: linear-gradient(45deg, #00a3a190, #0043ff90);
-    border: 1px solid lightgray;
-    color: white;
-    font-weight: bold;
-}
-        
-.glass-effect {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+/* B. 세로 슬라이더 (Activity용) - 1개 높이 고정 */
+.vertical-container {
+    height: 100px; 
 }
 
-.project-date {
-    font-size: 0.9rem;
-    opacity: 0.8;
+.vertical-track {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 100%;
 }
 
-.status-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 10;
+/* =========================================
+   3. 버튼 스타일
+   ========================================= */
+/* A. 세로 슬라이더 버튼 (헤더 우측) */
+.slider-nav {
+    display: flex;
+    gap: 8px;
 }
 
-.add-project-card {
-    background: rgba(255, 255, 255, 0.1);
-    border: 3px dashed rgba(255, 255, 255, 0.4);
-    min-height: 400px;
-    transition: all 0.3s ease;
+.slider-btn {
+    background: rgba(102, 126, 234, 0.2);
+    color: #667eea;
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1rem; /* 아이콘 크기 조정 */
+}
+.slider-btn:hover { background: #667eea; color: white; }
+.slider-btn.disabled { opacity: 0.3; cursor: not-allowed; background: transparent; color: #666; border-color: #444; }
+
+/* B. 가로 슬라이더 버튼 (프로젝트 양옆) */
+.project-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(102, 126, 234, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px; 
+    height: 40px; 
+    font-size: 1.2rem;
+    z-index: 10;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: flex; /* 아이콘 중앙 정렬 */
+    align-items: center;
+    justify-content: center;
+}
+.project-btn:hover { background: #667eea; }
+.project-btn.disabled { opacity: 0.3; cursor: not-allowed; }
+
+.project-prev { left: -20px !important; }
+.project-next { right: -20px !important; }
+
+
+/* =========================================
+   4. 아이템 스타일
+   ========================================= */
+/* A. 프로젝트 아이템 (가로) */
+.project-slider-wrapper {
+    position: relative;
+    padding: 0 20px;
 }
 
-.add-project-card:hover {
-    background: rgba(232, 223, 239, 0.7);
-    border-color: rgba(255, 255, 255, 0.6);
+.project-slide-wrapper {
+    width: 50%; 
+    flex: 0 0 auto;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+/* B. 활동 아이템 (세로) */
+.activity-item-wrapper {
+    width: 100%;
+    height: 100px; /* 컨테이너 높이와 일치 */
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.activity-item {
+    width: 100%;
+    padding: 16px 20px;
+    border-radius: 12px;
+    background: rgba(45, 45, 68, 0.6);
+    border-left: 3px solid #667eea;
+    transition: all 0.2s ease;
+}
+.activity-item:hover { background: rgba(55, 55, 78, 0.8); }
+
+/* 메타 정보 */
+.item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.item-title { font-weight: 600; color: #e0e0e0; font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 70%; }
+.item-meta { display: flex; gap: 10px; color: #999; font-size: 0.8rem; }
+.repo-name { color: #8b9cff; font-weight: 500; }
+
+.item-badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; white-space: nowrap;}
+.badge-commit { background: rgba(33, 150, 243, 0.2); color: #64b5f6; }
+.badge-issue { background: rgba(255, 152, 0, 0.2); color: #ffb74d; }
+.badge-pr { background: rgba(76, 175, 80, 0.2); color: #81c784; }
+.badge-release { background: rgba(156, 39, 176, 0.2); color: #ba68c8; }
+.badge-open { background: rgba(76, 175, 80, 0.3); color: #a5d6a7; }
+.badge-closed { background: rgba(244, 67, 54, 0.3); color: #ef9a9a; }
+
+/* 프로젝트 카드 디자인 */
+.project-card { backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1); transition: transform 0.3s; }
+.project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+.project-thumbnail { height: 140px; background: linear-gradient(45deg, #2b848315, #27459915); overflow: hidden; position: relative;}
+.project-thumbnail img { width: 100%; height: 100%; object-fit: cover; }
+.project-thumbnail i { font-size: 2.5rem !important; color: #00a3a1; opacity: 0.7; }
+.gradient-bg { background: linear-gradient(45deg, #00a3a1, #0043ff); color: white; border: none; }
+.glass-effect { background: rgba(255, 255, 255, 0.05); }
+
+/* 반응형 처리 */
+@media (max-width: 992px) {
+    .project-slide-wrapper { width: 50%; }
+}
+@media (max-width: 768px) {
+    .section-header { flex-direction: row; } 
+    .project-slide-wrapper { width: 100%; }
+    
+    .project-slider-wrapper { padding: 0; }
+    .project-prev { left: 0 !important; }
+    .project-next { right: 0 !important; }
 }
