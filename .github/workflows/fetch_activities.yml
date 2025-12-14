@@ -1,0 +1,178 @@
+# 파일 경로: .github/workflows/fetch_commits.yml
+
+name: Fetch GitHub Activities (Commits, Issues, Releases)
+
+on:
+  push:
+    branches:
+      - main
+    # 🚨 무한 루프 방지: 세 파일 모두 제외
+    paths-ignore:
+      - '_data/commits_data.json'
+      - '_data/issues_data.json'
+      - '_data/releases_data.json'
+      
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *' 
+    
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch_activities_group # 그룹 이름 변경
+  cancel-in-progress: true
+
+jobs:
+  fetch_and_save:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup SSH Key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.ACTIONS_DEPLOY_KEY }} 
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          fetch-depth: 0 
+
+      - name: Install dependencies
+        run: sudo apt-get install -y jq
+
+      # 🚨 통합: 커밋, 이슈/PR, 릴리즈 데이터를 모두 가져옵니다.
+      - name: Fetch and process activities
+        id: fetch
+        env:
+          GITHUB_USERNAME: sunbang123
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # 기본 설정
+          REPOS_URL="https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=pushed&direction=desc"
+          EXCLUDED_REPO="${GITHUB_USERNAME}.github.io" 
+
+          # 1. 리포지토리 목록 가져오기 및 GitHub Pages 제외
+          REPO_NAMES_RAW=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" "$REPOS_URL")
+          
+          if echo "$REPO_NAMES_RAW" | jq -e '.[].name' > /dev/null 2>&1; then
+              REPO_NAMES=$(echo "$REPO_NAMES_RAW" | jq -r '.[].name' | grep -v -w "$EXCLUDED_REPO")
+          else
+              echo "Error: Failed to fetch repositories. Check username or API Rate Limit."
+              echo "API Response: $REPO_NAMES_RAW"
+              exit 1 
+          fi
+
+          # =========================================================
+          # A. 커밋 데이터 수집 로직
+          # =========================================================
+          TEMP_COMMITS_FILE=$(mktemp)
+          echo "[]" > "$TEMP_COMMITS_FILE"
+          
+          for REPO_NAME in $REPO_NAMES; do
+              COMMITS_URL="https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/commits?per_page=5"
+              COMMITS_RAW_DATA=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" "$COMMITS_URL")
+              
+              if echo "$COMMITS_RAW_DATA" | jq -e '.[0].sha' > /dev/null 2>&1; then
+                  COMMITS_ARRAY=$(echo "$COMMITS_RAW_DATA" | jq -c --arg repo "$REPO_NAME" '
+                      [.[] | {
+                          type: "commit",
+                          repo: $repo,
+                          message: .commit.message, 
+                          author: .commit.author.name, 
+                          date: .commit.author.date,
+                          sha: .sha
+                      }]
+                  ')
+                  jq -s '.[0] + .[1]' "$TEMP_COMMITS_FILE" <(echo "$COMMITS_ARRAY") > "${TEMP_COMMITS_FILE}.new"
+                  mv "${TEMP_COMMITS_FILE}.new" "$TEMP_COMMITS_FILE"
+              fi
+          done
+          
+          # =========================================================
+          # B. 이슈/PR 데이터 수집 로직
+          # =========================================================
+          TEMP_ISSUES_FILE=$(mktemp)
+          echo "[]" > "$TEMP_ISSUES_FILE"
+
+          for REPO_NAME in $REPO_NAMES; do
+              ISSUES_URL="https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/issues?state=all&per_page=5"
+              ISSUES_RAW_DATA=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" "$ISSUES_URL")
+
+              if echo "$ISSUES_RAW_DATA" | jq -e '.[0].title' > /dev/null 2>&1; then
+                  ISSUES_ARRAY=$(echo "$ISSUES_RAW_DATA" | jq -c --arg repo "$REPO_NAME" '
+                      [.[] | {
+                          type: (if .pull_request then "pull_request" else "issue" end), 
+                          repo: $repo,
+                          title: .title,
+                          state: .state,
+                          date: .created_at,
+                          url: .html_url,
+                          number: .number
+                      }]
+                  ')
+                  jq -s '.[0] + .[1]' "$TEMP_ISSUES_FILE" <(echo "$ISSUES_ARRAY") > "${TEMP_ISSUES_FILE}.new"
+                  mv "${TEMP_ISSUES_FILE}.new" "$TEMP_ISSUES_FILE"
+              fi
+          done
+          
+          # =========================================================
+          # C. 릴리즈 데이터 수집 로직 (새로 추가)
+          # =========================================================
+          TEMP_RELEASES_FILE=$(mktemp)
+          echo "[]" > "$TEMP_RELEASES_FILE"
+
+          for REPO_NAME in $REPO_NAMES; do
+              RELEASES_URL="https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/releases?per_page=5"
+              RELEASES_RAW_DATA=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" "$RELEASES_URL")
+
+              if echo "$RELEASES_RAW_DATA" | jq -e '.[0].tag_name' > /dev/null 2>&1; then
+                  RELEASES_ARRAY=$(echo "$RELEASES_RAW_DATA" | jq -c --arg repo "$REPO_NAME" '
+                      [.[] | {
+                          type: "release", 
+                          repo: $repo,
+                          tag: .tag_name,
+                          name: .name,
+                          date: .published_at, # 릴리즈 게시 시간 사용
+                          url: .html_url,
+                          author: .author.login
+                      }]
+                  ')
+                  jq -s '.[0] + .[1]' "$TEMP_RELEASES_FILE" <(echo "$RELEASES_ARRAY") > "${TEMP_RELEASES_FILE}.new"
+                  mv "${TEMP_RELEASES_FILE}.new" "$TEMP_RELEASES_FILE"
+              fi
+          done
+
+
+          # =========================================================
+          # D. 최종 정리 및 저장
+          # =========================================================
+          mkdir -p _data
+          CURRENT_TIME=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          # 1. 커밋 데이터 저장
+          FINAL_COMMITS=$(jq 'sort_by(.date) | reverse | . + [{"last_updated": $time}]' --arg time "$CURRENT_TIME" "$TEMP_COMMITS_FILE")
+          echo "$FINAL_COMMITS" > _data/commits_data.json
+          
+          # 2. 이슈/PR 데이터 저장
+          FINAL_ISSUES=$(jq 'sort_by(.date) | reverse | . + [{"last_updated": $time}]' --arg time "$CURRENT_TIME" "$TEMP_ISSUES_FILE")
+          echo "$FINAL_ISSUES" > _data/issues_data.json
+
+          # 3. 릴리즈 데이터 저장
+          FINAL_RELEASES=$(jq 'sort_by(.date) | reverse | . + [{"last_updated": $time}]' --arg time "$CURRENT_TIME" "$TEMP_RELEASES_FILE")
+          echo "$FINAL_RELEASES" > _data/releases_data.json
+          
+          # 임시 파일 삭제
+          rm -f "$TEMP_COMMITS_FILE" "$TEMP_ISSUES_FILE" "$TEMP_RELEASES_FILE"
+          
+          echo "Successfully processed commit, issue, PR, and release data."
+          
+      # 5. 변경된 JSON 파일을 자동 커밋 및 푸시
+      - name: Commit and push if changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Automatic commit: Update recent GitHub activities data"
+          files: |
+            _data/commits_data.json
+            _data/issues_data.json
+            _data/releases_data.json
