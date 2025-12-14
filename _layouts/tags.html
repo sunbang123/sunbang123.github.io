@@ -5,6 +5,14 @@ layout: default
 <div class="tags-page mt-5">
   <h1 class="page-heading text-gradient">{{ page.title }}</h1>
 
+  <div class="view-controls mb-3">
+    <div class="view-options">
+      <a href="/article/" class="btn btn-outline-secondary btn-sm text-white">
+        📝 글 목록으로
+      </a>
+    </div>
+  </div>
+
   <!-- 카테고리별 태그 클라우드 -->
   <div class="categories-container mb-5">
     {% assign tag_categories = site.tag_categories %}
