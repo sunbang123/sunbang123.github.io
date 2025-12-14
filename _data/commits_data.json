@@ -1,5 +1,12 @@
 [
   {
+    "repo": "UnitySystem",
+    "message": "feat: 아이템 데이터 불러오기 기능 구현중...",
+    "author": "sunbang123",
+    "date": "2025-12-13T14:35:44Z",
+    "sha": "24f8673ed3e49bd9901bd2c4f4a0165a0094a921"
+  },
+  {
     "repo": "2D_RPG",
     "message": "test2",
     "author": "김선영",
@@ -110,13 +117,6 @@
     "author": "김선영",
     "date": "2025-11-28T10:59:14Z",
     "sha": "fe81f1ab4594ef473002eb1c0d779f3657d20e9c"
-  },
-  {
-    "repo": "UnitySystem",
-    "message": "feat: Unity System Initialize",
-    "author": "leehansan9963-cmyk",
-    "date": "2025-11-28T10:55:45Z",
-    "sha": "733b41aa303934b4760ccd7e2e50371d98b13418"
   },
   {
     "repo": "UnityLessonTurnBattle",
@@ -735,6 +735,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2025-12-13T00:50:38Z"
+    "last_updated": "2025-12-14T00:58:39Z"
   }
 ]
