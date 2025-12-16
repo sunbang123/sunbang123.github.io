@@ -1,6 +1,38 @@
 [
   {
     "type": "commit",
+    "repo": "MonstersInDungeon",
+    "message": "Merge branch 'Sunyoung'",
+    "author": "sunbang123",
+    "date": "2025-12-15T06:22:52Z",
+    "sha": "b4609b09881f81ed95f49f922f4b9c77f17236c0"
+  },
+  {
+    "type": "commit",
+    "repo": "MonstersInDungeon",
+    "message": "fix: 맵이동시 맵 이름 전부 뜨게 수정\n\n.",
+    "author": "sunbang123",
+    "date": "2025-12-15T06:20:58Z",
+    "sha": "da84f4c8b8b46b54db4389b79c34444f60284b17"
+  },
+  {
+    "type": "commit",
+    "repo": "MonstersInDungeon",
+    "message": "fix: PlayerHp값이 100으로 뜨지 않도록 고침",
+    "author": "sunbang123",
+    "date": "2025-12-15T03:55:58Z",
+    "sha": "8890e490b15ff064cdf6ef605404cdf206ff3d0c"
+  },
+  {
+    "type": "commit",
+    "repo": "MonstersInDungeon",
+    "message": "feat: 구조 수정 fix: 데이터 불러올때 맵 인덱스 안불러와지는 부분 수정",
+    "author": "sunbang123",
+    "date": "2025-12-14T09:04:53Z",
+    "sha": "6b8862b6ddcbb6471aad4f05b6834f4e8089fb0a"
+  },
+  {
+    "type": "commit",
     "repo": "UnitySystem",
     "message": "feat: 아이템 데이터 불러오기 기능 구현중...",
     "author": "sunbang123",
@@ -54,38 +86,6 @@
     "author": "leehansan9963-cmyk",
     "date": "2025-12-08T12:30:05Z",
     "sha": "f1efb6919165e4b265cbb813c85f9ce812e0ec39"
-  },
-  {
-    "type": "commit",
-    "repo": "MonstersInDungeon",
-    "message": "Merge branch 'Sunyoung'",
-    "author": "sunbang123",
-    "date": "2025-12-08T09:03:03Z",
-    "sha": "cae3193cfe8e1807dc6e9475053b9f0ee3598589"
-  },
-  {
-    "type": "commit",
-    "repo": "MonstersInDungeon",
-    "message": "fix: 퀘스트도 튜토리얼이 끝나면 안뜨도록",
-    "author": "sunbang123",
-    "date": "2025-12-07T04:31:35Z",
-    "sha": "d6f8c1309ffd98ee2f26f7c0c994516c4cc3059c"
-  },
-  {
-    "type": "commit",
-    "repo": "MonstersInDungeon",
-    "message": "fix: 로딩 오류 수정, 튜토리얼 완료 후 선택한 원소로 모습 변환",
-    "author": "sunbang123",
-    "date": "2025-12-07T04:21:46Z",
-    "sha": "18151473c96196fcd1dc9da15393128f8b97500f"
-  },
-  {
-    "type": "commit",
-    "repo": "MonstersInDungeon",
-    "message": "System: 스토리모드, 세이브 로드, feat: 아이템 인벤토리 완성, Error: Addressable 씬 로드 (#41)\n\n* feat: BattleSystem 구조화, 공격받으면 체력이 닳도록 구현\n\n* feat: PoisonArea 간소화 전투상황/비전투상황일때 플레이어 HP 정보 공유\n\n* feat: 지속 독 데미지 추가\n\n* feat: 폴더 정리 및 로딩씬 제작\n\n* fix: main와 충돌 해결, 중독상태 색상 돌아오기 버그 수정\n\n* feat: Enemy와 Player가 Unit을 상속받도록해서 중복코드 줄임.\n\n* feat: UI 비율 조정\n\n* style: 스토리 이미지 업로드\n\n* feat: 인벤토리 매니저 제작 & 구현대기\n\n* feat: 아이템을 주으면 인벤토리에 들어가는 기능 추가\n\n* feat: 스토리모드 제작완료, 아이템슬롯 배틀에적용\n\n- AI코드라 스토리모드의 textmanager는 유지보수 어려운 다중 if문에 너무 긴 코드임. 고쳐야함.\n\n* Style: Story 대사 제작\n\n* docs: 나머지 스토리대사 업로드\n\n* feat: Addressable 등록, 씬 로딩에 사용\n\n* feat: 튜토리얼 구현, 유저 데이터 불러오기 구현중\n\n* error: 세이브 로드 기능 구현중 참조오류발생\n\n* fix: BootScene을 제작해서 Addressable 씬로드 오류를 잡는중...\n\nerror: Addressable 씬로드 때문에 싱글톤 오브젝트가 파괴됬음.\n\n---------\n\nCo-authored-by: asonost97-oss <asonost97@gmail.com>",
-    "author": "김선영",
-    "date": "2025-12-06T20:19:03Z",
-    "sha": "ae49ea4cd0ec9175771eeb50cfdf38bae9d93f3f"
   },
   {
     "type": "commit",
@@ -896,6 +896,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2025-12-15T01:26:24Z"
+    "last_updated": "2025-12-16T01:24:56Z"
   }
 ]
