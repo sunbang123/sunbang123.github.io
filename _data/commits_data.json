@@ -1,6 +1,38 @@
 [
   {
     "type": "commit",
+    "repo": "UnitySystem",
+    "message": "feat: 인벤토리 장비정보창 구현",
+    "author": "leehansan9963-cmyk",
+    "date": "2025-12-17T12:54:06Z",
+    "sha": "f19a67847ffc162655d372eea3aae0474e688ba6"
+  },
+  {
+    "type": "commit",
+    "repo": "UnitySystem",
+    "message": "feat: 인벤토리 정리(등급별 오류 수정!)",
+    "author": "leehansan9963-cmyk",
+    "date": "2025-12-17T12:15:37Z",
+    "sha": "c1d991eb9bd7423a02468a108cf1f235d9ffb02c"
+  },
+  {
+    "type": "commit",
+    "repo": "UnitySystem",
+    "message": "feat: infinite Scroll 아이템 인벤토리 UI로 불러오기",
+    "author": "leehansan9963-cmyk",
+    "date": "2025-12-17T11:10:18Z",
+    "sha": "8d2570e8a644970688fb11b8c000bfb36d75b1c7"
+  },
+  {
+    "type": "commit",
+    "repo": "UnitySystem",
+    "message": "feat: 아이템 데이터 불러오기 구현",
+    "author": "leehansan9963-cmyk",
+    "date": "2025-12-17T10:07:34Z",
+    "sha": "30da8bdc996ec397c67b2eb0ffa9946f8a2da8f6"
+  },
+  {
+    "type": "commit",
     "repo": "MonstersInDungeon",
     "message": "Merge branch 'Sunyoung'",
     "author": "sunbang123",
@@ -57,43 +89,11 @@
   },
   {
     "type": "commit",
-    "repo": "UnitySystem",
-    "message": "feat: 씬로드 후 설정 버튼 열고닫기, Mute Toggle\n\n- UI Controller\n- UserDataManager",
-    "author": "sunbang123",
-    "date": "2025-12-11T10:24:58Z",
-    "sha": "4babdb1f18cc2e12ef53c04d00c6da8ca1681b77"
-  },
-  {
-    "type": "commit",
     "repo": "MonstersInDungeon",
     "message": "fix: 안드로이드 빌드시 로비화면 에셋 로드 안되는 오류 해결 (#43)",
     "author": "김선영",
     "date": "2025-12-09T12:07:06Z",
     "sha": "5b934ea8531dcc45742005b269ed457707de41a7"
-  },
-  {
-    "type": "commit",
-    "repo": "UnitySystem",
-    "message": "Test: UI manager 작동 테스트\n\nfeat: 버튼 오류 해결됨",
-    "author": "leehansan9963-cmyk",
-    "date": "2025-12-08T12:41:52Z",
-    "sha": "618b579f7cd924be5fe241d39f9dacd4630e9d16"
-  },
-  {
-    "type": "commit",
-    "repo": "UnitySystem",
-    "message": "feat: 251203 UI시스템 구현",
-    "author": "leehansan9963-cmyk",
-    "date": "2025-12-08T12:30:05Z",
-    "sha": "f1efb6919165e4b265cbb813c85f9ce812e0ec39"
-  },
-  {
-    "type": "commit",
-    "repo": "UnitySystem",
-    "message": "feat: 비동기로딩 및 유저데이터 인터페이스",
-    "author": "leehansan9963-cmyk",
-    "date": "2025-11-28T12:46:37Z",
-    "sha": "19c3c70b3cec69469ec3fe99e75647e62784ca16"
   },
   {
     "type": "commit",
@@ -896,6 +896,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2025-12-17T01:19:57Z"
+    "last_updated": "2025-12-18T01:20:32Z"
   }
 ]
