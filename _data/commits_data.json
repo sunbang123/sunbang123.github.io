@@ -2,6 +2,70 @@
   {
     "type": "commit",
     "repo": "UnitySystem",
+    "message": "feat: 인벤토리 장비정보창 구현",
+    "author": "leehansan9963-cmyk",
+    "date": "2025-12-17T12:54:06Z",
+    "sha": "f19a67847ffc162655d372eea3aae0474e688ba6"
+  },
+  {
+    "type": "commit",
+    "repo": "UnitySystem",
+    "message": "feat: 인벤토리 정리(등급별 오류 수정!)",
+    "author": "leehansan9963-cmyk",
+    "date": "2025-12-17T12:15:37Z",
+    "sha": "c1d991eb9bd7423a02468a108cf1f235d9ffb02c"
+  },
+  {
+    "type": "commit",
+    "repo": "UnitySystem",
+    "message": "feat: infinite Scroll 아이템 인벤토리 UI로 불러오기",
+    "author": "leehansan9963-cmyk",
+    "date": "2025-12-17T11:10:18Z",
+    "sha": "8d2570e8a644970688fb11b8c000bfb36d75b1c7"
+  },
+  {
+    "type": "commit",
+    "repo": "UnitySystem",
+    "message": "feat: 아이템 데이터 불러오기 구현",
+    "author": "leehansan9963-cmyk",
+    "date": "2025-12-17T10:07:34Z",
+    "sha": "30da8bdc996ec397c67b2eb0ffa9946f8a2da8f6"
+  },
+  {
+    "type": "commit",
+    "repo": "MonstersInDungeon",
+    "message": "Merge branch 'Sunyoung'",
+    "author": "sunbang123",
+    "date": "2025-12-15T06:22:52Z",
+    "sha": "b4609b09881f81ed95f49f922f4b9c77f17236c0"
+  },
+  {
+    "type": "commit",
+    "repo": "MonstersInDungeon",
+    "message": "fix: 맵이동시 맵 이름 전부 뜨게 수정\n\n.",
+    "author": "sunbang123",
+    "date": "2025-12-15T06:20:58Z",
+    "sha": "da84f4c8b8b46b54db4389b79c34444f60284b17"
+  },
+  {
+    "type": "commit",
+    "repo": "MonstersInDungeon",
+    "message": "fix: PlayerHp값이 100으로 뜨지 않도록 고침",
+    "author": "sunbang123",
+    "date": "2025-12-15T03:55:58Z",
+    "sha": "8890e490b15ff064cdf6ef605404cdf206ff3d0c"
+  },
+  {
+    "type": "commit",
+    "repo": "MonstersInDungeon",
+    "message": "feat: 구조 수정 fix: 데이터 불러올때 맵 인덱스 안불러와지는 부분 수정",
+    "author": "sunbang123",
+    "date": "2025-12-14T09:04:53Z",
+    "sha": "6b8862b6ddcbb6471aad4f05b6834f4e8089fb0a"
+  },
+  {
+    "type": "commit",
+    "repo": "UnitySystem",
     "message": "feat: 아이템 데이터 불러오기 기능 구현중...",
     "author": "sunbang123",
     "date": "2025-12-13T14:35:44Z",
@@ -25,75 +89,11 @@
   },
   {
     "type": "commit",
-    "repo": "UnitySystem",
-    "message": "feat: 씬로드 후 설정 버튼 열고닫기, Mute Toggle\n\n- UI Controller\n- UserDataManager",
-    "author": "sunbang123",
-    "date": "2025-12-11T10:24:58Z",
-    "sha": "4babdb1f18cc2e12ef53c04d00c6da8ca1681b77"
-  },
-  {
-    "type": "commit",
     "repo": "MonstersInDungeon",
     "message": "fix: 안드로이드 빌드시 로비화면 에셋 로드 안되는 오류 해결 (#43)",
     "author": "김선영",
     "date": "2025-12-09T12:07:06Z",
     "sha": "5b934ea8531dcc45742005b269ed457707de41a7"
-  },
-  {
-    "type": "commit",
-    "repo": "UnitySystem",
-    "message": "Test: UI manager 작동 테스트\n\nfeat: 버튼 오류 해결됨",
-    "author": "leehansan9963-cmyk",
-    "date": "2025-12-08T12:41:52Z",
-    "sha": "618b579f7cd924be5fe241d39f9dacd4630e9d16"
-  },
-  {
-    "type": "commit",
-    "repo": "UnitySystem",
-    "message": "feat: 251203 UI시스템 구현",
-    "author": "leehansan9963-cmyk",
-    "date": "2025-12-08T12:30:05Z",
-    "sha": "f1efb6919165e4b265cbb813c85f9ce812e0ec39"
-  },
-  {
-    "type": "commit",
-    "repo": "MonstersInDungeon",
-    "message": "Merge branch 'Sunyoung'",
-    "author": "sunbang123",
-    "date": "2025-12-08T09:03:03Z",
-    "sha": "cae3193cfe8e1807dc6e9475053b9f0ee3598589"
-  },
-  {
-    "type": "commit",
-    "repo": "MonstersInDungeon",
-    "message": "fix: 퀘스트도 튜토리얼이 끝나면 안뜨도록",
-    "author": "sunbang123",
-    "date": "2025-12-07T04:31:35Z",
-    "sha": "d6f8c1309ffd98ee2f26f7c0c994516c4cc3059c"
-  },
-  {
-    "type": "commit",
-    "repo": "MonstersInDungeon",
-    "message": "fix: 로딩 오류 수정, 튜토리얼 완료 후 선택한 원소로 모습 변환",
-    "author": "sunbang123",
-    "date": "2025-12-07T04:21:46Z",
-    "sha": "18151473c96196fcd1dc9da15393128f8b97500f"
-  },
-  {
-    "type": "commit",
-    "repo": "MonstersInDungeon",
-    "message": "System: 스토리모드, 세이브 로드, feat: 아이템 인벤토리 완성, Error: Addressable 씬 로드 (#41)\n\n* feat: BattleSystem 구조화, 공격받으면 체력이 닳도록 구현\n\n* feat: PoisonArea 간소화 전투상황/비전투상황일때 플레이어 HP 정보 공유\n\n* feat: 지속 독 데미지 추가\n\n* feat: 폴더 정리 및 로딩씬 제작\n\n* fix: main와 충돌 해결, 중독상태 색상 돌아오기 버그 수정\n\n* feat: Enemy와 Player가 Unit을 상속받도록해서 중복코드 줄임.\n\n* feat: UI 비율 조정\n\n* style: 스토리 이미지 업로드\n\n* feat: 인벤토리 매니저 제작 & 구현대기\n\n* feat: 아이템을 주으면 인벤토리에 들어가는 기능 추가\n\n* feat: 스토리모드 제작완료, 아이템슬롯 배틀에적용\n\n- AI코드라 스토리모드의 textmanager는 유지보수 어려운 다중 if문에 너무 긴 코드임. 고쳐야함.\n\n* Style: Story 대사 제작\n\n* docs: 나머지 스토리대사 업로드\n\n* feat: Addressable 등록, 씬 로딩에 사용\n\n* feat: 튜토리얼 구현, 유저 데이터 불러오기 구현중\n\n* error: 세이브 로드 기능 구현중 참조오류발생\n\n* fix: BootScene을 제작해서 Addressable 씬로드 오류를 잡는중...\n\nerror: Addressable 씬로드 때문에 싱글톤 오브젝트가 파괴됬음.\n\n---------\n\nCo-authored-by: asonost97-oss <asonost97@gmail.com>",
-    "author": "김선영",
-    "date": "2025-12-06T20:19:03Z",
-    "sha": "ae49ea4cd0ec9175771eeb50cfdf38bae9d93f3f"
-  },
-  {
-    "type": "commit",
-    "repo": "UnitySystem",
-    "message": "feat: 비동기로딩 및 유저데이터 인터페이스",
-    "author": "leehansan9963-cmyk",
-    "date": "2025-11-28T12:46:37Z",
-    "sha": "19c3c70b3cec69469ec3fe99e75647e62784ca16"
   },
   {
     "type": "commit",
@@ -246,14 +246,6 @@
     "author": "김선영",
     "date": "2025-10-13T02:26:30Z",
     "sha": "7c23cda1d4ab24f1616ddf1c166966f465a3c1c9"
-  },
-  {
-    "type": "commit",
-    "repo": "2DShootingGame",
-    "message": "Initial commit",
-    "author": "김선영",
-    "date": "2025-10-01T14:14:10Z",
-    "sha": "472bb176a05c7e01904e6d5db25a3a9e5d523b5f"
   },
   {
     "type": "commit",
@@ -609,46 +601,6 @@
   },
   {
     "type": "commit",
-    "repo": "portfolio",
-    "message": "Merge branch 'main' of https://github.com/sunbang123/Portfolio",
-    "author": "sunbang123",
-    "date": "2025-01-10T16:29:48Z",
-    "sha": "84b6c587cfb82c0eac3349f5efe8f1cd6c83d10c"
-  },
-  {
-    "type": "commit",
-    "repo": "portfolio",
-    "message": "edit",
-    "author": "sunbang123",
-    "date": "2025-01-10T16:29:35Z",
-    "sha": "d0a527189efc7bdc44b08535a710e14532d00978"
-  },
-  {
-    "type": "commit",
-    "repo": "portfolio",
-    "message": "Update hugo.yml",
-    "author": "김선영",
-    "date": "2025-01-10T13:48:04Z",
-    "sha": "a1262198eb34138472ad10fab27c1dddfed64a3e"
-  },
-  {
-    "type": "commit",
-    "repo": "portfolio",
-    "message": "Create hugo.yml",
-    "author": "김선영",
-    "date": "2025-01-10T13:43:33Z",
-    "sha": "d0c09035d801b5722906dd3c80c8294684166f9c"
-  },
-  {
-    "type": "commit",
-    "repo": "portfolio",
-    "message": "tailwind css로 원페이지 포트폴리오 프로토타입 생성",
-    "author": "sunbang123",
-    "date": "2025-01-10T13:32:55Z",
-    "sha": "49002d5456b159883a19285bd510d950797c8c60"
-  },
-  {
-    "type": "commit",
     "repo": "CodingTest",
     "message": "Update README.md",
     "author": "김선영",
@@ -662,22 +614,6 @@
     "author": "김선영",
     "date": "2024-12-29T13:21:13Z",
     "sha": "4391c9f8b0be91520e08b4c916a15340c0a46e3b"
-  },
-  {
-    "type": "commit",
-    "repo": "Hansei",
-    "message": "Update README.md",
-    "author": "김선영",
-    "date": "2024-12-29T13:15:26Z",
-    "sha": "208e754967b991521091cd74574a54ceb19cdfaf"
-  },
-  {
-    "type": "commit",
-    "repo": "Hansei",
-    "message": "Initial commit",
-    "author": "김선영",
-    "date": "2024-12-29T13:14:40Z",
-    "sha": "a12fc3ce04f9547bf5ec5d526f154a56bef99a94"
   },
   {
     "type": "commit",
@@ -761,7 +697,7 @@
   },
   {
     "type": "commit",
-    "repo": "nwitter-reloaded",
+    "repo": "Stickers_SNS_website",
     "message": "호스팅 업데이트",
     "author": "sunbang123",
     "date": "2024-07-18T05:31:47Z",
@@ -769,7 +705,7 @@
   },
   {
     "type": "commit",
-    "repo": "nwitter-reloaded",
+    "repo": "Stickers_SNS_website",
     "message": "호스팅 완료, 레이아웃 여백 추가",
     "author": "sunbang123",
     "date": "2024-07-18T05:02:21Z",
@@ -777,7 +713,7 @@
   },
   {
     "type": "commit",
-    "repo": "nwitter-reloaded",
+    "repo": "Stickers_SNS_website",
     "message": "deploy 오류나는 부분 수정",
     "author": "sunbang123",
     "date": "2024-07-18T04:55:50Z",
@@ -785,7 +721,7 @@
   },
   {
     "type": "commit",
-    "repo": "nwitter-reloaded",
+    "repo": "Stickers_SNS_website",
     "message": "ui 최종 수정",
     "author": "sunbang123",
     "date": "2024-07-18T04:54:06Z",
@@ -793,7 +729,7 @@
   },
   {
     "type": "commit",
-    "repo": "nwitter-reloaded",
+    "repo": "Stickers_SNS_website",
     "message": "ui 수정",
     "author": "sunbang123",
     "date": "2024-07-17T17:43:09Z",
@@ -825,6 +761,126 @@
   },
   {
     "type": "commit",
+    "repo": "cinequick",
+    "message": "초기화",
+    "author": "sunbang123",
+    "date": "2024-06-28T06:48:59Z",
+    "sha": "532238bd4c26c3b9d6072c582db6896c405d4c3a"
+  },
+  {
+    "type": "commit",
+    "repo": "cinequick",
+    "message": "test",
+    "author": "sunbang123",
+    "date": "2024-06-28T06:45:16Z",
+    "sha": "ffb0729c1ecc05c547f798c0d4bfd23767d5f68e"
+  },
+  {
+    "type": "commit",
+    "repo": "cinequick",
+    "message": "export 설정 변경",
+    "author": "sunbang123",
+    "date": "2024-06-28T06:32:05Z",
+    "sha": "3658bcc136de383e3de1c5f99deb8165c70835ee"
+  },
+  {
+    "type": "commit",
+    "repo": "cinequick",
+    "message": "vercel router 설정",
+    "author": "sunbang123",
+    "date": "2024-06-28T06:26:14Z",
+    "sha": "f461decbd76717c5209a54ec6bd58f4d0f1e4b66"
+  },
+  {
+    "type": "commit",
+    "repo": "cinequick",
+    "message": "detail 라우트 핸들러에 모든 라우트주소처리",
+    "author": "sunbang123",
+    "date": "2024-06-28T06:16:26Z",
+    "sha": "9668e497f1122f1f60696028d6ae0bf6beff3947"
+  },
+  {
+    "type": "commit",
+    "repo": "movie-app",
+    "message": "Create _redirects",
+    "author": "김선영",
+    "date": "2024-06-13T11:06:34Z",
+    "sha": "9c33864420497c94c09d83626082563ac9d0e117"
+  },
+  {
+    "type": "commit",
+    "repo": "movie-app",
+    "message": "Create netlify.toml",
+    "author": "김선영",
+    "date": "2024-06-13T11:05:16Z",
+    "sha": "cddee53ff68595f672019ebf65fae269330def06"
+  },
+  {
+    "type": "commit",
+    "repo": "2024-web-senior",
+    "message": "Merge branch 'master' of https://github.com/sunbang123/2024-web-senior",
+    "author": "sunbang123",
+    "date": "2024-06-13T06:23:49Z",
+    "sha": "e5ce23ea577de1de358df8c197f99888a01c033e"
+  },
+  {
+    "type": "commit",
+    "repo": "2024-web-senior",
+    "message": "api post 요청 보내서 로그인 하기",
+    "author": "sunbang123",
+    "date": "2024-06-13T06:21:36Z",
+    "sha": "5ec8f094170cff8bfd5792c1445d88c3529e7702"
+  },
+  {
+    "type": "commit",
+    "repo": "2024-web-senior",
+    "message": "수업 메모",
+    "author": "sunbang123",
+    "date": "2024-05-30T06:25:41Z",
+    "sha": "2ba5c084eb5a3d1fb9bad71d393ea7de096caa99"
+  },
+  {
+    "type": "commit",
+    "repo": "2024-web-senior",
+    "message": "fetch lotto numbers",
+    "author": "sunbang123",
+    "date": "2024-05-30T06:25:02Z",
+    "sha": "c541c8237cd95c73133beb85c135b64d070402d4"
+  },
+  {
+    "type": "commit",
+    "repo": "2024-web-senior",
+    "message": "내가 만든 lotto api 추가하기",
+    "author": "sunbang123",
+    "date": "2024-05-30T05:42:40Z",
+    "sha": "675bd111ef3ed2c38eca7ca7969718e7b37e45ab"
+  },
+  {
+    "type": "commit",
+    "repo": "movie-app",
+    "message": "css 레이아웃 스타일 추가",
+    "author": "sunbang123",
+    "date": "2024-02-29T10:11:32Z",
+    "sha": "f5c66655d66faf95ef26b6959db0b4bf8a553c96"
+  },
+  {
+    "type": "commit",
+    "repo": "movie-app",
+    "message": "깃허브 페이지  publishing 하기",
+    "author": "sunbang123",
+    "date": "2024-02-29T09:09:52Z",
+    "sha": "bab9684c7d339ebe78bbd0271d6d3d95af15d010"
+  },
+  {
+    "type": "commit",
+    "repo": "movie-app",
+    "message": "되돌리기",
+    "author": "sunbang123",
+    "date": "2024-02-21T08:02:54Z",
+    "sha": "f56190fd7ce4baf075059e11b6ff67ae15e5af5f"
+  },
+  {
+    "type": "commit",
     "repo": "Smart_device",
     "message": "Update README.md",
     "author": "김선영",
@@ -840,6 +896,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2025-12-14T04:31:47Z"
+    "last_updated": "2025-12-19T01:24:26Z"
   }
 ]
