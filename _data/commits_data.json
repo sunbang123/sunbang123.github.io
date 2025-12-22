@@ -1,6 +1,14 @@
 [
   {
     "type": "commit",
+    "repo": "MonstersInDungeon",
+    "message": "feat: 플레이어의 모습에 따라 바뀌는 애니메이션, feat: 인벤토리 세이브 로드, feat: 경험치, 레벨업 (#44)\n\n* feat: 플레이어의 모습에 따라 바뀌는 애니메이션\n\n* feat: 초상화, 슬라이드 연결\n\n* fix: 한글 깨짐 수정\n\n* feat: 경험치, 레벨업\n\n* feat: 모든UI업데이트 이벤트 구독으로 바꿈. 경험치 세이브로드\n\n* feat: 인벤토리 세이브 로드\n\n* feat: 아이템 사용 중간로드\n\n* fix: 아이템 중복사용 수정",
+    "author": "김선영",
+    "date": "2025-12-21T04:07:06Z",
+    "sha": "5ef88e69f6c2ac2037a75f333c99c0ee9ed57400"
+  },
+  {
+    "type": "commit",
     "repo": "UnitySystem",
     "message": "feat: 인벤토리 장비정보창 구현",
     "author": "leehansan9963-cmyk",
@@ -86,14 +94,6 @@
     "author": "김선영",
     "date": "2025-12-12T02:01:40Z",
     "sha": "930e4d8dbb0a6a9ed853b9f566a9d8199fdf42d6"
-  },
-  {
-    "type": "commit",
-    "repo": "MonstersInDungeon",
-    "message": "fix: 안드로이드 빌드시 로비화면 에셋 로드 안되는 오류 해결 (#43)",
-    "author": "김선영",
-    "date": "2025-12-09T12:07:06Z",
-    "sha": "5b934ea8531dcc45742005b269ed457707de41a7"
   },
   {
     "type": "commit",
@@ -896,6 +896,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2025-12-21T01:29:22Z"
+    "last_updated": "2025-12-22T01:27:26Z"
   }
 ]
