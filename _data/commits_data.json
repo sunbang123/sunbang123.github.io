@@ -1,6 +1,14 @@
 [
   {
     "type": "commit",
+    "repo": "UnitySystem",
+    "message": "feat: 아이템 장착, 데이터 세팅 리팩토링\n\nfix: 장갑 코드오류수정\n등급별로 아이템이 장착가능한것을 확인했습니다.",
+    "author": "sunbang123",
+    "date": "2025-12-23T11:23:16Z",
+    "sha": "21211b4b6538a7e2513d6d6a4116458888a81fca"
+  },
+  {
+    "type": "commit",
     "repo": "MonstersInDungeon",
     "message": "feat: 플레이어의 모습에 따라 바뀌는 애니메이션, feat: 인벤토리 세이브 로드, feat: 경험치, 레벨업 (#44)\n\n* feat: 플레이어의 모습에 따라 바뀌는 애니메이션\n\n* feat: 초상화, 슬라이드 연결\n\n* fix: 한글 깨짐 수정\n\n* feat: 경험치, 레벨업\n\n* feat: 모든UI업데이트 이벤트 구독으로 바꿈. 경험치 세이브로드\n\n* feat: 인벤토리 세이브 로드\n\n* feat: 아이템 사용 중간로드\n\n* fix: 아이템 중복사용 수정",
     "author": "김선영",
@@ -70,14 +78,6 @@
     "author": "sunbang123",
     "date": "2025-12-14T09:04:53Z",
     "sha": "6b8862b6ddcbb6471aad4f05b6834f4e8089fb0a"
-  },
-  {
-    "type": "commit",
-    "repo": "UnitySystem",
-    "message": "feat: 아이템 데이터 불러오기 기능 구현중...",
-    "author": "sunbang123",
-    "date": "2025-12-13T14:35:44Z",
-    "sha": "24f8673ed3e49bd9901bd2c4f4a0165a0094a921"
   },
   {
     "type": "commit",
@@ -896,6 +896,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2025-12-23T01:24:05Z"
+    "last_updated": "2025-12-24T01:23:03Z"
   }
 ]
