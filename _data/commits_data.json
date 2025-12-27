@@ -1,6 +1,30 @@
 [
   {
     "type": "commit",
+    "repo": "MonstersInDungeon",
+    "message": "Merge branch 'Sunyoung' into main",
+    "author": "sunbang123",
+    "date": "2025-12-26T10:38:50Z",
+    "sha": "e7fc3efb4a5ad762531f2849e11b28e6e0871a97"
+  },
+  {
+    "type": "commit",
+    "repo": "UnitySystem",
+    "message": "feat: 장비 총합 구현",
+    "author": "sunbang123",
+    "date": "2025-12-26T10:32:43Z",
+    "sha": "c064b6d9f4602a5f0d012978139f164e5f664e8c"
+  },
+  {
+    "type": "commit",
+    "repo": "UnitySystem",
+    "message": "feat: 장비 탈부착",
+    "author": "sunbang123",
+    "date": "2025-12-26T10:32:22Z",
+    "sha": "f0c5d2ed0196462baa2133afc3a145eff418fb8f"
+  },
+  {
+    "type": "commit",
     "repo": "UnitySystem",
     "message": "feat: 아이템 장착, 데이터 세팅 리팩토링\n\nfix: 장갑 코드오류수정\n등급별로 아이템이 장착가능한것을 확인했습니다.",
     "author": "sunbang123",
@@ -33,22 +57,6 @@
   },
   {
     "type": "commit",
-    "repo": "UnitySystem",
-    "message": "feat: infinite Scroll 아이템 인벤토리 UI로 불러오기",
-    "author": "leehansan9963-cmyk",
-    "date": "2025-12-17T11:10:18Z",
-    "sha": "8d2570e8a644970688fb11b8c000bfb36d75b1c7"
-  },
-  {
-    "type": "commit",
-    "repo": "UnitySystem",
-    "message": "feat: 아이템 데이터 불러오기 구현",
-    "author": "leehansan9963-cmyk",
-    "date": "2025-12-17T10:07:34Z",
-    "sha": "30da8bdc996ec397c67b2eb0ffa9946f8a2da8f6"
-  },
-  {
-    "type": "commit",
     "repo": "MonstersInDungeon",
     "message": "Merge branch 'Sunyoung'",
     "author": "sunbang123",
@@ -70,14 +78,6 @@
     "author": "sunbang123",
     "date": "2025-12-15T03:55:58Z",
     "sha": "8890e490b15ff064cdf6ef605404cdf206ff3d0c"
-  },
-  {
-    "type": "commit",
-    "repo": "MonstersInDungeon",
-    "message": "feat: 구조 수정 fix: 데이터 불러올때 맵 인덱스 안불러와지는 부분 수정",
-    "author": "sunbang123",
-    "date": "2025-12-14T09:04:53Z",
-    "sha": "6b8862b6ddcbb6471aad4f05b6834f4e8089fb0a"
   },
   {
     "type": "commit",
@@ -896,6 +896,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2025-12-26T01:24:27Z"
+    "last_updated": "2025-12-27T01:22:24Z"
   }
 ]

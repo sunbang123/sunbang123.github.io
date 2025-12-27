@@ -3,7 +3,7 @@
     "type": "pull_request",
     "repo": "MonstersInDungeon",
     "title": "feat: 인게임씬과 맵씬을 별도로 나눔, refact: 하드코딩요소 개선. 코루틴 패턴화",
-    "state": "open",
+    "state": "closed",
     "date": "2025-12-24T10:21:23Z",
     "url": "https://github.com/sunbang123/MonstersInDungeon/pull/46",
     "number": 46
@@ -117,6 +117,6 @@
     "number": 1
   },
   {
-    "last_updated": "2025-12-26T01:24:27Z"
+    "last_updated": "2025-12-27T01:22:24Z"
   }
 ]
