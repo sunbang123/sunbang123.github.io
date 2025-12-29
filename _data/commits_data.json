@@ -1,6 +1,30 @@
 [
   {
     "type": "commit",
+    "repo": "UnitySystem",
+    "message": "fix: 장비 순서 수정",
+    "author": "sunbang123",
+    "date": "2025-12-28T14:10:37Z",
+    "sha": "b5089c0c95111bdbdae0e5a12dc42d4f81a7db3a"
+  },
+  {
+    "type": "commit",
+    "repo": "2DTutorialProject",
+    "message": "Initialize Commit",
+    "author": "sunbang123",
+    "date": "2025-12-28T07:09:17Z",
+    "sha": "443d0e0544435d69505e0887a9a398cbe7b0de23"
+  },
+  {
+    "type": "commit",
+    "repo": "2DTutorialProject",
+    "message": "Initial commit",
+    "author": "김선영",
+    "date": "2025-12-28T07:07:15Z",
+    "sha": "dbaa987ac7bd189ac31c8ab7422fac91bde4914e"
+  },
+  {
+    "type": "commit",
     "repo": "MonstersInDungeon",
     "message": "Merge branch 'Sunyoung' into main",
     "author": "sunbang123",
@@ -46,14 +70,6 @@
     "author": "leehansan9963-cmyk",
     "date": "2025-12-17T12:54:06Z",
     "sha": "f19a67847ffc162655d372eea3aae0474e688ba6"
-  },
-  {
-    "type": "commit",
-    "repo": "UnitySystem",
-    "message": "feat: 인벤토리 정리(등급별 오류 수정!)",
-    "author": "leehansan9963-cmyk",
-    "date": "2025-12-17T12:15:37Z",
-    "sha": "c1d991eb9bd7423a02468a108cf1f235d9ffb02c"
   },
   {
     "type": "commit",
@@ -817,46 +833,6 @@
   },
   {
     "type": "commit",
-    "repo": "2024-web-senior",
-    "message": "Merge branch 'master' of https://github.com/sunbang123/2024-web-senior",
-    "author": "sunbang123",
-    "date": "2024-06-13T06:23:49Z",
-    "sha": "e5ce23ea577de1de358df8c197f99888a01c033e"
-  },
-  {
-    "type": "commit",
-    "repo": "2024-web-senior",
-    "message": "api post 요청 보내서 로그인 하기",
-    "author": "sunbang123",
-    "date": "2024-06-13T06:21:36Z",
-    "sha": "5ec8f094170cff8bfd5792c1445d88c3529e7702"
-  },
-  {
-    "type": "commit",
-    "repo": "2024-web-senior",
-    "message": "수업 메모",
-    "author": "sunbang123",
-    "date": "2024-05-30T06:25:41Z",
-    "sha": "2ba5c084eb5a3d1fb9bad71d393ea7de096caa99"
-  },
-  {
-    "type": "commit",
-    "repo": "2024-web-senior",
-    "message": "fetch lotto numbers",
-    "author": "sunbang123",
-    "date": "2024-05-30T06:25:02Z",
-    "sha": "c541c8237cd95c73133beb85c135b64d070402d4"
-  },
-  {
-    "type": "commit",
-    "repo": "2024-web-senior",
-    "message": "내가 만든 lotto api 추가하기",
-    "author": "sunbang123",
-    "date": "2024-05-30T05:42:40Z",
-    "sha": "675bd111ef3ed2c38eca7ca7969718e7b37e45ab"
-  },
-  {
-    "type": "commit",
     "repo": "movie-app",
     "message": "css 레이아웃 스타일 추가",
     "author": "sunbang123",
@@ -896,6 +872,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2025-12-28T01:42:27Z"
+    "last_updated": "2025-12-29T01:41:06Z"
   }
 ]
