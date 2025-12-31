@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "데이터 중심(Data-Driven) UI 구조"
-date: 2025-12-24 20:53:00 +0900
+date: 2025-12-29 20:53:00 +0900
 categories: 
 tags: "Unity"
 ---
