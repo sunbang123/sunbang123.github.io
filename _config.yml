@@ -168,3 +168,7 @@ tag_categories:
 # Jekyll이 빌드할 때 포함할 파일/폴더
 include:
   - _data
+  - manifest.json
+  - sw.js
+  - icon-192.png
+  - icon-512.png

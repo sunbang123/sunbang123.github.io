@@ -19,9 +19,9 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: fetch_activities_group # 그룹 이름 변경
-  cancel-in-progress: true
+# concurrency:
+#   group: fetch_activities_group # 그룹 이름 변경
+#   cancel-in-progress: true
 
 jobs:
   fetch_and_save:
