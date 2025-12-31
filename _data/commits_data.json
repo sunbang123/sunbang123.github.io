@@ -2,6 +2,14 @@
   {
     "type": "commit",
     "repo": "UnitySystem",
+    "message": "feat: 챕터 데이터 불러오기, 챕터 선택하기",
+    "author": "sunbang123",
+    "date": "2025-12-31T07:07:01Z",
+    "sha": "aad0f0e042b649fd8839d380dc9ea49233acf97b"
+  },
+  {
+    "type": "commit",
+    "repo": "UnitySystem",
     "message": "fix: 장비 순서 수정",
     "author": "sunbang123",
     "date": "2025-12-28T14:10:37Z",
@@ -62,14 +70,6 @@
     "author": "김선영",
     "date": "2025-12-21T04:07:06Z",
     "sha": "5ef88e69f6c2ac2037a75f333c99c0ee9ed57400"
-  },
-  {
-    "type": "commit",
-    "repo": "UnitySystem",
-    "message": "feat: 인벤토리 장비정보창 구현",
-    "author": "leehansan9963-cmyk",
-    "date": "2025-12-17T12:54:06Z",
-    "sha": "f19a67847ffc162655d372eea3aae0474e688ba6"
   },
   {
     "type": "commit",
@@ -872,6 +872,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2025-12-31T03:15:31Z"
+    "last_updated": "2025-12-31T08:29:44Z"
   }
 ]
