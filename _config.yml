@@ -162,7 +162,6 @@ tag_categories:
   
   기타:
     - To-Do
-
     - 오답노트
 
 # Jekyll이 빌드할 때 포함할 파일/폴더
@@ -172,3 +171,4 @@ include:
   - sw.js
   - icon-192.png
   - icon-512.png
+  - robots.txt
