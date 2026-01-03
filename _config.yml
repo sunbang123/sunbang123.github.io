@@ -38,14 +38,14 @@ google-site-verification: e51F6SpZbz_x6ubkOKLTeqEzuMBZ6XgKJYAzEOe7fEI
 asset_url: /assets
 plugins:
   - jekyll-feed
-  - jekyll-polyglot
+  # - jekyll-polyglot
   - jekyll-seo-tag
   - jekyll-sitemap
 
-languages: ['ko', 'ja', 'en']
-default_lang: 'ko'
-exclude_from_localization: ["assets/css", "assets/img"]
-parallel_localization: false
+# languages: ['ko', 'ja', 'en']
+# default_lang: 'ko'
+# exclude_from_localization: ["assets/css", "assets/img"]
+# parallel_localization: false
 
 sass:
   quiet_deps: true
@@ -115,7 +115,6 @@ defaults:
 #   - vendor/bundle/
 #   - vendor/cache/
 #   - vendor/gems/
-
 #   - vendor/ruby/
 
 tag_categories:
