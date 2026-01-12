@@ -2,8 +2,26 @@
   {
     "type": "issue",
     "repo": "HexaStack",
-    "title": "Feat",
+    "title": "UI 쓰임새 구상",
     "state": "open",
+    "date": "2026-01-11T13:40:18Z",
+    "url": "https://github.com/sunbang123/HexaStack/issues/5",
+    "number": 5
+  },
+  {
+    "type": "pull_request",
+    "repo": "HexaStack",
+    "title": "Feat: Title Scene / Test: Camera Depth Sorting",
+    "state": "closed",
+    "date": "2026-01-11T13:38:24Z",
+    "url": "https://github.com/sunbang123/HexaStack/pull/4",
+    "number": 4
+  },
+  {
+    "type": "issue",
+    "repo": "HexaStack",
+    "title": "Feat",
+    "state": "closed",
     "date": "2026-01-07T07:03:43Z",
     "url": "https://github.com/sunbang123/HexaStack/issues/3",
     "number": 3
@@ -144,6 +162,6 @@
     "number": 1
   },
   {
-    "last_updated": "2026-01-11T01:43:36Z"
+    "last_updated": "2026-01-12T01:40:18Z"
   }
 ]
