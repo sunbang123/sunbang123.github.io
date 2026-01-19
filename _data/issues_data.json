@@ -2,6 +2,15 @@
   {
     "type": "pull_request",
     "repo": "HexaStack",
+    "title": "Feat: UI Popup , Loading화면으로 GC 관리, Marshaling 비용 최적화",
+    "state": "closed",
+    "date": "2026-01-18T13:44:05Z",
+    "url": "https://github.com/sunbang123/HexaStack/pull/7",
+    "number": 7
+  },
+  {
+    "type": "pull_request",
+    "repo": "HexaStack",
     "title": "Feature",
     "state": "closed",
     "date": "2026-01-13T03:07:40Z",
@@ -12,7 +21,7 @@
     "type": "issue",
     "repo": "HexaStack",
     "title": "UI 쓰임새 구상",
-    "state": "open",
+    "state": "closed",
     "date": "2026-01-11T13:40:18Z",
     "url": "https://github.com/sunbang123/HexaStack/issues/5",
     "number": 5
@@ -34,15 +43,6 @@
     "date": "2026-01-07T07:03:43Z",
     "url": "https://github.com/sunbang123/HexaStack/issues/3",
     "number": 3
-  },
-  {
-    "type": "pull_request",
-    "repo": "HexaStack",
-    "title": "main fetch",
-    "state": "closed",
-    "date": "2026-01-07T04:46:13Z",
-    "url": "https://github.com/sunbang123/HexaStack/pull/2",
-    "number": 2
   },
   {
     "type": "pull_request",
@@ -162,6 +162,6 @@
     "number": 1
   },
   {
-    "last_updated": "2026-01-18T01:42:13Z"
+    "last_updated": "2026-01-19T01:40:59Z"
   }
 ]
