@@ -2,42 +2,42 @@
   {
     "type": "commit",
     "repo": "HexaStack",
+    "message": "feat: Pointy-top 에서 Flat-top으로 변경",
+    "author": "sunbang123",
+    "date": "2026-01-22T09:27:10Z",
+    "sha": "9a3260d490c844a3b44f8fd4fdb138f494417534"
+  },
+  {
+    "type": "commit",
+    "repo": "HexaStack",
+    "message": "Style: VFX, Popup UI, Plannet Material, feat: Fill percent",
+    "author": "sunbang123",
+    "date": "2026-01-21T11:28:47Z",
+    "sha": "482484422f0770c5f20624cc96b394acf2ba019c"
+  },
+  {
+    "type": "commit",
+    "repo": "HexaStack",
+    "message": "fix: snap 수정, Ingame Environment Play와 UI환경 분리",
+    "author": "sunbang123",
+    "date": "2026-01-21T03:28:12Z",
+    "sha": "ffed16ae11229169689550581da46ee339d35892"
+  },
+  {
+    "type": "commit",
+    "repo": "HexaStack",
+    "message": "style: Solar System Lobby, Fill Animation",
+    "author": "sunbang123",
+    "date": "2026-01-19T12:39:18Z",
+    "sha": "0515a825312524d468715007f5f1cb881a202865"
+  },
+  {
+    "type": "commit",
+    "repo": "HexaStack",
     "message": "Feat: UI Popup , Loading화면으로 GC 관리, Marshaling 비용 최적화 (#7)\n\n* fix: 안티 패턴 제거, 마샬링 비용 감소\n\n* Update SceneLoader.cs\n\n* Update InGame.unity\n\n* Feat: BootScene, 전역 EventSystem\n\n* Add: EventSystem 프리팹\n\n* feat: UIManager와 전역 Canvas / test: UI Popup 구현중..\n\n* Feat: BGM, SFX Slider, Style: UICanvas 화면비 조정\n\n* Update README.md",
     "author": "김선영",
     "date": "2026-01-18T13:44:18Z",
     "sha": "51244ac6b9cfffab3e305d74e3ec521f915a261f"
-  },
-  {
-    "type": "commit",
-    "repo": "HexaStack",
-    "message": "feat: Title Loading Animation\n\n* feat: Particle Effect\n\n* feat: Title, Lobby, InGame Scene\n\n* feat: Title씬 애니메이션 추가, Test: 카메라 Depth Sorting\n\n* feat: Logo Animation 수정\n\n* feat: Logo Animation 회전",
-    "author": "김선영",
-    "date": "2026-01-13T03:37:09Z",
-    "sha": "d86bce525cb280f9d23fd4dfe8bc5182cc98c754"
-  },
-  {
-    "type": "commit",
-    "repo": "HexaStack",
-    "message": "Feat: Title Scene / Test: Camera Depth Sorting (#4)\n\n* feat: Particle Effect\n\n* feat: Title, Lobby, InGame Scene\n\n* feat: Title씬 애니메이션 추가, Test: 카메라 Depth Sorting",
-    "author": "김선영",
-    "date": "2026-01-11T13:38:39Z",
-    "sha": "a4f46d111ac7e59d178c41b5b5fe5f356886c256"
-  },
-  {
-    "type": "commit",
-    "repo": "HexaStack",
-    "message": "Update StackController.cs",
-    "author": "sunbang123",
-    "date": "2026-01-07T04:44:50Z",
-    "sha": "11e6f7ed4f00bd89b5877411780e27c63bbcc7f9"
-  },
-  {
-    "type": "commit",
-    "repo": "HexaStack",
-    "message": "Feat: 로비씬 Setting, 인게임 카메라 제어\n\nFeat: 로비씬 Setting, 인게임 카메라 제어",
-    "author": "김선영",
-    "date": "2026-01-07T04:15:50Z",
-    "sha": "9c1c1aed9390389f24efec98a06461984515261d"
   },
   {
     "type": "commit",
@@ -872,6 +872,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-01-22T01:29:18Z"
+    "last_updated": "2026-01-23T01:26:50Z"
   }
 ]
