@@ -1,6 +1,86 @@
 [
   {
     "type": "commit",
+    "repo": "HexaStack",
+    "message": "feat: Pointy-top 에서 Flat-top으로 변경",
+    "author": "sunbang123",
+    "date": "2026-01-22T09:27:10Z",
+    "sha": "9a3260d490c844a3b44f8fd4fdb138f494417534"
+  },
+  {
+    "type": "commit",
+    "repo": "HexaStack",
+    "message": "Style: VFX, Popup UI, Plannet Material, feat: Fill percent",
+    "author": "sunbang123",
+    "date": "2026-01-21T11:28:47Z",
+    "sha": "482484422f0770c5f20624cc96b394acf2ba019c"
+  },
+  {
+    "type": "commit",
+    "repo": "HexaStack",
+    "message": "fix: snap 수정, Ingame Environment Play와 UI환경 분리",
+    "author": "sunbang123",
+    "date": "2026-01-21T03:28:12Z",
+    "sha": "ffed16ae11229169689550581da46ee339d35892"
+  },
+  {
+    "type": "commit",
+    "repo": "HexaStack",
+    "message": "style: Solar System Lobby, Fill Animation",
+    "author": "sunbang123",
+    "date": "2026-01-19T12:39:18Z",
+    "sha": "0515a825312524d468715007f5f1cb881a202865"
+  },
+  {
+    "type": "commit",
+    "repo": "HexaStack",
+    "message": "Feat: UI Popup , Loading화면으로 GC 관리, Marshaling 비용 최적화 (#7)\n\n* fix: 안티 패턴 제거, 마샬링 비용 감소\n\n* Update SceneLoader.cs\n\n* Update InGame.unity\n\n* Feat: BootScene, 전역 EventSystem\n\n* Add: EventSystem 프리팹\n\n* feat: UIManager와 전역 Canvas / test: UI Popup 구현중..\n\n* Feat: BGM, SFX Slider, Style: UICanvas 화면비 조정\n\n* Update README.md",
+    "author": "김선영",
+    "date": "2026-01-18T13:44:18Z",
+    "sha": "51244ac6b9cfffab3e305d74e3ec521f915a261f"
+  },
+  {
+    "type": "commit",
+    "repo": "developer-portfolios",
+    "message": "Merge pull request #3059 from emmabostian/python-link-prefixes\n\nPython link prefixes",
+    "author": "Chuck",
+    "date": "2026-01-03T20:00:59Z",
+    "sha": "909d3f79c40f8b0812fef5bf28cecf1d3909efc6"
+  },
+  {
+    "type": "commit",
+    "repo": "developer-portfolios",
+    "message": "Adjust comments",
+    "author": "Chuck Smith",
+    "date": "2026-01-03T20:00:34Z",
+    "sha": "af282eef1b24501986f73958c222582174fac2f1"
+  },
+  {
+    "type": "commit",
+    "repo": "developer-portfolios",
+    "message": "Add more token features",
+    "author": "Chuck Smith",
+    "date": "2026-01-03T19:56:45Z",
+    "sha": "dfc5c6ad817ececb7a83cddefef7e24d36109f87"
+  },
+  {
+    "type": "commit",
+    "repo": "developer-portfolios",
+    "message": "Merge pull request #3055 from aayushroboto/add-bharti-site\n\nAdd Aaa yush Bharti's portfolio entry to README.md",
+    "author": "Chuck",
+    "date": "2026-01-03T19:33:59Z",
+    "sha": "1c69549845b0885b065e079aa9c66ad9b945abe9"
+  },
+  {
+    "type": "commit",
+    "repo": "developer-portfolios",
+    "message": "Merge pull request #3058 from Elango-P/Add-elango-portfolio\n\nAdd elango portfolio",
+    "author": "Chuck",
+    "date": "2026-01-03T19:33:21Z",
+    "sha": "0cb583d505c1351393d6259db941aaa0cbfb3d4c"
+  },
+  {
+    "type": "commit",
     "repo": "UnitySystem",
     "message": "feat: 챕터 데이터 불러오기, 챕터 선택하기",
     "author": "sunbang123",
@@ -777,86 +857,6 @@
   },
   {
     "type": "commit",
-    "repo": "cinequick",
-    "message": "초기화",
-    "author": "sunbang123",
-    "date": "2024-06-28T06:48:59Z",
-    "sha": "532238bd4c26c3b9d6072c582db6896c405d4c3a"
-  },
-  {
-    "type": "commit",
-    "repo": "cinequick",
-    "message": "test",
-    "author": "sunbang123",
-    "date": "2024-06-28T06:45:16Z",
-    "sha": "ffb0729c1ecc05c547f798c0d4bfd23767d5f68e"
-  },
-  {
-    "type": "commit",
-    "repo": "cinequick",
-    "message": "export 설정 변경",
-    "author": "sunbang123",
-    "date": "2024-06-28T06:32:05Z",
-    "sha": "3658bcc136de383e3de1c5f99deb8165c70835ee"
-  },
-  {
-    "type": "commit",
-    "repo": "cinequick",
-    "message": "vercel router 설정",
-    "author": "sunbang123",
-    "date": "2024-06-28T06:26:14Z",
-    "sha": "f461decbd76717c5209a54ec6bd58f4d0f1e4b66"
-  },
-  {
-    "type": "commit",
-    "repo": "cinequick",
-    "message": "detail 라우트 핸들러에 모든 라우트주소처리",
-    "author": "sunbang123",
-    "date": "2024-06-28T06:16:26Z",
-    "sha": "9668e497f1122f1f60696028d6ae0bf6beff3947"
-  },
-  {
-    "type": "commit",
-    "repo": "movie-app",
-    "message": "Create _redirects",
-    "author": "김선영",
-    "date": "2024-06-13T11:06:34Z",
-    "sha": "9c33864420497c94c09d83626082563ac9d0e117"
-  },
-  {
-    "type": "commit",
-    "repo": "movie-app",
-    "message": "Create netlify.toml",
-    "author": "김선영",
-    "date": "2024-06-13T11:05:16Z",
-    "sha": "cddee53ff68595f672019ebf65fae269330def06"
-  },
-  {
-    "type": "commit",
-    "repo": "movie-app",
-    "message": "css 레이아웃 스타일 추가",
-    "author": "sunbang123",
-    "date": "2024-02-29T10:11:32Z",
-    "sha": "f5c66655d66faf95ef26b6959db0b4bf8a553c96"
-  },
-  {
-    "type": "commit",
-    "repo": "movie-app",
-    "message": "깃허브 페이지  publishing 하기",
-    "author": "sunbang123",
-    "date": "2024-02-29T09:09:52Z",
-    "sha": "bab9684c7d339ebe78bbd0271d6d3d95af15d010"
-  },
-  {
-    "type": "commit",
-    "repo": "movie-app",
-    "message": "되돌리기",
-    "author": "sunbang123",
-    "date": "2024-02-21T08:02:54Z",
-    "sha": "f56190fd7ce4baf075059e11b6ff67ae15e5af5f"
-  },
-  {
-    "type": "commit",
     "repo": "Smart_device",
     "message": "Update README.md",
     "author": "김선영",
@@ -872,6 +872,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-01-03T01:29:21Z"
+    "last_updated": "2026-01-26T01:44:28Z"
   }
 ]
