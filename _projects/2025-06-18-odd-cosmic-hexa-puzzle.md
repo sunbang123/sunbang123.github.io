@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "Cosmic Hexa Puzzle"
-date: 2024-06-18
+date: 2026-01-11
 description: "같은 색상의 Hexa Stack을 쌓아올리는 퍼즐게임"
 thumbnail: "/assets/images/thumbnail/cosmic-hexa-puzzle.png"
 icon: "fas fa-code"
@@ -11,7 +11,7 @@ github_url: "https://github.com/sunbang123/HexaStack"
 status: "in-progress"
 ---
 
-# Odd Omok
+# Cosmic Hexa Puzzle
 
 ### Game Title: Cosmic Hexa Puzzle
 
@@ -29,12 +29,12 @@ status: "in-progress"
 
 목표:
 
-뭔가 이상한 오목 UI 구성기획서.pptx)
+Cosmic Hexa Puzzle 기획서.pptx
 
 ## Tech Stack
 
 - platform: **Unity**
 - Language: **C#**
-- Dedicated Server: Photon
+- Dedicated Server: Firebase
 
 ## Project Term
