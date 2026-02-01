@@ -1,5 +1,14 @@
 [
   {
+    "type": "issue",
+    "repo": "HexaStack",
+    "title": "서버 통신 및 비동기 작업 UI 표시",
+    "state": "open",
+    "date": "2026-01-31T14:16:25Z",
+    "url": "https://github.com/sunbang123/HexaStack/issues/8",
+    "number": 8
+  },
+  {
     "type": "pull_request",
     "repo": "HexaStack",
     "title": "Feat: UI Popup , Loading화면으로 GC 관리, Marshaling 비용 최적화",
@@ -34,15 +43,6 @@
     "date": "2026-01-11T13:38:24Z",
     "url": "https://github.com/sunbang123/HexaStack/pull/4",
     "number": 4
-  },
-  {
-    "type": "issue",
-    "repo": "HexaStack",
-    "title": "Feat",
-    "state": "closed",
-    "date": "2026-01-07T07:03:43Z",
-    "url": "https://github.com/sunbang123/HexaStack/issues/3",
-    "number": 3
   },
   {
     "type": "pull_request",
@@ -162,6 +162,6 @@
     "number": 1
   },
   {
-    "last_updated": "2026-01-31T01:46:50Z"
+    "last_updated": "2026-02-01T02:05:36Z"
   }
 ]
