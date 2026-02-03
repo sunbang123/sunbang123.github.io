@@ -2,6 +2,24 @@
   {
     "type": "issue",
     "repo": "HexaStack",
+    "title": "빌드 버전 관리",
+    "state": "open",
+    "date": "2026-02-02T10:18:01Z",
+    "url": "https://github.com/sunbang123/HexaStack/issues/10",
+    "number": 10
+  },
+  {
+    "type": "issue",
+    "repo": "HexaStack",
+    "title": "개발 매너리즘 극복 일지",
+    "state": "open",
+    "date": "2026-02-02T09:33:08Z",
+    "url": "https://github.com/sunbang123/HexaStack/issues/9",
+    "number": 9
+  },
+  {
+    "type": "issue",
+    "repo": "HexaStack",
     "title": "서버 통신 및 비동기 작업 UI 표시",
     "state": "open",
     "date": "2026-01-31T14:16:25Z",
@@ -25,24 +43,6 @@
     "date": "2026-01-13T03:07:40Z",
     "url": "https://github.com/sunbang123/HexaStack/pull/6",
     "number": 6
-  },
-  {
-    "type": "issue",
-    "repo": "HexaStack",
-    "title": "UI 쓰임새 구상",
-    "state": "closed",
-    "date": "2026-01-11T13:40:18Z",
-    "url": "https://github.com/sunbang123/HexaStack/issues/5",
-    "number": 5
-  },
-  {
-    "type": "pull_request",
-    "repo": "HexaStack",
-    "title": "Feat: Title Scene / Test: Camera Depth Sorting",
-    "state": "closed",
-    "date": "2026-01-11T13:38:24Z",
-    "url": "https://github.com/sunbang123/HexaStack/pull/4",
-    "number": 4
   },
   {
     "type": "pull_request",
@@ -162,6 +162,6 @@
     "number": 1
   },
   {
-    "last_updated": "2026-02-02T01:57:57Z"
+    "last_updated": "2026-02-03T01:56:43Z"
   }
 ]

@@ -2,6 +2,22 @@
   {
     "type": "commit",
     "repo": "HexaStack",
+    "message": "Test: Archive, Profile, Rank 연결, Privacy Policy 등록\n\nFeat: ArchivePopup연결, Fix: UI클릭시 JellyFill안되도록\nFeat: ProfilePopup prefab제작, 연결\nfeat: Rank Popup, fix: Privacy Policy",
+    "author": "sunbang123",
+    "date": "2026-01-24T07:03:02Z",
+    "sha": "e7e6261edc1f3967267bc5eca4a3a047ffbb0392"
+  },
+  {
+    "type": "commit",
+    "repo": "HexaStack",
+    "message": "hexagon 생성 알고리즘 Guide",
+    "author": "sunbang123",
+    "date": "2026-01-23T02:23:19Z",
+    "sha": "d6412bfad3445aeedbfd08ef39eeab259384206d"
+  },
+  {
+    "type": "commit",
+    "repo": "HexaStack",
     "message": "feat: Pointy-top 에서 Flat-top으로 변경",
     "author": "sunbang123",
     "date": "2026-01-22T09:27:10Z",
@@ -22,22 +38,6 @@
     "author": "sunbang123",
     "date": "2026-01-21T03:28:12Z",
     "sha": "ffed16ae11229169689550581da46ee339d35892"
-  },
-  {
-    "type": "commit",
-    "repo": "HexaStack",
-    "message": "style: Solar System Lobby, Fill Animation",
-    "author": "sunbang123",
-    "date": "2026-01-19T12:39:18Z",
-    "sha": "0515a825312524d468715007f5f1cb881a202865"
-  },
-  {
-    "type": "commit",
-    "repo": "HexaStack",
-    "message": "Feat: UI Popup , Loading화면으로 GC 관리, Marshaling 비용 최적화 (#7)\n\n* fix: 안티 패턴 제거, 마샬링 비용 감소\n\n* Update SceneLoader.cs\n\n* Update InGame.unity\n\n* Feat: BootScene, 전역 EventSystem\n\n* Add: EventSystem 프리팹\n\n* feat: UIManager와 전역 Canvas / test: UI Popup 구현중..\n\n* Feat: BGM, SFX Slider, Style: UICanvas 화면비 조정\n\n* Update README.md",
-    "author": "김선영",
-    "date": "2026-01-18T13:44:18Z",
-    "sha": "51244ac6b9cfffab3e305d74e3ec521f915a261f"
   },
   {
     "type": "commit",
@@ -872,6 +872,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-02-02T01:57:57Z"
+    "last_updated": "2026-02-03T01:56:43Z"
   }
 ]
