@@ -2,8 +2,17 @@
   {
     "type": "issue",
     "repo": "HexaStack",
+    "title": "Firebase 연결 후 빌드 오류&해결과정",
+    "state": "closed",
+    "date": "2026-02-06T02:27:53Z",
+    "url": "https://github.com/sunbang123/HexaStack/issues/11",
+    "number": 11
+  },
+  {
+    "type": "issue",
+    "repo": "HexaStack",
     "title": "빌드 버전 관리",
-    "state": "open",
+    "state": "closed",
     "date": "2026-02-02T10:18:01Z",
     "url": "https://github.com/sunbang123/HexaStack/issues/10",
     "number": 10
@@ -34,15 +43,6 @@
     "date": "2026-01-18T13:44:05Z",
     "url": "https://github.com/sunbang123/HexaStack/pull/7",
     "number": 7
-  },
-  {
-    "type": "pull_request",
-    "repo": "HexaStack",
-    "title": "Feature",
-    "state": "closed",
-    "date": "2026-01-13T03:07:40Z",
-    "url": "https://github.com/sunbang123/HexaStack/pull/6",
-    "number": 6
   },
   {
     "type": "pull_request",
@@ -162,6 +162,6 @@
     "number": 1
   },
   {
-    "last_updated": "2026-02-06T01:51:54Z"
+    "last_updated": "2026-02-07T01:48:46Z"
   }
 ]
