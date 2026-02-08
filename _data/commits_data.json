@@ -2,18 +2,10 @@
   {
     "type": "commit",
     "repo": "HexaStack",
-    "message": "Update Gitignore",
-    "author": "sunbang123",
-    "date": "2026-02-06T02:54:48Z",
-    "sha": "816039a8b325f725aa3fd40d60412eb163f0fdb5"
-  },
-  {
-    "type": "commit",
-    "repo": "HexaStack",
-    "message": "feat: firebase sdk 설치 / fix: 안드로이드 빌드 충돌해결\n\n설치한 firebase sdk: (remoteconfig, analytics, firestore, auth)",
+    "message": "feat: firebase sdk 설치 / fix: 안드로이드 빌드 충돌해결\n\n- 설치한 firebase sdk: (remoteconfig, analytics, firestore, auth)\n- Update .gitignore",
     "author": "sunbang123",
     "date": "2026-02-06T02:32:52Z",
-    "sha": "544610fb6d5b3a28e600d9600202d68d3333a1d3"
+    "sha": "9cb1a50d4572f3062bb8bd13d3ec3bdfe5981225"
   },
   {
     "type": "commit",
@@ -38,6 +30,14 @@
     "author": "sunbang123",
     "date": "2026-02-02T09:08:31Z",
     "sha": "7e00c368fc535235c1f6734d1ad35fffebe3c154"
+  },
+  {
+    "type": "commit",
+    "repo": "HexaStack",
+    "message": "fix: use Input System with GPM LogView",
+    "author": "sunbang123",
+    "date": "2026-01-31T23:29:08Z",
+    "sha": "ed30e5cbcdc6506580b061cd62c4bdc58973ce37"
   },
   {
     "type": "commit",
@@ -872,6 +872,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-02-07T01:48:46Z"
+    "last_updated": "2026-02-08T02:22:15Z"
   }
 ]

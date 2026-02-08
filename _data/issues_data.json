@@ -2,6 +2,15 @@
   {
     "type": "issue",
     "repo": "HexaStack",
+    "title": "Visual Studio 인코딩",
+    "state": "closed",
+    "date": "2026-02-07T14:01:28Z",
+    "url": "https://github.com/sunbang123/HexaStack/issues/12",
+    "number": 12
+  },
+  {
+    "type": "issue",
+    "repo": "HexaStack",
     "title": "Firebase 연결 후 빌드 오류&해결과정",
     "state": "closed",
     "date": "2026-02-06T02:27:53Z",
@@ -34,15 +43,6 @@
     "date": "2026-01-31T14:16:25Z",
     "url": "https://github.com/sunbang123/HexaStack/issues/8",
     "number": 8
-  },
-  {
-    "type": "pull_request",
-    "repo": "HexaStack",
-    "title": "Feat: UI Popup , Loading화면으로 GC 관리, Marshaling 비용 최적화",
-    "state": "closed",
-    "date": "2026-01-18T13:44:05Z",
-    "url": "https://github.com/sunbang123/HexaStack/pull/7",
-    "number": 7
   },
   {
     "type": "pull_request",
@@ -162,6 +162,6 @@
     "number": 1
   },
   {
-    "last_updated": "2026-02-07T01:48:46Z"
+    "last_updated": "2026-02-08T02:22:15Z"
   }
 ]
