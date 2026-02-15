@@ -1,6 +1,14 @@
 [
   {
     "type": "commit",
+    "repo": "study_report",
+    "message": "Add BounceBall script for jumping and color change",
+    "author": "김선영",
+    "date": "2026-02-14T04:20:09Z",
+    "sha": "1ef7cbfbf3d766eebbd8a9217a93ead3d4c4f778"
+  },
+  {
+    "type": "commit",
     "repo": "HexaStack",
     "message": "feat: firebase sdk 설치 / fix: 안드로이드 빌드 충돌해결\n\n- 설치한 firebase sdk: (remoteconfig, analytics, firestore, auth)\n- Update .gitignore",
     "author": "sunbang123",
@@ -222,14 +230,6 @@
     "author": "김선영",
     "date": "2025-11-28T11:14:18Z",
     "sha": "9b9c38294fce249108767daceced41463e8b618d"
-  },
-  {
-    "type": "commit",
-    "repo": "study_report",
-    "message": "Delete AfterEffects directory",
-    "author": "김선영",
-    "date": "2025-11-28T10:59:14Z",
-    "sha": "fe81f1ab4594ef473002eb1c0d779f3657d20e9c"
   },
   {
     "type": "commit",
@@ -872,6 +872,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-02-14T01:51:02Z"
+    "last_updated": "2026-02-15T02:01:11Z"
   }
 ]
