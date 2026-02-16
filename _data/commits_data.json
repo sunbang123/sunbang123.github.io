@@ -1,11 +1,35 @@
 [
   {
     "type": "commit",
+    "repo": "HexaStack",
+    "message": "Refact: Set 활용",
+    "author": "sunbang123",
+    "date": "2026-02-15T12:38:55Z",
+    "sha": "ad2c0634e93fdfbaaf62b0389c43ed3361a2a300"
+  },
+  {
+    "type": "commit",
     "repo": "study_report",
     "message": "Add BounceBall script for jumping and color change",
     "author": "김선영",
     "date": "2026-02-14T04:20:09Z",
     "sha": "1ef7cbfbf3d766eebbd8a9217a93ead3d4c4f778"
+  },
+  {
+    "type": "commit",
+    "repo": "HexaStack",
+    "message": "feat: FirebaseManager 초기화 & 앱 업데이트 유도",
+    "author": "sunbang123",
+    "date": "2026-02-09T08:48:31Z",
+    "sha": "ac252c6b6c9228dfe5ce20a1f5856a85362a5ab4"
+  },
+  {
+    "type": "commit",
+    "repo": "HexaStack",
+    "message": "test: Use firebaseManager to Initialize\n\n+ global define으로 테스트 주소 연결, 업데이트 유도 작업중",
+    "author": "sunbang123",
+    "date": "2026-02-07T14:54:58Z",
+    "sha": "38951f588dc30597c2316adfc817b71d70bf9ff9"
   },
   {
     "type": "commit",
@@ -22,30 +46,6 @@
     "author": "sunbang123",
     "date": "2026-02-03T13:17:53Z",
     "sha": "9c483bb5c05bb656a3d990f2c668aa0c84c31421"
-  },
-  {
-    "type": "commit",
-    "repo": "HexaStack",
-    "message": "Update ProjectSetting & .gitignore",
-    "author": "sunbang123",
-    "date": "2026-02-02T09:12:54Z",
-    "sha": "78c1a2399d9cd7c87e48ec649d5e592f76c81980"
-  },
-  {
-    "type": "commit",
-    "repo": "HexaStack",
-    "message": "Build: logcat",
-    "author": "sunbang123",
-    "date": "2026-02-02T09:08:31Z",
-    "sha": "7e00c368fc535235c1f6734d1ad35fffebe3c154"
-  },
-  {
-    "type": "commit",
-    "repo": "HexaStack",
-    "message": "fix: use Input System with GPM LogView",
-    "author": "sunbang123",
-    "date": "2026-01-31T23:29:08Z",
-    "sha": "ed30e5cbcdc6506580b061cd62c4bdc58973ce37"
   },
   {
     "type": "commit",
@@ -872,6 +872,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-02-15T02:01:11Z"
+    "last_updated": "2026-02-16T01:57:01Z"
   }
 ]
