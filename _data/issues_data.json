@@ -2,6 +2,15 @@
   {
     "type": "issue",
     "repo": "HexaStack",
+    "title": "리팩토링 계획서",
+    "state": "open",
+    "date": "2026-03-11T11:15:23Z",
+    "url": "https://github.com/sunbang123/HexaStack/issues/13",
+    "number": 13
+  },
+  {
+    "type": "issue",
+    "repo": "HexaStack",
     "title": "Visual Studio 인코딩",
     "state": "closed",
     "date": "2026-02-07T14:01:28Z",
@@ -34,15 +43,6 @@
     "date": "2026-02-02T09:33:08Z",
     "url": "https://github.com/sunbang123/HexaStack/issues/9",
     "number": 9
-  },
-  {
-    "type": "issue",
-    "repo": "HexaStack",
-    "title": "서버 통신 및 비동기 작업 UI 표시",
-    "state": "open",
-    "date": "2026-01-31T14:16:25Z",
-    "url": "https://github.com/sunbang123/HexaStack/issues/8",
-    "number": 8
   },
   {
     "type": "pull_request",
@@ -162,6 +162,6 @@
     "number": 1
   },
   {
-    "last_updated": "2026-03-11T01:49:17Z"
+    "last_updated": "2026-03-12T01:55:57Z"
   }
 ]
