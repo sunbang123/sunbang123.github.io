@@ -1,6 +1,54 @@
 [
   {
     "type": "commit",
+    "repo": "TowerDefense",
+    "message": "Enhance README with enemy algorithm details and link\n\nUpdated the README to include a link and additional details on the enemy clustering algorithm implementation and optimization methods.",
+    "author": "김선영",
+    "date": "2026-03-15T14:29:56Z",
+    "sha": "737861f30ad99695c57706eadc0ed137d07438fb"
+  },
+  {
+    "type": "commit",
+    "repo": "TowerDefense",
+    "message": "_",
+    "author": "sunbang123",
+    "date": "2026-03-15T14:09:34Z",
+    "sha": "7ba19ef861e69e4a955586030da524334d42ae76"
+  },
+  {
+    "type": "commit",
+    "repo": "TowerDefense",
+    "message": "Merge branch 'main' of https://github.com/sunbang123/SuperDreamer",
+    "author": "sunbang123",
+    "date": "2026-03-15T13:55:39Z",
+    "sha": "da665e5a0cb8f47124497e9185ffee1df23ec518"
+  },
+  {
+    "type": "commit",
+    "repo": "TowerDefense",
+    "message": "Fin",
+    "author": "sunbang123",
+    "date": "2026-03-15T13:55:29Z",
+    "sha": "1b1e24ea7577f8d374bd3fb176ee42c513141825"
+  },
+  {
+    "type": "commit",
+    "repo": "TowerDefense",
+    "message": "Create README.md",
+    "author": "김선영",
+    "date": "2026-03-15T13:50:00Z",
+    "sha": "b7c7197b2e0c8b913a0b88d896b61b7bd79a3470"
+  },
+  {
+    "type": "commit",
+    "repo": "UnitySystem",
+    "message": "Feat: Attack, Dash, Scene전환 Prototype",
+    "author": "sunbang123",
+    "date": "2026-03-15T09:26:51Z",
+    "sha": "61f4200857d712e93ba6b7fb4e87f07dad6a8d5c"
+  },
+  {
+    "type": "commit",
     "repo": "study_report",
     "message": "feat: 자료구조 C#PriorityQueue",
     "author": "김선영",
@@ -150,14 +198,6 @@
     "author": "sunbang123",
     "date": "2025-12-26T10:32:22Z",
     "sha": "f0c5d2ed0196462baa2133afc3a145eff418fb8f"
-  },
-  {
-    "type": "commit",
-    "repo": "UnitySystem",
-    "message": "feat: 아이템 장착, 데이터 세팅 리팩토링\n\nfix: 장갑 코드오류수정\n등급별로 아이템이 장착가능한것을 확인했습니다.",
-    "author": "sunbang123",
-    "date": "2025-12-23T11:23:16Z",
-    "sha": "21211b4b6538a7e2513d6d6a4116458888a81fca"
   },
   {
     "type": "commit",
@@ -849,14 +889,6 @@
   },
   {
     "type": "commit",
-    "repo": "huggingface",
-    "message": "허깅페이스 연동",
-    "author": "sunbang123",
-    "date": "2024-06-30T03:29:59Z",
-    "sha": "00506f9b0470bbb76355b4195eb4adbc32cce4cc"
-  },
-  {
-    "type": "commit",
     "repo": "Smart_device",
     "message": "Update README.md",
     "author": "김선영",
@@ -872,6 +904,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-03-15T02:06:50Z"
+    "last_updated": "2026-03-16T02:08:18Z"
   }
 ]
