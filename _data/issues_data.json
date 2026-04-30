@@ -92,11 +92,38 @@
   {
     "type": "pull_request",
     "repo": "MonstersInDungeon",
-    "title": "main 내려받기",
+    "title": "Sunyoung",
     "state": "closed",
-    "date": "2025-12-05T01:15:45Z",
-    "url": "https://github.com/sunbang123/MonstersInDungeon/pull/40",
-    "number": 40
+    "date": "2025-12-07T12:54:41Z",
+    "url": "https://github.com/sunbang123/MonstersInDungeon/pull/42",
+    "number": 42
+  },
+  {
+    "type": "pull_request",
+    "repo": "ClickerTycoon",
+    "title": "merge",
+    "state": "closed",
+    "date": "2025-10-13T11:56:46Z",
+    "url": "https://github.com/sunbang123/ClickerTycoon/pull/13",
+    "number": 13
+  },
+  {
+    "type": "pull_request",
+    "repo": "ClickerTycoon",
+    "title": "feat: 상점 로직 업데이트, 원거리 딜러 로직",
+    "state": "closed",
+    "date": "2025-10-13T03:16:30Z",
+    "url": "https://github.com/sunbang123/ClickerTycoon/pull/12",
+    "number": 12
+  },
+  {
+    "type": "pull_request",
+    "repo": "ClickerTycoon",
+    "title": "Minseok",
+    "state": "closed",
+    "date": "2025-10-13T02:25:30Z",
+    "url": "https://github.com/sunbang123/ClickerTycoon/pull/11",
+    "number": 11
   },
   {
     "type": "pull_request",
@@ -118,33 +145,6 @@
   },
   {
     "type": "pull_request",
-    "repo": "ClickerTycoon",
-    "title": "feat: Minseok 전투상점구현",
-    "state": "closed",
-    "date": "2025-10-10T02:22:37Z",
-    "url": "https://github.com/sunbang123/ClickerTycoon/pull/8",
-    "number": 8
-  },
-  {
-    "type": "pull_request",
-    "repo": "ClickerTycoon",
-    "title": "main to minseok",
-    "state": "closed",
-    "date": "2025-10-09T17:50:07Z",
-    "url": "https://github.com/sunbang123/ClickerTycoon/pull/7",
-    "number": 7
-  },
-  {
-    "type": "pull_request",
-    "repo": "ClickerTycoon",
-    "title": "feat: 게임 데이터 갱신 및 불러오기",
-    "state": "closed",
-    "date": "2025-10-09T13:26:32Z",
-    "url": "https://github.com/sunbang123/ClickerTycoon/pull/6",
-    "number": 6
-  },
-  {
-    "type": "pull_request",
     "repo": "Apple_Game",
     "title": "Bug Fix",
     "state": "closed",
@@ -162,6 +162,6 @@
     "number": 1
   },
   {
-    "last_updated": "2026-04-29T02:40:32Z"
+    "last_updated": "2026-04-30T02:41:33Z"
   }
 ]
