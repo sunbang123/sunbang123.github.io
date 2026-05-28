@@ -1,6 +1,30 @@
 [
   {
     "type": "commit",
+    "repo": "Wafer-Vision-Simulator",
+    "message": "chore: 프로젝트 초기 솔루션 세팅",
+    "author": "sunbang123",
+    "date": "2026-05-28T01:49:26Z",
+    "sha": "5a144fa7c829f5fdfd39409f8b972b5db49ebcd4"
+  },
+  {
+    "type": "commit",
+    "repo": "Wafer-Vision-Simulator",
+    "message": "Initialize README with project details and features\n\nAdd project overview and core features for wafer defect detection simulator.",
+    "author": "김선영",
+    "date": "2026-05-28T01:05:42Z",
+    "sha": "abd076161195b4a0b93cb7d9ef4ca5ac233caf57"
+  },
+  {
+    "type": "commit",
+    "repo": "Wafer-Vision-Simulator",
+    "message": "Initial commit",
+    "author": "김선영",
+    "date": "2026-05-28T01:00:24Z",
+    "sha": "fb8607aac13c387e580dd018138ead09f80f2ed9"
+  },
+  {
+    "type": "commit",
     "repo": "TowerDefense",
     "message": "Enhance README with enemy algorithm details and link\n\nUpdated the README to include a link and additional details on the enemy clustering algorithm implementation and optimization methods.",
     "author": "김선영",
@@ -881,14 +905,6 @@
   },
   {
     "type": "commit",
-    "repo": "api_example",
-    "message": "api 예제 만들기 작업 업로드",
-    "author": "sunbang123",
-    "date": "2024-07-04T08:16:39Z",
-    "sha": "131ded18790afbdaf8affc0f3cc034d7e4237ccc"
-  },
-  {
-    "type": "commit",
     "repo": "Smart_device",
     "message": "Update README.md",
     "author": "김선영",
@@ -904,6 +920,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-05-27T03:31:29Z"
+    "last_updated": "2026-05-28T02:51:35Z"
   }
 ]
