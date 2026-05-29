@@ -1,11 +1,83 @@
 [
   {
     "type": "commit",
+    "repo": "Mini-Album-Viewer",
+    "message": "style: UI Settings",
+    "author": "sunbang123",
+    "date": "2026-05-28T12:43:33Z",
+    "sha": "850338e655e895f130ce53ae3f3d641ae040ef40"
+  },
+  {
+    "type": "commit",
+    "repo": "Mini-Album-Viewer",
+    "message": "chore: project setting",
+    "author": "sunbang123",
+    "date": "2026-05-28T12:08:11Z",
+    "sha": "69ddb207af797aceaf7fecfe1782b3807c510bc7"
+  },
+  {
+    "type": "commit",
+    "repo": "Retro-Photo-Studio",
+    "message": "Create README.md",
+    "author": "김선영",
+    "date": "2026-05-28T12:06:02Z",
+    "sha": "3ebdef6fb2a5a18e154b6abc3bc52cd7dab76e3b"
+  },
+  {
+    "type": "commit",
+    "repo": "Mini-Album-Viewer",
+    "message": "Initial commit",
+    "author": "김선영",
+    "date": "2026-05-28T11:58:22Z",
+    "sha": "88d318fbbf4527b2c351d71e69d95fb585c9c580"
+  },
+  {
+    "type": "commit",
+    "repo": "Retro-Photo-Studio",
+    "message": "fix: 템플릿 함수 선언과 구현을 헤더 파일로 이동시킴",
+    "author": "sunbang123",
+    "date": "2026-05-28T11:45:24Z",
+    "sha": "1f233d40735ceb3a8f6476dacd71a792bfc06590"
+  },
+  {
+    "type": "commit",
+    "repo": "Retro-Photo-Studio",
+    "message": "refact: 템플릿 함수로 중복 코드 처리",
+    "author": "sunbang123",
+    "date": "2026-05-28T10:42:28Z",
+    "sha": "df55a49bc675b12672e115b6abf333569f19e48c"
+  },
+  {
+    "type": "commit",
+    "repo": "Retro-Photo-Studio",
+    "message": "feat: 세피아 필터",
+    "author": "sunbang123",
+    "date": "2026-05-28T09:34:39Z",
+    "sha": "213f81287d4dc845bbf8551e63d24da12518aad6"
+  },
+  {
+    "type": "commit",
+    "repo": "Retro-Photo-Studio",
+    "message": "feat: 흑백 필터",
+    "author": "sunbang123",
+    "date": "2026-05-28T09:26:20Z",
+    "sha": "3cd578b099571c07f9277fe901c8d798acf964f5"
+  },
+  {
+    "type": "commit",
     "repo": "Wafer-Vision-Simulator",
-    "message": "chore: 프로젝트 초기 솔루션 세팅",
+    "message": "feat: C++ DLL 및 C# DllImport 연동 테스트 완료",
+    "author": "sunbang123",
+    "date": "2026-05-28T04:14:37Z",
+    "sha": "c69d28cd048302afb067a13814ea5de18bbac8c0"
+  },
+  {
+    "type": "commit",
+    "repo": "Wafer-Vision-Simulator",
+    "message": "chore: 프로젝트 초기 솔루션 세팅\n\n.",
     "author": "sunbang123",
     "date": "2026-05-28T01:49:26Z",
-    "sha": "5a144fa7c829f5fdfd39409f8b972b5db49ebcd4"
+    "sha": "b1818b16ceb8d29d65ca7c392cbe115ad6535e31"
   },
   {
     "type": "commit",
@@ -817,86 +889,6 @@
   },
   {
     "type": "commit",
-    "repo": "toonflix",
-    "message": "detail 안열리는 오류 수정",
-    "author": "sunbang123",
-    "date": "2024-08-11T16:43:53Z",
-    "sha": "5d6b0c2913034a1c070ee9c86bfd0fa0cefa6268"
-  },
-  {
-    "type": "commit",
-    "repo": "toonflix",
-    "message": "now playing, coming soon 구현 프로토타입 최종 완성",
-    "author": "sunbang123",
-    "date": "2024-08-11T15:48:37Z",
-    "sha": "635f0bbacfb2d4c7c86f89937e290c95350eeb5c"
-  },
-  {
-    "type": "commit",
-    "repo": "toonflix",
-    "message": "detail api 불러오기 + ui 구현",
-    "author": "sunbang123",
-    "date": "2024-08-11T14:11:21Z",
-    "sha": "fa314da2c5fd126b55d18348e06b1e8581af6408"
-  },
-  {
-    "type": "commit",
-    "repo": "toonflix",
-    "message": "web 개발환경에서 스크롤 안되는 문제 해결",
-    "author": "sunbang123",
-    "date": "2024-08-11T10:46:53Z",
-    "sha": "cfac4e91462cf75f08b65d382b54d356ab8a603d"
-  },
-  {
-    "type": "commit",
-    "repo": "toonflix",
-    "message": "detail screen util 추가",
-    "author": "sunbang123",
-    "date": "2024-08-11T10:13:59Z",
-    "sha": "a2beb22d419327feadd1bafcfddfdb1aa61a3990"
-  },
-  {
-    "type": "commit",
-    "repo": "Stickers_SNS_website",
-    "message": "호스팅 업데이트",
-    "author": "sunbang123",
-    "date": "2024-07-18T05:31:47Z",
-    "sha": "8f57e6a2281d4019bda3e2da8ac2b8df0131d635"
-  },
-  {
-    "type": "commit",
-    "repo": "Stickers_SNS_website",
-    "message": "호스팅 완료, 레이아웃 여백 추가",
-    "author": "sunbang123",
-    "date": "2024-07-18T05:02:21Z",
-    "sha": "b7d6458333e35b3621962a00719dae0d7d865ccb"
-  },
-  {
-    "type": "commit",
-    "repo": "Stickers_SNS_website",
-    "message": "deploy 오류나는 부분 수정",
-    "author": "sunbang123",
-    "date": "2024-07-18T04:55:50Z",
-    "sha": "a9894724c3eb020cead0eae0f5f51c026bf89fe8"
-  },
-  {
-    "type": "commit",
-    "repo": "Stickers_SNS_website",
-    "message": "ui 최종 수정",
-    "author": "sunbang123",
-    "date": "2024-07-18T04:54:06Z",
-    "sha": "01ff369b4a222df61aed014e7cf99dfc8dd06960"
-  },
-  {
-    "type": "commit",
-    "repo": "Stickers_SNS_website",
-    "message": "ui 수정",
-    "author": "sunbang123",
-    "date": "2024-07-17T17:43:09Z",
-    "sha": "55107be0e29f300dd8cad73344665864ff4b17fd"
-  },
-  {
-    "type": "commit",
     "repo": "CodingTest",
     "message": "Initial commit",
     "author": "김선영",
@@ -920,6 +912,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-05-28T02:51:35Z"
+    "last_updated": "2026-05-29T02:55:34Z"
   }
 ]
