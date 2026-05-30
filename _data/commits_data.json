@@ -2,6 +2,22 @@
   {
     "type": "commit",
     "repo": "Mini-Album-Viewer",
+    "message": "feat: 확장자 필터링된 이미지 썸네일 생성",
+    "author": "sunbang123",
+    "date": "2026-05-30T02:17:29Z",
+    "sha": "48bbadba8e522bbf6eef8dcd1953930490d5ffe8"
+  },
+  {
+    "type": "commit",
+    "repo": "Mini-Album-Viewer",
+    "message": "feat: 폴더 열고 이미지 필터링 리스트 생성",
+    "author": "sunbang123",
+    "date": "2026-05-29T06:05:06Z",
+    "sha": "5c165403ac40ee2801ddbfe805212dfc16620423"
+  },
+  {
+    "type": "commit",
+    "repo": "Mini-Album-Viewer",
     "message": "style: UI Settings",
     "author": "sunbang123",
     "date": "2026-05-28T12:43:33Z",
@@ -912,6 +928,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-05-29T02:55:34Z"
+    "last_updated": "2026-05-30T02:48:25Z"
   }
 ]
