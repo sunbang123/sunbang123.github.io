@@ -1,6 +1,54 @@
 [
   {
     "type": "commit",
+    "repo": "Interactive-ROI-Selector",
+    "message": "feat: 휠 Zoom 기능",
+    "author": "sunbang123",
+    "date": "2026-05-31T02:52:05Z",
+    "sha": "159297b063c72199562d44f20168a4010ea1359e"
+  },
+  {
+    "type": "commit",
+    "repo": "Interactive-ROI-Selector",
+    "message": "style: UI setting",
+    "author": "sunbang123",
+    "date": "2026-05-30T06:34:03Z",
+    "sha": "c55853cde662c7bd4603a19f79317f8e75c4638a"
+  },
+  {
+    "type": "commit",
+    "repo": "Interactive-ROI-Selector",
+    "message": "chore: project setting",
+    "author": "sunbang123",
+    "date": "2026-05-30T06:27:13Z",
+    "sha": "35752e15ec77787a5962d8dadc2ef04c6c2e5c48"
+  },
+  {
+    "type": "commit",
+    "repo": "Interactive-ROI-Selector",
+    "message": "Initial commit",
+    "author": "김선영",
+    "date": "2026-05-30T05:14:43Z",
+    "sha": "9693b00f1774d6bc613282162686ac4988512357"
+  },
+  {
+    "type": "commit",
+    "repo": "Mini-Album-Viewer",
+    "message": "Initialize README with project details\n\nAdd project overview and implementation goals for mini album viewer.",
+    "author": "김선영",
+    "date": "2026-05-30T05:13:43Z",
+    "sha": "27fb1595d3063a243ea35f4e510131dcd742d48a"
+  },
+  {
+    "type": "commit",
+    "repo": "Mini-Album-Viewer",
+    "message": "feat: 회전 / 반전 이벤트 함수",
+    "author": "sunbang123",
+    "date": "2026-05-30T05:10:12Z",
+    "sha": "1ed1daa31774b35b61704bf6a3268807ce536ad0"
+  },
+  {
+    "type": "commit",
     "repo": "Mini-Album-Viewer",
     "message": "feat: 확장자 필터링된 이미지 썸네일 생성",
     "author": "sunbang123",
@@ -25,27 +73,11 @@
   },
   {
     "type": "commit",
-    "repo": "Mini-Album-Viewer",
-    "message": "chore: project setting",
-    "author": "sunbang123",
-    "date": "2026-05-28T12:08:11Z",
-    "sha": "69ddb207af797aceaf7fecfe1782b3807c510bc7"
-  },
-  {
-    "type": "commit",
     "repo": "Retro-Photo-Studio",
     "message": "Create README.md",
     "author": "김선영",
     "date": "2026-05-28T12:06:02Z",
     "sha": "3ebdef6fb2a5a18e154b6abc3bc52cd7dab76e3b"
-  },
-  {
-    "type": "commit",
-    "repo": "Mini-Album-Viewer",
-    "message": "Initial commit",
-    "author": "김선영",
-    "date": "2026-05-28T11:58:22Z",
-    "sha": "88d318fbbf4527b2c351d71e69d95fb585c9c580"
   },
   {
     "type": "commit",
@@ -889,22 +921,6 @@
   },
   {
     "type": "commit",
-    "repo": "embedded",
-    "message": "Update README.md",
-    "author": "김선영",
-    "date": "2024-09-07T07:16:38Z",
-    "sha": "6a9fcb9a6c92e0d3530cc23e7081c511953f2dc0"
-  },
-  {
-    "type": "commit",
-    "repo": "embedded",
-    "message": "Initial commit",
-    "author": "김선영",
-    "date": "2024-09-07T07:15:22Z",
-    "sha": "dc7a97f9b4af8d65d3c54350991c40706e82898d"
-  },
-  {
-    "type": "commit",
     "repo": "CodingTest",
     "message": "Initial commit",
     "author": "김선영",
@@ -928,6 +944,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-05-30T02:48:25Z"
+    "last_updated": "2026-05-31T03:32:12Z"
   }
 ]
