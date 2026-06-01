@@ -1,6 +1,70 @@
 [
   {
     "type": "commit",
+    "repo": "sunbang123",
+    "message": "Update current projects and learning topics in README",
+    "author": "김선영",
+    "date": "2026-05-31T04:59:56Z",
+    "sha": "7bf69acfb323a3457d03ea4e707b06d7c2aa3365"
+  },
+  {
+    "type": "commit",
+    "repo": "Retro-Photo-Studio",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2026-05-31T04:58:23Z",
+    "sha": "c774fb847827ca6d7614dcac57292fffd12ab665"
+  },
+  {
+    "type": "commit",
+    "repo": "Retro-Photo-Studio",
+    "message": "Enhance README with image filter details\n\nAdded details sections for image filters and RGB channel separation.",
+    "author": "김선영",
+    "date": "2026-05-31T04:57:30Z",
+    "sha": "207e7fe513fa604b92c9e03c2febe4d34c5968d1"
+  },
+  {
+    "type": "commit",
+    "repo": "Interactive-ROI-Selector",
+    "message": "Add README for interactive ROI selector project\n\nAdded project description and implementation goals for interactive ROI selector using WPF.",
+    "author": "김선영",
+    "date": "2026-05-31T04:51:22Z",
+    "sha": "5e2ab44a8ccdf1da674998dfb6c9d624b0e9633c"
+  },
+  {
+    "type": "commit",
+    "repo": "Interactive-ROI-Selector",
+    "message": "feat: ROI Zoom, ROI 박스 지우기 단축키 추가\n\nROI Zoom: Ctrl + 우클릭\nROI 박스 지우기: Ctrl + Z",
+    "author": "sunbang123",
+    "date": "2026-05-31T04:36:04Z",
+    "sha": "a82ca73490f088fe968b7621ec6684885b047b9c"
+  },
+  {
+    "type": "commit",
+    "repo": "Retro-Photo-Studio",
+    "message": "feat: RGB 채널 분리 / RGB 필터 로직",
+    "author": "sunbang123",
+    "date": "2026-05-31T04:14:28Z",
+    "sha": "299e98ce3e13f05d8dda7647c0f1fbf3ff0d2378"
+  },
+  {
+    "type": "commit",
+    "repo": "Mini-Album-Viewer",
+    "message": "feat: 이미지 확장자 (tif) 추가",
+    "author": "sunbang123",
+    "date": "2026-05-31T03:50:26Z",
+    "sha": "06b74658404058c1fced1423a07e675fc5682889"
+  },
+  {
+    "type": "commit",
+    "repo": "Interactive-ROI-Selector",
+    "message": "feat: ROI(관심영역) 로직 구현",
+    "author": "sunbang123",
+    "date": "2026-05-31T03:33:27Z",
+    "sha": "65f83c92021e59c9b4483f28e2cd3b1f6457a2f1"
+  },
+  {
+    "type": "commit",
     "repo": "Interactive-ROI-Selector",
     "message": "feat: 휠 Zoom 기능",
     "author": "sunbang123",
@@ -14,22 +78,6 @@
     "author": "sunbang123",
     "date": "2026-05-30T06:34:03Z",
     "sha": "c55853cde662c7bd4603a19f79317f8e75c4638a"
-  },
-  {
-    "type": "commit",
-    "repo": "Interactive-ROI-Selector",
-    "message": "chore: project setting",
-    "author": "sunbang123",
-    "date": "2026-05-30T06:27:13Z",
-    "sha": "35752e15ec77787a5962d8dadc2ef04c6c2e5c48"
-  },
-  {
-    "type": "commit",
-    "repo": "Interactive-ROI-Selector",
-    "message": "Initial commit",
-    "author": "김선영",
-    "date": "2026-05-30T05:14:43Z",
-    "sha": "9693b00f1774d6bc613282162686ac4988512357"
   },
   {
     "type": "commit",
@@ -65,14 +113,6 @@
   },
   {
     "type": "commit",
-    "repo": "Mini-Album-Viewer",
-    "message": "style: UI Settings",
-    "author": "sunbang123",
-    "date": "2026-05-28T12:43:33Z",
-    "sha": "850338e655e895f130ce53ae3f3d641ae040ef40"
-  },
-  {
-    "type": "commit",
     "repo": "Retro-Photo-Studio",
     "message": "Create README.md",
     "author": "김선영",
@@ -86,30 +126,6 @@
     "author": "sunbang123",
     "date": "2026-05-28T11:45:24Z",
     "sha": "1f233d40735ceb3a8f6476dacd71a792bfc06590"
-  },
-  {
-    "type": "commit",
-    "repo": "Retro-Photo-Studio",
-    "message": "refact: 템플릿 함수로 중복 코드 처리",
-    "author": "sunbang123",
-    "date": "2026-05-28T10:42:28Z",
-    "sha": "df55a49bc675b12672e115b6abf333569f19e48c"
-  },
-  {
-    "type": "commit",
-    "repo": "Retro-Photo-Studio",
-    "message": "feat: 세피아 필터",
-    "author": "sunbang123",
-    "date": "2026-05-28T09:34:39Z",
-    "sha": "213f81287d4dc845bbf8551e63d24da12518aad6"
-  },
-  {
-    "type": "commit",
-    "repo": "Retro-Photo-Studio",
-    "message": "feat: 흑백 필터",
-    "author": "sunbang123",
-    "date": "2026-05-28T09:26:20Z",
-    "sha": "3cd578b099571c07f9277fe901c8d798acf964f5"
   },
   {
     "type": "commit",
@@ -665,14 +681,6 @@
   },
   {
     "type": "commit",
-    "repo": "sunbang123",
-    "message": "README.md 업데이트",
-    "author": "김선영",
-    "date": "2025-06-20T13:04:09Z",
-    "sha": "041e0ffdba07a430b1259d5fdb3235826094ccda"
-  },
-  {
-    "type": "commit",
     "repo": "bitcoin_trading_simulation",
     "message": "Update README.md",
     "author": "김선영",
@@ -944,6 +952,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-05-31T03:32:12Z"
+    "last_updated": "2026-06-01T03:44:01Z"
   }
 ]
