@@ -1,6 +1,14 @@
 [
   {
     "type": "commit",
+    "repo": "Wafer-Vision-Simulator",
+    "message": "chore: OpenCV환경설정 feat: C++ 코어 함수 작성",
+    "author": "sunbang123",
+    "date": "2026-06-02T03:31:53Z",
+    "sha": "6dd3c6b7345cd7a66048536a5af408de07ad8947"
+  },
+  {
+    "type": "commit",
     "repo": "sunbang123",
     "message": "Update current projects and learning topics in README",
     "author": "김선영",
@@ -952,6 +960,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-06-01T03:44:01Z"
+    "last_updated": "2026-06-02T03:40:06Z"
   }
 ]
