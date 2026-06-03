@@ -2,6 +2,14 @@
   {
     "type": "commit",
     "repo": "Wafer-Vision-Simulator",
+    "message": "feat: C# WPF - C++ Core 간 P/Invoke 마샬링 연동 및 UI 갱신\n\n- 대용량 이미지 데이터(byte 배열) 전달할때 마샬링\n- GCHandle을 이용해 고정 처리 후 C++ 포인터로 주소 전달.\n- Free 처리를 통해 메모리 누수 방지",
+    "author": "sunbang123",
+    "date": "2026-06-02T04:50:04Z",
+    "sha": "83226c81d937be342f3c1cafff782ae451594981"
+  },
+  {
+    "type": "commit",
+    "repo": "Wafer-Vision-Simulator",
     "message": "chore: OpenCV환경설정 feat: C++ 코어 함수 작성",
     "author": "sunbang123",
     "date": "2026-06-02T03:31:53Z",
@@ -158,14 +166,6 @@
     "author": "김선영",
     "date": "2026-05-28T01:05:42Z",
     "sha": "abd076161195b4a0b93cb7d9ef4ca5ac233caf57"
-  },
-  {
-    "type": "commit",
-    "repo": "Wafer-Vision-Simulator",
-    "message": "Initial commit",
-    "author": "김선영",
-    "date": "2026-05-28T01:00:24Z",
-    "sha": "fb8607aac13c387e580dd018138ead09f80f2ed9"
   },
   {
     "type": "commit",
@@ -960,6 +960,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-06-02T03:40:06Z"
+    "last_updated": "2026-06-03T03:48:56Z"
   }
 ]
