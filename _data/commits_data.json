@@ -2,6 +2,14 @@
   {
     "type": "commit",
     "repo": "Wafer-Vision-Simulator",
+    "message": "refact: MVVM 패턴 적용",
+    "author": "sunbang123",
+    "date": "2026-06-05T09:25:43Z",
+    "sha": "187ab175b88b959e2ba80ecdfacdb105d70b2d78"
+  },
+  {
+    "type": "commit",
+    "repo": "Wafer-Vision-Simulator",
     "message": "feat: C# WPF - C++ Core 간 P/Invoke 마샬링 연동 및 UI 갱신\n\n- 대용량 이미지 데이터(byte 배열) 전달할때 마샬링\n- GCHandle을 이용해 고정 처리 후 C++ 포인터로 주소 전달.\n- Free 처리를 통해 메모리 누수 방지",
     "author": "sunbang123",
     "date": "2026-06-02T04:50:04Z",
@@ -158,14 +166,6 @@
     "author": "sunbang123",
     "date": "2026-05-28T01:49:26Z",
     "sha": "b1818b16ceb8d29d65ca7c392cbe115ad6535e31"
-  },
-  {
-    "type": "commit",
-    "repo": "Wafer-Vision-Simulator",
-    "message": "Initialize README with project details and features\n\nAdd project overview and core features for wafer defect detection simulator.",
-    "author": "김선영",
-    "date": "2026-05-28T01:05:42Z",
-    "sha": "abd076161195b4a0b93cb7d9ef4ca5ac233caf57"
   },
   {
     "type": "commit",
@@ -960,6 +960,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-06-05T03:30:06Z"
+    "last_updated": "2026-06-06T02:51:29Z"
   }
 ]
