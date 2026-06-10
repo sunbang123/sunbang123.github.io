@@ -1,6 +1,42 @@
 [
   {
     "type": "issue",
+    "repo": "Wafer-Vision-Simulator",
+    "title": "유지보수 / 기능 구현 현황",
+    "state": "open",
+    "date": "2026-06-10T02:30:19Z",
+    "url": "https://github.com/sunbang123/Wafer-Vision-Simulator/issues/4",
+    "number": 4
+  },
+  {
+    "type": "pull_request",
+    "repo": "Wafer-Vision-Simulator",
+    "title": "refact: .Net 8 (C#12) 마이그레이션",
+    "state": "closed",
+    "date": "2026-06-10T02:23:19Z",
+    "url": "https://github.com/sunbang123/Wafer-Vision-Simulator/pull/3",
+    "number": 3
+  },
+  {
+    "type": "pull_request",
+    "repo": "Wafer-Vision-Simulator",
+    "title": "Codex/build vision algorithm",
+    "state": "closed",
+    "date": "2026-06-10T02:18:04Z",
+    "url": "https://github.com/sunbang123/Wafer-Vision-Simulator/pull/2",
+    "number": 2
+  },
+  {
+    "type": "pull_request",
+    "repo": "Wafer-Vision-Simulator",
+    "title": "merge: 1단계 결함 검출",
+    "state": "closed",
+    "date": "2026-06-09T13:12:32Z",
+    "url": "https://github.com/sunbang123/Wafer-Vision-Simulator/pull/1",
+    "number": 1
+  },
+  {
+    "type": "issue",
     "repo": "HexaStack",
     "title": "리팩토링 계획서",
     "state": "open",
@@ -162,6 +198,6 @@
     "number": 1
   },
   {
-    "last_updated": "2026-06-09T02:50:27Z"
+    "last_updated": "2026-06-10T03:27:36Z"
   }
 ]

@@ -2,6 +2,22 @@
   {
     "type": "commit",
     "repo": "Wafer-Vision-Simulator",
+    "message": "feat: 영상처리 알고리즘 함수 선언 구현부 비워둠. / refact: .Net 8 (C# 12) 마이그레이션\n\n* feat: skeleton code\n\n* refact: .Net 8 (C# 12) 마이그레이션",
+    "author": "김선영",
+    "date": "2026-06-10T02:22:49Z",
+    "sha": "4967569137764bb1c443cdaa8f112ae6792f71a8"
+  },
+  {
+    "type": "commit",
+    "repo": "Wafer-Vision-Simulator",
+    "message": "merge: 1단계 결함 검출 (#1)\n\nWaferVisionSimulator: 1단계 검증용 C++ 콘솔 프로그램\n\nWaferSimulator.Core: C#에서 호출하는 C++ OpenCV DLL\n\nWaferSimulator.UI: WPF MVVM 대시보드\n\n현재 상태:\n\n결함 위치: C# 또는 콘솔 코드에서 가상으로 생성\n\nROI: WPF 코드에 고정\n\n사용자 ROI 선택: 아직 구현 안 됨\n\n콘솔 프로그램: ROI 없이 전체 결함 검출만 확인",
+    "author": "김선영",
+    "date": "2026-06-09T13:13:13Z",
+    "sha": "e0f6cb79cdeae6129e4bbdf6428bf622e65ca970"
+  },
+  {
+    "type": "commit",
+    "repo": "Wafer-Vision-Simulator",
     "message": "refact: MVVM 패턴 적용",
     "author": "sunbang123",
     "date": "2026-06-05T09:25:43Z",
@@ -150,22 +166,6 @@
     "author": "sunbang123",
     "date": "2026-05-28T11:45:24Z",
     "sha": "1f233d40735ceb3a8f6476dacd71a792bfc06590"
-  },
-  {
-    "type": "commit",
-    "repo": "Wafer-Vision-Simulator",
-    "message": "feat: C++ DLL 및 C# DllImport 연동 테스트 완료",
-    "author": "sunbang123",
-    "date": "2026-05-28T04:14:37Z",
-    "sha": "c69d28cd048302afb067a13814ea5de18bbac8c0"
-  },
-  {
-    "type": "commit",
-    "repo": "Wafer-Vision-Simulator",
-    "message": "chore: 프로젝트 초기 솔루션 세팅\n\n.",
-    "author": "sunbang123",
-    "date": "2026-05-28T01:49:26Z",
-    "sha": "b1818b16ceb8d29d65ca7c392cbe115ad6535e31"
   },
   {
     "type": "commit",
@@ -960,6 +960,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-06-09T02:50:27Z"
+    "last_updated": "2026-06-10T03:27:36Z"
   }
 ]
