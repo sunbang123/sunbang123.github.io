@@ -1,5 +1,14 @@
 [
   {
+    "type": "pull_request",
+    "repo": "Wafer-Vision-Simulator",
+    "title": "Codex/build vision algorithm",
+    "state": "closed",
+    "date": "2026-06-10T14:22:25Z",
+    "url": "https://github.com/sunbang123/Wafer-Vision-Simulator/pull/5",
+    "number": 5
+  },
+  {
     "type": "issue",
     "repo": "Wafer-Vision-Simulator",
     "title": "유지보수 / 기능 구현 현황",
@@ -198,6 +207,6 @@
     "number": 1
   },
   {
-    "last_updated": "2026-06-10T03:27:36Z"
+    "last_updated": "2026-06-11T03:39:12Z"
   }
 ]
