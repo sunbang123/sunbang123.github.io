@@ -4,6 +4,15 @@
     "repo": "Wafer-Vision-Simulator",
     "title": "Codex/build vision algorithm",
     "state": "closed",
+    "date": "2026-06-11T13:41:08Z",
+    "url": "https://github.com/sunbang123/Wafer-Vision-Simulator/pull/6",
+    "number": 6
+  },
+  {
+    "type": "pull_request",
+    "repo": "Wafer-Vision-Simulator",
+    "title": "Codex/build vision algorithm",
+    "state": "closed",
     "date": "2026-06-10T14:22:25Z",
     "url": "https://github.com/sunbang123/Wafer-Vision-Simulator/pull/5",
     "number": 5
@@ -34,15 +43,6 @@
     "date": "2026-06-10T02:18:04Z",
     "url": "https://github.com/sunbang123/Wafer-Vision-Simulator/pull/2",
     "number": 2
-  },
-  {
-    "type": "pull_request",
-    "repo": "Wafer-Vision-Simulator",
-    "title": "merge: 1단계 결함 검출",
-    "state": "closed",
-    "date": "2026-06-09T13:12:32Z",
-    "url": "https://github.com/sunbang123/Wafer-Vision-Simulator/pull/1",
-    "number": 1
   },
   {
     "type": "issue",
@@ -207,6 +207,6 @@
     "number": 1
   },
   {
-    "last_updated": "2026-06-11T03:39:12Z"
+    "last_updated": "2026-06-12T03:39:22Z"
   }
 ]
