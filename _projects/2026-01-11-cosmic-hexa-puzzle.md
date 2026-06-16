@@ -8,7 +8,7 @@ icon: "fas fa-code"
 tags: ["Unity", "LeanTween", "Firebase", "GPGS"]
 demo_url: "https://youtu.be/4Ch199SMkr4?si=pmgHzK8YOugSc2No"
 github_url: "https://github.com/sunbang123/HexaStack"
-status: "in-progress"
+status: "completed"
 ---
 
 # Cosmic Hexa Puzzle
