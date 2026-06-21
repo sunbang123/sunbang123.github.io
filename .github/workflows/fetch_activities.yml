@@ -172,6 +172,12 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Automatic commit: Update recent GitHub activities data"
+
+          # 내 일반 잔디밭에 자동 커밋이 찍히지 않도록 봇 이메일 및 작성자 명시
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"
+          commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+          
           files: |
             _data/commits_data.json
             _data/issues_data.json
