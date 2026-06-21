@@ -12,7 +12,7 @@ date = DateTime.now
 filename = "#{date.strftime('%Y-%m-%d')}-#{slug.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')}.md"
 
 # 파일 경로를 설정합니다. (Jekyll 설정에 따라 _projects 컬렉션을 쓴다면 폴더명을 변경하세요)
-filepath = "_posts/#{filename}"
+filepath = "_projects/#{filename}"
 
 # 포스트 파일을 생성하고 프로젝트 기본 양식을 작성합니다.
 File.open(filepath, "w") do |file|
