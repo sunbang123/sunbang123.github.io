@@ -1,6 +1,14 @@
 [
   {
     "type": "commit",
+    "repo": "Wafer-AOI-Project",
+    "message": "Initial commit",
+    "author": "김선영",
+    "date": "2026-06-20T04:25:22Z",
+    "sha": "87c581197b4bfa38d28b63f3854a96cd935bc619"
+  },
+  {
+    "type": "commit",
     "repo": "Wafer-Vision-Simulator",
     "message": "feat: 웨이퍼 결함 검출 및 검토 화면 개선",
     "author": "sunbang123",
@@ -921,22 +929,6 @@
   },
   {
     "type": "commit",
-    "repo": "Graduation_Project",
-    "message": "Update README.md",
-    "author": "김선영",
-    "date": "2024-09-18T23:22:38Z",
-    "sha": "ed127a21f16c5f26a0f3b521a3c9ce5c6d922d1a"
-  },
-  {
-    "type": "commit",
-    "repo": "Graduation_Project",
-    "message": "Initial commit",
-    "author": "김선영",
-    "date": "2024-09-10T21:03:50Z",
-    "sha": "537c2e4703ec4817f883008e111ff6d7e48ac872"
-  },
-  {
-    "type": "commit",
     "repo": "CodingTest",
     "message": "Initial commit",
     "author": "김선영",
@@ -960,6 +952,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-06-20T03:24:27Z"
+    "last_updated": "2026-06-21T03:54:11Z"
   }
 ]
