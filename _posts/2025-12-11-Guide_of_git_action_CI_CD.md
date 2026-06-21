@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "깃블로그에 커밋 목록을 가져온 방법"
+title: "GitHub Actions CI/CD 자동화: 깃블로그에 커밋 목록을 가져오기"
 date: 2025-12-11 13:29:53 +0900
 categories: 
-tags: Git
+tags:  ["Git", "DevLog"]
 ---
 
-# GitHub Actions 초보자를 위한 CI/CD 자동화 가이드
+# GitHub Actions CI/CD 자동화
 
 ## CI/CD란? 🤔
 

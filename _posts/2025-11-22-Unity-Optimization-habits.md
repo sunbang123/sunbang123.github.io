@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Unity Optimization Habits: 주니어 개발자가 놓치기 쉬운 유니티 최적화 습관 3가지"
+title: "유니티 최적화 습관 3가지"
 date: 2025-11-22 15:47:00 +0900
 categories: 
 tags:  ["Unity", "DevLog"]
 ---
 
-## 주니어 개발자가 놓치기 쉬운 유니티 최적화 습관 3가지
+## 유니티 최적화 습관 3가지
 
 게임 개발을 하다 보면 기능 구현에 집중하느라 퍼포먼스를 놓치는 경우가 많습니다. 특히 유니티(Unity)의 C\#은 편리한 기능(Garbage Collection 등)을 제공하지만, 그만큼 메모리 관리에서 주의가 필요합니다.
 
@@ -26,21 +26,39 @@ void Update() {
 ```
 
 **개선 방법 (Good Case)**
-값이 변할 때만 갱신하거나, `StringBuilder`를 사용합니다. 단순한 UI 갱신이라면 아래와 같이 변경 감지 패턴을 사용하는 것이 좋습니다.
+값이 변할 때만 갱신하거나, `StringBuilder`를 사용합니다.
+변경 사항이 생기면 객체를 새로 선언해버리는 string과 다르게, StringBuilder의 값들은 모두 힙 메모리에서 동적으로 존재하기 때문에 내용을 변경해도 추가적인 객체 선언 없이 값을 삽입 및 제거할 수 있다.
+<br>
+이러한 가변성과 효율성 때문에 string 조작 시 추가적인 메모리 할당이 발생하지 않고, 메모리 할당 및 해제에 필요한 오버헤드도 없어지게 된다.
 
 ```csharp
-private int _cachedScore = -1;
+using System.Text; // 네임스페이스 추가
+using UnityEngine;
 
-void Update() {
-    if (_cachedScore != currentScore) {
-        _cachedScore = currentScore;
-        // 문자열 포맷팅도 최소화하거나 캐싱된 문자열 사용 권장
-        scoreText.text = $"Current Score: {_cachedScore}"; 
+public class StringBuilderExample : MonoBehaviour
+{
+    // 1. 선언 및 초기화 (용량 설정으로 추가 할당 방지)
+    StringBuilder sb = new StringBuilder(256);
+
+    void Update()
+    {
+        // 버퍼 초기화
+        sb.Length = 0; 
+
+        // 2. 문자열 추가
+        sb.Append("Score: ");
+        sb.Append(100);
+        sb.Append(" | Time: ");
+        sb.Append(Time.time);
+
+        // 3. UI 텍스트 등에 적용할 때 ToString() 사용
+        // string을 새로 생성하지만 빈번한 '+' 연산보다 훨씬 효율적입니다.
+        Debug.Log(sb.ToString()); 
     }
 }
 ```
 
-### 2\. 습관적인 LINQ 사용과 메모리 할당
+### 2\. LINQ 사용과 메모리 할당
 
 LINQ는 가독성이 뛰어나고 데이터 처리에 강력하지만, 게임 루프(Game Loop) 내에서는 주의해서 사용해야 합니다. LINQ 쿼리는 내부적으로 대리자(Delegate)나 열거자(Enumerator) 객체를 생성하여 힙 메모리(Heap Memory)를 할당하기 때문입니다.
 
@@ -80,9 +98,3 @@ void OnCollisionEnter(Collision collision) {
     }
 }
 ```
-
-### 마치며: "최적화는 습관이다"
-
-물론 "조기 최적화는 만악의 근원(Premature optimization is the root of all evil)"이라는 말도 있습니다. 기획이 수시로 바뀌는 프로토타이핑 단계에서는 가독성과 생산성이 우선입니다.
-
-하지만 위에서 소개한 내용들은 **코드를 작성하는 순간의 작은 습관**들입니다. 이런 습관들이 모이면 나중에 대규모 리팩토링 없이도 쾌적한 게임 환경을 만들 수 있습니다.

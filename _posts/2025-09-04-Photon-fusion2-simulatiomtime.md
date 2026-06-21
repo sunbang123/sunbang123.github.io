@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "포톤 퓨전2 공유모드 SimulationTime 동기화"
+title: "Photon Fusion 2 공유모드 SimulationTime 동기화"
 date: 2025-09-04 19:42:16 +0900
 categories: 
 tags: ["Unity", "C#", "SDK"]
