@@ -2,6 +2,22 @@
   {
     "type": "commit",
     "repo": "Wafer-AOI-Project",
+    "message": "feat: ONNX 모델 추가",
+    "author": "sunbang123",
+    "date": "2026-06-21T15:01:38Z",
+    "sha": "5c9cf93baac13277d9e94c5e454f1bd5dc1a912f"
+  },
+  {
+    "type": "commit",
+    "repo": "Wafer-AOI-Project",
+    "message": "chore: 프로젝트 초기 솔루션 세팅",
+    "author": "sunbang123",
+    "date": "2026-06-21T14:57:00Z",
+    "sha": "e4a0ecc6140fd081cacb7123a073cabddafb3d27"
+  },
+  {
+    "type": "commit",
+    "repo": "Wafer-AOI-Project",
     "message": "Initial commit",
     "author": "김선영",
     "date": "2026-06-20T04:25:22Z",
@@ -952,6 +968,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-06-21T11:44:28Z"
+    "last_updated": "2026-06-21T15:14:51Z"
   }
 ]
