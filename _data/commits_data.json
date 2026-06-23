@@ -2,6 +2,14 @@
   {
     "type": "commit",
     "repo": "Wafer-AOI-Project",
+    "message": "chore: OpenCV 연동",
+    "author": "sunbang123",
+    "date": "2026-06-23T01:43:15Z",
+    "sha": "0605b5ba0de7b33dd341f1fa9e7b7a84f797b74a"
+  },
+  {
+    "type": "commit",
+    "repo": "Wafer-AOI-Project",
     "message": "feat: ONNX 모델 추가",
     "author": "sunbang123",
     "date": "2026-06-21T15:01:38Z",
@@ -968,6 +976,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-06-22T03:56:09Z"
+    "last_updated": "2026-06-23T02:55:17Z"
   }
 ]
