@@ -1,0 +1,57 @@
+---
+layout: default
+---
+
+{%- assign logs = site.devlogs | sort: "date" | reverse -%}
+
+<section class="devlog-page">
+  <div class="devlog-page__inner">
+    <header class="devlog-header">
+      <p class="reading-kicker">DevLog Feed</p>
+      <h1>짧은 개발 기록 피드</h1>
+      <p>{{ content }}</p>
+    </header>
+
+    <section class="devlog-composer" aria-label="DevLog 초안 작성">
+      <div class="devlog-composer__avatar">
+        <img src="/assets/images/profile.jpg" alt="김선영 프로필 사진">
+      </div>
+      <div class="devlog-composer__body">
+        <input id="devlogTitleInput" type="text" placeholder="오늘의 DevLog 제목">
+        <textarea id="devlogBodyInput" rows="4" placeholder="오늘 배운 점이나 구현 중인 내용을 짧게 적어보세요."></textarea>
+        <div class="devlog-composer__controls">
+          <input id="devlogTagsInput" type="text" placeholder="태그: C#, Unity, OpenCV">
+          <button id="devlogDraftButton" type="button">Markdown 초안 만들기</button>
+        </div>
+        <pre id="devlogDraftOutput" class="devlog-draft-output" hidden></pre>
+      </div>
+    </section>
+
+    <div class="devlog-feed">
+      {%- for log in logs -%}
+      <article class="devlog-card">
+        <div class="devlog-card__avatar">
+          <img src="/assets/images/profile.jpg" alt="">
+        </div>
+        <div class="devlog-card__content">
+          <div class="devlog-card__meta">
+            <strong>김선영</strong>
+            <time datetime="{{ log.date | date_to_xmlschema }}">{{ log.date | date: "%Y년 %m월 %d일" }}</time>
+          </div>
+          <h2><a href="{{ log.url | relative_url }}">{{ log.title | escape }}</a></h2>
+          <div class="devlog-card__body">
+            {{ log.content }}
+          </div>
+          {%- if log.tags and log.tags.size > 0 -%}
+          <div class="devlog-card__tags">
+            {%- for tag in log.tags -%}
+              <span>{{ tag | escape }}</span>
+            {%- endfor -%}
+          </div>
+          {%- endif -%}
+        </div>
+      </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>

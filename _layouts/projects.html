@@ -18,18 +18,19 @@ title: GitHub Activities
             <div class="col-md-12">
                 <div class="glass-effect rounded-4 p-3 mb-2 text-center stats-badge-container">
                     <h5 class="text-white-75 fw-bold mb-3">프로젝트 현황 요약</h5>
+                    {% assign portfolio_projects = site.projects | where_exp: "project", "project.hobby_game != true" %}
                     <div class="d-flex justify-content-center flex-wrap gap-2">
                         <span class="badge rounded-pill bg-primary status-summary-badge">
-                            총 프로젝트: <strong>{{ site.projects.size }}</strong>
+                            총 프로젝트: <strong>{{ portfolio_projects.size }}</strong>
                         </span>
                         <span class="badge rounded-pill bg-success status-summary-badge">
-                            완료: <strong>{{ site.projects | where: 'status', 'completed' | size }}</strong>
+                            완료: <strong>{{ portfolio_projects | where: 'status', 'completed' | size }}</strong>
                         </span>
                         <span class="badge rounded-pill bg-warning text-dark status-summary-badge">
-                            진행중: <strong>{{ site.projects | where: 'status', 'in-progress' | size }}</strong>
+                            진행중: <strong>{{ portfolio_projects | where: 'status', 'in-progress' | size }}</strong>
                         </span>
                         <span class="badge rounded-pill bg-info text-dark status-summary-badge">
-                            계획중: <strong>{{ site.projects | where: 'status', 'planned' | size }}</strong>
+                            계획중: <strong>{{ portfolio_projects | where: 'status', 'planned' | size }}</strong>
                         </span>
                     </div>
                 </div>
@@ -41,15 +42,15 @@ title: GitHub Activities
                 <div class="project-slider-wrapper">
                     <div class="slider-container" 
                          id="projects-slider-container"
-                         data-total="{{ site.projects.size | plus: 1 }}">
+                         data-total="{{ portfolio_projects.size | plus: 1 }}">
                          
                         <div class="horizontal-track" id="projects-slider-track">
-                            {% assign sorted_projects = site.projects | sort: 'date' | reverse %}
+                            {% assign sorted_projects = portfolio_projects | sort: 'date' | reverse %}
                             {% for project in sorted_projects %}
                             <div class="project-slide-wrapper"> 
                                 <div class="card project-card glass-effect border-0 rounded-4 shadow-lg h-100">
                                    <div class="project-thumbnail rounded-top-4 d-flex align-items-center justify-content-center position-relative">
-                                        {% if project.thumbnail %}
+                                        {% if project.thumbnail and project.thumbnail != "" %}
                                             <a href="{{ project.url }}">
                                                 <img src="{{ project.thumbnail }}" alt="{{ project.title }}" class="rounded-top-4">
                                             </a>

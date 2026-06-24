@@ -4,6 +4,8 @@ layout: default
 
 {%- assign latest_post = site.posts | first -%}
 {%- assign date_format = site.minima.date_format | default: "%Y년 %m월 %d일" -%}
+{%- assign portfolio_projects = site.projects | where_exp: "project", "project.hobby_game != true" -%}
+{%- assign game_projects = site.projects | where: "hobby_game", true -%}
 
 <section class="reading-hero">
   <div class="particles" id="particles" aria-hidden="true"></div>
@@ -15,8 +17,8 @@ layout: default
         컴퓨터 과학, 프로그래밍, 게임 개발, 개발 환경 구축 과정에서 만난 개념과 문제 해결 과정을 차분히 기록하는 개인 기술 블로그입니다.
       </p>
       <div class="reading-actions" aria-label="주요 링크">
-        <a href="/article/" class="reading-button reading-button--primary">전체 글 보기</a>
-        <a href="/tags/" class="reading-button reading-button--secondary">태그로 찾기</a>
+        <a href="/read/" class="reading-button reading-button--primary">전체 글 보기</a>
+        <a href="/devlog/" class="reading-button reading-button--secondary">DevLog 보기</a>
       </div>
     </div>
 
@@ -33,7 +35,7 @@ layout: default
       {%- if latest_post.tags and latest_post.tags.size > 0 -%}
       <div class="featured-post__tags" aria-label="최근 글 태그">
         {%- for tag in latest_post.tags limit: 4 -%}
-          <span>{{ tag | escape }}</span>
+          <a href="/read/?tag={{ tag | cgi_escape }}">{{ tag | escape }}</a>
         {%- endfor -%}
       </div>
       {%- endif -%}
@@ -53,8 +55,12 @@ layout: default
       <span>주제 묶음</span>
     </div>
     <div class="reading-stat">
-      <strong>{{ site.projects.size }}</strong>
-      <span>프로젝트 기록</span>
+      <strong>{{ portfolio_projects.size }}</strong>
+      <span>포트폴리오 프로젝트</span>
+    </div>
+    <div class="reading-stat">
+      <strong>{{ game_projects.size }}</strong>
+      <span>취미 게임 개발</span>
     </div>
   </div>
 </section>
@@ -78,7 +84,7 @@ layout: default
           {%- if post.tags and post.tags.size > 0 -%}
           <div class="post-preview__tags" aria-label="글 태그">
             {%- for tag in post.tags limit: 3 -%}
-              <span>{{ tag | escape }}</span>
+              <a href="/read/?tag={{ tag | cgi_escape }}">{{ tag | escape }}</a>
             {%- endfor -%}
           </div>
           {%- endif -%}
@@ -86,7 +92,7 @@ layout: default
         {%- endfor -%}
       </div>
 
-      <a class="text-link" href="/article/">글 목록에서 더 보기</a>
+      <a class="text-link" href="/read/">전체 글에서 더 보기</a>
     </div>
 
     <aside class="reading-sidebar" aria-label="블로그 탐색">
@@ -109,14 +115,15 @@ layout: default
 
       <section class="topic-panel">
         <div class="section-heading section-heading--compact">
-          <p>Topics</p>
-          <h2>주제별로 읽기</h2>
+          <p>Tags</p>
+          <h2>관심 태그로 읽기</h2>
         </div>
         <div class="topic-list">
-          {%- for category in site.tag_categories limit: 8 -%}
-            <a href="/tags/" class="topic-item">
-              <strong>{{ category[0] | escape }}</strong>
-              <span>{{ category[1] | size }}개 태그</span>
+          {%- assign sorted_tags = site.tags | sort -%}
+          {%- for tag_pair in sorted_tags limit: 12 -%}
+            <a href="/read/?tag={{ tag_pair[0] | cgi_escape }}" class="topic-item">
+              <strong>{{ tag_pair[0] | escape }}</strong>
+              <span>{{ tag_pair[1] | size }}개 글</span>
             </a>
           {%- endfor -%}
         </div>

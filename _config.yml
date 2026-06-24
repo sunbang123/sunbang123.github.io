@@ -90,6 +90,9 @@ collections:
   projects:
     output: true
     permalink: /project/:name/
+  devlogs:
+    output: true
+    permalink: /devlog/:name/
 
 defaults:
   - scope:
@@ -97,6 +100,11 @@ defaults:
       type: "projects"
     values:
       layout: "project"
+  - scope:
+      path: "_devlogs"
+      type: "devlogs"
+    values:
+      layout: "devlog_post"
 
 # Exclude from processing.
 # The following items will not be processed, by default.

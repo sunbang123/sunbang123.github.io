@@ -54,7 +54,7 @@ layout: default
     <div class="row">
         <div class="col-lg-8 mx-auto">
             <!-- Main Project Image -->
-            {% if page.thumbnail %}
+            {% if page.thumbnail and page.thumbnail != "" %}
             <div class="text-center mb-5">
                 <img src="{{ page.thumbnail }}" alt="{{ page.title }}" class="img-fluid rounded shadow-lg" style="max-height: 400px;">
             </div>
@@ -92,7 +92,7 @@ layout: default
 
 <!-- Navigation Buttons -->
 <div class="nav-buttons">
-    <a href="/project/" class="btn btn-secondary text-white">
+    <a href="{% if page.hobby_game %}/games/{% else %}/project/{% endif %}" class="btn btn-secondary text-white">
         <i class="bi bi-backspace"></i>
     </a>
     <a href="#" class="btn btn-secondary back-to-top">

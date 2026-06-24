@@ -9,6 +9,8 @@ tags: ["Unity", "LeanTween", "Firebase", "GPGS"]
 demo_url: "https://youtu.be/4Ch199SMkr4?si=pmgHzK8YOugSc2No"
 github_url: "https://github.com/sunbang123/HexaStack"
 status: "completed"
+hobby_game: true
+game_type: "퍼즐"
 ---
 
 # Cosmic Hexa Puzzle
