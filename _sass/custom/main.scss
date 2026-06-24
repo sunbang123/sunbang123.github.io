@@ -964,6 +964,75 @@ body {
     color: #94a3b8;
 }
 
+.home-activity-section {
+    background: #0f1419;
+    padding: 3rem 1.5rem 1rem;
+}
+
+.home-activity-section__inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+    gap: 1rem;
+    align-items: start;
+}
+
+.activity-panel--featured,
+.visit-panel {
+    min-height: 100%;
+}
+
+.activity-panel--featured .commits-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
+}
+
+.activity-panel--featured .commit-item {
+    padding: 0.95rem;
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    border-radius: 8px;
+    background: rgba(30, 41, 59, 0.38);
+}
+
+.activity-panel--featured .commit-item:last-child {
+    border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.visit-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.55rem;
+    margin-bottom: 0.8rem;
+}
+
+.visit-summary div {
+    padding: 0.8rem;
+    border-radius: 8px;
+    background: rgba(30, 41, 59, 0.42);
+    border: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.visit-summary strong {
+    display: block;
+    color: #f8fafc;
+    font-size: 1.35rem;
+    line-height: 1;
+}
+
+.visit-summary span {
+    display: block;
+    margin-top: 0.35rem;
+    color: #94a3b8;
+    font-size: 0.82rem;
+}
+
+.visit-record-list--home {
+    max-height: 320px;
+    overflow: auto;
+}
+
 .reading-main {
     background: linear-gradient(180deg, #0f1419 0%, #111827 100%);
     padding: 4rem 1.5rem 5rem;
@@ -1993,6 +2062,7 @@ body[data-width="wide"] .devlog-post__inner {
 
 @media (max-width: 960px) {
     .reading-hero__inner,
+    .home-activity-section__inner,
     .reading-main__inner {
         grid-template-columns: 1fr;
     }
@@ -2017,6 +2087,8 @@ body[data-width="wide"] .devlog-post__inner {
     }
 
     .reading-overview__inner,
+    .activity-panel--featured .commits-container,
+    .visit-summary,
     .reading-sidebar {
         grid-template-columns: 1fr;
     }

@@ -65,6 +65,48 @@ layout: default
   </div>
 </section>
 
+<section class="home-activity-section" aria-label="최근 개발 활동과 방문자수 기록">
+  <div class="home-activity-section__inner">
+    <section class="activity-panel activity-panel--featured">
+      <div class="section-heading">
+        <p>Activity</p>
+        <h2>최근 개발 활동</h2>
+      </div>
+      <div class="commits-container" id="commitsContainer">
+        <div class="loading-spinner">
+          <div class="spinner"></div>
+          <p>활동을 불러오는 중입니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="activity-panel visit-panel" aria-label="방문자수 기록">
+      <div class="section-heading">
+        <p>Visits</p>
+        <h2>방문자수 기록</h2>
+      </div>
+      <div class="visit-summary">
+        <div>
+          <strong id="visitTotalCount">0</strong>
+          <span>누적 방문</span>
+        </div>
+        <div>
+          <strong id="visitTodayCount">0</strong>
+          <span>오늘 방문</span>
+        </div>
+        <div>
+          <strong id="visitPageCount">0</strong>
+          <span>방문 페이지</span>
+        </div>
+      </div>
+      <div id="visitRecordsList" class="visit-record-list visit-record-list--home" aria-live="polite">
+        <p>방문 기록을 불러오는 중입니다.</p>
+      </div>
+      <a class="text-link" href="/records/">기록 페이지에서 더 보기</a>
+    </section>
+  </div>
+</section>
+
 <section class="reading-main">
   <div class="reading-main__inner">
     <div class="reading-feed">
@@ -129,18 +171,6 @@ layout: default
         </div>
       </section>
 
-      <section class="activity-panel">
-        <div class="section-heading section-heading--compact">
-          <p>Activity</p>
-          <h2>최근 개발 활동</h2>
-        </div>
-        <div class="commits-container" id="commitsContainer">
-          <div class="loading-spinner">
-            <div class="spinner"></div>
-            <p>활동을 불러오는 중입니다.</p>
-          </div>
-        </div>
-      </section>
     </aside>
   </div>
 </section>

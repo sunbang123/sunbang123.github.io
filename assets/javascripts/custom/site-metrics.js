@@ -193,7 +193,7 @@
                 return;
             }
 
-            list.replaceChildren(...comments.slice(0, 30).map(createCommentCard));
+            list.replaceChildren(...comments.slice(0, 10).map(createCommentCard));
         } catch (error) {
             if (totalCount) totalCount.textContent = '0';
             list.replaceChildren();

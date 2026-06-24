@@ -124,6 +124,7 @@ html[data-theme="light"] .site-footer,
 html[data-theme="light"] .reading-hero,
 html[data-theme="light"] .reading-overview,
 html[data-theme="light"] .reading-main,
+html[data-theme="light"] .home-activity-section,
 html[data-theme="light"] .read-page,
 html[data-theme="light"] .game-page,
 html[data-theme="light"] .devlog-page,
@@ -238,6 +239,7 @@ html[data-theme="light"] .devlog-card__meta strong {
 }
 
 html[data-theme="light"] .reading-stat,
+html[data-theme="light"] .visit-summary div,
 html[data-theme="light"] .game-summary div,
 html[data-theme="light"] .roadmap-stats div,
 html[data-theme="light"] .records-stats div {
@@ -246,10 +248,15 @@ html[data-theme="light"] .records-stats div {
 }
 
 html[data-theme="light"] .reading-stat strong,
+html[data-theme="light"] .visit-summary strong,
 html[data-theme="light"] .game-summary strong,
 html[data-theme="light"] .roadmap-stats strong,
 html[data-theme="light"] .records-stats strong {
   color: #111827 !important;
+}
+
+html[data-theme="light"] .visit-summary span {
+  color: #475569 !important;
 }
 
 html[data-theme="light"] .read-tag,
