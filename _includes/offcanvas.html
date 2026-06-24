@@ -24,7 +24,29 @@
         <a href="/project/">Roadmap</a>
         <a href="/games/">Game Lab</a>
         <a href="/devlog/">DevLog</a>
+        <a href="/records/">Records</a>
         <a href="/about/">About</a>
+      </div>
+    </section>
+
+    <section class="settings-section" aria-label="사이트 검색">
+      <h6>사이트 검색</h6>
+      <div class="settings-search">
+        <input id="settingsSearchInput" type="search" placeholder="글, 프로젝트, DevLog 검색" autocomplete="off">
+        <div id="settingsSearchResults" class="settings-search-results" aria-live="polite">
+          <p>검색어를 입력하면 관련 항목이 표시됩니다.</p>
+        </div>
+      </div>
+      <div class="settings-search-source" hidden>
+        {%- for post in site.posts -%}
+          <a href="{{ post.url | relative_url }}" data-search-item data-title="{{ post.title | escape }}" data-type="글" data-text="{{ post.content | strip_html | normalize_whitespace | truncate: 260 | escape }} {{ post.tags | join: ' ' | escape }}">{{ post.title | escape }}</a>
+        {%- endfor -%}
+        {%- for project in site.projects -%}
+          <a href="{{ project.url | relative_url }}" data-search-item data-title="{{ project.title | escape }}" data-type="{% if project.hobby_game %}게임{% else %}프로젝트{% endif %}" data-text="{{ project.description | escape }} {{ project.tags | join: ' ' | escape }}">{{ project.title | escape }}</a>
+        {%- endfor -%}
+        {%- for log in site.devlogs -%}
+          <a href="{{ log.url | relative_url }}" data-search-item data-title="{{ log.title | escape }}" data-type="DevLog" data-text="{{ log.content | strip_html | normalize_whitespace | truncate: 180 | escape }} {{ log.tags | join: ' ' | escape }}">{{ log.title | escape }}</a>
+        {%- endfor -%}
       </div>
     </section>
 
