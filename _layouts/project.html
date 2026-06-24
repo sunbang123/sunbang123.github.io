@@ -5,7 +5,7 @@ layout: default
 <div class="project-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 mx-auto text-center">
+            <div class="col-lg-10 mx-auto text-center project-detail-heading">
                 <h1 class="display-6 fw-bold mb-3">{{ page.title }}</h1>
                 <p class="lead mb-4">{{ page.description }}</p>
                 
@@ -50,11 +50,11 @@ layout: default
     </div>
 </div>
 
-<div class="container">
+<div class="container project-detail-container">
     <div class="row">
-        <div class="col-lg-8 mx-auto">
+        <div class="col-lg-10 mx-auto project-detail-column">
             <!-- Main Project Image -->
-            {% if page.thumbnail %}
+            {% if page.thumbnail and page.thumbnail != "" %}
             <div class="text-center mb-5">
                 <img src="{{ page.thumbnail }}" alt="{{ page.title }}" class="img-fluid rounded shadow-lg" style="max-height: 400px;">
             </div>
@@ -90,12 +90,3 @@ layout: default
     </div>
 </div>
 
-<!-- Navigation Buttons -->
-<div class="nav-buttons">
-    <a href="/project/" class="btn btn-secondary text-white">
-        <i class="bi bi-backspace"></i>
-    </a>
-    <a href="#" class="btn btn-secondary back-to-top">
-        <i class="bi bi-arrow-up-circle"></i>
-    </a>
-</div>

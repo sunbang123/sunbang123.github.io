@@ -1,0 +1,50 @@
+---
+layout: default
+---
+
+{%- assign date_format = site.minima.date_format | default: "%Y년 %m월 %d일" -%}
+
+<section class="read-page">
+  <div class="read-page__inner">
+    <header class="read-header">
+      <p class="reading-kicker">Read By Tag</p>
+      <h1>태그로 골라 읽기</h1>
+      <p>홈에서 선택한 태그와 관련된 글만 모아 보여줍니다. 태그를 선택하지 않으면 전체 글이 최신순으로 표시됩니다.</p>
+    </header>
+
+    <div class="read-tags" aria-label="글 태그 필터">
+      <a class="read-tag" href="/read/" data-tag-button="all">전체</a>
+      {%- assign sorted_tags = site.tags | sort -%}
+      {%- for tag_pair in sorted_tags -%}
+        <a class="read-tag" href="/read/?tag={{ tag_pair[0] | cgi_escape }}" data-tag-button="{{ tag_pair[0] | escape }}">
+          {{ tag_pair[0] | escape }}
+          <span>{{ tag_pair[1] | size }}</span>
+        </a>
+      {%- endfor -%}
+    </div>
+
+    <div class="read-result-bar">
+      <h2 id="readResultTitle">전체 글</h2>
+      <span id="readResultCount">{{ site.posts.size }}개 글</span>
+    </div>
+
+    <div class="read-post-list" id="readPostList">
+      {%- for post in site.posts -%}
+      <article class="read-post-card" data-tags="{{ post.tags | join: '||' | escape }}">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+        <p>{{ post.content | strip_html | normalize_whitespace | truncate: 170 }}</p>
+        {%- if post.tags and post.tags.size > 0 -%}
+        <div class="read-post-card__tags">
+          {%- for tag in post.tags limit: 5 -%}
+            <a href="/read/?tag={{ tag | cgi_escape }}">{{ tag | escape }}</a>
+          {%- endfor -%}
+        </div>
+        {%- endif -%}
+      </article>
+      {%- endfor -%}
+    </div>
+
+    <p class="empty-message read-empty" id="readEmpty" hidden>선택한 태그와 연결된 글이 아직 없습니다.</p>
+  </div>
+</section>

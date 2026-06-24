@@ -1,52 +1,104 @@
-<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-
+<div class="offcanvas offcanvas-start site-settings-panel" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Profile</h5>
-  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <div>
+      <p class="settings-kicker">Site Panel</p>
+      <h5 class="offcanvas-title" id="offcanvasScrollingLabel">빠른 설정</h5>
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-    <article class="post">
 
-    <h5>{{ site.author-profile.name }}</h5>
-    <p>{{ site.author-profile.bio }}</p>
-    <ul class="social-media-list d-flex">
-        {%- if site.author-profile.linkedin -%}
-        <li>
-          <a href="https://linkedin.com/in/{{ site.author-profile.linkedin }}" target="_blank">
-            <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#linkedin' | relative_url }}"></use></svg>
-          </a>
-        </li>
-        {%- endif -%}
-        {%- if site.github_username -%}
-        <li class="ps-1 pt-0">
-          <a class="text-decoration-none" href="https://github.com/{{ site.github_username| cgi_escape | escape }}">
-            <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#github' | relative_url }}"></use></svg>
-          </a>
-        </li>
-        {%- endif -%}
-        {%- if site.author-profile.youtube -%}
-        <li class="ps-1 pt-0">
-          <a class="text-decoration-none" href="https://www.youtube.com/channel/UCfFOEhFPrz3EoLfflhr1NGA" target="_blank">
-            <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#youtube' | relative_url }}"></use></svg>
-          </a>
-        </li>
-        {%- endif -%}
-
-      <!-- 더 많은 소셜 링크 추가 가능 -->
-    </ul>
-
-</article>
   <div class="offcanvas-body">
-    <aside class="sidebar">
-      <h5>Recent Posts</h5>
-      <ul class="list-group list-group-flush m-0">
-        {% for post in site.posts limit:5 %}
-        <li class="list-group-item text"><a class="text-decoration-none text-white" href="{{ post.url }}">{{ post.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </aside>
+    <section class="settings-profile">
+      <img src="/assets/images/profile.jpg" alt="김선영 프로필 사진">
+      <div>
+        <strong>{{ site.author-profile.name }}</strong>
+        <span>{{ site.author-profile.bio }}</span>
+      </div>
+    </section>
+
+    <section class="settings-section" aria-label="빠른 이동">
+      <h6>빠른 이동</h6>
+      <div class="settings-link-grid">
+        <a href="/">Home</a>
+        <a href="/read/">Read</a>
+        <a href="/project/">Roadmap</a>
+        <a href="/games/">Game Lab</a>
+        <a href="/devlog/">DevLog</a>
+        <a href="/records/">Records</a>
+        <a href="/about/">About</a>
+      </div>
+    </section>
+
+    <section class="settings-section" aria-label="사이트 검색">
+      <h6>사이트 검색</h6>
+      <div class="settings-search">
+        <input id="settingsSearchInput" type="search" placeholder="글, 프로젝트, DevLog 검색" autocomplete="off">
+        <div id="settingsSearchResults" class="settings-search-results" aria-live="polite">
+          <p>검색어를 입력하면 관련 항목이 표시됩니다.</p>
+        </div>
+      </div>
+      <div class="settings-search-source" hidden>
+        {%- for post in site.posts -%}
+          <a href="{{ post.url | relative_url }}" data-search-item data-title="{{ post.title | escape }}" data-type="글" data-text="{{ post.content | strip_html | normalize_whitespace | truncate: 260 | escape }} {{ post.tags | join: ' ' | escape }}">{{ post.title | escape }}</a>
+        {%- endfor -%}
+        {%- for project in site.projects -%}
+          <a href="{{ project.url | relative_url }}" data-search-item data-title="{{ project.title | escape }}" data-type="{% if project.hobby_game %}게임{% else %}프로젝트{% endif %}" data-text="{{ project.description | escape }} {{ project.tags | join: ' ' | escape }}">{{ project.title | escape }}</a>
+        {%- endfor -%}
+        {%- for log in site.devlogs -%}
+          <a href="{{ log.url | relative_url }}" data-search-item data-title="{{ log.title | escape }}" data-type="DevLog" data-text="{{ log.content | strip_html | normalize_whitespace | truncate: 180 | escape }} {{ log.tags | join: ' ' | escape }}">{{ log.title | escape }}</a>
+        {%- endfor -%}
+      </div>
+    </section>
+
+    <section class="settings-section" aria-label="읽기 설정">
+      <h6>읽기 설정</h6>
+      <div class="settings-control-group">
+        <span>테마</span>
+        <div class="settings-segmented" data-setting-group="theme">
+          <button type="button" data-setting="theme" data-value="dark">Dark</button>
+          <button type="button" data-setting="theme" data-value="light">Light</button>
+        </div>
+      </div>
+      <div class="settings-control-group">
+        <span>글자 크기</span>
+        <div class="settings-segmented" data-setting-group="font">
+          <button type="button" data-setting="font" data-value="compact">작게</button>
+          <button type="button" data-setting="font" data-value="base">기본</button>
+          <button type="button" data-setting="font" data-value="large">크게</button>
+        </div>
+      </div>
+      <div class="settings-control-group">
+        <span>본문 폭</span>
+        <div class="settings-segmented" data-setting-group="width">
+          <button type="button" data-setting="width" data-value="normal">기본</button>
+          <button type="button" data-setting="width" data-value="wide">넓게</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="settings-section" aria-label="태그 바로가기">
+      <h6>태그 바로가기</h6>
+      <div class="settings-tag-list">
+        {%- assign sorted_tags = site.tags | sort -%}
+        {%- for tag_pair in sorted_tags limit: 10 -%}
+          <a href="/read/?tag={{ tag_pair[0] | cgi_escape }}">{{ tag_pair[0] | escape }}</a>
+        {%- endfor -%}
+      </div>
+    </section>
+
+    <section class="settings-section" aria-label="연락처">
+      <h6>연락처</h6>
+      <div class="settings-socials">
+        <a href="mailto:{{ site.email }}">Email</a>
+        <a href="https://github.com/{{ site.github_username | cgi_escape | escape }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+        {%- if site.author-profile.linkedin -%}
+        <a href="https://linkedin.com/in/{{ site.author-profile.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        {%- endif -%}
+      </div>
+    </section>
   </div>
 </div>
 
-<button class="btn btn-offcanvas py-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
-  <i class="bi bi-journal-text fs-3 text-white"></i>
+<button class="btn btn-offcanvas py-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" aria-label="사이트 설정 열기">
+  <i class="bi bi-sliders fs-3 text-white"></i>
 </button>

@@ -1,0 +1,42 @@
+---
+layout: default
+---
+
+{%- assign logs = site.devlogs | sort: "date" | reverse -%}
+
+<section class="devlog-page">
+  <div class="devlog-page__inner">
+    <header class="devlog-header">
+      <p class="reading-kicker">DevLog Feed</p>
+      <h1>짧은 개발 기록 피드</h1>
+      <p>{{ content }}</p>
+    </header>
+
+    <div class="devlog-feed">
+      {%- for log in logs -%}
+      <article class="devlog-card">
+        <div class="devlog-card__avatar">
+          <img src="/assets/images/profile.jpg" alt="">
+        </div>
+        <div class="devlog-card__content">
+          <div class="devlog-card__meta">
+            <strong>김선영</strong>
+            <time datetime="{{ log.date | date_to_xmlschema }}">{{ log.date | date: "%Y년 %m월 %d일" }}</time>
+          </div>
+          <h2><a href="{{ log.url | relative_url }}">{{ log.title | escape }}</a></h2>
+          <div class="devlog-card__body">
+            {{ log.content }}
+          </div>
+          {%- if log.tags and log.tags.size > 0 -%}
+          <div class="devlog-card__tags">
+            {%- for tag in log.tags -%}
+              <span>{{ tag | escape }}</span>
+            {%- endfor -%}
+          </div>
+          {%- endif -%}
+        </div>
+      </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>

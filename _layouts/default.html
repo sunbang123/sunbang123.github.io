@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}" data-theme="dark">
   {%- include head.html -%}
-  {% if site.google_site_verification %}
-    <meta name="google-site-verification" content="{{ site.google_site_verification }}" />
-  {% endif %}
-  <body>
+  <body id="top">
     {%- include header.html -%}
     {%- include offcanvas.html -%}
     <main class="page-content" aria-label="Content">
       {{ content }}
     </main>
     {%- include footer.html -%}
+    {%- include floating-nav.html -%}
     <div class="background"></div>
     <!-- Bootstrap JS -->
     <script src="{{ '/assets/javascripts/bootstrap.js' | relative_url }}"></script>
     <script src="{{ '/assets/javascripts/custom/home.js' | relative_url }}"></script>
-    <script src="{{ '/assets/javascripts/custom/project.js' | relative_url }}"></script>
     <script src="{{ '/assets/javascripts/custom/projects.js' | relative_url }}"></script>
+    <script src="{{ '/assets/javascripts/custom/read.js' | relative_url }}"></script>
+    <script src="{{ '/assets/javascripts/custom/site-navigation.js' | relative_url }}"></script>
+    <script src="{{ '/assets/javascripts/custom/site-settings.js' | relative_url }}"></script>
+    <script src="{{ '/assets/javascripts/custom/site-metrics.js' | relative_url }}"></script>
     <script src="{{ '/assets/javascripts/custom/tags.js' | relative_url }}"></script>
     <script src="{{ '/assets/javascripts/custom/article.js' | relative_url }}"></script>
     {%- include header-scroll.html -%}

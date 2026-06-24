@@ -1,0 +1,75 @@
+---
+layout: default
+---
+
+{%- assign game_projects = site.projects | where: "hobby_game", true | sort: "date" | reverse -%}
+
+<section class="game-page">
+  <div class="game-page__inner">
+    <header class="game-hero">
+      <p class="reading-kicker">Game Lab</p>
+      <h1>취미로 만드는 게임 개발 기록</h1>
+      <p>{{ content }}</p>
+    </header>
+
+    <div class="game-summary">
+      <div>
+        <strong>{{ game_projects.size }}</strong>
+        <span>게임 프로젝트</span>
+      </div>
+      <div>
+        <strong>Unity</strong>
+        <span>주요 엔진</span>
+      </div>
+      <div>
+        <strong>C#</strong>
+        <span>주요 언어</span>
+      </div>
+    </div>
+
+    <div class="game-grid">
+      {%- for project in game_projects -%}
+      <article class="game-card">
+        <a class="game-card__media" href="{{ project.url | relative_url }}">
+          {%- if project.thumbnail and project.thumbnail != "" -%}
+            <img src="{{ project.thumbnail }}" alt="{{ project.title | escape }} 썸네일">
+          {%- else -%}
+            <span>{{ project.title | slice: 0, 1 }}</span>
+          {%- endif -%}
+        </a>
+        <div class="game-card__body">
+          <div class="game-card__meta">
+            <span>{{ project.game_type | default: "Game" }}</span>
+            <time datetime="{{ project.date | date_to_xmlschema }}">{{ project.date | date: "%Y.%m" }}</time>
+          </div>
+          <h2><a href="{{ project.url | relative_url }}">{{ project.title | escape }}</a></h2>
+          <p>{{ project.description | escape }}</p>
+          <div class="game-card__tags">
+            {%- for tag in project.tags limit: 5 -%}
+              <span>{{ tag | escape }}</span>
+            {%- endfor -%}
+          </div>
+          <div class="game-card__links">
+            {%- if project.demo_url -%}
+              <a href="{{ project.demo_url }}" target="_blank" rel="noopener noreferrer">데모</a>
+            {%- endif -%}
+            {%- if project.github_url -%}
+              <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+            {%- endif -%}
+            <a href="{{ project.url | relative_url }}">기록 보기</a>
+          </div>
+        </div>
+      </article>
+      {%- endfor -%}
+    </div>
+
+    <section class="itch-card" aria-label="itch.io 링크">
+      <div>
+        <p class="reading-kicker">Playable Builds</p>
+        <h2>itch.io 게임 콘텐츠</h2>
+        <p>작게 실험한 프로토타입과 플레이 가능한 빌드를 itch.io에 함께 모아두고 있어요.</p>
+      </div>
+      <a class="itch-card__link" href="https://sunyeong.itch.io/" target="_blank" rel="noopener noreferrer">sunyeong.itch.io</a>
+    </section>
+  </div>
+</section>

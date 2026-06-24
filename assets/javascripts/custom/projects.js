@@ -93,6 +93,7 @@ function setupHorizontalSlider(trackId, prevBtnId, nextBtnId, totalItems) {
     const track = document.getElementById(trackId);
     const prevBtn = document.getElementById(prevBtnId);
     const nextBtn = document.getElementById(nextBtnId);
+    if (!track || !prevBtn || !nextBtn || totalItems === 0) return;
     let currentIndex = 0;
 
     function getVisibleCount() {
@@ -121,6 +122,7 @@ function setupVerticalSlider(trackId, prevBtnId, nextBtnId) {
     const track = document.getElementById(trackId);
     const prevBtn = document.getElementById(prevBtnId);
     const nextBtn = document.getElementById(nextBtnId);
+    if (!track || !prevBtn || !nextBtn) return;
     let currentIndex = 0;
     const totalItems = track.children.length;
     const itemHeight = 100; 
@@ -141,10 +143,12 @@ function setupVerticalSlider(trackId, prevBtnId, nextBtnId) {
 // 4. INIT
 async function init() {
     const projectContainer = document.getElementById('projects-slider-container');
+    const container = document.getElementById('activities-container');
+    if (!projectContainer || !container) return;
+
     const totalProjects = projectContainer ? parseInt(projectContainer.getAttribute('data-total'), 10) : 0;
     setupHorizontalSlider('projects-slider-track', 'projects-prev-btn', 'projects-next-btn', totalProjects);
 
-    const container = document.getElementById('activities-container');
     const data = await fetchGitHubData();
     
     if (!data) {

@@ -1,133 +1,87 @@
 ---
 layout: default
-title: GitHub Activities
+title: Projects
 ---
 
-<div class="container-fluid py-5">
-    <div class="wrapper">
-        <div class="text-center mb-5">
-            <h1 class="display-6 fw-bold mb-4">
-                <i class="bi bi-rocket-takeoff me-3"></i>{{ page.title }}
-            </h1>
-            <div class="lead-50 mx-auto" style="max-width: 600px;">
-                {{ content }}
-            </div>
-        </div>
+{% assign portfolio_projects = site.projects | where_exp: "project", "project.hobby_game != true" %}
+{% assign sorted_projects = portfolio_projects | sort: 'date' %}
 
-        <div class="row mt-5">
-            <div class="col-md-12">
-                <div class="glass-effect rounded-4 p-3 mb-2 text-center stats-badge-container">
-                    <h5 class="text-white-75 fw-bold mb-3">프로젝트 현황 요약</h5>
-                    <div class="d-flex justify-content-center flex-wrap gap-2">
-                        <span class="badge rounded-pill bg-primary status-summary-badge">
-                            총 프로젝트: <strong>{{ site.projects.size }}</strong>
-                        </span>
-                        <span class="badge rounded-pill bg-success status-summary-badge">
-                            완료: <strong>{{ site.projects | where: 'status', 'completed' | size }}</strong>
-                        </span>
-                        <span class="badge rounded-pill bg-warning text-dark status-summary-badge">
-                            진행중: <strong>{{ site.projects | where: 'status', 'in-progress' | size }}</strong>
-                        </span>
-                        <span class="badge rounded-pill bg-info text-dark status-summary-badge">
-                            계획중: <strong>{{ site.projects | where: 'status', 'planned' | size }}</strong>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
+<section class="roadmap-page">
+  <div class="roadmap-page__inner">
+    <header class="roadmap-hero">
+      <p class="reading-kicker">Project Roadmap</p>
+      <h1>프로젝트 로드맵</h1>
+      <p>{{ content }}</p>
+    </header>
 
-        <div class="row"> 
-            <div class="col-md-12">
-                <div class="project-slider-wrapper">
-                    <div class="slider-container" 
-                         id="projects-slider-container"
-                         data-total="{{ site.projects.size | plus: 1 }}">
-                         
-                        <div class="horizontal-track" id="projects-slider-track">
-                            {% assign sorted_projects = site.projects | sort: 'date' | reverse %}
-                            {% for project in sorted_projects %}
-                            <div class="project-slide-wrapper"> 
-                                <div class="card project-card glass-effect border-0 rounded-4 shadow-lg h-100">
-                                   <div class="project-thumbnail rounded-top-4 d-flex align-items-center justify-content-center position-relative">
-                                        {% if project.thumbnail %}
-                                            <a href="{{ project.url }}">
-                                                <img src="{{ project.thumbnail }}" alt="{{ project.title }}" class="rounded-top-4">
-                                            </a>
-                                        {% else %}
-                                            <i class="{{ project.icon | default: 'bi bi-code-slash' }}" style="font-size: 3rem;"></i>
-                                        {% endif %}
-                                    </div>
-                                    {% if project.status %}
-                                        {% if project.status == 'completed' %}
-                                        <span class="badge bg-success">완료</span>
-                                        {% elsif project.status == 'in-progress' %}
-                                        <span class="badge bg-warning">진행중</span>
-                                        {% elsif project.status == 'planned' %}
-                                        <span class="badge bg-info">계획중</span>
-                                        {% endif %}
-                                    {% endif %}
-                                        
-                                    <div class="card-body p-4">
-                                        <div class="d-flex justify-content-between align-items-start mb-2">
-                                            <h5 class="card-title fw-bold text-white mb-0">{{ project.title }}</h5>
-                                            <small class="project-date">{{ project.date | date: "%Y.%m" }}</small>
-                                        </div>
-                                        <p class="card-text text-white mb-3">
-                                            {{ project.description }}
-                                        </p>
-                                        <div class="mb-3">
-                                            {% for tag in project.tags %}
-                                            <span class="badge gradient-bg me-2 mb-1">{{ tag }}</span>
-                                            {% endfor %}
-                                        </div>
-                                        <div class="d-flex gap-2">
-                                            {% if project.demo_url %}
-                                            <a href="{{ project.demo_url }}" class="btn gradient-bg flex-fill btn-sm" target="_blank">
-                                                <i class="bi bi-box-arrow-up-right me-1"></i>데모
-                                            </a>
-                                            {% endif %}
-                                            {% if project.github_url %}
-                                            <a href="{{ project.github_url }}" class="btn btn-outline-dark flex-fill btn-sm" target="_blank">
-                                                <i class="bi bi-github me-1"></i>GitHub
-                                            </a>
-                                            {% endif %}
-                                            {% if project.url %}
-                                            <a href="{{ project.url }}" class="btn btn-outline-primary flex-fill btn-sm">
-                                                <i class="bi bi-info-circle me-1"></i>자세히
-                                            </a>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {% endfor %}
-                            
-                            <div class="project-slide-wrapper">
-                                 <a href="#" id="add-project-link" style="text-decoration: none; color: inherit; display: block; height: 100%;">
-                                    <div class="add-project-card rounded-4 d-flex flex-column align-items-center justify-content-center text-center p-4 h-100">
-                                        <i class="bi bi-plus-circle mb-3" style="font-size: 4rem; opacity: 0.7;"></i>
-                                        <h5 class="mb-2 text-white-75">프로젝트 추가 가이드</h5>
-                                        <p class="text-white-50 small">
-                                            새 프로젝트를 추가하려면<br>
-                                            **`_data/projects.yml`**을 수정하세요.
-                                        </p>
-                                    </div>
-                                 </a>
-                            </div>
-                        </div> 
-                    </div> 
-                    <button class="project-btn project-prev" id="projects-prev-btn"><i class="bi bi-chevron-left"></i></button>
-                    <button class="project-btn project-next" id="projects-next-btn"><i class="bi bi-chevron-right"></i></button>
-                </div>
-            </div>
-        </div>
-
-        <div class="text-center mt-5 pt-4 mb-4">
-            <p class="text-white">GitHub 활동 현황 (최근 9개월)</p>
-        </div>
-
-        <div id="activities-container">
-            <div class="loading">데이터를 불러오는 중...</div>
-        </div>
+    <div class="roadmap-stats" aria-label="프로젝트 현황 요약">
+      <div>
+        <strong>{{ portfolio_projects.size }}</strong>
+        <span>전체 프로젝트</span>
+      </div>
+      <div>
+        <strong>{{ portfolio_projects | where: 'status', 'completed' | size }}</strong>
+        <span>완료</span>
+      </div>
+      <div>
+        <strong>{{ portfolio_projects | where: 'status', 'in-progress' | size }}</strong>
+        <span>진행중</span>
+      </div>
+      <div>
+        <strong>{{ portfolio_projects | where: 'status', 'planned' | size }}</strong>
+        <span>계획중</span>
+      </div>
     </div>
-</div>
+
+    <div class="roadmap-timeline">
+      {% for project in sorted_projects %}
+      <article class="roadmap-item roadmap-item--{{ project.status | default: 'planned' }}">
+        <div class="roadmap-marker" aria-hidden="true"></div>
+        <div class="roadmap-card">
+          <div class="roadmap-card__meta">
+            <time datetime="{{ project.date | date_to_xmlschema }}">{{ project.date | date: "%Y.%m" }}</time>
+            {% if project.status == 'completed' %}
+              <span class="roadmap-status roadmap-status--completed">완료</span>
+            {% elsif project.status == 'in-progress' %}
+              <span class="roadmap-status roadmap-status--progress">진행중</span>
+            {% else %}
+              <span class="roadmap-status roadmap-status--planned">계획중</span>
+            {% endif %}
+          </div>
+
+          <div class="roadmap-card__body">
+            <div class="roadmap-card__content">
+              <h2><a href="{{ project.url | relative_url }}">{{ project.title | escape }}</a></h2>
+              <p>{{ project.description | escape }}</p>
+              <div class="roadmap-tags">
+                {% for tag in project.tags limit: 6 %}
+                  <span>{{ tag | escape }}</span>
+                {% endfor %}
+              </div>
+              <div class="roadmap-actions">
+                {% if project.github_url %}
+                  <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+                {% endif %}
+                {% if project.demo_url %}
+                  <a href="{{ project.demo_url }}" target="_blank" rel="noopener noreferrer">Demo</a>
+                {% endif %}
+                <a href="{{ project.url | relative_url }}">상세 기록</a>
+              </div>
+            </div>
+
+            {% if project.thumbnail and project.thumbnail != "" %}
+            <a class="roadmap-thumb" href="{{ project.url | relative_url }}">
+              <img src="{{ project.thumbnail }}" alt="{{ project.title | escape }} 썸네일">
+            </a>
+            {% else %}
+            <a class="roadmap-thumb roadmap-thumb--empty" href="{{ project.url | relative_url }}">
+              <i class="{{ project.icon | default: 'bi bi-code-slash' }}"></i>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

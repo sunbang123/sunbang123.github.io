@@ -1,0 +1,64 @@
+---
+layout: default
+---
+
+{%- assign total_content = site.posts.size | plus: site.projects.size | plus: site.devlogs.size -%}
+
+<section class="records-page">
+  <div class="records-page__inner">
+    <header class="records-hero">
+      <p class="reading-kicker">Site Records</p>
+      <h1>댓글과 방문 기록</h1>
+      <p>{{ content }}</p>
+    </header>
+
+    <section class="records-stats" aria-label="방문 기록 요약">
+      <div>
+        <strong id="visitTotalCount">0</strong>
+        <span>누적 방문</span>
+      </div>
+      <div>
+        <strong id="visitTodayCount">0</strong>
+        <span>오늘 방문</span>
+      </div>
+      <div>
+        <strong id="visitPageCount">0</strong>
+        <span>방문한 페이지</span>
+      </div>
+      <div>
+        <strong id="commentTotalCount">0</strong>
+        <span>불러온 댓글</span>
+      </div>
+    </section>
+
+    <div class="records-grid">
+      <section class="records-panel" aria-label="댓글 모아보기">
+        <div class="records-panel__header">
+          <div>
+            <p class="reading-kicker">Comments</p>
+            <h2>댓글 모아보기</h2>
+          </div>
+          <span id="commentIssueCount">GitHub</span>
+        </div>
+
+        <div id="commentRecordsList" class="comment-record-list" aria-live="polite">
+          <p>GitHub 댓글을 불러오는 중입니다.</p>
+        </div>
+      </section>
+
+      <section class="records-panel" aria-label="방문자수 기록">
+        <div class="records-panel__header">
+          <div>
+            <p class="reading-kicker">Visits</p>
+            <h2>방문자수 기록</h2>
+          </div>
+          <button id="visitResetButton" type="button">초기화</button>
+        </div>
+
+        <div id="visitRecordsList" class="visit-record-list" aria-live="polite">
+          <p>방문 기록을 불러오는 중입니다.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>

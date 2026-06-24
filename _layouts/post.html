@@ -19,19 +19,40 @@ layout: default
     {{ content }}
   </div>
 
+  <nav class="post-neighbor-nav" aria-label="이전글 다음글">
+    <div>
+      {%- if page.previous -%}
+      <a class="post-neighbor-card" href="{{ page.previous.url | relative_url }}">
+        <span>이전 글</span>
+        <strong>{{ page.previous.title | escape }}</strong>
+      </a>
+      {%- endif -%}
+    </div>
+    <div>
+      {%- if page.next -%}
+      <a class="post-neighbor-card post-neighbor-card--next" href="{{ page.next.url | relative_url }}">
+        <span>다음 글</span>
+        <strong>{{ page.next.title | escape }}</strong>
+      </a>
+      {%- endif -%}
+    </div>
+  </nav>
+
   {%- if site.disqus.shortname -%}
     {%- include disqus_comments.html -%}
   {%- endif -%}
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 
-  <!-- utteranc 댓글 -->
-  <script src="https://utteranc.es/client.js"
-        repo="sunbang123/sunbang123.github.io"
-        issue-term="pathname"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-  </script>
+  <div id="utterances" class="post-comments">
+    <!-- utteranc 댓글 -->
+    <script src="https://utteranc.es/client.js"
+          repo="sunbang123/sunbang123.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+    </script>
+  </div>
 
 </article>

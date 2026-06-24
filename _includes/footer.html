@@ -22,6 +22,13 @@
  
     <div class="footer-col footer-col-3">
       <p>{{- site.description | escape -}}</p>
+      <p class="footer-links">
+        <a href="/about/">소개</a>
+        <a href="/contact/">문의</a>
+        <a href="/records/">사이트 기록</a>
+        <a href="/privacy/">개인정보처리방침</a>
+      </p>
+      <p class="copyright">&copy; {{ "now" | date: "%Y" }} {{ site.author-profile.name | default: site.title }}. All rights reserved.</p>
     </div>
   </div>
  </footer>
@@ -87,6 +94,27 @@
   margin: 0;
   line-height: 1.6;
  }
+
+ .footer-links {
+  margin-top: 0.75rem !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+ }
+
+ .footer-links a {
+  color: #2196F3;
+  text-decoration: none;
+ }
+
+ .footer-links a:hover {
+  color: #1976D2;
+ }
+
+ .copyright {
+  margin-top: 0.75rem !important;
+  font-size: 0.9rem;
+ }
  
  @media screen and (max-width: 768px) {
   .footer-col-wrapper {
@@ -95,6 +123,10 @@
   }
  
   .social-media-list {
+    justify-content: center;
+  }
+
+  .footer-links {
     justify-content: center;
   }
  }

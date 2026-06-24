@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<article class="devlog-post">
+  <div class="devlog-post__inner">
+    <a class="text-link" href="/devlog/">DevLog 피드로 돌아가기</a>
+    <header>
+      <p class="reading-kicker">DevLog</p>
+      <h1>{{ page.title | escape }}</h1>
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y년 %m월 %d일" }}</time>
+    </header>
+    <div class="devlog-post__content">
+      {{ content }}
+    </div>
+  </div>
+</article>
