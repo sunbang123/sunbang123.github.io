@@ -1300,6 +1300,179 @@ body {
     line-height: 1.8;
 }
 
+.read-series {
+    margin: 0 0 1.8rem;
+}
+
+.read-section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.85rem;
+}
+
+.read-section-heading h2 {
+    margin: 0;
+    color: #f8fafc;
+    font-size: 1.25rem;
+    line-height: 1.3;
+}
+
+.series-shelf {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.9rem;
+    padding: 0 0 1.15rem;
+}
+
+.series-shelf::after {
+    content: '';
+    position: absolute;
+    left: 0.35rem;
+    right: 0.35rem;
+    bottom: 0;
+    height: 10px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, rgba(148, 163, 184, 0.34), rgba(15, 23, 42, 0.2));
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
+.series-book {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr);
+    min-height: 166px;
+    overflow: hidden;
+    border-radius: 8px 5px 5px 8px;
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent 26px),
+        linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border: 1px solid rgba(226, 232, 240, 0.18);
+    color: #e2e8f0;
+    text-decoration: none;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+    transform-origin: bottom center;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.series-book:nth-child(4n + 1) {
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent 26px),
+        linear-gradient(135deg, #233047 0%, #3b5a79 100%);
+}
+
+.series-book:nth-child(4n + 2) {
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent 26px),
+        linear-gradient(135deg, #2d3a2f 0%, #55704c 100%);
+}
+
+.series-book:nth-child(4n + 3) {
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent 26px),
+        linear-gradient(135deg, #3d2f46 0%, #775c83 100%);
+}
+
+.series-book:nth-child(4n + 4) {
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent 26px),
+        linear-gradient(135deg, #463f31 0%, #86734f 100%);
+}
+
+.series-book::before,
+.series-book::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+}
+
+.series-book::before {
+    top: 0;
+    right: 0;
+    width: 13px;
+    height: 100%;
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.08)),
+        repeating-linear-gradient(180deg, transparent 0 9px, rgba(15, 23, 42, 0.22) 9px 10px);
+    opacity: 0.72;
+}
+
+.series-book::after {
+    inset: 12px 22px auto 32px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.34);
+    box-shadow: 0 44px 0 rgba(255, 255, 255, 0.16), 0 88px 0 rgba(255, 255, 255, 0.12);
+}
+
+.series-book:hover,
+.series-book.is-active {
+    color: #ffffff;
+    text-decoration: none;
+    border-color: rgba(248, 250, 252, 0.46);
+    box-shadow: 0 24px 58px rgba(0, 0, 0, 0.34);
+    transform: translateY(-5px) rotate(-1deg);
+}
+
+.series-book.is-active {
+    outline: 2px solid rgba(251, 191, 36, 0.68);
+    outline-offset: 3px;
+}
+
+.series-book__spine {
+    min-width: 18px;
+    background: rgba(0, 0, 0, 0.22);
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: inset -5px 0 10px rgba(0, 0, 0, 0.18);
+}
+
+.series-book__body {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 1rem 1.15rem 0.95rem 0.9rem;
+}
+
+.series-book__label,
+.series-book__body span,
+.series-book__body em {
+    color: rgba(226, 232, 240, 0.76);
+    font-style: normal;
+    font-size: 0.78rem;
+    line-height: 1.45;
+}
+
+.series-book__label {
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.series-book__body strong {
+    display: block;
+    color: #f8fafc;
+    font-size: 1.18rem;
+    line-height: 1.35;
+    word-break: keep-all;
+}
+
+.series-book__body em {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+html[data-theme="light"] .read-section-heading h2 {
+    color: #111827;
+}
+
 .read-tags {
     display: flex;
     flex-wrap: wrap;
