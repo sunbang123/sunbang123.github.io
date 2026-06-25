@@ -4,7 +4,7 @@ title: Projects
 ---
 
 {% assign portfolio_projects = site.projects | where_exp: "project", "project.hobby_game != true" %}
-{% assign sorted_projects = portfolio_projects | sort: 'date' %}
+{% assign sorted_projects = portfolio_projects | sort: 'date' | reverse %}
 
 <section class="roadmap-page">
   <div class="roadmap-page__inner">
@@ -39,7 +39,7 @@ title: Projects
         <div class="roadmap-marker" aria-hidden="true"></div>
         <div class="roadmap-card">
           <div class="roadmap-card__meta">
-            <time datetime="{{ project.date | date_to_xmlschema }}">{{ project.date | date: "%Y.%m" }}</time>
+            <time datetime="{{ project.date | date_to_xmlschema }}">{{ project.date | date: "%Y.%m.%d" }}</time>
             {% if project.status == 'completed' %}
               <span class="roadmap-status roadmap-status--completed">완료</span>
             {% elsif project.status == 'in-progress' %}
