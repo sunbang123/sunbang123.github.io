@@ -98,7 +98,7 @@ defaults:
   - scope:
       path: ""
     values:
-      image: /assets/images/thumbnail/default.png
+      image: /assets/images/thumbnail/default-og.jpg
   - scope:
       path: "_projects"
       type: "projects"
