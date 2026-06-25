@@ -3,7 +3,7 @@ layout: project
 title: "AOI-System"
 date: 2026-06-22
 description: "웨이퍼 표면 결함 탐지를 위한 딥러닝 및 C++/C# 기반 자동 광학 검사(AOI) 시스템"
-thumbnail: ""
+thumbnail: "/assets/images/thumbnail/aoi-system.png"
 icon: ""
 tags: ["AOI", "Deep Learning", "C++", "C#", "Python"]
 demo_url: ""
