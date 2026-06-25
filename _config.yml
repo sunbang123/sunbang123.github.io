@@ -24,10 +24,6 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://sunbang123.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  sunbang123
 
-# _config.yml
-image: /assets/images/thumbnail/default.png # 기본 썸네일 경로
-# 또는
-og_image: /assets/images/thumbnail.png
 
 author-profile:
   name: "김선영"
@@ -110,6 +106,7 @@ defaults:
       type: "devlogs"
     values:
       layout: "devlog_post"
+      image: /assets/images/thumbnail/default.png # 기본 썸네일 경로
 
 # Exclude from processing.
 # The following items will not be processed, by default.
