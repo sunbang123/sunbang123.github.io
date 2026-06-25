@@ -24,11 +24,14 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://sunbang123.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  sunbang123
 
+<<<<<<< Updated upstream
 # _config.yml
 image: /assets/images/thumbnail/default.png # 기본 썸네일 경로
 # 또는
 og_image: /assets/images/thumbnail.png
 
+=======
+>>>>>>> Stashed changes
 author-profile:
   name: "김선영"
   bio: "한세대학교 22학번 컴퓨터공학과"
@@ -100,6 +103,10 @@ collections:
     permalink: /devlog/:name/
 
 defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/thumbnail/default.png
   - scope:
       path: "_projects"
       type: "projects"
@@ -173,7 +180,7 @@ tag_categories:
   웹 개발:
     - web-development
   
-  학습:
+  기타:
     - To-Do
     - 오답노트
 
