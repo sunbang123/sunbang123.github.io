@@ -2,6 +2,14 @@
   {
     "type": "commit",
     "repo": "Wafer-AOI-Project",
+    "message": "feat: 추론 파이프라인 통합 in MFC",
+    "author": "sunbang123",
+    "date": "2026-06-25T11:12:41Z",
+    "sha": "187bd74f49e18f8bf472e57d166fd6e674adf890"
+  },
+  {
+    "type": "commit",
+    "repo": "Wafer-AOI-Project",
     "message": "chore: MFC기반 Native UI 세팅",
     "author": "sunbang123",
     "date": "2026-06-25T04:29:02Z",
@@ -30,14 +38,6 @@
     "author": "김선영",
     "date": "2026-06-23T06:18:20Z",
     "sha": "3e55620363cd45d9123d48c0385cab6be92bf670"
-  },
-  {
-    "type": "commit",
-    "repo": "Wafer-AOI-Project",
-    "message": "chore: OpenCV 연동",
-    "author": "sunbang123",
-    "date": "2026-06-23T01:43:15Z",
-    "sha": "0605b5ba0de7b33dd341f1fa9e7b7a84f797b74a"
   },
   {
     "type": "commit",
@@ -984,6 +984,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-06-25T07:20:57Z"
+    "last_updated": "2026-06-25T11:57:50Z"
   }
 ]
