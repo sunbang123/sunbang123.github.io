@@ -1,6 +1,33 @@
 [
   {
     "type": "pull_request",
+    "repo": "Wafer-AOI-Project",
+    "title": "feat: AI 모델 학습 및 추출",
+    "state": "closed",
+    "date": "2026-06-23T06:17:54Z",
+    "url": "https://github.com/sunbang123/Wafer-AOI-Project/pull/3",
+    "number": 3
+  },
+  {
+    "type": "pull_request",
+    "repo": "Wafer-AOI-Project",
+    "title": "feat: C++ 엔진 판별 함수 추가",
+    "state": "closed",
+    "date": "2026-06-23T06:17:41Z",
+    "url": "https://github.com/sunbang123/Wafer-AOI-Project/pull/2",
+    "number": 2
+  },
+  {
+    "type": "pull_request",
+    "repo": "Wafer-AOI-Project",
+    "title": "Feature/c#",
+    "state": "closed",
+    "date": "2026-06-23T06:17:17Z",
+    "url": "https://github.com/sunbang123/Wafer-AOI-Project/pull/1",
+    "number": 1
+  },
+  {
+    "type": "pull_request",
     "repo": "Wafer-Vision-Simulator",
     "title": "Codex/build vision algorithm",
     "state": "closed",
@@ -207,6 +234,6 @@
     "number": 1
   },
   {
-    "last_updated": "2026-06-23T02:55:17Z"
+    "last_updated": "2026-06-25T02:13:58Z"
   }
 ]

@@ -2,6 +2,30 @@
   {
     "type": "commit",
     "repo": "Wafer-AOI-Project",
+    "message": "feat: 추론 파이프라인 통합\n\n- C# UI에서 `TestImages` 폴더의 이미지를 화면에 로드하는 기능 구현\n- ONNX Runtime (또는 C++ 엔진)을 통해 이미지를 분석하고 불량 여부를 UI에 출력",
+    "author": "김선영",
+    "date": "2026-06-23T06:19:06Z",
+    "sha": "56f2bbb63161de09c457b89f2fde2ecc6bbe75c3"
+  },
+  {
+    "type": "commit",
+    "repo": "Wafer-AOI-Project",
+    "message": "feat: AI 모델 학습 및 추출 (#3)",
+    "author": "김선영",
+    "date": "2026-06-23T06:18:33Z",
+    "sha": "97a947ee070e883466a0277a5b7dd2b6dfbc8454"
+  },
+  {
+    "type": "commit",
+    "repo": "Wafer-AOI-Project",
+    "message": "feat: C++ 엔진 판별 함수 추가 (#2)",
+    "author": "김선영",
+    "date": "2026-06-23T06:18:20Z",
+    "sha": "3e55620363cd45d9123d48c0385cab6be92bf670"
+  },
+  {
+    "type": "commit",
+    "repo": "Wafer-AOI-Project",
     "message": "chore: OpenCV 연동",
     "author": "sunbang123",
     "date": "2026-06-23T01:43:15Z",
@@ -14,22 +38,6 @@
     "author": "sunbang123",
     "date": "2026-06-21T15:01:38Z",
     "sha": "5c9cf93baac13277d9e94c5e454f1bd5dc1a912f"
-  },
-  {
-    "type": "commit",
-    "repo": "Wafer-AOI-Project",
-    "message": "chore: 프로젝트 초기 솔루션 세팅",
-    "author": "sunbang123",
-    "date": "2026-06-21T14:57:00Z",
-    "sha": "e4a0ecc6140fd081cacb7123a073cabddafb3d27"
-  },
-  {
-    "type": "commit",
-    "repo": "Wafer-AOI-Project",
-    "message": "Initial commit",
-    "author": "김선영",
-    "date": "2026-06-20T04:25:22Z",
-    "sha": "87c581197b4bfa38d28b63f3854a96cd935bc619"
   },
   {
     "type": "commit",
@@ -976,6 +984,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-06-23T02:55:17Z"
+    "last_updated": "2026-06-25T02:13:58Z"
   }
 ]
