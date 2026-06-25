@@ -24,9 +24,6 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://sunbang123.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  sunbang123
 
-
-=======
->>>>>>> Stashed changes
 author-profile:
   name: "김선영"
   bio: "한세대학교 22학번 컴퓨터공학과"
@@ -112,7 +109,7 @@ defaults:
       type: "devlogs"
     values:
       layout: "devlog_post"
-      
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
