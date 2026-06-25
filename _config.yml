@@ -112,8 +112,7 @@ defaults:
       type: "devlogs"
     values:
       layout: "devlog_post"
-      image: /assets/images/thumbnail/default.png # 기본 썸네일 경로
-
+      
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
