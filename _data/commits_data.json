@@ -2,6 +2,14 @@
   {
     "type": "commit",
     "repo": "Wafer-AOI-Project",
+    "message": "chore: MFC기반 Native UI 세팅",
+    "author": "sunbang123",
+    "date": "2026-06-25T04:29:02Z",
+    "sha": "9a0303eda4bc71432526e3e728e122c25c19b621"
+  },
+  {
+    "type": "commit",
+    "repo": "Wafer-AOI-Project",
     "message": "feat: 추론 파이프라인 통합\n\n- C# UI에서 `TestImages` 폴더의 이미지를 화면에 로드하는 기능 구현\n- ONNX Runtime (또는 C++ 엔진)을 통해 이미지를 분석하고 불량 여부를 UI에 출력",
     "author": "김선영",
     "date": "2026-06-23T06:19:06Z",
@@ -30,14 +38,6 @@
     "author": "sunbang123",
     "date": "2026-06-23T01:43:15Z",
     "sha": "0605b5ba0de7b33dd341f1fa9e7b7a84f797b74a"
-  },
-  {
-    "type": "commit",
-    "repo": "Wafer-AOI-Project",
-    "message": "feat: ONNX 모델 추가",
-    "author": "sunbang123",
-    "date": "2026-06-21T15:01:38Z",
-    "sha": "5c9cf93baac13277d9e94c5e454f1bd5dc1a912f"
   },
   {
     "type": "commit",
@@ -984,6 +984,6 @@
     "sha": "1faca05094b514cc7f772626267821fb1752d45f"
   },
   {
-    "last_updated": "2026-06-25T03:43:49Z"
+    "last_updated": "2026-06-25T06:32:57Z"
   }
 ]
