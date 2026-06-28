@@ -1,6 +1,14 @@
 [
   {
     "type": "commit",
+    "repo": "Defect-Detection-Inference",
+    "message": "Initial commit",
+    "author": "김선영",
+    "date": "2026-06-28T05:34:40Z",
+    "sha": "a88da60015aba715a786f7087e374ab634f8ded5"
+  },
+  {
+    "type": "commit",
     "repo": "Wafer-AOI-Project",
     "message": "feat: 추론 파이프라인 통합 in MFC",
     "author": "sunbang123",
@@ -953,14 +961,6 @@
   },
   {
     "type": "commit",
-    "repo": "Smart_device",
-    "message": "Update README.md",
-    "author": "김선영",
-    "date": "2024-11-27T08:03:20Z",
-    "sha": "ba210b2692873ded0c1e3fa1cdfca4f5c0806746"
-  },
-  {
-    "type": "commit",
     "repo": "CodingTest",
     "message": "Initial commit",
     "author": "김선영",
@@ -968,22 +968,6 @@
     "sha": "16570713b098f62a820864cf9c9ab28e4ae4526d"
   },
   {
-    "type": "commit",
-    "repo": "Smart_device",
-    "message": "Update README.md",
-    "author": "김선영",
-    "date": "2023-03-16T04:22:39Z",
-    "sha": "7ef9df778e0b0998faa69ee8452216db50632f55"
-  },
-  {
-    "type": "commit",
-    "repo": "Smart_device",
-    "message": "Initial commit",
-    "author": "김선영",
-    "date": "2023-03-10T07:19:05Z",
-    "sha": "1faca05094b514cc7f772626267821fb1752d45f"
-  },
-  {
-    "last_updated": "2026-06-28T03:32:03Z"
+    "last_updated": "2026-06-28T07:32:23Z"
   }
 ]
