@@ -1,5 +1,102 @@
 /* Settings overrides loaded last so the sidebar controls can win. */
 
+/* Minimal Bootstrap-compatible rules used by the settings sidebar. */
+.offcanvas {
+  position: fixed;
+  bottom: 0;
+  z-index: 1045;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  visibility: hidden;
+  background-clip: padding-box;
+  outline: 0;
+  transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.offcanvas.offcanvas-start {
+  top: 0;
+  left: 0;
+  width: 380px;
+  max-width: 92vw;
+  border-right: 1px solid rgba(148, 163, 184, 0.22);
+  transform: translateX(-100%);
+}
+
+.offcanvas.showing,
+.offcanvas.show:not(.hiding) {
+  transform: none;
+}
+
+.offcanvas.showing,
+.offcanvas.show,
+.offcanvas.hiding {
+  visibility: visible;
+}
+
+.offcanvas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.offcanvas-title {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+
+.offcanvas-body {
+  flex-grow: 1;
+  padding: 0 1rem 1rem;
+  overflow-y: auto;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  color: inherit;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.py-3 {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+.fs-3 {
+  font-size: 1.75rem !important;
+}
+
+.text-white {
+  color: #ffffff !important;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.justify-content-center {
+  justify-content: center !important;
+}
+
+.m-0 {
+  margin: 0 !important;
+}
+
+.text-decoration-none {
+  text-decoration: none !important;
+}
+
 body[data-width="normal"] .post {
   max-width: 860px;
 }
