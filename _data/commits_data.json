@@ -1,6 +1,46 @@
 [
   {
     "type": "commit",
+    "repo": "bitcoin_trading_simulation",
+    "message": "Merge pull request #2 from sunbang123/codex/maintenance\n\nCodex/maintenance",
+    "author": "김선영",
+    "date": "2026-07-01T00:16:17Z",
+    "sha": "c2e6b459be844db0147b3caf4a745838a4593aed"
+  },
+  {
+    "type": "commit",
+    "repo": "bitcoin_trading_simulation",
+    "message": "feat: sql 연동\n\n- Next.js는 화면/API 호출, Spring Boot는 저장/조회, MySQL은 실제 데이터 저장소 역할",
+    "author": "sunbang123",
+    "date": "2026-07-01T00:15:47Z",
+    "sha": "cc6195d89a6708d55850d0d8fd226ffe4ad76e6c"
+  },
+  {
+    "type": "commit",
+    "repo": "bitcoin_trading_simulation",
+    "message": "Update .gitignore",
+    "author": "sunbang123",
+    "date": "2026-06-30T09:03:43Z",
+    "sha": "020052a78f9a9f35f6437c6e7d7ac4a33f76bb42"
+  },
+  {
+    "type": "commit",
+    "repo": "bitcoin_trading_simulation",
+    "message": "Merge pull request #1 from sunbang123/codex/maintenance\n\nfeat: 내정보 페이지와 backend API 연동",
+    "author": "김선영",
+    "date": "2026-06-30T08:25:26Z",
+    "sha": "03ce35a1d9aeb82aafd39b4c13d1708908952142"
+  },
+  {
+    "type": "commit",
+    "repo": "bitcoin_trading_simulation",
+    "message": "feat: 내정보 페이지와 backend API 연동",
+    "author": "sunbang123",
+    "date": "2026-06-30T08:22:48Z",
+    "sha": "e178bc5d0aad62fc07913a8a0d378a6d575d3a7a"
+  },
+  {
+    "type": "commit",
     "repo": "Defect-Detection-Inference",
     "message": "Initial commit",
     "author": "김선영",
@@ -737,14 +777,6 @@
   },
   {
     "type": "commit",
-    "repo": "bitcoin_trading_simulation",
-    "message": "Update README.md",
-    "author": "김선영",
-    "date": "2025-06-20T00:19:11Z",
-    "sha": "efaa7b0cdb0faf266555ea8a857ba653b0063bef"
-  },
-  {
-    "type": "commit",
     "repo": "capstone_project",
     "message": "feat: 기말 업로드\n\n- 재도전, 수락 기능 구현\n- GPGS 구글플레이 게임서비스로 업적, 유저정보 구현\n- 인벤토리 구현\n- 아이템 구현\n- 로딩 바 구현\n- 게임내 프로필 이미지, 정보 추가\n- MMR 시스템 추가\n- 채팅 기능 추가",
     "author": "김선영",
@@ -758,38 +790,6 @@
     "author": "김선영",
     "date": "2025-06-18T01:41:30Z",
     "sha": "3b37a97c633c8a1d43e77e4bd0513e7af8666625"
-  },
-  {
-    "type": "commit",
-    "repo": "bitcoin_trading_simulation",
-    "message": "Merge pull request #58 from kimhaneu1/gyuseong2\n\nrefactor: restructure order, asset dto",
-    "author": "Gyuseong2",
-    "date": "2025-06-11T02:21:02Z",
-    "sha": "83eeecac876e1f42d47daa92af255c935f27ba86"
-  },
-  {
-    "type": "commit",
-    "repo": "bitcoin_trading_simulation",
-    "message": "refactor: restructure order, asset dto",
-    "author": "choigyuseong",
-    "date": "2025-06-11T02:20:30Z",
-    "sha": "9f476bbc79ae0c6b6e8199d94ee6e19a54bc23c2"
-  },
-  {
-    "type": "commit",
-    "repo": "bitcoin_trading_simulation",
-    "message": "docs: 시연영상 업로드 (#57)\n\n* docs: 시연영상 업로드",
-    "author": "김선영",
-    "date": "2025-06-10T16:15:31Z",
-    "sha": "765af0b0ba3575137dc3069f508a646ab03e0bb2"
-  },
-  {
-    "type": "commit",
-    "repo": "bitcoin_trading_simulation",
-    "message": "일단 여까지만.. (#56)\n\n* feat: 회원가입 -> 로그인 이동. 서버디버그패널로 회원가입 여부 확인\n\n주소 끝에 붙는 엔드포인트 틀리지말기!",
-    "author": "김선영",
-    "date": "2025-06-10T16:04:32Z",
-    "sha": "3dbcd78b2b4214cfe3c468218c9231f987d2358e"
   },
   {
     "type": "commit",
@@ -968,6 +968,6 @@
     "sha": "16570713b098f62a820864cf9c9ab28e4ae4526d"
   },
   {
-    "last_updated": "2026-06-30T03:23:33Z"
+    "last_updated": "2026-07-01T03:32:29Z"
   }
 ]
