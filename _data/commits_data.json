@@ -1,6 +1,22 @@
 [
   {
     "type": "commit",
+    "repo": "Mini-Album-Viewer",
+    "message": "refact: 썸네일 생성 및 이미지 메모리 해제 로직 개선\n\n- using을 활용한 depose\n- originalImage 의 메모리 해제",
+    "author": "sunbang123",
+    "date": "2026-07-02T11:36:04Z",
+    "sha": "84dc4fbf6d4476cd013d2079d698345199b65a1d"
+  },
+  {
+    "type": "commit",
+    "repo": "Retro-Photo-Studio",
+    "message": "Docs: readme 아키텍처",
+    "author": "김선영",
+    "date": "2026-07-02T07:20:34Z",
+    "sha": "f59a773f61739eae9ee661ebcb022c1a5f12a0fe"
+  },
+  {
+    "type": "commit",
     "repo": "bitcoin_trading_simulation",
     "message": "Merge pull request #2 from sunbang123/codex/maintenance\n\nCodex/maintenance",
     "author": "김선영",
@@ -233,27 +249,11 @@
   },
   {
     "type": "commit",
-    "repo": "Mini-Album-Viewer",
-    "message": "feat: 폴더 열고 이미지 필터링 리스트 생성",
-    "author": "sunbang123",
-    "date": "2026-05-29T06:05:06Z",
-    "sha": "5c165403ac40ee2801ddbfe805212dfc16620423"
-  },
-  {
-    "type": "commit",
     "repo": "Retro-Photo-Studio",
     "message": "Create README.md",
     "author": "김선영",
     "date": "2026-05-28T12:06:02Z",
     "sha": "3ebdef6fb2a5a18e154b6abc3bc52cd7dab76e3b"
-  },
-  {
-    "type": "commit",
-    "repo": "Retro-Photo-Studio",
-    "message": "fix: 템플릿 함수 선언과 구현을 헤더 파일로 이동시킴",
-    "author": "sunbang123",
-    "date": "2026-05-28T11:45:24Z",
-    "sha": "1f233d40735ceb3a8f6476dacd71a792bfc06590"
   },
   {
     "type": "commit",
@@ -968,6 +968,6 @@
     "sha": "16570713b098f62a820864cf9c9ab28e4ae4526d"
   },
   {
-    "last_updated": "2026-07-02T05:05:27Z"
+    "last_updated": "2026-07-02T12:31:56Z"
   }
 ]
