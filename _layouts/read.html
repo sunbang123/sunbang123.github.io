@@ -66,6 +66,7 @@ layout: default
           </a>
         {%- endfor -%}
       </div>
+
     </section>
     {%- endif -%}
 
@@ -79,12 +80,32 @@ layout: default
       {%- endfor -%}
     </div>
 
+    <div class="series-picker" id="readPicker" aria-hidden="true">
+      <div class="series-picker__backdrop" data-read-picker-close></div>
+      <section class="series-picker__dialog" role="dialog" aria-modal="true" aria-labelledby="readPickerTitle" tabindex="-1">
+        <div class="series-picker__header">
+          <div>
+            <p class="reading-kicker" id="readPickerKicker">Read Shelf</p>
+            <h3 id="readPickerTitle">글 고르기</h3>
+            <span id="readPickerCount">0개 글</span>
+          </div>
+          <button class="series-picker__close" type="button" aria-label="닫기" data-read-picker-close>&times;</button>
+        </div>
+        <form class="series-picker__search" role="search">
+          <label class="sr-only" for="readPickerSearch">팝업 글 검색</label>
+          <input id="readPickerSearch" type="search" placeholder="제목, 요약, 태그 검색" autocomplete="off" data-read-picker-search>
+        </form>
+        <div class="series-picker__posts" id="readPickerPosts"></div>
+        <p class="series-picker__empty" id="readPickerEmpty" hidden>연결된 글이 아직 없습니다.</p>
+      </section>
+    </div>
+
     <div class="read-result-bar">
-      <h2 id="readResultTitle">전체 글</h2>
+      <h2 id="readResultTitle">읽을 묶음을 선택해 주세요</h2>
       <span id="readResultCount">{{ site.posts.size }}개 글</span>
     </div>
 
-    <div class="read-post-list" id="readPostList">
+    <div class="read-post-list read-post-list--picker-source" id="readPostList" aria-hidden="true">
       {%- for post in site.posts -%}
       <article class="read-post-card" data-tags="{{ post.tags | join: '||' | escape }}">
         <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
