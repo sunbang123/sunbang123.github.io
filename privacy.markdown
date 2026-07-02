@@ -4,7 +4,7 @@ title: Privacy Policy
 permalink: /privacy/
 ---
 
-이 개인정보처리방침은 Tech Blog 👩‍💻에서 수집될 수 있는 정보와 이용 목적을 안내합니다.
+이 개인정보처리방침은 Tech Blog에서 수집될 수 있는 정보와 이용 목적을 안내합니다.
 
 ## 수집하는 정보
 
