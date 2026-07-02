@@ -203,8 +203,61 @@
         }
     }
 
+    function normalizePath(path) {
+        if (!path) return '/';
+        try {
+            path = new URL(path, window.location.origin).pathname;
+        } catch (_) {
+            path = String(path).split('#')[0].split('?')[0];
+        }
+
+        if (!path.startsWith('/')) path = `/${path}`;
+        return path.endsWith('/') ? path : `${path}/`;
+    }
+
+    function getIssuePath(issue) {
+        const title = issue.title || '';
+        if (title.startsWith('/')) {
+            return normalizePath(title.split(/\s+/)[0]);
+        }
+
+        return '';
+    }
+
+    async function renderDevlogCommentCounts() {
+        const badges = Array.from(document.querySelectorAll('[data-comment-path]'));
+        if (!badges.length) return;
+
+        const repo = 'sunbang123/sunbang123.github.io';
+        const issuesUrl = `https://api.github.com/repos/${repo}/issues?state=all&sort=updated&direction=desc&per_page=100`;
+
+        try {
+            const issues = await fetchJson(issuesUrl);
+            const countsByPath = issues.reduce((counts, issue) => {
+                if (issue.pull_request) return counts;
+                const path = getIssuePath(issue);
+                if (path) counts[path] = issue.comments || 0;
+                return counts;
+            }, {});
+
+            badges.forEach((badge) => {
+                const path = normalizePath(badge.dataset.commentPath);
+                const count = countsByPath[path] || 0;
+                const value = badge.querySelector('span');
+                if (value) value.textContent = count;
+                badge.setAttribute('aria-label', `댓글 ${count}개`);
+            });
+        } catch (_) {
+            badges.forEach((badge) => {
+                const value = badge.querySelector('span');
+                if (value) value.textContent = '0';
+            });
+        }
+    }
+
     trackVisit();
     renderRecords();
     renderComments();
+    renderDevlogCommentCounts();
     bindReset();
 })();

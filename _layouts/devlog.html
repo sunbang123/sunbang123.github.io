@@ -24,6 +24,9 @@ layout: default
             <time datetime="{{ log.date | date_to_xmlschema }}">{{ log.date | date: "%Y년 %m월 %d일" }}</time>
           </div>
           <h2><a href="{{ log.url | relative_url }}">{{ log.title | escape }}</a></h2>
+          <a class="devlog-comment-count" href="{{ log.url | relative_url }}#utterances" data-comment-path="{{ log.url | relative_url }}" aria-label="댓글 수 확인">
+            댓글 <span>0</span>개
+          </a>
           <div class="devlog-card__body">
             {{ log.content }}
           </div>
