@@ -3,7 +3,8 @@ layout: post
 title: "Uml(unified modeling language)"
 date: 2024-12-30 17:59:44 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
+published: false
 ---
 
 # UML의 이해: 통합 모델링 언어 완벽 가이드

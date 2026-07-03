@@ -4,6 +4,7 @@ title: "How to write good git commit messages: best practices and examples"
 date: 2025-04-03 02:25:32 +0900
 categories: 
 tags: [Git]
+published: false
 ---
 
 # GitHub 커밋 메시지 작성 요령 보고서

@@ -3,7 +3,7 @@ layout: post
 title: "Software development"
 date: 2024-12-26 19:38:11 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 소프트웨어 개발 방법론

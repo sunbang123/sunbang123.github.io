@@ -8,11 +8,11 @@ tags:  ["Git", "DevLog"]
 
 # GitHub Actions CI/CD 자동화
 
-## CI/CD란? 🤔
+## CI/CD란?
 
-**CI/CD (Continuous Integration/Continuous Deployment)**는 코드 변경사항을 자동으로 테스트하고 배포하는 개발 방식입니다.
+**CI/CD (Continuous Integration/Continuous Deployment)**는 코드 변경사항을 자동으로 테스트하고 배포하는 개발 방식
 
-이 글에서는 GitHub Actions를 사용한 **반자동화 워크플로우**를 구축하면서 겪은 실제 문제들과 해결 방법을 초보자 관점에서 정리했습니다.
+이 글에서는 GitHub Actions를 사용한 **반자동화 워크플로우**를 구축하면서 직접 겪은 실제 문제들과 해결 방법을 정리했습니다.
 
 > **반자동화(Semi-Automation)**: 사람의 설정과 트리거는 필요하지만, 이후 과정은 자동으로 실행되는 방식
 

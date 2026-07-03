@@ -4,6 +4,7 @@ title: "Computer network 16"
 date: 2025-06-23 06:36:18 +0900
 categories: 
 tags: ["Computer Network", "computer-science"]
+published: false
 ---
 
 # 16.2. 이더넷 (CSMA/CD) 정리

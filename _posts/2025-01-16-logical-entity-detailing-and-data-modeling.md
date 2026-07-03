@@ -3,7 +3,7 @@ layout: post
 title: "Logical entity detailing and data modeling"
 date: 2025-01-16 17:42:29 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 논리 개체 상세화와 데이터 모델링

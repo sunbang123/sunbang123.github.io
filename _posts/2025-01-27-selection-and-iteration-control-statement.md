@@ -3,7 +3,7 @@ layout: post
 title: "Selection and Iteration Control Statement"
 date: 2025-01-27 22:37:07 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 선택 및 반복 제어문 (출제빈도: 상)

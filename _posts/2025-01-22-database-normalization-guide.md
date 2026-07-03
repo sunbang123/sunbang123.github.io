@@ -3,7 +3,8 @@ layout: post
 title: "Database normalization guide"
 date: 2025-01-22 16:04:17 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
+published: false
 ---
 
 # 데이터베이스 정규화 완벽 가이드

@@ -3,7 +3,7 @@ layout: post
 title: "Application performance improvement"
 date: 2025-01-14 17:04:35 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 애플리케이션 성능 개선

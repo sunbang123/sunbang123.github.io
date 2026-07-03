@@ -3,7 +3,8 @@ layout: post
 title: "서비스 로케이터 패턴/ 제네릭 데이터 접근 방식"
 date: 2025-12-24 20:53:00 +0900
 categories: 
-tags: ["Unity", "Csharp"]
+tags: [Unity, Csharp]
+published: false
 ---
 
 ## [C# / Unity] "이거 이름이 뭐야?" GetGetComponent 같은 나만의 데이터 매니저 만들기

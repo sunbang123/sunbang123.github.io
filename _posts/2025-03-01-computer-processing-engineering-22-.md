@@ -3,7 +3,7 @@ layout: post
 title: "정보처리기사 22회 실기 기출 정리"
 date: 2025-03-01 21:49:19 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 정보처리기사 22회 실기 기출 정리

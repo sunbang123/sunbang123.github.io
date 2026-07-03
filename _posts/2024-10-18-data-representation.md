@@ -3,7 +3,7 @@ layout: post
 title: "Data representation"
 date: 2024-10-18 19:12:41 +0900
 categories: 
-tags:  [computer-architecture, computer-science, theory]
+tags:  [computer-architecture, computer-science]
 ---
 
 ## 1. 데이터 유형

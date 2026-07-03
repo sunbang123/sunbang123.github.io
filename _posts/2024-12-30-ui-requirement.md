@@ -3,7 +3,7 @@ layout: post
 title: "Ui requirement"
 date: 2024-12-30 21:18:08 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 화면설계: UI 요구사항

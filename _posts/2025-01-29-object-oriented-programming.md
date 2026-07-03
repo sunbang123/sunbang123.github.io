@@ -3,7 +3,7 @@ layout: post
 title: "Object Oriented Programming(OOP)"
 date: 2025-01-29 12:00:21 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 객체지향 프로그래밍 (OOP)

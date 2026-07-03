@@ -3,7 +3,7 @@ layout: post
 title: "CPU Scheduling"
 date: 2025-04-17 14:18:15 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 

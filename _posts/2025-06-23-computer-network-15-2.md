@@ -3,7 +3,8 @@ layout: post
 title: "Computer network 15-2"
 date: 2025-06-23 06:33:37 +0900
 categories: 
-tags: ["Computer Network", "computer-science"] 
+tags: ["Computer Network", "computer-science"]
+published: false
 ---
 
 **0. OSI 7계층 모델**

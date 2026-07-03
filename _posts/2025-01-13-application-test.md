@@ -3,7 +3,7 @@ layout: post
 title: "Application test"
 date: 2025-01-13 17:49:58 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 애플리케이션 테스트 🧪

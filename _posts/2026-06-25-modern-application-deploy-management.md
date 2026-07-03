@@ -4,6 +4,7 @@ title: "모던 애플리케이션 배포 및 운영 환경"
 date: 2026-06-25 10:58:28 +0900
 categories: 
 tags: ["DevOps", "CI/CD", "Deploy & Management", "Cloud Native"]
+published: false
 ---
 
 ## 모던 애플리케이션 배포 및 운영 환경에서의 YAML, Docker, Kubernetes, CI/CD의 유기적 상관관계

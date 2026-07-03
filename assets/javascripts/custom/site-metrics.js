@@ -23,7 +23,7 @@
         const path = window.location.pathname || '/';
         const today = getToday();
         const now = new Date().toISOString();
-        const title = document.querySelector('h1')?.textContent?.trim() || document.title.replace(' | Tech Blog 👩‍💻', '').trim() || path;
+        const title = document.querySelector('h1')?.textContent?.trim() || document.title.replace(' | Tech Blog', '').trim() || path;
 
         records[path] = records[path] || {
             path,

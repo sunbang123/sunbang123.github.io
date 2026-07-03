@@ -4,6 +4,7 @@ title: "Transform 기반으로 구현하는 3D 그래픽 오목 승리 판정"
 date: 2025-09-03 19:20:00 +0900
 categories: 
 tags: ["Unity", "C#"]
+published: false
 ---
 
 # Transform 기반으로 구현하는 3D 그래픽 오목 승리 판정

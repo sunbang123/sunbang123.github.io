@@ -4,6 +4,7 @@ title: "C# LINQ"
 date: 2025-11-22 00:13:00 +0900
 categories: 
 tags:  ["C#"]
+published: false
 ---
 
 # LINQ 집계(Aggregate) 함수: 게임 데이터 통계

@@ -3,7 +3,7 @@ layout: post
 title: "Register Memory"
 date: 2024-10-04 19:38:57 +0900
 categories: 
-tags:  [computer-architecture, computer-science, theory]
+tags:  [computer-architecture, computer-science]
 ---
 
 # 레지스터 메모리

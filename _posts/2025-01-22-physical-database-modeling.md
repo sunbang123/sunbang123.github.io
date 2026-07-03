@@ -3,7 +3,8 @@ layout: post
 title: "Physical database modeling"
 date: 2025-01-22 16:13:58 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
+published: false
 ---
 
 # 물리 DB 모델링 완벽 가이드

@@ -3,7 +3,7 @@ layout: post
 title: "Integration module implementation"
 date: 2025-01-09 21:14:48 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 연계모듈구현 정리 (출제 빈도: 중)

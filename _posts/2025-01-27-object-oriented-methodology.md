@@ -3,7 +3,7 @@ layout: post
 title: "Object Oriented methodology"
 date: 2025-01-27 22:40:42 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 객체지향 방법론 (출제빈도: 상)

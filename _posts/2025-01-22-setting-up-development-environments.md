@@ -3,7 +3,7 @@ layout: post
 title: "Setting up development environments"
 date: 2025-01-22 16:17:52 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 프로그램 개발 환경 구성 가이드

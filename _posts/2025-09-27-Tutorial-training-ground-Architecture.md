@@ -3,7 +3,7 @@ layout: post
 title: "튜토리얼 & 훈련장 씬 구조 설계"
 date: 2025-09-27 16:00:00 +0900
 categories: 
-tags: ["Software-Development", "Game Theory"]
+tags: ["Game Theory", "Game Development"]
 ---
 
 # 튜토리얼 & 훈련장 씬 구조 설계

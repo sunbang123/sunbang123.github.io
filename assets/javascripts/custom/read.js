@@ -121,9 +121,7 @@ function initReadPage() {
         document.body.classList.add('series-picker-open');
         setActiveChoice({ tag, series });
 
-        if (pickerSearch) {
-            pickerSearch.focus();
-        } else if (pickerDialog) {
+        if (pickerDialog) {
             pickerDialog.focus();
         }
     };

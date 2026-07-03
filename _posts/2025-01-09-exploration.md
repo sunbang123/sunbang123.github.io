@@ -3,7 +3,7 @@ layout: post
 title: "Exploration"
 date: 2025-01-09 19:23:34 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 탐색 (Search)

@@ -3,10 +3,10 @@ layout: post
 title: "Basic computer organization & design"
 date: 2024-10-18 19:27:03 +0900
 categories: 
-tags:  [computer-architecture, computer-science, theory]
+tags:  [computer-architecture, computer-science]
 ---
 
-# 컴퓨터 구조 종합 공부 노트
+# 컴퓨터 구조 공부 노트
 
 ## 1. 소프트웨어, 프로그램, 명령어, 마이크로 연산의 관계
 

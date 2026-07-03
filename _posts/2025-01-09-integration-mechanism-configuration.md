@@ -3,7 +3,7 @@ layout: post
 title: "Integration mechanism configuration"
 date: 2025-01-09 19:31:39 +0900
 categories: 
-tags: [Processing, License] 
+tags: ["Certification", "정보처리기사"] 
 ---
 
 # 연계 매커니즘 구성

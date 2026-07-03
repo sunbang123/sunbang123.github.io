@@ -3,7 +3,8 @@ layout: post
 title: "Computer network 15-1"
 date: 2025-06-23 06:33:37 +0900
 categories: 
-tags: ["Computer Network", "computer-science"] 
+tags: ["Computer Network", "computer-science"]
+published: false
 ---
 
 # 15장. LAN(Local Area Network) 개관 정리

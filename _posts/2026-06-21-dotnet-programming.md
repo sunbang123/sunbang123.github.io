@@ -3,7 +3,8 @@ layout: post
 title: ".NET 환경 및 현대 개발 직무 탐색"
 date: 2026-06-21 20:38:53 +0900
 categories: 
-tags: ["Windows", "Csharp"]
+tags: [Windows, Csharp]
+published: false
 ---
 
 ## .NET 생태계 및 현대 개발 직무 탐색

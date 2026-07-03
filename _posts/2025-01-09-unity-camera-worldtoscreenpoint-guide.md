@@ -3,10 +3,10 @@ layout: post
 title: "Unity camera WorldToScreenPoint guide"
 date: 2025-01-09 23:38:24 +0900
 categories: 
-tags: [Unity, Game Theory, C#]
+tags: [Unity, Game Theory]
 ---
 
-# Unity Camera WorldToScreenPoint 가이드
+# Unity Camera WorldToScreenPoint
 
 WorldToScreenPoint는 3D 월드 좌표를 2D 스크린 좌표로 변환하는 메소드다. UI를 3D 오브젝트 위치에 맞출 때 쓴다!
 

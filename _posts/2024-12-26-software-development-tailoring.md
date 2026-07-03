@@ -3,7 +3,7 @@ layout: post
 title: "Software development tailoring"
 date: 2024-12-26 19:40:50 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 소프트웨어 개발 방법론 테일러링

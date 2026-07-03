@@ -3,7 +3,8 @@ layout: post
 title: "ScriptableObject와 암호화 저장 시스템"
 date: 2025-12-24 19:38:00 +0900
 categories: 
-tags: ["Unity", "Csharp"]
+tags: [Unity, Csharp]
+published: false
 ---
 
 ## [Unity] 효율적인 게임 데이터 관리: ScriptableObject와 암호화 저장 시스템

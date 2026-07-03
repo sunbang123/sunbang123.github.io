@@ -3,7 +3,7 @@ layout: post
 title: "Register Transfer"
 date: 2024-10-06 16:10:47 +0900
 categories: 
-tags:  [computer-architecture, computer-science, theory]
+tags:  [computer-architecture, computer-science]
 ---
 
 # Register transfer

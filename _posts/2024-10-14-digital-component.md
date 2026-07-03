@@ -3,7 +3,7 @@ layout: post
 title: "Digital component"
 date: 2024-10-14 17:48:27 +0900
 categories: 
-tags:  [computer-architecture, computer-science, theory]
+tags:  [computer-architecture, computer-science]
 ---
 
 # 집적회로(Integrated Citcuits) IC

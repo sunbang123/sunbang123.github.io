@@ -4,6 +4,7 @@ title: "Photon Fusion 2 멀티씬 네트워킹"
 date: 2025-09-03 19:43:16 +0900
 categories: 
 tags: ["Unity", "C#", "SDK"]
+published: false
 ---
 # Photon Fusion 2 멀티씬 네트워킹 완전 가이드
 

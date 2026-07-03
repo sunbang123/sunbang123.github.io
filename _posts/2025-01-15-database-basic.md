@@ -3,7 +3,7 @@ layout: post
 title: "Database basic"
 date: 2025-01-15 17:50:26 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 데이터베이스 기본 개념 정리

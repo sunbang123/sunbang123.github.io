@@ -3,7 +3,7 @@ layout: post
 title: "Requirements engineering"
 date: 2024-12-30 17:47:11 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 요구사항 확인

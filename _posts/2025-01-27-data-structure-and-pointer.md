@@ -3,7 +3,7 @@ layout: post
 title: "Data Structure and Pointer"
 date: 2025-01-27 22:39:22 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 자료구조와 포인터 (출제빈도: 상)
