@@ -3,7 +3,8 @@ layout: post
 title: "Sql implements guide"
 date: 2025-01-22 16:10:06 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
+published: false
 ---
 
 # SQL 활용 완벽 가이드

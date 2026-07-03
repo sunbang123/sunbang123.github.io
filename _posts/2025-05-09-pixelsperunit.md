@@ -4,6 +4,7 @@ title: "Pixels per unit"
 date: 2025-05-09 14:50:34 +0900
 categories: 
 tags: [Unity]
+published: false
 ---
 
 # Unity Pixels Per Unit를 통한 반응형 디자인

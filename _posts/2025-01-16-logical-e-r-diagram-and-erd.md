@@ -3,7 +3,7 @@ layout: post
 title: "Logical E-R diagram and erd"
 date: 2025-01-16 17:43:54 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 논리 E-R 다이어그램과 ERD

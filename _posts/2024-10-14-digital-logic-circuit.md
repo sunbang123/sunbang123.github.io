@@ -3,7 +3,7 @@ layout: post
 title: "Digital logic circuit"
 date: 2024-10-14 17:19:11 +0900
 categories: 
-tags:  [computer-architecture, computer-science, theory]
+tags:  [computer-architecture, computer-science]
 ---
 
 ## 논리 게이트

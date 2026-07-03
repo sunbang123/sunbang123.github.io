@@ -3,7 +3,7 @@ layout: post
 title: "Product software version"
 date: 2025-01-13 17:48:09 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 제품 소프트웨어 버전 관리 🔄

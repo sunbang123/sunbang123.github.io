@@ -4,6 +4,7 @@ title: "머신비전 파이프라인 아키텍처 & 멀티태스크 학습(MTL) 
 date: 2026-06-28 16:31:00 +0900
 categories:
 tags: ["machine-vision", "Multi-Task Learning"]
+published: false
 ---
 
 # 머신비전 파이프라인 아키텍처 & 멀티태스크 학습(MTL) 전략

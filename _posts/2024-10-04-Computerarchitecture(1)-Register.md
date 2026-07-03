@@ -3,7 +3,7 @@ layout: post
 title: "Digital Computer"
 date: 2024-10-04 15:11:20 +0900
 categories: 
-tags:  [computer-architecture, computer-science, theory]
+tags:  [computer-architecture, computer-science]
 ---
 
 # 디지털 컴퓨터의 구조

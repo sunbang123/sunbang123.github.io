@@ -3,7 +3,8 @@ layout: post
 title: "오답노트: 하향식 설계와 상향식 설계"
 date: 2025-01-09 19:08:42 +0900
 categories: 
-tags: [Processing, License, 오답노트]
+tags: ["Certification", "정보처리기사", 오답노트]
+published: false
 ---
 
 # **하향식 설계와 상향식 설계 비교 보고서**

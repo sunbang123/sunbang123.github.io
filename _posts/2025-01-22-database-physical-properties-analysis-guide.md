@@ -3,7 +3,8 @@ layout: post
 title: "Database physical properties analysis guide"
 date: 2025-01-22 16:12:02 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
+published: false
 ---
 
 # 물리 속성 조사 분석 가이드

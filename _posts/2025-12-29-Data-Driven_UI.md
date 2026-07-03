@@ -3,7 +3,8 @@ layout: post
 title: "데이터 중심(Data-Driven) UI 구조"
 date: 2025-12-29 20:53:00 +0900
 categories: 
-tags: ["Unity", "Csharp"]
+tags: [Unity, Csharp]
+published: false
 ---
 
 ## [Unity/C#] 데이터 중심(Data-Driven) UI 구조: 왜 as와 프로퍼티를 쓸까?

@@ -3,7 +3,7 @@ layout: post
 title: "Linked data structure"
 date: 2025-01-09 19:30:08 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 통합구현: 연계데이터 구성

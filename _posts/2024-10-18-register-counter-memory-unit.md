@@ -3,7 +3,7 @@ layout: post
 title: "Register, counter, memory unit"
 date: 2024-10-18 19:03:38 +0900
 categories: 
-tags:  [computer-architecture, computer-science, theory]
+tags:  [computer-architecture, computer-science]
 ---
 
 ## 1. n-비트 레지스터

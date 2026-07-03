@@ -3,7 +3,8 @@ layout: post
 title: "SQL relation operations"
 date: 2025-01-22 16:06:37 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
+published: false
 ---
 
 # 구조적 질의어(SQL) 완벽 가이드

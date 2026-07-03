@@ -4,6 +4,7 @@ title: "Git server & bitbucket"
 date: 2025-03-19 09:51:29 +0900
 categories: 
 tags: [Git]
+published: false
 ---
 
 **Git 서버 직접 운영과 Bitbucket 개념 보고서**

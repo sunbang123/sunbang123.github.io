@@ -4,6 +4,7 @@ title: "게임 물리 엔진의 주요 이슈 정리 (터널링, 고스팅 등)"
 date: 2025-12-31 12:14:00 +0900
 categories: 
 tags: ["Unity"]
+published: false
 ---
 
 ## [Unity/Physics] "내 캐릭터가 벽을 뚫는다?" 게임 물리 엔진의 주요 이슈 정리 (터널링, 고스팅 등)

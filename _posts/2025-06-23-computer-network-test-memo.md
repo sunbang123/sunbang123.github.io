@@ -4,6 +4,7 @@ title: "Computer Network Test Memo"
 date: 2025-06-23 06:56:56 +0900
 categories: 
 tags: ["Computer Network", "Test"]
+published: false
 ---
 
 # 기말 고사 시험 범위

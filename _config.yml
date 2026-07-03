@@ -136,45 +136,35 @@ tag_categories:
     - computer-architecture
     - computer-science
     - Algorithm
-    - theory
-    - Game Theory
+    - Digital Image Processing
+    - MATLAB
+    - Artificial Intelligence
+    - AI
+    - Network
   
-  개발 도구 & 환경:
+  프로그래밍:
+    - Csharp
+    - Cpp
+    - Python
+    - Java
+    - Programming
+    - web-development
+    - Embedded
+
+  Configuration:
     - Git
     - git-pages
     - jekyll
     - SDK
-    - License
   
-  프로그래밍 & 개발:
-    - C#
-    - Programming
-    - Software-Development
-    - Code-Patterns
-    - Test
-    - Maintenance
+  자격증:
+    - Certification
   
   게임 개발:
     - Unity
     - Unreal
     - Game Development
-  
-  특수 분야:
-    - Digital Image Processing
-    - MATLAB
-    - Processing
-    - Artificial Intelligence
-    - AI
-  
-  보안:
-    - Industrial Security
-  
-  웹 개발:
-    - web-development
-  
-  기타:
-    - To-Do
-    - 오답노트
+    - Game Theory
 
 # Jekyll이 빌드할 때 포함할 파일/폴더
 include:

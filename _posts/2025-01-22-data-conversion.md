@@ -3,7 +3,8 @@ layout: post
 title: "Data conversion"
 date: 2025-01-22 16:15:42 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
+published: false
 ---
 
 # 데이터 전환 완벽 가이드

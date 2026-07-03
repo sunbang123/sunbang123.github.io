@@ -3,7 +3,8 @@ layout: post
 title: "Data structure"
 date: 2025-01-08 19:23:44 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
+published: false
 ---
 
 # 자료구조와 알고리즘 완벽 정리 (출제빈도: 상)

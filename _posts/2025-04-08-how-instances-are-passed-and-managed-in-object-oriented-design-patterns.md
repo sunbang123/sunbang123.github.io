@@ -3,7 +3,8 @@ layout: post
 title: "How instances are passed and managed in object Oriented design patterns"
 date: 2025-04-08 18:44:32 +0900
 categories: 
-tags: 
+tags:
+published: false
 ---
 
 # 🎯 객체지향과 인스턴스: 디자인 패턴별 관점 정리

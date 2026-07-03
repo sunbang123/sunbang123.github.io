@@ -3,7 +3,7 @@ layout: post
 title: "Interface design"
 date: 2025-01-04 11:41:06 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 시스템 인터페이스 설계의 이해

@@ -3,7 +3,8 @@ layout: post
 title: "System interconnection design"
 date: 2025-01-03 18:36:00 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
+published: false
 ---
 
 # 시스템 연동 설계 완벽 가이드 

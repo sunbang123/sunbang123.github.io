@@ -3,7 +3,7 @@ layout: post
 title: "GitHub 프로젝트에서 브랜치의 생명주기"
 date: 2026-06-25 12:00:00 +0900
 categories:
-tags: ["Git", "GitHub", "Branch", "Workflow", "Collaboration"]
+tags: ["Git", "GitHub", "Branch", "Workflow"]
 ---
 
 # GitHub 프로젝트에서 브랜치의 생명주기

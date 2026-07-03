@@ -3,7 +3,7 @@ layout: post
 title: "Integration test"
 date: 2025-01-14 17:01:31 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 애플리케이션 통합 테스트 총정리

@@ -4,6 +4,7 @@ title: "콜백 구독과 발행"
 date: 2025-11-17 18:13:00 +0900
 categories: 
 tags:  ["Software-Development"]
+published: false
 ---
 
 📌 C# 이벤트·델리게이트·멀티캐스트 델리게이트 완전 이해하기

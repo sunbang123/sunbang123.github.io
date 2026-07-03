@@ -4,6 +4,7 @@ title: "Photon Fusion 2 공유모드 SimulationTime 동기화"
 date: 2025-09-04 19:42:16 +0900
 categories: 
 tags: ["Unity", "C#", "SDK"]
+published: false
 ---
 
 # 포톤 퓨전2 공유모드 SimulationTime 기반 게임 시작 동기화 보고서

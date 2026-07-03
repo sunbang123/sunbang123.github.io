@@ -3,7 +3,8 @@ layout: post
 title: "컴퓨터 시스템 완전 해부: 32/64비트, dll, 그리고 설치 방식의 차이점 총정리"
 date: 2025-03-19 10:01:10 +0900
 categories: 
-tags: 
+tags:
+published: false
 ---
 
 # 소프트웨어 개발과 컴퓨터 시스템의 핵심 개념 이해하기

@@ -3,7 +3,7 @@ layout: post
 title: "common module design"
 date: 2025-01-02 10:14:32 +0900
 categories: 
-tags: [Processing, License]
+tags: ["Certification", "정보처리기사"]
 ---
 
 # 공통모듈설계
