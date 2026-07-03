@@ -3,8 +3,8 @@
   "short_name": "Sun's Blog",
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#manifest",
+  "theme_color": "darkblue",
+  "background_color": "lavender",
   "icons": [
     {
       "src": "/icon-192.png",
@@ -14,7 +14,8 @@
     {
       "src": "/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
