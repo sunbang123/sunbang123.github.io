@@ -1,10 +1,10 @@
 {
   "name": "Sun's Blog",
-  "short_name": "GitBlog",
+  "short_name": "Sun's Blog",
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#5b8def",
-  "background_color": "#5b8def",
+  "theme_color": "#000000",
+  "background_color": "#manifest",
   "icons": [
     {
       "src": "/icon-192.png",
