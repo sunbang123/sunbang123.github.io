@@ -1,6 +1,22 @@
 [
   {
     "type": "commit",
+    "repo": "Interactive-ROI-Selector",
+    "message": "Update README.md\n\n상태머신 아키텍처 이미지 추가",
+    "author": "김선영",
+    "date": "2026-07-05T13:51:26Z",
+    "sha": "0a5b26f6260b8c35a59e693d1afc4e4e3cf94abd"
+  },
+  {
+    "type": "commit",
+    "repo": "Mini-Album-Viewer",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2026-07-05T12:34:15Z",
+    "sha": "e1a04daf8d7bf3b873aff9622bc04d42e5aafb80"
+  },
+  {
+    "type": "commit",
     "repo": "Mini-Album-Viewer",
     "message": "refact: 썸네일 생성 및 이미지 메모리 해제 로직 개선\n\n- using을 활용한 depose\n- originalImage 의 메모리 해제",
     "author": "sunbang123",
@@ -217,14 +233,6 @@
   },
   {
     "type": "commit",
-    "repo": "Interactive-ROI-Selector",
-    "message": "style: UI setting",
-    "author": "sunbang123",
-    "date": "2026-05-30T06:34:03Z",
-    "sha": "c55853cde662c7bd4603a19f79317f8e75c4638a"
-  },
-  {
-    "type": "commit",
     "repo": "Mini-Album-Viewer",
     "message": "Initialize README with project details\n\nAdd project overview and implementation goals for mini album viewer.",
     "author": "김선영",
@@ -238,14 +246,6 @@
     "author": "sunbang123",
     "date": "2026-05-30T05:10:12Z",
     "sha": "1ed1daa31774b35b61704bf6a3268807ce536ad0"
-  },
-  {
-    "type": "commit",
-    "repo": "Mini-Album-Viewer",
-    "message": "feat: 확장자 필터링된 이미지 썸네일 생성",
-    "author": "sunbang123",
-    "date": "2026-05-30T02:17:29Z",
-    "sha": "48bbadba8e522bbf6eef8dcd1953930490d5ffe8"
   },
   {
     "type": "commit",
@@ -968,6 +968,6 @@
     "sha": "16570713b098f62a820864cf9c9ab28e4ae4526d"
   },
   {
-    "last_updated": "2026-07-05T02:47:36Z"
+    "last_updated": "2026-07-06T02:53:55Z"
   }
 ]
