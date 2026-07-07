@@ -1,6 +1,30 @@
 [
   {
     "type": "commit",
+    "repo": "Wafer-Vision-Simulator",
+    "message": "Update README formatting and headings",
+    "author": "김선영",
+    "date": "2026-07-06T14:24:00Z",
+    "sha": "ea18d3991d73ceea05a55a5705b82ea82b073d97"
+  },
+  {
+    "type": "commit",
+    "repo": "Wafer-Vision-Simulator",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2026-07-06T14:23:43Z",
+    "sha": "4b8f9b017e59eca2b7fc5efaa373c55522978d39"
+  },
+  {
+    "type": "commit",
+    "repo": "Wafer-AOI-Project",
+    "message": "Create README.md",
+    "author": "김선영",
+    "date": "2026-07-06T13:40:06Z",
+    "sha": "d68fdee50843eeae20d51291fbeb276197e340a9"
+  },
+  {
+    "type": "commit",
     "repo": "Interactive-ROI-Selector",
     "message": "Update README.md\n\n상태머신 아키텍처 이미지 추가",
     "author": "김선영",
@@ -113,14 +137,6 @@
   },
   {
     "type": "commit",
-    "repo": "Wafer-AOI-Project",
-    "message": "feat: C++ 엔진 판별 함수 추가 (#2)",
-    "author": "김선영",
-    "date": "2026-06-23T06:18:20Z",
-    "sha": "3e55620363cd45d9123d48c0385cab6be92bf670"
-  },
-  {
-    "type": "commit",
     "repo": "Wafer-Vision-Simulator",
     "message": "feat: 웨이퍼 결함 검출 및 검토 화면 개선",
     "author": "sunbang123",
@@ -142,22 +158,6 @@
     "author": "김선영",
     "date": "2026-06-11T13:41:53Z",
     "sha": "f3d0cceca3e19cd32598b3c2fcdd9c27d61e6b0e"
-  },
-  {
-    "type": "commit",
-    "repo": "Wafer-Vision-Simulator",
-    "message": "feat: OpenCV를 활용한 침식 팽창 알고리즘 구현\n\n* feat: OpenCV를 활용한 침식 알고리즘 구현\n\n* feat: OpenCV를 활용한 팽창 로직 구현",
-    "author": "김선영",
-    "date": "2026-06-10T14:24:02Z",
-    "sha": "3d418528ae905aaf98ed0235b9d41e3b22a66375"
-  },
-  {
-    "type": "commit",
-    "repo": "Wafer-Vision-Simulator",
-    "message": "feat: 영상처리 알고리즘 함수 선언 구현부 비워둠. / refact: .Net 8 (C# 12) 마이그레이션\n\n* feat: skeleton code\n\n* refact: .Net 8 (C# 12) 마이그레이션",
-    "author": "김선영",
-    "date": "2026-06-10T02:22:49Z",
-    "sha": "4967569137764bb1c443cdaa8f112ae6792f71a8"
   },
   {
     "type": "commit",
@@ -968,6 +968,6 @@
     "sha": "16570713b098f62a820864cf9c9ab28e4ae4526d"
   },
   {
-    "last_updated": "2026-07-06T02:53:55Z"
+    "last_updated": "2026-07-07T02:49:02Z"
   }
 ]
