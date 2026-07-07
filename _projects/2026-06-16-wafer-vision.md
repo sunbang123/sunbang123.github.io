@@ -15,9 +15,9 @@ status: "completed"
 
 ### Project Title: 웨이퍼 결함 탐지 및 모니터링 시뮬레이터
 
-> 시뮬레이터 대시보드 Preview 이미지
 
-> <h4><a href="#">상세한 아키텍처 보러가기</a></h4>
+<img width="1000" src="https://github.com/user-attachments/assets/677d0352-77dd-4c33-9bb6-e4a175a27f53" />
+
 
 * * *
 

@@ -16,9 +16,8 @@ status: "completed"
 
 ### Project Title: AOI-System
 
-> 프로젝트 대시보드 Preview 이미지
 
-> <h4><a href="https://south-comic-1a2.notion.site/36e068d6f71e8018be6eda3126e3edae?v=383068d6f71e80a2ba35000ca9d7b38c">상세한 아키텍처 보러가기</a></h4>
+<img width="1000" src="https://github.com/user-attachments/assets/1924055e-8161-4039-8379-8ea5722a8a0e" />
 
 * * *
 
