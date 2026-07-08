@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>스마트디바이스 실습14.2주차</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../../css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="pt-sm-5 navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <div id="nav-top">
+
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html">portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#smart-device">스마트디바이스란?</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Sum">요약</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#End">배운점</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section pb-1" id="about">
+                <div class="resume-section-content">
+                    <h3 class="mb-0">
+                        스마트 디바이스 실습 14.2주차
+                    </h3>
+                    <div class="subheading mb-3">
+                        AWS
+                    </div>
+                    <p class="lead">
+                        한세대학교 컴퓨터공학과 22학번 김선영
+                    </p>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Experience-->
+            <section class="resume-section" id="experience">
+                <div class="resume-section-content mb-5">
+                    <h3 class="mb-4">AWS 실습 보고서</h3>
+                    <ol>
+                        <li>AWS</li>
+                        AWS란?
+                        AWS의 MQTT 브로커
+                        <li>개념 및 구성도</li>
+                        사용된 개념
+                        <li>실습 예시</li>
+                        <li>느낀점</li>
+                    </ol>
+                    <hr class="mt-5">
+
+                    <h3 class="mb-4">AWS</h3>
+                    <h5 class="mb-4">AWS란?</h5>
+                    <ol style="list-style-type:inherit">
+                        <li>AWS(Amazon Web Services)는 아마존닷컴에서 제공하는 클라우드 컴퓨팅 플랫폼.</li>
+                        <li>AWS는 다양한 클라우드 서비스를 제공하며, 이 중 하나인 AWS IoT는 사물 인터넷(IoT) 애플리케이션을 위한 완전 관리형 서비스임.</li>
+                    </ol>
+                    <h4 class="mb-4">AWS의 MQTT 브로커</h4>
+                    <ol style="list-style-type:inherit">
+                        <li>AWS에서 제공하는 MQTT 브로커는 AWS IoT Core라는 서비스를 통해 사용.</li>
+                        <li>AWS IoT Core는 MQTT를 기반으로 동작하는 완전 관리형 MQTT 브로커를 제공.</a></li>
+                        <li>AWS IoT Core MQTT 브로커는 인증과 보안을 위해 X.509 디지털 인증서를 사용함.</li>
+                        <li>AWS IAM(Identity and Access Management)을 통해 디바이스 및 사용자의 권한을 관리할 수 있음.</li>
+                    </ol>
+                    <hr class="mt-5">
+                    <div id="diagram" class="d-flex flex-column flex-md-row justify-content-between mb-3 mt-5">
+                        <div class="flex-grow-1">
+                            <h5>개념 및 구성도</h5>
+                            <img src="https://github.com/sunbang123/Smart_device/assets/93497158/8be23b56-9329-4930-91aa-645d6fbec1f4" class="img-fluid" alt="Responsive image">
+                                    <h5 class="mt-3">사용된 개념</h5>
+                                <ol style="list-style-type:inherit">
+                                    <li>AWS IoT: AWS IoT는 사물 인터넷(IoT) 애플리케이션을 구축하고 실행하기 위한 완전 관리형 서비스. 이 서비스를 사용하여 장치와의 통신, 데이터 수집, 상태 모니터링, 원격 제어 등을 수행할 수 있음.</li>
+                                    <li>AWS IoT Thing: AWS IoT Thing은 AWS IoT에서 관리하는 가상의 사물 또는 장치를 나타냄. 사물에 대한 일련의 속성, 동작 및 상태를 정의하고 AWS IoT와의 상호 작용을 처리할 수 있음.</li>
+                                    <li>인증서: AWS IoT에 연결할 때 사용되는 디지털 인증서. 인증서는 장치를 식별하고 통신을 보안하는 데 사용. 코드에서는 AWS IoT에 연결할 때 필요한 인증서와 개인 키가 설정되어 있음.</li>
+                                    <li>토픽(Topic): MQTT 프로토콜을 사용하여 AWS IoT와 통신할 때 메시지를 게시하고 구독하는 주제를 나타냄. 코드에서는 AWS_IOT_PUBLISH_TOPIC과 AWS_IOT_SUBSCRIBE_TOPIC으로 정의된 토픽을 사용하여 데이터를 게시하고 수신.</li>
+                                    <li>MQTT(MQ Telemetry Transport): MQTT는 경량 메시징 프로토콜로, 제한된 대역폭 또는 불안정한 네트워크 환경에서도 신뢰성 있고 효율적인 통신을 제공. 코드에서는 MQTTClient 라이브러리를 사용하여 MQTT 프로토콜을 사용하여 AWS IoT와 통신.</li>
+                                </ol>
+                                <hr class="mt-5"/>
+                                      <div class="flex-grow-1">
+                                        <h3 class="mb-4">실습 예시</h3>
+                                        <h5 class="mt-3">순서</h5>
+                                            <ol style="list-style-type:inherit">
+                                                <li>AWS 계정 및 AWS IoT 설정:</li>
+                                                AWS 계정에 로그인하고 AWS IoT 콘솔로 이동. "사물"을 선택하고 "사물 등록"을 클릭하여 새 사물을 등록. 사물 등록이 완료되면 "인증서" 탭에서 "인증서 생성"을 클릭하여 사물 인증서를 생성. 인증서를 다운로드하고, "사물 정책" 탭에서 "사물 정책 생성"을 클릭하여 사물 정책을 생성. 사물 정책에는 "게시" 및 "구독" 권한이 포함. 사물 정책을 사물에 연결.
+                                                <br><br>
+                                                <li>Arduino IDE 설정:</li>
+                                                Arduino IDE를 열고 "툴" 메뉴에서 "보드"를 선택하고 "ESP32 Dev Module"을 선택. "툴" 메뉴에서 "스케치 라이브러리 포함하기"를 선택하고 필요한 라이브러리를 검색하여 설치. WiFiClientSecure, MQTTClient, ArduinoJson                                                <br><br>
+                                                <li>코드 수정:</li>
+                                                WIFI_SSID와 WIFI_PASSWORD를 사용하는 Wi-Fi 네트워크에 맞게 수정. AWS_IOT_ENDPOINT를 사용하는 AWS IoT 엔드포인트로 수정. AWS 인증서 및 개인 키를 적절한 위치에 저장하고 net.setCACert(), net.setCertificate(), net.setPrivateKey()에 경로를 설정. 필요에 따라 게시 및 구독 토픽(AWS_IOT_PUBLISH_TOPIC, AWS_IOT_SUBSCRIBE_TOPIC)을 수정.
+                                                <br><br>
+                                                <li>ESP32에 업로드:</li>
+                                                ESP32 보드와 컴퓨터를 연결하고, 보드를 선택한 후 코드를 컴파일하고 ESP32에 업로드. 시리얼 모니터를 열고 전송 속도를 9600으로 설정.
+                                                <br><br>
+                                                <li>결과 확인:</li>
+                                                ESP32가 Wi-Fi에 연결되면 시리얼 모니터에 "Connecting to Wi-Fi"와 "."의 시리즈가 표시. Wi-Fi 연결이 성공하면 "Connecting to AWS IoT"가 표시. AWS IoT 연결이 성공하면 "AWS IoT Connected!"가 표시. 센서 데이터는 publishMessage() 함수에서 JSON 형식으로 생성                                                <br><br>
+                                            </ol>
+                                            </div>
+                        <div class="flex-grow-1">
+                            <h3 class="mt-4 mb-4">코드</h3>
+
+                        <pre>
+                            <code>
+    > 라이브러리
+
+    #include &lg;pgmspace.h>
+    #include "secrets.h"
+    #include &lg;WiFiClientSecure.h>
+    #include &lg;MQTTClient.h>
+    #include &lg;ArduinoJson.h>
+    #include "WiFi.h"
+    
+    > MQTT 클라이언트가 게시(publish) 및 구독(subscribe)할 MQTT 토픽을 정의
+    
+    #define SECRET
+    #define THINGNAME "Mtest"
+    // The MQTT topics that this device should publish/subscribe
+    #define AWS_IOT_PUBLISH_TOPIC   "outTopic"
+    #define AWS_IOT_SUBSCRIBE_TOPIC "inTopic"
+    WiFiClientSecure 인스턴스 net과 MQTTClient 인스턴스 client를 생성
+    
+    WiFiClientSecure net = WiFiClientSecure();
+    MQTTClient client = MQTTClient(256);
+    const char WIFI_SSID[] = "i2r";
+    const char WIFI_PASSWORD[] = "00000000";
+    const char AWS_IOT_ENDPOINT[] = "*****************.iot.us-east-2.amazonaws.com";
+    void connectAWS()
+    {
+    WiFi.mode(WIFI_STA);
+    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+    
+    // Wi-Fi 연결을 수행합니다.
+    // Wi-Fi가 연결될 때까지 연결 상태를 확인합니다.
+    
+    // Configure WiFiClientSecure to use the AWS IoT device credentials
+    net.setCACert(AWS_CERT_CA);
+    net.setCertificate(AWS_CERT_CRT);
+    net.setPrivateKey(AWS_CERT_PRIVATE);
+    
+    // AWS IoT의 장치 인증서와 개인 키를 사용하여 WiFiClientSecure를 구성합니다.
+    
+    // MQTT 브로커에 연결합니다.
+    client.begin(AWS_IOT_ENDPOINT, 8883, net);
+    
+    // Create a message handler
+    client.onMessage(messageHandler);
+    
+    // 메시지 처리기를 생성합니다.
+    
+    // AWS IoT에 연결을 시도합니다.
+    while (!client.connect(THINGNAME)) {
+        delay(100);
+    }
+    
+    // AWS IoT에 연결되면 구독을 수행합니다.
+    client.subscribe(AWS_IOT_SUBSCRIBE_TOPIC);
+    }
+    
+    void publishMessage()
+    {
+    // 센서 데이터를 JSON 형식으로 만듭니다.
+    StaticJsonDocument<200> doc;
+    doc["time"] = millis();
+    doc["sensor_a0"] = analogRead(0);
+    char jsonBuffer[512];
+    serializeJson(doc, jsonBuffer); // print to client
+    
+    client.publish(AWS_IOT_PUBLISH_TOPIC, jsonBuffer);
+    }
+    
+    void messageHandler(String &topic, String &payload) {
+    Serial.println("incoming: " + topic + " - " + payload);
+    
+    //  StaticJsonDocument<200> doc;
+    //  deserializeJson(doc, payload);
+    //  const char* message = doc["message"];
+    }
+    
+    void setup() {
+    Serial.begin(9600);
+    connectAWS();
+    }
+    
+    void loop() {
+    publishMessage();
+    client.loop();
+    delay(1000);
+    }
+                            </code></pre>
+                                코드 출처: https://github.com/kdi6033/cloud/blob/master/6-2-0%20aws%20ESP32%20Mqtt/AWS_ESP32/AWS_ESP32.ino
+    </div>
+                    <hr class="mb-5">
+                    <div id="End" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">느낀점</h4>
+                            <ol style="list-style-type:inherit">
+                                <li>디바이스에서 MQTT 통신 방법으로 브로커에서 요구하는 프로토콜에 맞춰서 데이터를 보내고 받는데에 필요한 개념을 공부하게 됨.</li>
+                                <li>강의를 듣고 전자상거래 플랫폼인 아마존이 클라우드 기반의 웹 서비스를 제공한다는 것을 알게 됨.</li>
+                                <li>아마존에서 사용하는 MQTT 브로커인 AWS IoT Core에 대한 개념을 적립할 수 있었음.</li>
+                            </ol>
+                        </div>
+
+                        </div>
+                    <hr class="mb-3">
+                    <a style="text-align: left;" href="../day14.1/index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                            <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                          </svg>
+                        Previous
+                    </a>
+                    <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+                    <a style="text-align: right;" href="../day15.1/index.html">
+                        Next
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                          </svg>
+                    </a>
+                </div>
+            </div>
+            </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="../../js/scripts.js"></script>
+    </body>
+</html>

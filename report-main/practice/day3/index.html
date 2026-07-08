@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>스마트디바이스 실습3주차</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../../css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="pt-sm-5 navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <div id="nav-top">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html">portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#arduino-set">지정보드 설정</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#pinboard">실습</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#error">에러</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#result">실행 결과</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section pb-1" id="about">
+                <div class="resume-section-content">
+                    <h3 class="mb-0">
+                        스마트 디바이스 실습 3주차
+                    </h3>
+                    <div class="subheading mb-3">
+                        ESP32 LED Blink(점멸) 실습
+                    </div>
+                    <p class="lead">
+                        한세대학교 컴퓨터공학과 22학번 김선영
+                    </p>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Experience-->
+            <section class="resume-section" id="experience">
+                <div class="resume-section-content">
+                    <div id="arduino-set" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h5 class="mt-4">지정보드 설정</h5>
+                            <p class="pt-1">1-1. 제어판>하드웨어 및 소리>장치관리자 창을 띄움.</p>
+                            <p class="pt-1">1-2. 제어판에서 포트 번호(COM)를 확인한 후 IDE에서 Tool>Port>(올바른 포트 번호) 를 선택함.</p>
+                            <p class="pt-1">1-3. IDE에서 Tools>Bord>ESP32>ESP32 DEV MODULE(장치 모듈)을 선택함.</p>
+                        </div>
+                    </div>
+                    <hr class="mb-5">
+                    <div id="pinboard" class="d-flex flex-column flex-md-row justify-content-between mb-5 mt-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-5">실습 : ESP32 LED Blink</h3>
+                            <div class="card-group">
+                                <div class="card">
+                                   <div class="card-header">
+                                    아두이노 핀보드
+                                   </div>
+                                  <img class="card-img-top img-fluid" src="https://user-images.githubusercontent.com/93497158/226109525-e6cfe4f8-c259-4337-adc9-0e9d4371e116.jpg">
+                                  <div class="card-body">
+                                    <p class="card-text">
+                                        <ol style="list-style-type:inherit">
+                                            <li>아두이노 핀보드는 마이크로컨트롤러에서 사용되는 다양한 핀들을 관리하고 사용할 수 있도록 해주는 보드</li>
+                                            <li>보드는 대개 직사각형 모양으로 되어 있으며, 이 안에 다양한 핀들이 위치함.</li>
+                                            <li>GND 핀은 전기 회로에서 전하가 흐르는 기준점인 그라운드(Ground)를 나타냄.</li>
+                                            <li>이 핀들은 전기 회로에서 전압을 조절하거나 전기 신호를 처리하는 역할을 함.</li>
+                                        </ol>            
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        회로 연결
+                                    </div>    
+                                  <img class="card-img-top img-fluid" src="https://github.com/sunbang123/Smart_device/assets/93497158/385b70fb-13a6-474e-aba3-0c36a4954c35">
+                                  <div class="card-body">
+                                    <p class="card-text">위 사진과 같이 연결</p>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="m-0" />
+                    <div id="compile" class="d-flex flex-column flex-md-row justify-content-between mb-5 mt-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">컴파일링 실행</h4>
+
+                            <p class="pt-1">2-1. SELECT 창에 ESP32 DEV MODULE를 선택한 후 -> 버튼을 눌러 컴파일(compile)해줌.</p>
+                            <p class="pt-1">2-2. 컴파일링이 진행될동안 장치의 오른쪽 버튼(업로드 버튼)을 2초 누름.</p>
+                            <p class="pt-1">2-3. 컴파일 & 업로드</p>
+
+                            <h5 class="mt-5">코드</h5>
+                            <pre>
+<code>
+    int LED_BUILTIN = 22; // 내장 LED가 연결된 디지털 핀 번호를 상수 22로 설정함.
+    void setup() {
+      pinMode(LED_BUILTIN, OUTPUT);
+    }
+    void loop() {
+      digitalWrite(LED_BUILTIN, HIGH);
+      delay(1000);                    
+      digitalWrite(LED_BUILTIN, LOW); 
+      delay(1000);                    
+    }
+</code>
+                            </pre>
+                            <h5 class="mt-5">사용된 함수</h5>
+                            <p class="pt-1"> - setup() : 내장 LED가 연결된 디지털 핀을 출력으로 설정함.</p>
+                            <p class="pt-1">- digitalWrite(LED_BUILTIN, HIGH/LOW) : 내장 LED를 켬.</p>
+                            <p class="pt-1">- delay(1000) : 1초 지연.</p>
+                        </div>
+                    </div>
+                    <hr class="m-0" />
+
+                    <div id="error" class="d-flex flex-column flex-md-row justify-content-between mb-5 mt-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">에러</h4>
+                            LED에는 극성이 있으며, 긴 다리가 양극, 짧은 다리가 음극임. 양극과 음극을 바르게 연결하지 않으면 제대로 작동하지 않음. 저항 옆에 양극을 연결함. 또한, LED 22 핀에 회로가 적절하게 연결되었는지 확인 함. (GPIO22, 저항, LED +)
+                        </div>
+                    </div>
+                    <hr class="m-0" />
+
+                    <div id="result" class="d-flex flex-column flex-md-row justify-content-between mb-5 mt-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">실행 결과</h4>
+                            <video controls poster="videos/Clouds.png"  class="img-fluid" alt="Responsive image">
+                                <source src="https://user-images.githubusercontent.com/93497158/227442631-962a3173-79f8-4be5-a45d-a4614e641ac3.mp4" type="video/mp4">
+                                <strong>Your browser does not support the video tag.</strong>
+                            </video>
+                        </div>
+                    </div>
+                    <hr class="mb-5">
+                    <div id="End" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">실습을 통해 느낀점</h4>
+                            <p>- LED에는 극성이 있어서 올바르게 연결하지 않으면 제대로 작동하지 않는다는 것을 알게 됨.</p>
+                            <p>- 전기 회로에서 GND 핀은 중요한 역할을 하며, 전압을 조절하거나 전기 신호를 처리하는 역할을 한다는 것을 배움.</p>
+                            <p>- 이러한 기초적인 전기 개념을 이해하면 아두이노 보드를 이용해 다양한 전자제품을 만들고 조작하는 것이 가능해진다는 것을 느낌</p>
+                        </div>
+                    </div>
+
+                    <hr class="mb-3">
+                    <a style="text-align: left;" href="../day2/index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                            <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                          </svg>
+                        Previous
+                    </a>
+                    <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+                    <a style="text-align: right;" href="../day4/index.html">
+                        Next
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                          </svg>
+                    </a>
+
+                </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="../../js/scripts.js"></script>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Momonton Todo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <button id="background-refresh" type="button" aria-label="Change background" title="Change background">&#8635;</button>
+    <div class="hero-text">
+        <div class="grid-box">
+            <h1 id="clock">00:00:00</h1>
+            <form id="name-form">
+                <input id="input-name" type="text" placeholder="What's your name?" required/>
+            </form>
+            <form id="email-form" class="hidden">
+                <input id="input-email" type="text" placeholder="What's your email, user?" required/>
+            </form>
+            <form id="todo-form" class="hidden">
+                <input type="text" placeholder="Write a To Do and Press Enter" required />
+            </form>
+            <div id="weather" class="weather hidden" aria-live="polite"></div>
+            <ul id="todo-list" class="hidden"></ul>
+            <form id="logout-form" class="hidden">
+                <input type="submit" value="logout"></input>
+            </form>
+        </div>
+    </div>
+    <script src="js/clock.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/background.js"></script>
+    <script src="js/todo.js"></script>
+    <script src="js/weather.js"></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>스마트디바이스 실습9주차</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../../css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="pt-sm-5 navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <div id="nav-top">
+
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html">portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#smart-device">스마트디바이스란?</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Sum">요약</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#End">배운점</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section pb-1" id="about">
+                <div class="resume-section-content">
+                    <h3 class="mb-0">
+                        스마트 디바이스 실습 9주차
+                    </h3>
+                    <div class="subheading mb-3">
+                        ThingSpeak
+                    </div>
+                    <p class="lead">
+                        한세대학교 컴퓨터공학과 22학번 김선영
+                    </p>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Experience-->
+            <section class="resume-section" id="experience">
+                <div class="resume-section-content mb-5">
+                    <h3 class="mb-4">ThingSpeak 란?</h3>
+                    <ol style="list-style-type:inherit">
+                        <li>ThingSpeak는 IoT 디바이스에서 수집한 센서 데이터를 클라우드 서버에 저장하고, 이를 분석하고 시각화하는 IoT 플랫폼</li>
+                        <li>온라인 상에서 데이터 수집, 저장, 분석, 시각화, 공유 등의 IoT 서비스를 제공</li>
+                        <li>RESTful API를 제공하므로, 다른 응용 프로그램과 연동하여 데이터를 활용함</li>
+                    </ol>
+
+                    <hr class="mt-5">
+                    <div id="diagram" class="d-flex flex-column flex-md-row justify-content-between mb-3 mt-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-4">설정 방법</h3>
+                            <div class="card-group">
+                                <div class="card p-3">
+                                  <div class="card-body">
+                                    <p class="card-text">
+                                        <p>1. <a href="https://thingspeak.com/">ThingSpeak 홈페이지</a>에 회원가입을 함.</p>
+                                        <p>2. My Channels에서 New Channel을 만듦</p>
+
+                                        <img src="https://user-images.githubusercontent.com/93497158/235817313-dfbda59c-312f-419e-92c8-1944510db19a.png"  class="img-fluid" alt="Responsive image">
+                                        <p>3. New Channel에서 Field 이름을 지정함.
+                                            <br>
+                                            ㄴ>
+                                        </p>
+                                        </div>
+                                </div>
+                                <div class="card p-3">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            <img src="https://user-images.githubusercontent.com/93497158/235817306-9acaebfa-c9f8-47e1-8561-33fb32d72a85.png"  class="img-fluid" alt="Responsive image">
+                                      </p>
+                                    </div>
+                                  </div>
+                            </div>
+                            
+                            <hr class="mb-5">
+                            <h3 class="mb-4">실습 : Arduino & ThingSpeak</h3>
+                                <div class="card-group">
+                                    <div class="card p-3">
+                                      <div class="card-body">
+                                        <p class="card-text">
+                                            <p>1. Arduino IDE에서 ThingSpeak 라이브러리를 설치함.</p>
+                                            <img src="https://user-images.githubusercontent.com/93497158/235817311-a13d4149-5350-4143-b00b-c6a4e9fc2d40.png" class="img-fluid" alt="Responsive image">
+                                            <br><br>
+                                            <p>2. 현재 연결된 WIFI 이름과 비밀번호를 확인한 다음 실습코드에 입력.</p>
+                                            <img src="https://user-images.githubusercontent.com/93497158/235818450-552f9513-7b4c-4f71-b089-dfbe29b20ba4.png" class="img-fluid" alt="Responsive image">
+                                        </p>
+                                      </div>
+                                    </div>
+                                    <div class="card p-3">
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                <p>실습 코드</p>
+                                                <pre>
+                                                <code>
+    #include &lt;WiFi.h>
+    #include &lt;ThingSpeak.h>
+
+    const char* ssid = "[WIFI 이름]";
+    const char* password = "[WIFI password]";
+
+    ...                                                </code>
+                                              </pre>
+
+                                              <p>3. ThingSpeak My Channel로 들어가서 Channel ID와 API키를 확인한 다음 실습코드에 입력.</p>
+                                              <img src="https://user-images.githubusercontent.com/93497158/235817315-3caf9a4f-050c-4739-9aba-3a8d3b824533.png" class="img-fluid" alt="Responsive image">
+
+                                          </p>
+                                        </div>
+                                      </div>
+                                </div>
+                                <div class="card-group">
+                                    <div class="card p-3">
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                <p>실습 코드</p>
+                                                <pre>
+                                                <code>
+    ...
+    WiFiClient client;
+    unsigned long ch1_ID = 2126281;
+    const char* ch1_WriteKey = "AGP30QRISWWCJ0ZO";
+    
+    void setup() {
+        Serial.begin(115200);
+        delay(10);
+        initWiFi();
+        ThingSpeak.begin(client);
+    }
+    
+    void loop() {
+        int i;
+        for (i = 0; i &lt; 4; ++i) {
+        ThingSpeak.writeField(ch1_ID, 1, i, ch1_WriteKey);
+        delay(2000);
+        }
+    }
+    
+    void initWiFi() {
+        WiFi.begin(ssid, password);
+        while (WiFi.status() != WL_CONNECTED) {
+        delay(500);
+        Serial.println(".");
+        }
+    }</code>
+                                              </pre>
+
+                                              <p>4. 업로드</p>
+
+                                          </p>
+                                        </div>
+                                      </div>
+                                      <div class="card p-3">
+                                        <div class="card-body">
+                                          <p class="card-text">
+                                            <p>5. ThingSpeak 차트 확인.</p>
+                                            <img src="https://user-images.githubusercontent.com/93497158/235817312-245dd2a8-3e43-475b-a674-47d4760ae84d.png" class="img-fluid" alt="Responsive image">
+                                        </p>
+                                        </div>
+                                      </div>  
+                                </div>
+                              <hr class="mt-5">
+                        </div>
+                    </div>
+
+                    <hr class="mb-5">
+                    <div id="End" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">실습을 통해 느낀점</h4>
+                            <p>- ThingSpeak와 아두이노 연동에 대한 기초 지식을 습득하고 데이터를 시각화 하는 방법에 대해서 배울 수 있었다.</p>
+                            <p>- API를 이용하여 프로그램과 연동하여 활용하는 점이 인상깊었음.</p>
+                        </div>
+                    </div>
+                    <hr class="mb-3">
+                    <a style="text-align: left;" href="../day8/index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                            <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                          </svg>
+                        Previous
+                    </a>
+                    <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+                    <a style="text-align: right;" href="../day10/index.html">
+                        Next
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                          </svg>
+                    </a>
+                </div>
+            </div>
+            </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="../../js/scripts.js"></script>
+    </body>
+</html>

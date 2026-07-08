@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>스마트디바이스 실습6주차</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../../css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="pt-sm-5 navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <div id="nav-top">
+
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html">portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#smart-device">스마트디바이스란?</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Sum">요약</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#End">배운점</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section pb-1" id="about">
+                <div class="resume-section-content">
+                    <h3 class="mb-0">
+                        스마트 디바이스 실습 6주차
+                    </h3>
+                    <div class="subheading mb-3">
+                      ESP32 블루투스 연결
+                    </div>
+                    <p class="lead">
+                        한세대학교 컴퓨터공학과 22학번 김선영
+                    </p>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Experience-->
+            <section class="resume-section" id="experience">
+                <div class="resume-section-content mb-5">
+                    <h3 class="mb-4">실습 보고서</h3>
+
+                    <h5 class="mb-3">블루투스란?</h5>
+                    <ol style="list-style-type:inherit">
+                        <li>블루투스는 무선 기술 중 하나로, 디지털 기기 간의 데이터 전송을 가능하게 함.</li>
+                        <li>블루투스 기기 간의 무선 통신을 담당하는 프로토콜로, 무선 주파수 대역을 이용하여 데이터를 전송함.</li>
+                        <li>블루투스 기술 - 소형 전파 모듈과 소프트웨어 스택으로 구성되며, 디지털 기기에서 무선 통신을 통해 서로 연결할 수 있음.</li>
+                        <li>블루투스 모듈 - 블루투스 모듈은 블루투스 스펙에 따라 무선 신호를 생성하고 수신하여 데이터 전송을 가능하게 함.</li>
+                    </ol>
+                    <hr class="mt-5">
+                    <div id="diagram" class="d-flex flex-column flex-md-row justify-content-between mb-3 mt-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-4">실습 : ESP32 블루투스 연결 실습</h3>
+                            <p class="mb-3">준비물 : LED, ESP32, 브래드보드, 점퍼선 1개, 스마트폰</p>
+
+                            <h5>회로도</h5>
+
+                            <img class="img-fluid" src="https://user-images.githubusercontent.com/93497158/231953504-2614e5fc-e5ca-4ad1-8ea8-84c6c3a93a2e.jpg"/>
+                            <h5 class="mt-3">순서</h5>
+                            <ol>
+                              <li>LED - ground - p22 - 저항 연결</li>
+                              <li>업로드, 컴파일링</li>
+                              <li>휴대폰 블루투스와 이름이 설정된 ESP 블루투스 장치와 연결</li>
+                              <li>Serial BlueTooth Terminal 어플리케이션에 업로드된 코드를 커넥팅 함.</li>
+                              <li>어플리케이션 Terminal에 'o' 데이터를 전송해서 LED를 켜고 'x' 데이터를 전송해서 LED를 끔.</li>
+                          </ol>          
+                            <div class="card-group">
+                                  <div class="card">
+                                    <p class="card-text">
+                                        <div class="card-body">
+                                            <h5>코드</h5>
+                                    <pre>
+<code>
+    #include "BluetoothSerial.h"
+    #if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
+    #error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
+    #endif
+    BluetoothSerial SerialBT;
+    #define LED2 22
+    void setup() {
+        Serial.begin(115200);
+        SerialBT.begin("ESP32test_sy");
+        Serial.println("The device started, now you can pair it with bluetooth!");
+        pinMode(LED2, OUTPUT);
+        }
+      void loop() {
+        if (Serial.available()) {
+          SerialBT.write(Serial.read());
+        }
+        if (SerialBT.available()) {
+          char txt = SerialBT.read();
+          Serial.write(txt);
+        if(txt == 'o'){
+          digitalWrite(LED2, HIGH);
+        } else if(txt == 'x'){
+          digitalWrite(LED2, LOW);
+        }
+      }
+      delay(20);
+    }
+</code>
+                                    </pre>        
+                                </p>
+                                </div>
+                            </div>
+                        </div>
+                        <h5 class="mt-5">코드 구성 요소</h5>
+                        <ol style="list-style-type:inherit">
+                            <li>#include "BluetoothSerial.h" == 이 라이브러리는 ESP32의 Bluetooth 시리얼 통신을 제어하는 함수들을 제공함.</li>
+                            <li>#if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED))== Bluetooth가 활성화되어 있는지 확인하는 조건문. Bluetooth가 비활성화되어 있다면 컴파일 에러를 발생시킴.</li>
+                            <li>BluetoothSerial SerialBT;== BluetoothSerial 객체를 생성함. 이 객체를 통해 ESP32와 Bluetooth 시리얼 통신을 수행할 수 있음.</li>
+                            <li>Serial.begin(115200); == 시리얼 통신 시작. 통신 속도는 115200 bps로 설정됨.</li>
+                            <li>SerialBT.begin("ESP32test_sy"); == Bluetooth 시리얼 통신을 시작, Bluetooth 장치의 이름을 "ESP32test_sy"로 설정하고 블루투스로 검색할 때 사용됨.</li>
+                            <li>pinMode(LED2, OUTPUT); == LED2 핀을 출력 모드로 설정. 이 핀은 LED를 제어하는데 사용됨.</li>
+                            <li>if (Serial.available()) {...} == 시리얼 통신으로 데이터를 수신할 수 있는지 확인하는 조건문. 데이터가 수신되면, 해당 데이터를 Bluetooth 시리얼 통신으로 전송함.</li>
+                            <li>if (SerialBT.available()) {...} == Bluetooth 시리얼 통신으로 데이터를 수신할 수 있는지 확인하는 조건문. 데이터가 수신되면, 해당 데이터를 시리얼 통신으로 전송. 데이터가 'o'인 경우 LED2를 HIGH로, 'x'인 경우 LED2를 LOW로 설정하여 LED를 제어함.
+                            </li>
+                        </ol>   
+                        </div>
+                    </div>
+                    <h5>실습 과정</h5>
+                    <div class="card-group">
+                        <div class="card">
+                          <div class="card-body">
+                            <img src="https://user-images.githubusercontent.com/93497158/233657113-6cb53a36-134d-4e37-8e9a-612832f8c608.jpg" class="img-fluid" alt="Responsive image">
+                            <p class="card-text">
+                                - ESP32와 블루투스가 연결되었는지 확인
+                            </p>
+                          </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <img src="https://user-images.githubusercontent.com/93497158/233657116-5ee20bc1-6e71-42e6-b7fd-0592ad14a2e3.jpg"  class="img-fluid" alt="Responsive image">
+                                <p class="card-text">
+                                  - 플레이 스토어에서 Serial bluetooth terminal 어플리케이션을 다운받음. Bluetooth 장치의 이름인 "ESP32test_sy"에 연결
+                              </p>
+                            </div>
+                          </div>
+                          <div class="card">
+                            <div class="card-body">
+                                <img src="https://user-images.githubusercontent.com/93497158/233657110-79f252de-35ab-4d48-b3be-72a8010cde45.jpg"  class="img-fluid" alt="Responsive image">
+                                <p class="card-text">
+                                  - 어플리케이션 Terminal 창을 통해 LED 제어 실습.
+                              </p>
+                            </div>
+                          </div>  
+                    </div>
+                    <div id="result" class="d-flex flex-column flex-md-row justify-content-between mb-5 mt-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">실행 결과</h4>
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img src="https://user-images.githubusercontent.com/93497158/231953622-68f75008-84e2-441c-b6cd-700462200c87.jpg"  class="img-fluid" alt="Responsive image">
+                                        <p class="card-text">
+                                          - 문자 'o'를 전송했을때
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div class="card">
+                                    <div class="card-body">
+                                        <img src="https://user-images.githubusercontent.com/93497158/231953617-2e823719-7452-4519-b776-7ad1fae1ea5c.jpg"  class="img-fluid" alt="Responsive image">
+                                        <p class="card-text">
+                                          - 문자 'x'를 전송했을때
+                                      </p>
+                                    </div>
+                                  </div>  
+                            </div>
+                            </div>
+                    </div>
+                    <hr class="mb-5">
+                    <div id="End" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">실습을 통해 느낀점</h4>
+                            <p>- 휴대폰 블루투스가 아두이노와 무선으로 데이터를 전송할 수 있다는 것이 흥미로웠음.</p>
+                            <p>- 블루투스 신호가 잡히면 바로 연결되는 점 또한 무척 편리하게 느껴졌음.</p>
+                        </div>
+                    </div>
+                    <hr class="mb-3">
+                    <a style="text-align: left;" href="../day5.2/index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                            <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                          </svg>
+                        Previous
+                    </a>
+                    <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+                    <a style="text-align: right;" href="../day8/index.html">
+                        Next
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                          </svg>
+                    </a>
+                </div>
+            </div>
+            </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="../../js/scripts.js"></script>
+    </body>
+</html>

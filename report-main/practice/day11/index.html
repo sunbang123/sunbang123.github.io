@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>스마트디바이스 실습11주차</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../../css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="pt-sm-5 navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <div id="nav-top">
+
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html">portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#smart-device">스마트디바이스란?</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Sum">요약</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#End">배운점</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section pb-1" id="about">
+                <div class="resume-section-content">
+                    <h3 class="mb-0">
+                        스마트 디바이스 실습 11주차
+                    </h3>
+                    <div class="subheading mb-3">
+                        Node Red HTTP GET
+                    </div>
+                    <p class="lead">
+                        한세대학교 컴퓨터공학과 22학번 김선영
+                    </p>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Experience-->
+            <section class="resume-section" id="experience">
+                <div class="resume-section-content mb-5">
+                    <h3 class="mb-4">실습 보고서</h3>
+                    <h5 class="mb-4">실습 목차</h5>
+                    <ol>
+                        <li>Gauge</li>
+                        <li>HTTP GET 요청을 서버로 보내기</li>
+                    </ol>
+
+                    <hr class="mt-5">
+                    <div id="diagram" class="d-flex flex-column flex-md-row justify-content-between mb-3 mt-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-4">실습1 : Gauge</h3>
+                            <h5 class="mt-3">실습 과정</h5>
+                                <div class="card-group">
+                                    <div class="card p-2">
+                                      <div class="card-body">
+                                        <p class="card-text">
+                                            <ol>
+                                                <li>cmd로 Node-Red 실행</li>
+                                                <li>cmd창에서 ipconfig를 입력해서 IPv4주소를 확인함.</li>
+                                                <img src="https://github.com/sunbang123/Smart_device/assets/93497158/93167371-c43e-4374-af0d-ba786ebd3f92" class="img-fluid" alt="Responsive image">
+                                                <br><br>
+                                                <li>ThingSpeak에서 플로우를 구축함.</li>
+                                              </ol>          
+                                            <img src="https://github.com/sunbang123/Smart_device/assets/93497158/485c396c-81ee-4c73-ad41-9c32f47d2e6e" class="img-fluid" alt="Responsive image">
+                                            <p>- Get 노드</p>
+                                            <img src="https://github.com/sunbang123/Smart_device/assets/93497158/ed396e1b-f1af-4732-bd66-79721f1a59e9" class="img-fluid" alt="Responsive image">
+                                            <p>- function 노드</p>
+                                            <img src="https://github.com/sunbang123/Smart_device/assets/93497158/0e7560fa-2432-44f4-85fb-0bb076ea4f4d" class="img-fluid" alt="Responsive image">
+                                        </p>
+                                        </div>
+                                      </div>
+                                      <div class="card p-2">
+                                        <div class="card-body">
+                                          <p class="card-text">
+                                            <p>- gauge 노드</p>
+                                            <img src="https://github.com/sunbang123/Smart_device/assets/93497158/d643bd92-faf6-473f-b5f2-2c027304104b" class="img-fluid" alt="Responsive image">
+                                            <p>- msg.payload</p>
+                                            <ol style="list-style-type:inherit">
+                                                <li>Node-RED에서 사용되는 메시지 객체의 속성.</li>
+                                                <li>Node-RED에서 데이터를 전달하거나 처리할 때 msg라는 메시지 객체를 사용함.</li>
+                                                <li>이 메시지 객체는 여러 속성을 포함할 수 있으며, msg.payload는 그 중 하나.</li>
+                                                <li>msg.payload는 일반적으로 메시지에 대한 주요 데이터를 포함하는 속성. 예를 들어, 센서에서 수집한 값을 전송하거나, 웹 서비스에서 수신한 데이터를 처리하거나, 다른 노드로 전달할 값을 설정하는 등 다양한 용도로 사용될 수 있음.</li>
+                                              </ol>    
+                                            <p>4. url창에 HTTP GET 요청을 서버로 보내는 주소인 'http://[IPv4주소]:1880/update-sensor?temperature=24.37' 를 입력하고 디버그가 되는지 확인</p>      
+                                            <img src="https://github.com/sunbang123/Smart_device/assets/93497158/d26a9ccc-409f-4e50-af99-68a2a030e90c" class="img-fluid" alt="Responsive image">
+                                            <img src="https://github.com/sunbang123/Smart_device/assets/93497158/25526bec-da90-439f-8d73-918ca5791a7d" class="img-fluid" alt="Responsive image">
+                                            <p>- 온도값 24.37이 출력되면 성공! </p>
+                                        </p>
+                                          </div>
+                                        </div>
+                                      </div>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h3 class="mb-4">코드</h3>
+
+                        <pre>
+                            <code>
+    #include &lt;WiFi.h>
+    #include &lt;HTTPClient.h>
+    #include &lt;DHT.h>
+        
+    #define DHTPIN 13
+    #define DHTTYPE DHT11
+    
+    DHT dht(DHTPIN, DHTTYPE);
+    
+    float tem = 0;
+    float hum = 0;
+    
+    const char* ssid = "yourWIFIname";
+    const char* password = "WIFIpassword";
+    String serverName = "http://ip/https-severname";
+    
+    unsigned long lastTime = 0;
+    unsigned long timerDelay = 5000;
+    
+    void setup() {
+        
+        delay(500);
+        Serial.begin(9600);
+        
+        WiFi.begin(ssid, password);
+        Serial.println("Connecting");
+        
+        while(WiFi.status() != WL_CONNECTED) {
+            delay(500);
+            Serial.print(".");
+        }
+        
+        Serial.println("");
+        Serial.print("Connected to WiFi network with IP Address: ");
+        Serial.println(WiFi.localIP());
+        Serial.println("Timer set to 5 seconds (timerDelay variable), it will take 5 seconds before publishing the first reading.");
+    }
+    void loop() {
+        
+        tem = dht.readTemperature();
+        hum = dht.readHumidity();
+        
+        Serial.print("Temperature :");
+        Serial.print(tem);
+        
+        Serial.print("Humidity :");
+        Serial.print(hum);
+        
+    }
+    if ((millis() - lastTime) > timerDelay) {
+    
+        if(WiFi.status()== WL_CONNECTED){
+            HTTPClient http;
+            String serverPath = serverName + "?Temperature=" + String(tem) + "&" + "Humidity=" + String(hum);
+    
+            http.begin(serverPath.c_str());       //부동숫자 문자열로 변경
+    
+            int httpResponseCode = http.GET();
+    
+            if (httpResponseCode>0) {
+                Serial.print("HTTP Response code: ");
+                Serial.println(httpResponseCode);
+                String payload = http.getString();
+                Serial.println(payload);
+            }
+            else {
+                Serial.print("Error code: ");
+                Serial.println(httpResponseCode);
+            }
+        
+            http.end();
+        }
+        else {
+            Serial.println("WiFi Disconnected");
+        }
+            lastTime = millis();
+        }
+    }</code></pre>
+</div>
+
+<hr class="mb-5">
+<div class="flex-grow-1">
+    <h3 class="mb-4">실습2 : HTTP GET 요청을 서버로 보내기</h3>
+
+    <img src="https://github.com/sunbang123/Smart_device/assets/93497158/fe60a59c-f7bf-41f9-a2f9-0f8cf92c11df" class="img-fluid" alt="Responsive image">
+
+    <h5 class="mt-3">HTTP GET</h5>
+    <ol style="list-style-type:inherit">
+        <li>HTTP GET은 Hypertext Transfer Protocol (HTTP)를 사용하여 서버에서 데이터를 요청하는 메서드.</li>
+        <li>HTTP GET 요청은 서버에게 특정 리소스(웹 페이지, 이미지, API 엔드포인트 등)를 가져와서 응답을 받는 데 사용.</li>
+        <li>일반적으로 HTTP GET 요청은 URL(Uniform Resource Locator)을 통해 수행.</li>
+        <li>GET 요청은 주로 쿼리 매개변수를 사용하여 요청 매개변수를 서버로 전달.</li>
+        <li>서버는 GET 요청을 받으면 요청된 리소스를 찾아서 응답을 반환.</li>
+      </ol>    
+
+    <h5 class="mt-3">실습 과정</h5>
+        <div class="card-group">
+            <div class="card p-2">
+              <div class="card-body">
+                <p class="card-text">
+                    <ol>
+                        <li>cmd로 Node-Red 실행</li>
+                        <li>cmd창에서 ipconfig를 입력해서 IPv4주소를 확인함.</li>
+                        <li>ThingSpeak에서 플로우를 구축함.</li>
+                      </ol> 
+
+                    <img src="https://github.com/sunbang123/Smart_device/assets/93497158/666e666a-6d8e-43d5-8271-79b83acb05a0" class="img-fluid" alt="Responsive image">
+                    <p>- http response 노드</p>
+                    <img src="https://github.com/sunbang123/Smart_device/assets/93497158/9c52925c-6cfc-4d9b-a794-7adedd6ab61a" class="img-fluid" alt="Responsive image">
+                </p>
+                </div>
+              </div>
+              <div class="card p-2">
+                <div class="card-body">
+                  <p class="card-text">
+                    <p>4. url창에 HTTP GET 요청을 서버로 보내는 주소인 'http://[IPv4주소]:1880/update-sensor?temperature=24.37' 를 입력하고 디버그가 되는지 확인</p>
+                    <img src="https://github.com/sunbang123/Smart_device/assets/93497158/b6e708e2-e3fb-4a59-99f5-d611d1fd82fa" class="img-fluid" alt="Responsive image">
+                    <p>status code 200과 온도값 24.37이 전송되면 성공!</p>
+                    <img src="https://github.com/sunbang123/Smart_device/assets/93497158/32f882da-45a6-49f0-b5e2-9bb725781309" class="img-fluid" alt="Responsive image">
+                    <p>status code 200이 안뜰때, 브라우저 캐시를 삭제해줌.</p>
+                </p>
+                  </div>
+                </div>
+              </div>
+    </div>
+
+                    <hr class="mb-5">
+                    <div id="End" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">실습을 통해 느낀점</h4>
+                            <p>- Node-Red를 활용해 HTTP GET 요청을 보내는 방법을 배움.</p>
+                            <p>- HTTP GET는 서버로 데이터를 전송하기 위해 많이 쓰는 방법으로 디바이스에서 모은 데이터를 서버로 보내고, 원격 서버에서 그 데이터를 처리하는 방법을 배움.</p>
+                            <p>- 이런 과정을 통해 Node-Red, HTTP GET 요청, 서버와의 통신에 대한 기본적인 이해와 경험을 쌓을 수 있었음.</p>
+                        </div>
+                    </div>
+                    <hr class="mb-3">
+                    <a style="text-align: left;" href="../day10/index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                            <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                          </svg>
+                        Previous
+                    </a>
+                    <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+                    <a style="text-align: right;" href="../day12/index.html">
+                        Next
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                          </svg>
+                    </a>
+                </div>
+            </div>
+            </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="../../js/scripts.js"></script>
+    </body>
+</html>

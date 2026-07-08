@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>스마트디바이스 실습4주차</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../../css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="pt-sm-5 navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <div id="nav-top">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html">portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#bread-board">브래드보드 연결</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#diagram">실습</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experiment">저항 실험</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experiment-result">실험 결과</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section pb-1" id="about">
+                <div class="resume-section-content">
+                    <h3 class="mb-0">
+                        스마트 디바이스 실습 4주차
+                    </h3>
+                    <div class="subheading mb-3">
+                        ESP32 LED 2개 Blink(점멸) 실습
+                    </div>
+                    <p class="lead">
+                        한세대학교 컴퓨터공학과 22학번 김선영
+                    </p>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Experience-->
+            <section class="resume-section" id="experience">
+                <div class="resume-section-content">
+                    <h3 class="mb-4">브래드보드</h3>
+                    <div id="bread-board" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <div class="card-group">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <p class="card-text">
+                                        <h5 class="mb-3">브래드보드의 특징과 회로를 설계하는 방법</h5>
+                                        <ol style="list-style-type:inherit">
+                                            <li>브래드보드: 저항, 커패시터, 다이오드 등의 다양한 부품을 수용할 수 있는 구멍이 있는 보드</li>
+                                            <li>프로토 타입 회로를 만들 때 쓰이며 회로를 빠르게 수정할 때 유용함.</li>
+                                            <li>브래드보드는 일반적으로 여러 가지 크기의 전자 부품을 수용할 수 있어서 많은 종류의 프로토타입을 만들 수 있음.</li>
+                                            (ex) LED 회로, 버튼 스위치 회로, 센서 회로, 아두이노 프로토타입
+                                            <li>점퍼선: 브래드보드의 접촉점들을 연결하는데 사용되는 전선</li>
+                                            <li>브래드보드의 접촉점에 삽입되기 때문에 전기적인 연결이 완료되며 부품을 녹여 연결하는 솔더링이 필요하지 않음.</li>
+                                        </ol>
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="card">
+                                  <div class="card-body">
+                                    <p class="card-text">
+                                        <h5 class="mb-3">연결 방법</h5>
+                                        <ol style="list-style-type:inherit">
+                                            <li>1-1. 브래드보드 위의 연결점 구조 파악</li>
+                                            <li>- 행과 열의 구성: 브래드보드는 일렬로 배치된 행과 열의 구성으로 되어 있음.</li>
+                                            <li>- 행과 열은 특정 규칙에 따라 연결되어 있어, 전자 부품을 브래드보드에 꽂으면 자동으로 연결되는 구조를 가지고 있음.</li>
+                                            <li>1-2. 전원 공급 연결: 전원 공급 라인에 USB를 연결하고, 전원과 그라운드를 이용해 회로를 구성함.</li>
+                                            <li>1-3. 전자 부품 연결: 전자 부품은 브래드보드의 연결점에 꽂음.</li>
+                                            <li>1-4. 회로 구성: 전원 공급 연결과 전자 부품 연결을 이용해 회로를 구성함.</li>
+                                            <li>1-5. 전원 공급 종료: 실험이 끝난 후에는 전원 공급을 종료함.</li>
+                                        </ol>                                                    
+                                    </p>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mb-5">
+
+                    <div id="diagram" class="d-flex flex-column flex-md-row justify-content-between mb-5 mt-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-5">실습 : ESP32 LED 2개 Blink(점멸) 실험</h3>
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-body">
+                                      <p class="card-text">
+                                        <h4 class="mb-3">회로도</h4>
+                                        <img src="https://github.com/sunbang123/Smart_device/assets/93497158/1bc3daa6-049c-4635-b499-699ec2266f56"  class="img-fluid" alt="Responsive image">
+                                      </p>
+                                    </div>
+                                  </div>
+
+                                <div class="card">
+                                    <p class="card-text">
+                                        <div class="card-body">
+                                            <h5>코드</h5>
+                                    <pre>
+<code>
+    int led1 = 22;  // LED 22 핀 번호
+    int led2 = 23;  // LED 23 핀 번호
+    
+    void setup() {
+        pinMode(led1, OUTPUT);
+        pinMode(led2, OUTPUT);
+    }
+    
+    void loop() {
+        digitalWrite(led1, HIGH);
+        digitalWrite(led2, LOW);
+        delay(1000);
+        digitalWrite(led1, LOW);
+        digitalWrite(led2, HIGH);
+        delay(1000);
+    }
+</code>
+                                    </pre>        
+                                </p>
+                                </div>
+                                </div>
+                                <div class="card">
+                                  <div class="card-body">
+                                    <p class="card-text">
+                                        <h5>사용된 함수</h5>
+                                        <p class="pt-1">- pinMode(): led1과 led2 핀을 출력 모드로 설정</p>
+                                        <p class="pt-1">- digitalWrite(): led1 핀을 HIGH(켜짐)으로 설정하고 led2 핀을 LOW(꺼짐)으로 설정</p>
+                                        <p class="pt-1">- delay(1000) : 1초 지연</p>            
+                                    </p>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="result" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">실행 결과</h4>
+                            <video controls poster="videos/Clouds.png"  class="img-fluid" alt="Responsive image">
+                                <source src="https://user-images.githubusercontent.com/93497158/228115484-1b1b59a9-b2a2-464b-9e40-677994275d1e.mp4" type="video/mp4">
+                                <strong>Your browser does not support the video tag.</strong>
+                            </video>
+                        </div>
+                    </div>
+                    <hr class="m-0" />
+
+                    <div id="experiment" class="d-flex flex-column flex-md-row justify-content-between mb-5 mt-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-5">저항 실험: 저항값이 다른 저항을 연결하면 LED 밝기에 차이가 있을까?</h3>
+
+                            <h5 class="mb-3">준비물</h5>
+                            <ol style="list-style-type:inherit">
+                                <li>- 저항1(주황색, 주황색, 갈색, 금색)</li>
+                                <li>- 저항2(빨간색, 보라색, 검은색, 검은색, 갈색)</li>
+                                <li>- 저항3(갈색, 빨간색, 갈색, 금색)</li>
+                            </ol>
+                            <p class="pt-1">저항 계산법: 색상코드(4밴드, 5밴드, 6밴드)</p>
+                            <img src="https://user-images.githubusercontent.com/93497158/228117223-5ddbf6cc-5546-4bc7-a6dc-27e4744d3de8.gif" class="img-fluid" alt="Responsive image">
+                            <ol style="list-style-type:inherit">
+                                <li class="pt-4">4 자리 색상 코드는 첫 번째 띠와 두 번째 띠는 두 자리의 숫자를 나타내고, 세 번째 띠는 배율, 네 번째 띠는 오차를 나타내는 코드.</li>
+                                <li>보통 앞뒤를 구별하기 위해, 세 번째 띠까지 간격이 좁고, 네 번째 띠는 간격이 넓게 표시 함.</li>
+                                <li>계산법 예) 빨강, 빨강, 검정, 금색 : 22 x 1 = 22Ω, 오차 ±5%</li>
+                            </br>
+                                <li>저항1: 주황색, 주황색, 갈색, 금색 => 33 x 10 = 330Ω, 오차 ±5%</li>
+                                <li>저항2: 빨간색, 보라색, 검은색, 검은색, 갈색 => 270 x 1 = 270Ω, 오차 ±270%</li>
+                                <li>저항3: 갈색, 빨간색, 갈색, 금색 => 12 x 10 = 120Ω, 오차 ±5%</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div id="experiment-result" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">실험 결과</h4>
+                            <div class="card-group">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <img src="https://user-images.githubusercontent.com/93497158/228115695-70f5a5fd-83a4-44ac-aee8-3497982687b5.jpg" class="img-fluid" alt="Responsive image">
+                                    <p class="card-text">
+                                        - 330Ω
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img src="https://user-images.githubusercontent.com/93497158/228115702-8c3928ba-9d42-4b35-9b82-82399b06eb9c.jpg"  class="img-fluid" alt="Responsive image">
+                                        <p class="card-text">
+                                          - 270Ω
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div class="card">
+                                    <div class="card-body">
+                                        <img src="https://user-images.githubusercontent.com/93497158/228115686-8dd3d3fa-8c30-45c4-a496-91f7b5c9c312.jpg"  class="img-fluid" alt="Responsive image">
+                                        <p class="card-text">
+                                          - 120Ω
+                                      </p>
+                                    </div>
+                                  </div>  
+                            </div>
+
+                            <ol class="pt-4" style="list-style-type:inherit">
+                                <li>옴의 법칙[I = V/R, <= V(전압), I(전류), R(저항) 전류는 저항에 비례하며 전압에 반비례]에 의해 저항이 클수록 전압은 낮아지고 전류는 조금 흐르게 됨.</li>
+                                <li>반대로 저항이 작을수록 전압이 높아지고 전류는 많이 흐르게 되서 120Ω 저항을 연결한 LED의 밝기가 가장 센 것을 볼 수 있음</li>
+                                <li>LED 밝기 120Ω > 270Ω > 330Ω</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <hr class="mb-5">
+                    <div id="End" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">실습을 통해 느낀점</h4>
+                            <p>- LED 2개 Blink 프로젝트를 진행하면서, 전기회로의 기본 원리와 옴의 법칙에 대해 배움.</p>
+                            <p>- 특히, 저항이 클수록 전압은 낮아지고 전류는 적게 흐르고, 저항이 작을수록 전압은 높아지고 전류는 많이 흐르는 것을 확인할 수 있었음.</p>
+                            <p>- 이를 통해 전기회로 설계에서는 적절한 저항 값을 선택하는 것이 중요하다는 것을 깨달았음.</p>
+                        </div>
+                    </div>
+
+                    <hr class="mb-3">
+                    <a style="text-align: left;" href="../day3/index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                            <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                          </svg>
+                        Previous
+                    </a>
+                    <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+                    <a style="text-align: right;" href="../day5.1/index.html">
+                        Next
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                          </svg>
+                    </a>
+
+                </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="../../js/scripts.js"></script>
+    </body>
+</html>

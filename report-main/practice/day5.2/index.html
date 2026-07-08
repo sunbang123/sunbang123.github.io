@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>스마트디바이스 실습5.2주차</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../../css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="pt-sm-5 navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <div id="nav-top">
+
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html">portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#smart-device">스마트디바이스란?</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Sum">요약</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#End">배운점</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section pb-1" id="about">
+                <div class="resume-section-content">
+                    <h3 class="mb-0">
+                        스마트 디바이스 실습 5.2주차
+                    </h3>
+                    <div class="subheading mb-3">
+                        ESP32 LCD 주소 찾기
+                    </div>
+                    <p class="lead">
+                        한세대학교 컴퓨터공학과 22학번 김선영
+                    </p>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Experience-->
+            <section class="resume-section" id="experience">
+                <div class="resume-section-content mb-5">
+                    <h3 class="mb-4">실습 보고서</h3>
+
+                    <h5 class="mb-3">실습 목차</h5>
+                    <ol>
+                        <li>온습도를 Serial Monitor에 출력하기</li>
+                        <li>LCD에 Hello world 출력하기</li>
+                        <li>온습도를 LCD에 출력하기</li>
+                    </ol>
+                    <hr class="mb-5">
+                    <div id="smart-device" class="d-flex flex-column flex-md-row justify-content-between mb-5 mt-5">
+                    <div class="flex-grow-1">
+                        <h4 class="mb-3">I2C</h4>
+                        <img class="img-fluid mb-5" src="https://user-images.githubusercontent.com/93497158/233612586-c6fa95ce-d572-4bb4-b1da-12564ab3d529.png">
+                        <div class="card-group">
+                            <div class="card">
+                                <div class="card-body">
+                                <p class="card-text">
+                                    <h6 class="mb-3">I2C 통신</h6>
+                                    <ol style="list-style-type:inherit">
+                                        <li>I2C 통신은 마치 두 사람이 대화하는 것과 비슷함. 각각의 사람은 이름과 주소가 있고 이 이름과 주소를 통해 상대방과 통신을 할 수 있음.</li>
+                                        <li>마스터는 기준 클럭(SCL)을 생성하고, 이 클럭에 맞춰 데이터(SDA)를 전송하고 수신함. 각 슬레이브는 해당 주소를 가진 디바이스만 응답하는 방식으로 서로 데이터를 주고 받음. Arduino와 LCD 모듈이 연결되어 있다면, Arduino는 LCD 모듈의 주소를 알고 있음.</li>
+                                    </ol>
+
+                            </p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                <p class="card-text">
+                                    <h6 class="mb-3">Arduino I2C</h6>
+                                    <ol style="list-style-type:inherit">
+                                          <li>아두이노에서는 내장된 I2C 기능,
+                                            SDA 핀은 A4(아날로그 4번핀), SCL 핀은 A5(아날로그 5번핀)으로 설정되어 있음. 100kHz의 기준 클럭으로 작동함. Wire 라이브러리를 사용하면 I2C 통신을 쉽게 구현할 수 있음.</li>
+                                            <li>관련 함수 : begin(), beginTransmission(), write(), read(), requestFrom(), available(), onReceive(), onRequest(), endTransmission()</li>
+                                        </ol>
+                            </p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <h6 class="mb-3">LCD I2C</h6>
+                                        <ol style="list-style-type:inherit">
+                                            <li>Arduino가 LCD 모듈에게 명령을 보낼 때, Arduino는 LCD 모듈의 주소를 사용하여 통신합함. LCD 모듈은 주소를 확인하고 명령을 수행함. 여러 개의 장치들이 하나의 버스를 공유하며 통신할 수 있고 I2C 통신은 두 장치 사이에 데이터를 전송하는 데에 사용되며, 한 번에 여러 개의 장치와 통신할 수 있음.</li>
+                                            
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <hr class="mt-2">
+                    <div id="diagram" class="d-flex flex-column flex-md-row justify-content-between mb-5 mt-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-4">실습 : LCD 주소 찾기 실습</h3>
+                            <p class="mb-3">준비물 : LCD, ESP32, 브래드보드, 점퍼 4개</p>
+
+                            <h5>설계도</h5>
+
+                            <img class="img-fluid" src="https://github.com/sunbang123/Smart_device/assets/93497158/384faf73-f4ad-4d62-8e9d-f81021f9d7a4"/>
+                            <h5 class="mt-3">순서</h5>
+                            <ol>
+                              <li>아두이노 라이브러리에서 LiquidCrystal by Arduino,Adafruit를 설치함.</li>
+                              <li>LCD에 연결한 점퍼(암-수)을 GND핀 - GND, VCC핀 - 5V, SDA핀 - PIN 21, SCL핀 - PIN 22에 연결함.</li>
+                              <li>코드를 컴파일하고 아두이노 보드에 업로드하여 실행한 후, LCD 패널에 "Hello world"가 출력되는지 확인함.</li>
+                          </ol>          
+                            <div class="card-group">
+                                  <div class="card">
+                                    <p class="card-text">
+                                        <div class="card-body">
+                                            <h5>코드</h5>
+                                    <pre>
+<code>
+    #include &lt;LiquidCrystal_I2C.h>
+    #include &lt;Wire.h>
+    
+    // set the LCD number of columns and rows
+    int lcdColumns = 16;
+    int lcdRows = 2;
+    // LCD 주소, 열 및 행 수 설정
+    // 표시 주소를 모를 경우 I2C 스캐너 스케치를 실행합니다
+    LiquidCrystal_I2C lcd(0x27, lcdColumns, lcdRows);  
+    
+    void setup()
+    {
+        Wire.begin();
+    
+        Serial.begin(9600);
+        while (!Serial);           
+        Serial.println("\nI2C Scanner");
+        // initialize LCD
+        lcd.init();
+        // turn on LCD backlight                      
+        lcd.backlight();
+    }
+    
+    void loop()
+    {
+        byte error, address;
+        int nDevices;
+        Serial.println("Scanning...");
+        nDevices = 0;
+        lcd.print("Scanning...");
+        delay(1000);
+        lcd.clear(); 
+        
+        // lcd setCursor
+        // set cursor to first column, first row
+        lcd.setCursor(0, 0);
+    
+        if (nDevices == 0)
+        Serial.println("No I2C devices found\n");
+        else
+        Serial.println("done\n");
+    
+    
+        for(address = 1; address &lt; 127; address++ ) 
+        {
+        Wire.beginTransmission(address);
+        error = Wire.endTransmission();
+    
+        if (error == 0)
+        {
+            Serial.print("I2C device found at address 0x");
+            lcd.setCursor(0,1);
+            lcd.print("0x");
+            if (address&lt;16){
+            Serial.print("0");
+            lcd.print("0");
+            }
+            Serial.print(address,HEX);
+            Serial.println("  !");
+            lcd.print(address,HEX);
+            delay(2000);
+            lcd.clear();
+            nDevices++;
+        }
+        else if (error==4) 
+        {
+            Serial.print("Unknow error at address 0x");
+            lcd.setCursor(0,1);
+            lcd.print("0x");
+            if (address&lt;16) {
+            Serial.print("0");
+            lcd.print("0");
+            }
+            Serial.println(address,HEX);
+            lcd.print(address,HEX);
+            delay(2000);
+            lcd.clear(); 
+        }    
+        }
+    }
+</code>
+                                    </pre>        
+                                </p>
+                                </div>
+                            </div>
+                        </div>
+                        <h5 class="mt-5">코드 구성 요소</h5>
+                        <ol style="list-style-type:inherit">
+                            <li>LiquidCrystal_I2C.h 라이브러리를 포함함</li>
+                            <li>LCD에 필요한 행 및 열 수를 정의함.</li>
+                            <li>LiquidCrystal_I2C 객체를 생성하여 LCD의 I2C 주소와 크기를 설정함.</li>
+                            <li>setup() 함수 내부는 Wire 및 Serial 통신을 초기화하고, LCD를 초기화하고 백라이트를 켬</li>
+                            <li>loop() 함수 내부에서는 I2C 주소를 검색함. 검색된 디바이스의 수와 각 주소를 Serial 모니터 및 LCD에 출력함.</li>
+                            <li>Wire.beginTransmission() 함수를 사용하여 주소를 전송하고, Wire.endTransmission() 함수를 사용하여 에러를 확인함.</li>
+                            <li>에러가 발생하지 않은 경우, 디바이스를 찾은 것으로 간주하고 검색된 디바이스의 수를 증가시킴.</li>
+                            <li>검색 중 에러가 발생한 경우, 에러 코드를 Serial 모니터 및 LCD에 출력함.</li>
+                            <li>검색이 완료되면, Serial 모니터에 검색된 디바이스의 수가 표시됨.</li>
+                        </ol>   
+                        </div>
+                    </div>
+                    <div id="result" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">실행 결과</h4>
+                            <video controls poster="videos/Clouds.png"  class="img-fluid" alt="Responsive image">
+                                <source src="https://user-images.githubusercontent.com/93497158/233608659-2111243e-9491-4d69-a5c2-63b1c8f04059.mp4" type="video/mp4">
+                                <strong>Your browser does not support the video tag.</strong>
+                            </video>
+                        </div>
+                    </div>
+                    <hr class="mb-5">
+                    <div id="End" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">실습을 통해 느낀점</h4>
+                            <p>- I2C 통신을 이용하여 연결된 모든 장치들의 주소를 스캔할 수 있음 -> 프로젝트를 구성하거나 문제 해결</p>
+                            <p>- LiquidCrystal_I2C 라이브러리를 사용하여 I2C 통신을 이용하여 LCD 화면에 출력하는 방법을 배움 (I2C 통신과 LCD 화면 출력에 대한 이해)</p>
+                        </div>
+                    </div>
+                    <hr class="mb-3">
+                    <a style="text-align: left;" href="../day5.1/index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                            <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                          </svg>
+                        Previous
+                    </a>
+                    <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+                    <a style="text-align: right;" href="../day6/index.html">
+                        Next
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                          </svg>
+                    </a>
+                </div>
+            </div>
+            </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="../../js/scripts.js"></script>
+    </body>
+</html>

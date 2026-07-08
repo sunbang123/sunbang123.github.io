@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>스마트디바이스 실습15.1주차</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../../css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="pt-sm-5 navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <div id="nav-top">
+
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html">portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#smart-device">스마트디바이스란?</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Sum">요약</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#End">배운점</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section pb-1" id="about">
+                <div class="resume-section-content">
+                    <h3 class="mb-0">
+                        스마트 디바이스 실습 15.1주차
+                    </h3>
+                    <div class="subheading mb-3">
+                        AWS MQTT 실습
+                    </div>
+                    <p class="lead">
+                        한세대학교 컴퓨터공학과 22학번 김선영
+                    </p>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Experience-->
+            <section class="resume-section" id="experience">
+                <div class="resume-section-content mb-5">
+                    <h3 class="mb-4">AWS 보안 서비스</h3>
+                    <ol>
+                        <li>AWS 인증서</li>
+                        <br>
+
+                        <p>AWS 인증서는 AWS IoT 서비스를 사용하여 디바이스를 인증하는 데 사용되는 디지털 인증서</p>
+
+                        <p>공개키/개인키 쌍으로 구성되어 있으며, 보안 소켓 계층(SSL/TLS) 프로토콜을 통해 디바이스와 AWS IoT 서비스 간의 안전한 통신을 제공</p>
+                        <br>
+                        <li>AWS 정책</li>
+<br>
+                        <p>AWS 정책은 AWS 리소스와 서비스에 대한 액세스 제어를 정의하는 규칙의 집합</p>
+
+                        <p>AWS Identity and Access Management (IAM)을 통해 구성할 수 있음.</p>
+
+                        <p>JSON(JavaScript Object Notation) 형식으로 작성됨.</p>
+
+                        <p>특정 사용자, 그룹, 또는 역할에 대한 허용되거나 거부되는 작업과 리소스를 지정함.</p>
+
+                        <p>특정 작업에 대한 권한을 부여하거나 제한하여 보안을 강화할 수 있음.</p>
+
+                    </ol>
+                    <hr class="mt-5">
+
+                    <div id="diagram" class="d-flex flex-column flex-md-row justify-content-between mb-3 mt-5">
+                        <div class="flex-grow-1">
+                            <h3>실습1 : ESP32 - AWS MQTT 연결</h3>
+                            <img src="https://github.com/sunbang123/Smart_device/assets/93497158/8be23b56-9329-4930-91aa-645d6fbec1f4" class="img-fluid" alt="Responsive image">
+                            <br><br>
+                            <h5 class="mt-3">실습 순서</h5>
+                                <ol>
+                                    <li><a href="https://us-east-2.console.aws.amazon.com/console/home?region=us-east-2">AWS 콘솔</a>에 접속, 로그인</li>
+                                    <br><br>
+                                    <li>IoT Core 서비스 접속</li>
+                                    모든 서비스 -> 사물인터넷 -> IoT Core
+                                    <br><br>
+                                    <li>사물 생성</li>
+                                    관리 -> 사물 을 클릭, 사물 생성
+                                    <br><br>
+                                    <li>인증키 다운로드</li>
+                                    <img src="https://github.com/sunbang123/Smart_device/assets/93497158/a86185eb-2fdd-40d2-8ce2-9eabfca70288"  class="img-fluid" alt="Responsive image">
+                                    <br><br>
+
+                                    <li>정책 생성, 연결</li>
+                                    보안 -> 정책 탭, 정책 생성 버튼을 클릭
+<br>
+                                    관리 -> 사물 -> YourThingName -> 인증서 에서 인증서 ID를 클릭
+                                    <br>
+                                    <img src="https://github.com/sunbang123/Smart_device/assets/93497158/10ac7539-4d9d-4a9f-97d4-7ed6efadde75"  class="img-fluid" alt="Responsive image">
+                                    <br><br>
+                                    <li>라이브러리 다운</li>
+                                    아두이노 라이브러리 관리 에 들어가서 ArduinoJson 과 lwmqtt 를 검색해 다운
+                                    <br><br>
+                                    <li>코드 실행, 시리얼 모니터 확인</li>
+                                </ol>
+                                </div>
+                            </div>
+
+                                <hr class="mt-5"/>
+                        <div class="flex-grow-1">
+                            <h3 class="mt-4 mb-4">코드</h3>
+                            <img src="https://github.com/sunbang123/Smart_device/assets/93497158/51b4e51d-09a2-450c-9b99-f19f48eabc4b"  class="img-fluid" alt="Responsive image">
+                            <br>
+                            secrets.h파일 생성
+                            <br>
+                            <br><br>
+                            아래는 코드 내용.
+                            <br><br>
+
+                        <pre>
+                            <code>
+    #include &lg;pgmspace.h>
+
+    #define SECRET
+    #define THINGNAME "[사물 이름]"
+    
+    const char WIFI_SSID[] = "[와이파이 이름]";
+    const char WIFI_PASSWORD[] = "[와이파이 비밀번호]";
+    const char AWS_IOT_ENDPOINT[] = "[디바이스 데이터 endpoint].amazonaws.com";  //amazon endpoint
+    
+    // Amazon Root CA 1
+    static const char AWS_CERT_CA[] PROGMEM = R"EOF(
+    -----BEGIN CERTIFICATE-----
+    [CA1 Key]
+    -----END CERTIFICATE-----
+    )EOF";
+    
+    // Device Certificate
+    static const char AWS_CERT_CRT[] PROGMEM = R"KEY(
+    -----BEGIN CERTIFICATE-----
+    [Device 인증서]
+    -----END CERTIFICATE-----
+    )KEY";
+    
+    // Device Private Key
+    static const char AWS_CERT_PRIVATE[] PROGMEM = R"KEY(
+    -----BEGIN RSA PRIVATE KEY-----
+    [Private key]
+    -----END RSA PRIVATE KEY-----
+    )KEY";
+    메인 코드
+    #include "secrets.h"
+    #include &lg;WiFiClientSecure.h>
+    #include &lg;MQTTClient.h>
+    #include &lg;ArduinoJson.h>
+    #include "WiFi.h"
+    
+    // The MQTT topics that this device should publish/subscribe
+    #define AWS_IOT_PUBLISH_TOPIC   "esp32/pub"
+    #define AWS_IOT_SUBSCRIBE_TOPIC "esp32/sub"
+    
+    WiFiClientSecure net = WiFiClientSecure();
+    MQTTClient client = MQTTClient(256);
+    
+    void connectAWS()
+    {
+        WiFi.mode(WIFI_STA);
+        WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+    
+        Serial.println("Connecting to Wi-Fi");
+    
+        while (WiFi.status() != WL_CONNECTED){
+        delay(500);
+        Serial.print(".");
+        }
+    
+        // Configure WiFiClientSecure to use the AWS IoT device credentials
+        net.setCACert(AWS_CERT_CA);
+        net.setCertificate(AWS_CERT_CRT);
+        net.setPrivateKey(AWS_CERT_PRIVATE);
+    
+        // Connect to the MQTT broker on the AWS endpoint we defined earlier
+        client.begin(AWS_IOT_ENDPOINT, 8883, net);
+    
+        // Create a message handler
+        client.onMessage(messageHandler);
+    
+        Serial.print("Connecting to AWS IOT");
+    
+        while (!client.connect(THINGNAME)) {
+        Serial.print(".");
+        delay(100);
+        }
+    
+        if(!client.connected()){
+        Serial.println("AWS IoT Timeout!");
+        return;
+        }
+    
+        // Subscribe to a topic
+        client.subscribe(AWS_IOT_SUBSCRIBE_TOPIC);
+    
+        Serial.println("AWS IoT Connected!");
+    }
+    
+    void publishMessage()
+    {
+        StaticJsonDocument&lg;200> doc;
+        doc["time"] = millis();
+        doc["sensor_a0"] = analogRead(0);
+        char jsonBuffer[512];
+        serializeJson(doc, jsonBuffer); // print to client
+    
+        client.publish(AWS_IOT_PUBLISH_TOPIC, jsonBuffer);
+    }
+    
+    void messageHandler(String &topic, String &payload) {
+        Serial.println("incoming: " + topic + " - " + payload);
+    
+    //  StaticJsonDocument&lg;200> doc;
+    //  deserializeJson(doc, payload);
+    //  const char* message = doc["message"];
+    }
+    
+    void setup() {
+        Serial.begin(9600);
+        connectAWS();
+    }
+    
+    void loop() {
+        publishMessage();
+        client.loop();
+        delay(1000);
+    }
+                            </code></pre>
+    </div>
+    
+    <hr class="mt-5"/>
+<div class="flex-grow-1">
+        <h3>실습 시행착오 및 해결방법</h3>
+        <br>
+        <img src="https://github.com/sunbang123/Smart_device/assets/93497158/e8ff2752-f474-4837-9297-c85f6cdeb07e" class="img-fluid width-400" alt="Responsive image">
+        <br>
+        > 원인 불분명한 문제로 결과가 작동하지 않음.
+        <br><br>
+            <ol>
+                <li>핫스팟으로 실행했을때 연결이 안되는 상황 발생.</li>
+                집 와이파이(5G/2G)를 시도해서 연결해봄.
+                2G에서 연결이 되는것을 확인.
+                <br><br>
+                <li>AWS IoT연결이 안되는 상황 발생 connecting to AWS IOT 이후에 . 만 출력됨.</li>
+                #define THINGNAME 뒤에 사물 이름을 적지 않아서 연결이 안된 것을 확인.
+                <pre><code>
+    #define THINGNAME "ESP32"
+                </code></pre>
+                이후에도 계속 연결이 안되서 #define SECRET 뒤에 코드를 작성함.
+                <br><br>
+                <li>Acess key 발급</li>
+                AWS Management -> 내 보안 자격 증명 -> 보안 자격 증명 -> 액세스 키 (Access keys) 섹션 -> 액세스 키 만들기 클릭.
+                <img src="https://github.com/sunbang123/Smart_device/assets/93497158/6a8646f8-fd9f-4da9-bee1-f5c3f2657ce5"  class="img-fluid" alt="Responsive image">
+                <br><br>
+                <pre><code>
+    #define SECRET "{\"aws_key\":\"[액세스 키 ID]\",\"aws_secret\":\"[시크릿 액세스 키]\",\"aws_region\":\"us-east-2\",\"thing_name\":\"esp32\"}"
+                </code></pre>
+                <br><br>
+                <li>재시도 결과</li>
+                <img src="https://github.com/sunbang123/Smart_device/assets/93497158/97dd8a91-d4ac-4015-b45e-f4eb1eb5aa7b"  class="img-fluid" alt="Responsive image">
+                <br><br>
+                #define SECRET 은 원래대로 돌려놓음.
+                <br>
+
+                설정에서 보안 정보를 IoTSecurityPolicy_TLS12_1_0_2016_01로 바꿔줌.
+                <br>
+                
+                다른 부분에 이상이 없으므로 wifi를 핫스팟으로 변경해서 재시도.
+                <br>                <br>
+
+                <li>재시도 결과</li>
+                <img src="https://github.com/sunbang123/Smart_device/assets/93497158/b4d8f0ea-edc9-4a17-b85b-514e14173772"  class="img-fluid width-400" alt="Responsive image">
+
+                <br>
+
+                연결 성공!
+                <br>
+            </ol>
+        </div>
+        <hr class="mt-5"/>
+                      <div class="flex-grow-1">
+                        <h3 class="mb-4">실습2 : AWS에 온습도값 보내기.</h3>
+                        <h5 class="mt-3">실습 과정</h5>
+                            <ol style="list-style-type:inherit">
+                                <li>코드 업로드, 시리얼 모니터 확인</li>
+                                <li>테스트창에서 MQTT 연결 확인.</li>
+                                <br>
+
+                                <img width="500px" src="https://github.com/sunbang123/Smart_device/assets/93497158/5ba04b24-9a06-4293-98c9-b10ef4e8630d" class="img-fluid width-400" alt="Responsive image">
+                              <br>                              <br>
+
+                                <li>온습도값이 출력되는지 확인.</li>
+                                <img width="500px" src="https://github.com/sunbang123/Smart_device/assets/93497158/3fa699eb-fe76-409f-8cab-8615dba233cf" class="img-fluid" alt="Responsive image">
+                                <br><br>
+                                온습도값 보내기 성공!
+                            </ol>
+                            </div>
+        <div class="flex-grow-1">
+            <h3 class="mt-4 mb-4">코드</h3>
+
+        <pre>
+            <code>
+    #include "secrets.h"
+    #include &lg;WiFiClientSecure.h>
+    #include &lg;MQTTClient.h>
+    #include &lg;ArduinoJson.h>
+    #include &lg;Adafruit_Sensor.h>
+    #include &lg;DHT.h>
+    #include &lg;WiFi.h>
+    
+    // AWS IoT 설정
+    #define AWS_IOT_PUBLISH_TOPIC   "esp32/pub"
+    #define AWS_IOT_SUBSCRIBE_TOPIC "esp32/sub"
+    
+    // DHT11 센서 설정
+    #define DHT_PIN 13       // DHT11 데이터 핀
+    #define DHT_TYPE DHT11  // DHT11 센서
+    
+    WiFiClientSecure net = WiFiClientSecure();
+    MQTTClient client = MQTTClient(256);
+    
+    DHT dht(DHT_PIN, DHT_TYPE);
+    
+    void connectAWS()
+    {
+        WiFi.mode(WIFI_STA);
+        WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+    
+        Serial.println("Connecting to Wi-Fi");
+    
+        while (WiFi.status() != WL_CONNECTED){
+        delay(500);
+        Serial.print(".");
+        }
+    
+        // Configure WiFiClientSecure to use the AWS IoT device credentials
+        net.setCACert(AWS_CERT_CA);
+        net.setCertificate(AWS_CERT_CRT);
+        net.setPrivateKey(AWS_CERT_PRIVATE);
+    
+        // Connect to the MQTT broker on the AWS endpoint we defined earlier
+        client.begin(AWS_IOT_ENDPOINT, 8883, net);
+    
+        // Create a message handler
+        client.onMessage(messageHandler);
+    
+        Serial.print("Connecting to AWS IoT");
+    
+        while (!client.connect(THINGNAME)) {
+        Serial.print(".");
+        delay(100);
+        }
+    
+        if(!client.connected()){
+        Serial.println("AWS IoT Timeout!");
+        return;
+        }
+    
+        // Subscribe to a topic
+        client.subscribe(AWS_IOT_SUBSCRIBE_TOPIC);
+    
+        Serial.println("AWS IoT Connected!");
+    }
+    
+    void publishMessage(float temperature, float humidity)
+    {
+        StaticJsonDocument&lg;200> doc;
+        doc["temperature"] = temperature;
+        doc["humidity"] = humidity;
+        char jsonBuffer[512];
+        serializeJson(doc, jsonBuffer);
+    
+        client.publish(AWS_IOT_PUBLISH_TOPIC, jsonBuffer);
+    }
+    
+    void messageHandler(String &topic, String &payload) {
+        Serial.println("incoming: " + topic + " - " + payload);
+    }
+    
+    void setup() {
+        Serial.begin(9600);
+        connectAWS();
+        dht.begin();
+    }
+    
+    void loop() {
+        // 온습도 데이터 읽기
+        float temperature = dht.readTemperature();
+        float humidity = dht.readHumidity();
+        Serial.println(temperature);
+        Serial.println(humidity);
+        // 유효한 값인지 확인
+        // if (isnan(temperature) || isnan(humidity)) {
+        //   Serial.println("Failed to read from DHT sensor!");
+        //   return;
+        // }
+    
+        // 온습도 데이터를 AWS IoT에 전송
+        publishMessage(temperature, humidity);
+    
+        // AWS IoT 클라이언트 루프
+        client.loop();
+    
+        delay(1000);
+    }
+            </code></pre>
+</div>
+                    <hr class="mb-5">
+                    <div id="End" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">느낀점</h4>
+                            <ol style="list-style-type:inherit">
+                                <li>첫번째 시도때 집 와이파이와 핫스팟 모두 사용해봤지만 connected가 뜨지 않아서 실습을 끝맺지 못한 점이 아쉬웠음.</li>
+                                <li>재시도 하면서 사물 이름을 입력하지 않은 것 처럼 코드 실수로 연결이 안될수 있다는 점을 앞으로 더 유의하자.</li>
+                                <li>aws 연결에 필요한 기초 개념(인증서, 보안)을 실습을 통해서 체험할 수 있어서 만족.</li>
+                                <li>실습을 통해 개념에 대한 이해가 쌓일 수 있음.</li>
+                            </ol>
+                        </div>
+
+                        </div>
+                    <hr class="mb-3">
+                    <a style="text-align: left;" href="../day14.2/index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                            <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                          </svg>
+                        Previous
+                    </a>
+                    <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+                    <a style="text-align: right;" href="../day15.2/index.html">
+                        Next
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                          </svg>
+                    </a>
+                </div>
+            </div>
+            </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="../../js/scripts.js"></script>
+    </body>
+</html>

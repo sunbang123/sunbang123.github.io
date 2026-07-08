@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>스마트디바이스 실습5.1주차</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../../css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="pt-sm-5 navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <div id="nav-top">
+
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html">portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#smart-device">스마트디바이스란?</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Sum">요약</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#End">배운점</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section pb-1" id="about">
+                <div class="resume-section-content">
+                    <h3 class="mb-0">
+                        스마트 디바이스 실습 5.1주차
+                    </h3>
+                    <div class="subheading mb-3">
+                        ESP32 온습도센서(DHT 11)와 액정 디스플레이(LCD)
+                    </div>
+                    <p class="lead">
+                        한세대학교 컴퓨터공학과 22학번 김선영
+                    </p>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Experience-->
+            <section class="resume-section" id="experience">
+                <div class="resume-section-content mb-5">
+                    <h3 class="mb-4">실습 보고서</h3>
+
+                    <h5 class="mb-3">실습 목차</h5>
+                    <ol>
+                        <li>온습도를 Serial Monitor에 출력하기</li>
+                        <li>LCD에 Hello world 출력하기</li>
+                        <li>온습도를 LCD에 출력하기</li>
+                    </ol>
+                    <hr class="mb-5">
+                    <div id="smart-device" class="d-flex flex-column flex-md-row justify-content-between mb-5 mt-5">
+                    <div class="flex-grow-1">
+                        <h4 class="mb-3">온습도 센서 DHT의 작동 원리</h4>
+                        <img class="img-fluid" src="https://user-images.githubusercontent.com/93497158/229986997-4bc5c58c-1aab-4a8d-a851-0d5b21f3ee6e.png">
+                        <div class="card-group">
+                            <div class="card">
+                                <div class="card-body">
+                                <p class="card-text">
+                                    <h6 class="mb-3">습도</h6>
+                                    <ol style="list-style-type:inherit">
+                                        <li>아두이노에서 사용되는 온습도센서는 디지털 혹은 아날로그 신호를 출력하는 DHT(Digital Humidity and Temperature) 센서</li>
+                                        <li>온습도센서에서 아날로그 출력 신호는 습도와 온도 값으로 구성됩니다. 습도 값은 전기 저항을 이용하여 측정됨.</li>
+                                        <li>습도가 높을수록 전기 저항이 낮아지며, 습도가 낮을수록 전기 저항이 높아짐.</li>
+                                        <li>따라서 습도 측정 센서에서는 전기 저항값에 비례하는 아날로그 출력 신호를 생성함.</li>
+                                    </ol>
+
+                            </p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                <p class="card-text">
+                                    <h6 class="mb-3">온도</h6>
+                                    <ol style="list-style-type:inherit">
+                                        <li>온도 값은 일반적으로 온도 계수가 있는 NTC(음극온도계) 센서를 사용하여 측정됨.</li>
+                                        <li>센서는 반도체 재료로 만들어지며, 온도가 올라가면 전기 저항이 증가함</li>
+                                        <li>이러한 방식으로 온도 측정 센서에서는 온도에 대한 아날로그 출력 신호를 생성함.</li>
+                                        <li>측정된 아날로그 신호는 디지털로 변환하여 아두이노 보드로 전달함.</li>
+                                        <li>이렇게 계산된 값은 사용자가 원하는 방식으로 표시하거나 다른 장치와 통신하는 데 사용될 수 있음</li>
+                                    </ol>
+                            </p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <h6 class="mb-3">DHT 11 핀구조</h6>
+                                        <ol style="list-style-type:inherit">
+                                            <li>GND 핀: GND 핀은 전기 신호의 0V 기준점으로 사용되는 접지 핀. 전기 회로를 구성할 때는 GND 핀을 먼저 연결하고, 나머지 전기적 요소들도 GND 핀과 연결함.</li>
+                                            <li>DATA 핀: 온습도 센서의 DATA 핀은 디지털 데이터 핀으로, 센서에서 측정된 온습도 값을 디지털 신호로 출력함.</li>
+                                            <li>VCC 핀: 온습도 센서의 VCC 핀은 센서가 동작하는 데 필요한 전원 공급 핀. 3.3V 또는 5V의 전압을 필요로 함.</li>
+                                        </ol>
+                                        <a href="https://github.com/sunbang123/Smart_device/assets/93497158/105ae898-1eb2-48eb-9b9b-ef69167eac8a">[참고 이미지]</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <hr class="mt-2">
+                    <div id="diagram" class="d-flex flex-column flex-md-row justify-content-between mb-5 mt-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-4">실습1 : 온습도 Serial Monitor 출력</h3>
+                            <p class="mb-3">준비물 : 온습도 센서, ESP32, 브래드보드, 점퍼선 3개</p>
+
+                            <h5>설계도</h5>
+
+                            <img class="img-fluid" src="https://user-images.githubusercontent.com/93497158/230024103-4de23e81-5554-45dd-b7ba-bfc06dd2cdb8.jpg"/>
+                            <h5 class="mt-3">순서</h5>
+                            <ol>
+                              <li>DHT 11 온습도 센서를 양극+에 연결함.</li>
+                              <li>점퍼선을 GND핀 - GND, DATA핀 - PIN 13, VCC핀 - 3.3V에 연결함.</li>
+                              <li>코드를 컴파일하고 아두이노 보드에 업로드하여 실행한 후, 아두이노에서 시리얼 모니터 창을 확인함. 출력: Temp: xx.x, xx.x *C</li>
+                          </ol>          
+                            <div class="card-group">
+                                  <div class="card">
+                                    <p class="card-text">
+                                        <div class="card-body">
+                                            <h5>코드</h5>
+                                    <pre>
+<code>
+    #include &lt;DHT.h&gt;
+
+    #define DHTPIN 13     // DHT11 센서 핀 번호
+    #define DHTTYPE DHT11 // DHT11 센서 타입설정
+    DHT dht(DHTPIN, DHT11);
+    
+    void setup() {
+        Serial.begin(115200);   // 시리얼 통신 시작
+        dht.begin();          // DHT11 센서 초기화
+    }
+    
+    void loop() {
+        Serial.print(F("Hum: "));
+        Serial.print(dht.readHumidity());
+        Serial.print(F(" % "));
+        Serial.print(F("Temp: "));
+        Serial.print(dht.readTemperature());
+        Serial.println(F(" *C"));
+        delay(2000);
+    }
+</code>
+                                    </pre>        
+                                </p>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                  <p class="card-text">
+                                      <h5>사용된 함수</h5>
+                                      <ol style="list-style-type:inherit">
+                                        <li>Serial.begin(115200): 시리얼 통신을 시작함. 인수 115200은 시리얼 통신 속도를 나타냄.</li>
+                                        <li>dht.begin(): DHT11 온습도 센서를 초기화함.</li>
+                                        <li>Serial.print(): 시리얼 모니터에 값을 출력함.</li>
+                                        <li>dht.readHumidity(): DHT11 센서에서 현재 습도 값을 읽어옴.</li>
+                                        <li>dht.readTemperature(): DHT11 센서에서 현재 온도 값을 읽어옴.</li>
+                                        <li>delay(2000): 2초 동안 코드 실행을 지연시킴.</li>
+                                    </ol>          
+                                    <h5 class="mt-4">실행결과</h5>
+                                    <img class="img-fluid" src="https://user-images.githubusercontent.com/93497158/229989598-5aac4a94-0340-4c4f-8b80-6ee658da7c55.png">
+
+                                </p>
+                                </div>
+                              </div>
+
+                        </div>
+                        </div>
+                    </div>
+                    <div id="result" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">실행 결과</h4>
+                            <video controls poster="videos/Clouds.png"  class="img-fluid" alt="Responsive image">
+                                <source src="https://user-images.githubusercontent.com/93497158/228115484-1b1b59a9-b2a2-464b-9e40-677994275d1e.mp4" type="video/mp4">
+                                <strong>Your browser does not support the video tag.</strong>
+                            </video>
+                        </div>
+                    </div>
+                    <hr class="mt-2">
+                    <div id="diagram" class="d-flex flex-column flex-md-row justify-content-between mb-5 mt-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-4">실습2 : LCD로 Hello world 출력하기</h3>
+                            <p class="mb-3">준비물 : LCD, ESP32, 브래드보드, 점퍼선 4개</p>
+
+                            <h5>설계도</h5>
+
+                            <img class="img-fluid" src="https://github.com/sunbang123/Smart_device/assets/93497158/7cded153-7723-4ce9-9c4a-876cf4ed3189"/>
+                            <h5 class="mt-3">순서</h5>
+                            <ol>
+                              <li>아두이노 라이브러리에서 LiquidCrystal by Arduino,Adafruit를 설치함.</li>
+                              <li>LCD에 연결한 점퍼선(암-수)을 GND핀 - GND, VCC핀 - 5V, SDA핀 - PIN 21, SCL핀 - PIN 22에 연결.</li>
+                              <li>코드를 컴파일하고 아두이노 보드에 업로드하여 실행한 후, LCD 패널에 "Hello world"가 출력되는지 확인함.</li>
+                          </ol>          
+                            <div class="card-group">
+                                  <div class="card">
+                                    <p class="card-text">
+                                        <div class="card-body">
+                                            <h5>코드</h5>
+                                    <pre>
+<code>
+
+    #include &lt;LiquidCrystal_I2C.h&gt;
+
+    int lcdColumns = 16;
+    int lcdRows = 2;
+    
+    LiquidCrystal_I2C lcd (0x27, lcdColumns, lcdRows); //0x27 or 0x3F
+    
+    void setup(){
+        lcd.init();
+        lcd.backlight();
+    }
+    
+    void loop(){
+        lcd.setCursor(0,0);
+        lcd.print("Hello, World!");
+        delay(1000);
+        lcd.clear();
+        lcd.setCursor(0,1);
+        lcd.print("Hello, World!");
+        delay(1000);
+        lcd.clear();
+    }
+</code>
+                                    </pre>        
+                                </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="mt-5">
+                        <div id="diagram" class="d-flex flex-column flex-md-row justify-content-between mb-5 mt-5">
+                            <div class="flex-grow-1">
+                                <h3 class="mb-4">실습3 : LCD로 Hello world 출력하기</h3>
+                                <p class="mb-3">준비물 : LCD, 온습도센서, ESP32, 브래드보드, 점퍼선 7개</p>
+    
+                                <h5>설계도</h5>
+    
+                                <img class="img-fluid" src="https://user-images.githubusercontent.com/93497158/230029597-7c7f08bf-92fd-42fb-b3b4-571079e64188.jpg"/>
+                                <h5 class="mt-3">순서</h5>
+                                <ol>
+                                  <li>DHT 11 온습도 센서를 빨간 레일에 연결. - 브래드보드의 파란레일과 빨간레일: 전원 공급과 접지(Ground)를 위한 연결선</li>
+                                  <li>점퍼선을 GND핀 - GND, DATA핀 - PIN 13, VCC핀 - 3.3V에 연결.</li>
+                                  <li>아두이노 라이브러리에서 LiquidCrystal by Arduino,Adafruit를 설치.</li>
+                                  <li>LCD에 연결한 점퍼선(암-수)을 GND핀 - GND, VCC핀 - 5V, SDA핀 - PIN 21, SCL핀 - PIN 22에 연결.</li>
+                                  <li>코드를 컴파일하고 아두이노 보드에 업로드하여 실행한 후, LCD 패널에 온습도가 출력되는지 확인. 출력: Temp: xx.x, xx.x *C</li>
+                              </ol>          
+                                <div class="card-group">
+                                      <div class="card">
+                                        <p class="card-text">
+                                            <div class="card-body">
+                                                <h5>코드</h5>
+                                        <pre>
+    <code>
+    
+    #include "DHT.h"
+    #define DHTPIN 13
+    #define DHTTYPE DHT11
+    DHT dht(DHTPIN, DHTTYPE);
+    
+    #include &lt;LiquidCrystal_I2C.h&gt;
+    #include &lt;Wire.h&gt;
+    unsigned long delayTime;
+    
+    int lcdColumns = 16;
+    int lcdRows = 2;
+    LiquidCrystal_I2C lcd(0x27, lcdColumns, lcdRows);
+    
+    void setup(){
+        Serial.begin(115200);
+        lcd.init();
+        lcd.backlight();
+        dht.begin();
+    }
+    
+    void loop(){
+        delay(1000);
+        printValues();
+    }
+    
+    void printValues(){
+        lcd.setCursor(0,0);
+        lcd.print(F("Hum: "));
+        lcd.print(dht.readHumidity());
+        lcd.print(F(" %"));
+        lcd.setCursor(0,1);
+        lcd.print(F("Temp: "));
+        lcd.print(dht.readTemperature());
+        lcd.print(F(" *C "));
+        delay(2000);
+        lcd.clear();
+    }
+    </code>
+                                        </pre>        
+                                    </p>
+                                    </div>
+                                </div>
+                            </div>
+    
+
+
+                        </div>
+                    </div>
+                    <div id="result" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">실행 결과</h4>
+                            <video controls poster="videos/Clouds.png"  class="img-fluid" alt="Responsive image">
+                                <source src="https://user-images.githubusercontent.com/93497158/230020344-477e6322-8bed-4932-9455-aa75b8bc56a1.mp4" type="video/mp4">
+                                <strong>Your browser does not support the video tag.</strong>
+                            </video>
+                        </div>
+                    </div>
+                    <hr class="mb-5">
+                    <div id="Error" class="d-flex flex-column flex-md-row justify-content-between">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">실습 과정에서의 문제 해결</h4>
+                            <h6 class="mb-3">누전 발생</h6>
+
+                            <p>연결할 핀이 늘어날수록 점퍼선을 브래드보드에 잘못 연결시키는 경우가 발생함.</p>
+                            <p> - 첫번째로 핀번호를 잘못 연결했을때 아두이노 output에서 error가 발생하고, 두번째로 브래드보드 습도센서에서 누전됬을때 나는 탄 냄새가 났음.</p>
+                            <p> - 이때 재빨리 USB를 뽑고 누전되서 상승한 센서의 온도를 식힘.</p>
+                            <p> - 미리 그려놓은 설계도를 보면서 다시한번 올바르게 점퍼선을 연결했나 점검한 뒤 컴파일 해줌.</p>
+                            <p> - 이렇게 하면 실습시 발생하는 실수를 줄일 수 있고 누전되는 결과를 막을 수 있음.</p>
+                                
+                        </div>
+                    </div>
+                    <hr class="mb-5">
+                    <div id="End" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">실습을 통해 느낀점</h4>
+                            <p>- 아두이노의 온습도센서는 DHT 센서를 사용하여 온도와 습도 값을 측정하는데, 이때 온도는 NTC 센서를 이용하여 아날로그 출력 신호로 전달되며, 습도는 전기 저항을 이용하여 아날로그 출력 신호를 생성한다는 것을 배움.</p>
+                            <p>- 실습을 진행하면서 하드웨어 제작에서는 실수할 가능성이 있다는 점을 알게 되었고 전기적인 안전을 고려해야 한다는 것을 알게 됨.</p>
+                            <p>- 하드웨어를 제작할 때에는 설계도와 함께 점검을 하여 안전하고 정확한 결과물을 만들 수 있도록 노력해야 한다는 것을 느낌.</p>
+                        </div>
+                    </div>
+                    <hr class="mb-3">
+                    <a style="text-align: left;" href="../day4/index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                            <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                          </svg>
+                        Previous
+                    </a>
+                    <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+                    <a style="text-align: right;" href="../day5.2/index.html">
+                        Next
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                          </svg>
+                    </a>
+                </div>
+            </div>
+            </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="../../js/scripts.js"></script>
+    </body>
+</html>

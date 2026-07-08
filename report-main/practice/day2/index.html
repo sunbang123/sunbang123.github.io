@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>스마트디바이스 실습2주차</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../../css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="pt-sm-5 navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <div id="nav-top">
+
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html">portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#arduino-set">아두이노 설정</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#compile">컴파일링 실행</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#error">에러</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#result">실행 결과</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section pb-1" id="about">
+                <div class="resume-section-content">
+                    <h3 class="mb-0">
+                        스마트 디바이스 실습 2주차
+                    </h3>
+                    <div class="subheading mb-3">
+                        ESP32 Blink(점멸) 실습
+                    </div>
+                    <p class="lead">
+                        한세대학교 컴퓨터공학과 22학번 김선영
+                    </p>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Experience-->
+            <section class="resume-section" id="experience">
+                <div class="resume-section-content">
+                    <div id="arduino-set" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                            <h4 class="mb-3">아두이노 보드</h4>
+                                <ol style="list-style-type:inherit">
+                                    <li>아두이노 보드는 하드웨어적인 기능을 수행하며, 컴퓨터와의 통신을 위해 드라이버라는 소프트웨어가 필요.</li>
+                                    <li>아두이노 보드를 컴퓨터와 연결하면 드라이버를 통해 컴퓨터는 해당 보드를 인식함.</li>
+                                    <li>아두이노 IDE라는 소프트웨어를 통해 아두이노 보드를 제어할 수 있음.</li>
+                                </ol> 
+                           <h5 class="mt-5">장치 드라이버 설치</h5>
+                            <p class="pt-1">CP210x USB 드라이버를 <a href="https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers">다운로드</a> 해서 운영체제에 맞게 설치.</p>
+                            <h5 class="mt-5">지정보드 설정</h5>
+
+                        <div class="card-group">
+                        <div class="card">
+                            <img class="card-img-top img-fluid" src="https://github.com/sunbang123/Smart_device/assets/93497158/4f2bbf6c-28ca-46d4-8313-e6e3c44a68de">
+                            <div class="card-body">
+                            <p class="card-text">1-1. 제어판&gt;하드웨어 및 소리&gt;장치관리자 창을 띄움.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img class="card-img-top img-fluid" src="https://github.com/sunbang123/Smart_device/assets/93497158/d3ba65fe-d045-4898-8dc7-96fd0c0caf74">
+                            <div class="card-body">
+                            <p class="card-text">1-2. 제어판에서 포트 번호(COM)를 확인한 후 IDE에서 Tool&gt;Port&gt;(올바른 포트 번호) 를 선택함.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img class="card-img-top img-fluid" src="https://github.com/sunbang123/Smart_device/assets/93497158/3f8ccd74-30eb-4d64-a41d-76fd55a6a2d3">
+                            <div class="card-body">
+                            <p class="card-text">1-3. IDE에서 Tools&gt;Bord&gt;ESP32&gt;ESP32 DEV MODULE(장치 모듈)을 선택함.</p>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        <hr class="mb-5">
+                    <div id="compile" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">컴파일링 실행</h4>
+                            <h5 class="mt-5">코드</h5>
+                            <pre>
+<code>
+    int LED_BUILTIN = 2; // 리셋을 누르거나 보드에 전원을 공급할 때 설정 기능이 한 번 실행.
+        void setup() { // 디지털 핀 LED 초기화_출력으로 내장됨.
+        pinMode(LED_BUILTIN, OUTPUT);
+    }
+    
+    // 루프문을 통해서 LED가 켜졌다 꺼졌다를 계속 반복하도록 함.
+    void loop() {
+        digitalWrite(LED_BUILTIN, HIGH);  // LED를 켭니다(HIGH는 전압 레벨)
+        delay(1000);                      // 지연시간 1초
+        digitalWrite(LED_BUILTIN, LOW);   // 전압을 낮게 하여 LED를 끔.
+        delay(1000);                      // 지연시간 1초
+    }
+</code>
+                            </pre>
+                            <div class="card-group">
+                                <div class="card">
+                                  <img class="card-img-top img-fluid" src="https://github.com/sunbang123/Smart_device/assets/93497158/8a014030-95fb-4337-a434-80a9edf7d073">
+                                  <div class="card-body">
+                                    <p class="card-text">2-1. SELECT 창에 ESP32 DEV MODULE를 선택한 후 -&gt; 버튼을 눌러 컴파일(compile)해줌.</p>
+                                  </div>
+                                </div>
+                                <div class="card">
+                                  <img class="card-img-top img-fluid" src="https://github.com/sunbang123/Smart_device/assets/93497158/3927a082-89df-4289-a9a8-ce88a8a9e7bf">
+                                  <div class="card-body">
+                                    <p class="card-text">2-2. 컴파일링이 진행될동안 장치의 오른쪽 버튼(업로드 버튼)을 2초 누름.</p>
+                                  </div>
+                                </div>
+                                <div class="card">
+                                  <img class="card-img-top img-fluid" src="https://github.com/sunbang123/Smart_device/assets/93497158/9c38004f-4efc-4db1-9bcb-535a63dbb36f">
+                                  <div class="card-body">
+                                    <p class="card-text">2-3. 컴파일이 성공하면 아래의 화면처럼 출력이 되는걸 볼 수 있음.</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    <hr class="mb-5">
+                    <div id="error" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h4 class="mb-3">에러</h4>
+                                        <div class="card">
+                                            <img class="card-img-top img-fluid" src="https://github.com/sunbang123/Smart_device/assets/93497158/2da1299c-8faa-48f5-8168-c237b42fed85">
+                                            <div class="card-body">
+                                            <p class="card-text">전력 공급이 안되거나 보드 설정이 잘못 되었을 경우 에러가 남.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h5 class="mt-5">에러 코드</h5>
+                                                <pre>
+                                                    <code>
+    Sketch uses 235913 bytes (17%) of program storage space. Maximum is 1310720 bytes.
+    Global variables use 22056 bytes (6%) of dynamic memory, leaving 305624 bytes for local variables. Maximum is 327680 bytes.
+    esptool.py v4.5.1
+    Serial port COM3
+    Connecting......................................
+
+    A fatal error occurred: Failed to connect to ESP32: Wrong boot mode detected (0x13)! The chip needs to be in download mode.
+    For troubleshooting steps visit: https://docs.espressif.com/projects/esptool/en/latest/troubleshooting.html
+    Failed uploading: uploading error: exit status 2
+                                            </code>
+                                        </pre>
+                                        <p class="pt-1">
+                                            <ol style="list-style-type:inherit">
+                                                <li>위 에러는 ESP32 보드가 업로드에 실패.</li>
+                                                <li>업로드 버튼을 눌렀는지 확인하고 포트 설정이 바르게 되었는지 확인함. <a href="https://docs.espressif.com/projects/esptool/en/latest/troubleshooting.html">[자세한 해결 방법]</a> </li>
+                                            </ol>
+                                            </p>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mb-5">
+                    <div id="result" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">실행 결과</h4>
+                            <video controls poster="videos/Clouds.png"  class="img-fluid" alt="Responsive image">
+                                <source src="https://user-images.githubusercontent.com/93497158/227442799-6c702c30-2bc1-4867-92a7-0efb57037d45.mp4" type="video/mp4">
+                                <strong>Your browser does not support the video tag.</strong>
+                            </video>
+                        </div>
+                    </div>
+                    <hr class="mb-5">
+                    <div id="End" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">실습을 통해 느낀점</h4>
+                            <p>- 하드웨어와 소프트웨어 간의 상호작용이 중요하며, 드라이버는 하드웨어와 컴퓨터 간의 통신을 가능하게 함.</p>
+                            <p>- 아두이노 보드를 컴퓨터와 연결하여 사용하려면 해당 보드의 드라이버를 설치해야 하고, 업로드 버튼을 눌러야 함.</p>
+                            <p>- 보드 설정을 보드 환경에 맞게 설정해야 함.</p>
+                            <p>- 문제가 발생하면 적절한 해결책을 찾아 해결해야 함.</p>
+                        </div>
+                    </div>
+                    <hr class="mb-3">
+                    <a style="text-align: left;" href="../day1/index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                            <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                          </svg>
+                        Previous
+                    </a>
+                    <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+                    <a style="text-align: right;" href="../day3/index.html">
+                        Next
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                          </svg>
+                    </a>
+                </div>
+            </div>
+            </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="../../js/scripts.js"></script>
+    </body>
+</html>

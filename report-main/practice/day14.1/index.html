@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>스마트디바이스 실습14.1주차</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../../css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="pt-sm-5 navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <div id="nav-top">
+
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../index.html">portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#smart-device">스마트디바이스란?</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Sum">요약</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#End">배운점</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section pb-1" id="about">
+                <div class="resume-section-content">
+                    <h3 class="mb-0">
+                        스마트 디바이스 실습 14.1주차
+                    </h3>
+                    <div class="subheading mb-3">
+                        ESP32를 웹서버로 구동하기
+                    </div>
+                    <p class="lead">
+                        한세대학교 컴퓨터공학과 22학번 김선영
+                    </p>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Experience-->
+            <section class="resume-section" id="experience">
+                <div class="resume-section-content mb-5">
+                    <h3 class="mb-4">웹 서버란?</h3>
+                    <img src="https://github.com/sunbang123/Smart_device/assets/93497158/7e063dad-76c4-4fa4-8c2f-4fbb4fd72eb9"  class="img-fluid" alt="Responsive image">
+                    <br><br>
+                    <ol style="list-style-type:inherit">
+                        <li>Hyper Text Transfer Protocol 또는 간단히 HTTP는 클라이언트와 서버 간의 통신을 담당하는 프로토콜.</li>
+                        <li> 페이지의 정보는 HTML 문서, 이미지, 비디오, 응용 프로그램 등의 형식의 텍스트와 같은 모든 형식.<a href="https://www.electronicshub.org/esp32-projects/">[초보자를 위한 ESP32 프로젝트]</a></li>
+                        <li>웹 클라이언트에 대해 말하자면, 노트북과 휴대폰의 웹 브라우저는 가장 간단한 유형의 웹 클라이언트 중 하나.</li>
+                        <li>웹 서버와 웹 클라이언트 간의 통신은 종종 클라이언트-서버 통신 모델이라고 함.</li>
+                    </ol>
+                    <h4 class="mb-4">웹-클라이언트-서버-모델</h4>
+                    <ol style="list-style-type:inherit">
+                        <li>Hyper Text Transfer Protocol 또는 간단히 HTTP는 클라이언트와 서버 간의 통신을 담당하는 프로토콜.</li>
+                        <li>이러한 유형의 통신에서 웹 클라이언트는 HTTP를 사용하여 서버에서 정보를 요청.</a></li>
+                        <li>항상 요청을 대기(수신)하는 웹 서버는 클라이언트의 요청에 적절한 웹 페이지로 응답.</li>
+                        <li>요청한 페이지를 찾을 수 없으면 서버는 HTTP 404 오류로 응답.</li>
+                    </ol>
+
+                    <hr class="mt-5">
+                    <div id="diagram" class="d-flex flex-column flex-md-row justify-content-between mb-3 mt-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-4">ESP32의 Wi-Fi 작동 모드</h3>
+                            <h5 class="mt-3">ESP32에서 Wi-Fi의 작동 모드</h5>
+                                <ol style="list-style-type:inherit">
+                                    <li>스테이션 모드(STA)</li>
+                                    <li>소프트 액세스 포인트 모드(AP)</li>
+                                    <li>스테이션 + 소프트 AP 모드</li>
+                                </ol>
+                                <p>스테이션 모드에서 ESP32 모듈은 휴대폰 및 노트북과 마찬가지로 무선 라우터에 의해 설정된 기존 WiFi 네트워크에 연결.</p>
+                                <p>ESP32 Wi-Fi 모듈은 라우터의 SSID 및 암호를 사용하여 라우터의 Wi-Fi 네트워크에 연결하고 라우터는 ESP32용 로컬 IP 주소를 할당.</p>
+                            <div class="card-group">
+                                    <div class="card p-2">
+                                        <div class="card-body">
+                                            <h5 class="mt-3">ESP32-STA-모드</h5>
+                                            <img src="https://github.com/sunbang123/Smart_device/assets/93497158/e6b3d260-f251-4da7-91a9-72880a9807c5" class="img-fluid" alt="Responsive image">
+                                            <p class="card-text">
+                                            <ol>
+                                                <li>액세스 포인트 모드로 전환하면 ESP32 모듈은 무선 라우터와 같은 자체 WiFi 네트워크를 생성</li>
+                                                <br><br>
+                                                <li>휴대폰, 노트북 및 기타 ESP32 모듈(STA 모드)과 같은 다른 스테이션이 해당 네트워크에 연결.</li>
+                                                <br><br>
+                                            </ol>   
+                                            </p>
+                                        </div>
+                                      </div>
+                                      <div class="card p-2">
+                                        <div class="card-body">
+                                            <h5 class="mt-3">ESP32-AP 모드</h5>
+                                            <img src="https://github.com/sunbang123/Smart_device/assets/93497158/cb388dde-3bb3-494f-bcb4-0febecb3858d" class="img-fluid" alt="Responsive image">
+
+                                            <br><br>                                            <p class="card-text">
+                                            <ol>
+                                                <li>ESP32에는 유선 이더넷이 인터넷에 연결되어 있지 않기 때문에 이 AP 모드를 소프트 AP 모드라고 함.</li>
+                                                <br><br>
+                                                <li>AP 모드에서 ESP32를 구성하는 동안 다른 장치가 해당 자격 증명을 사용하여 해당 네트워크에 연결할 수 있도록 네트워크의 SSID 및 비밀번호를 설정해야 함.</li>
+                                                <br><br>
+                                                <li>스테이션 + 소프트 AP는 스테이션 모드와 소프트 AP 모드의 조합.</li>
+                                                <br><br>
+                                                <li>여기에서 ESP32는 스테이션과 액세스 포인트의 역할을 모두 수행함.</li>
+                                                <br><br>
+                                            </ol>   
+                                            </p>
+                                        </div>
+                                      </div>
+                                      </div>
+                                      </div>
+                                      </div>
+                                <hr class="mt-5"/>
+                                      <div class="flex-grow-1">
+                                        <h3 class="mb-4">실습 : DHT 센서에서 온도 및 습도를 읽고 웹 서버로 구축하기</h3>
+                                        <h5 class="mt-3">순서</h5>
+                                            <ol style="list-style-type:inherit">
+                                                <li><a href="https://github.com/me-no-dev/ESPAsyncWebServer">ESPAsyncWebServer</a>, <a href="https://github.com/me-no-dev/AsyncTCP">AsyncTCP</a> 라이브러리를 다운로드하여 비동기 웹 서버를 구축함.</li>
+                                                <li>압축 해제 후 Arduino 라이브러리에 붙여넣기 \Documents\Arduino\libraries</li>
+                                                <li>웹 페이지를 새로 고칠 필요 없이 자동으로 센서 판독값을 업데이트함.</li>
+                                            </ol>
+                                            <h5 class="mt-3">구성도</h5>
+                                            <img src="https://github.com/sunbang123/Smart_device/assets/93497158/8af415e9-1202-4316-82b0-62cd4d3a6df9" class="img-fluid mb-4" alt="Responsive image">
+                                            <div class="card-group">
+                                                <div class="card p-2">
+                                                    <div class="card-body">
+                                                        <img src="https://github.com/sunbang123/Smart_device/assets/93497158/ccc81da7-ee6a-49ea-889b-933bfd7ba398" class="img-fluid mb-4" alt="Responsive image">
+                                                        <p class="mt-3">DHT 연결</p>
+                                                    </div>
+                                                  </div>
+                                                  <div class="card p-2">
+                                                    <div class="card-body">
+                                                        <img src="https://github.com/sunbang123/Smart_device/assets/93497158/93d72bdb-937c-47f2-b8f2-45d14d46ddd1" class="img-fluid" alt="Responsive image">
+                                                        <p class="mt-3">웹 서버 구동 성공!</p>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                            </div>
+                        <div class="flex-grow-1">
+                            <h3 class="mt-4 mb-4">코드</h3>
+
+                        <pre>
+                            <code>
+
+    > 라이브러리 가져오기
+    ```
+    /*********
+        Rui Santos
+        Complete project details at https://randomnerdtutorials.com  
+    *********/
+    
+    // Import required libraries
+    #include "WiFi.h"
+    #include "ESPAsyncWebServer.h"
+    #include <Adafruit_Sensor.h>
+    #include <DHT.h>
+    ```
+    
+    > 네트워크 자격 증명 설정
+    ```
+    // Replace with your network credentials
+    const char* ssid = "REPLACE_WITH_YOUR_SSID";
+    const char* password = "REPLACE_WITH_YOUR_PASSWORD";
+    ```
+    
+    > 변수 정의
+    ```
+    #define DHTPIN 27     // ESP32의 27번 핀에 연결
+    
+    // Uncomment the type of sensor in use:
+    #define DHTTYPE    DHT11     // DHT 11
+    
+    DHT dht(DHTPIN, DHTTYPE);
+    
+    // Create AsyncWebServer object on port 80
+    AsyncWebServer server(80);
+    ```
+    
+    > 온도 및 습도 함수 읽기
+    ```
+    String readDHTTemperature() {
+        // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
+        // Read temperature as Celsius (the default)
+        float t = dht.readTemperature();
+        // Read temperature as Fahrenheit (isFahrenheit = true)
+        //float t = dht.readTemperature(true);
+        // Check if any reads failed and exit early (to try again).
+        if (isnan(t)) {    
+        Serial.println("Failed to read from DHT sensor!");
+        return "--";
+        }
+        else {
+        Serial.println(t);
+        return String(t);
+        }
+    }
+    
+    String readDHTHumidity() {
+        // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
+        float h = dht.readHumidity();
+        if (isnan(h)) {
+        Serial.println("Failed to read from DHT sensor!");
+        return "--";
+        }
+        else {
+        Serial.println(h);
+        return String(h);
+        }
+    }
+    
+    const char index_html[] PROGMEM = R"rawliteral(
+    ```
+    
+    > 웹 페이지 구축
+
+&lt;!DOCTYPE HTML><html>
+    &lt;head>
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1">
+    &lt;link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    &lt;style>
+        html {
+            font-family: Arial;
+            display: inline-block;
+            margin: 0px auto;
+            text-align: center;
+        }
+        h2 { font-size: 3.0rem; }
+        p { font-size: 3.0rem; }
+        .units { font-size: 1.2rem; }
+        .dht-labels{
+            font-size: 1.5rem;
+            vertical-align:middle;
+            padding-bottom: 15px;
+        }
+    &lt;/style>
+    &lt;/head>
+    &lt;body>
+    &lt;h2>ESP32 DHT Server&lt;/h2>
+    &lt;p>
+    &lt;i class="fas fa-thermometer-half" style="color:#059e8a;">&lt;/i> 
+    &lt;span class="dht-labels">Temperature&lt;/span> 
+    &lt;span id="temperature">%TEMPERATURE%&lt;/span>
+    &lt;sup class="units">&deg;C&lt;/sup>
+    &lt;/p>
+    &lt;p>
+    &lt;i class="fas fa-tint" style="color:#00add6;">&lt;/i> 
+    &lt;span class="dht-labels">Humidity&lt;/span>
+    &lt;span id="humidity">%HUMIDITY%&lt;/span>
+    &lt;sup class="units">&percnt;&lt;/sup>
+    &lt;/p>
+    &lt;/body>
+    &lt;script>
+    setInterval(function ( ) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("temperature").innerHTML = this.responseText;
+        }
+        };
+        xhttp.open("GET", "/temperature", true);
+        xhttp.send();
+    }, 10000 ) ;
+    
+    setInterval(function ( ) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("humidity").innerHTML = this.responseText;
+        }
+        };
+        xhttp.open("GET", "/humidity", true);
+        xhttp.send();
+    }, 10000 ) ;
+    &lt;/script>
+    &lt;/html>)rawliteral";
+    
+    // Replaces placeholder with DHT values
+    String processor(const String& var){
+        //Serial.println(var);
+        if(var == "TEMPERATURE"){
+        return readDHTTemperature();
+        }
+        else if(var == "HUMIDITY"){
+        return readDHTHumidity();
+        }
+        return String();
+    }
+    
+    void setup(){
+        // Serial port for debugging purposes
+        Serial.begin(115200);
+    
+        dht.begin();
+        
+        // Connect to Wi-Fi
+        WiFi.begin(ssid, password);
+        while (WiFi.status() != WL_CONNECTED) {
+        delay(1000);
+        Serial.println("Connecting to WiFi..");
+        }
+    
+        // Print ESP32 Local IP Address
+        Serial.println(WiFi.localIP());
+    
+        // Route for root / web page
+        server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
+        request->send_P(200, "text/html", index_html, processor);
+        });
+        server.on("/temperature", HTTP_GET, [](AsyncWebServerRequest *request){
+        request->send_P(200, "text/plain", readDHTTemperature().c_str());
+        });
+        server.on("/humidity", HTTP_GET, [](AsyncWebServerRequest *request){
+        request->send_P(200, "text/plain", readDHTHumidity().c_str());
+        });
+    
+        // Start server
+        server.begin();
+    }
+        
+    void loop(){
+        
+    }
+                            </code></pre>
+
+    </div>
+                    <hr class="mb-5">
+                    <div id="End" class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-3">실습을 통해 느낀점</h4>
+                            <ol style="list-style-type:inherit">
+                                <li>웹 서버와 웹 클라이언트 간의 관계와 통신 모델에 대해 배움.</li>
+                                <li>웹 서버는 웹 페이지를 제공하고, 웹 클라이언트는 웹 서버에 정보를 요청하는 역할을 수행함을 알게 됨.</li>
+                                <li>ESP32는 Wi-Fi 연결을 위해 다양한 모드를 지원. STA 모드로 무선 라우터에 연결하거나, AP 모드로 ESP32 자체의 Wi-Fi 네트워크를 생성할 수 있음을 알게 됨.</li>
+                                <li>또한 STA+AP 모드로 두 가지 모드를 동시에 사용할 수도 있음을 알게 됨. ESP32 웹 서버를 통해 센서 데이터를 실시간으로 모니터링할 수 있다는 점이 기억에 남음.</li>
+                            </ol>
+                        </div>
+
+                        </div>
+                    <hr class="mb-3">
+                    <a style="text-align: left;" href="../day13/index.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                            <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                          </svg>
+                        Previous
+                    </a>
+                    <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+                    <a style="text-align: right;" href="../day14.2/index.html">
+                        Next
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                          </svg>
+                    </a>
+                </div>
+            </div>
+            </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="../../js/scripts.js"></script>
+    </body>
+</html>
