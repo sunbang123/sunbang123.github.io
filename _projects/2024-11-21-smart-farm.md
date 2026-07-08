@@ -15,13 +15,37 @@ status: "completed"
 
 ### Project Title: 스마트팜 시스템
 
-> 프로젝트 대시보드 Preview 이미지
+> 🗓️실습보고서
 
-> <h4><a href="#">상세한 아키텍처 보러가기</a></h4>
+1. [Embedded Systems Overview](https://github.com/sunbang123/embedded/wiki/Embedded-Systems-Overview)
+
+2. [Projects & Version Evolution](https://github.com/sunbang123/embedded/wiki/Projects-&-Version-Evolution)
+
+3. [Raspbian & environment settings](https://github.com/sunbang123/embedded/wiki/Raspbian-&-environment-settings)
+
+4. [Raspberry Pi LED practice (with Thonny IDE)](https://github.com/sunbang123/embedded/wiki/Raspberry-Pi-LED-practice-(with-Thonny-IDE))
+   - [Electronic and Electric theory](https://github.com/sunbang123/embedded/wiki/Electronic-and-Electric-theory)
+5.
+6. [Node‐RED GPIO & dht11 in Raspberrypi5](https://github.com/sunbang123/embedded/wiki/Node%E2%80%90RED-GPIO-&-dht11-in-Raspberrypi5)
+   - [Node‐RED GPIO & dht11 details](https://github.com/sunbang123/embedded/wiki/Node%E2%80%90RED-GPIO-&-dht11-details)
+
+7. [Raspberry Pi 4 Node‐RED Dashboard and DHT11 Sensor](https://github.com/sunbang123/embedded/wiki/Raspberry-Pi-4-Node%E2%80%90RED-Dashboard-and-DHT11-Sensor)
+
+8. [Raspberry Pi 4 with Node‐RED & DHT11 to MariaDB](https://github.com/sunbang123/embedded/wiki/Raspberry-Pi-4-with-Node%E2%80%90RED-&-DHT11-to-MariaDB)
+
+9. [raspberry pi 4 usbcamera practice](https://github.com/sunbang123/embedded/wiki/raspberry-pi-4-usbcamera-practice)
+   - [My Project : 기온에 따른 외출복 추천 시스템](https://github.com/sunbang123/embedded/wiki/My-Project-:-%EA%B8%B0%EC%98%A8%EC%97%90-%EB%94%B0%EB%A5%B8-%EC%99%B8%EC%B6%9C%EB%B3%B5-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C)
+   - [My Project 2 : 스마트 온실 시스템(토마토 생장 모니터링)](https://github.com/sunbang123/embedded/wiki/My-Project-2-:-%EC%8A%A4%EB%A7%88%ED%8A%B8-%EC%98%A8%EC%8B%A4-%EC%8B%9C%EC%8A%A4%ED%85%9C(%ED%86%A0%EB%A7%88%ED%86%A0-%EC%83%9D%EC%9E%A5-%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81))
+
+10. [IP Port forwarding, tunneling, Set domain](https://github.com/sunbang123/embedded/wiki/IP-Port-forwarding,-tunneling,-Set-domain)
+
+11. [AIoT(Artificial Intelligence of Things)](https://github.com/sunbang123/embedded/wiki/AIoT(Artificial-Intelligence-of-Things))
+
 
 * * *
 
-### 프로젝트의 탄생
+# 프로젝트의 탄생
+
 행거와 비닐을 이용하여 미니 비닐하우스 형태의 온실을 직접 제작하였으며, 빠르게 성장하는 새싹보리 등을 주요 대상으로 삼아 **식물의 생장 환경을 실시간으로 모니터링하고 농작물 생장을 최적화**하기 위해 기획되었습니다.
 
 ## Project Overview
