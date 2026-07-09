@@ -571,6 +571,31 @@ html[data-theme="light"] .reading-kicker {
   color: #1d4ed8 !important;
 }
 
+html[data-theme="light"] .momonton-gate {
+  border-color: rgba(21, 112, 128, 0.22) !important;
+  background:
+    linear-gradient(135deg, #a4c2fa, #a1e1ff),
+    #71acf4 !important;
+  box-shadow: 0 14px 34px rgba(21, 23, 128, 0.18) !important;
+}
+
+html[data-theme="light"] .reading-button--secondary {
+    border: 1px solid rgba(0, 0, 0, 0.28);
+    color: black;
+}
+
+html[data-theme="light"] .momonton-gate:hover,
+html[data-theme="light"] .momonton-gate:focus-visible {
+  border-color: rgba(21, 101, 128, 0.46) !important;
+  box-shadow: 0 18px 44px rgba(21, 73, 128, 0.26) !important;
+}
+
+html[data-theme="light"] .momonton-app-launch__surface {
+  background:
+    linear-gradient(135deg, #efda86, #a1f6ff),
+    #71acf4 !important;
+}
+
 html[data-theme="light"] .roadmap-status--completed {
   background: #dcfce7 !important;
   color: #166534 !important;

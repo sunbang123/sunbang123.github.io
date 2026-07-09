@@ -14,6 +14,68 @@ if (particlesContainer) {
     }
 }
 
+function initMomontonGate() {
+    const gate = document.querySelector('[data-momonton-gate]');
+    if (!gate) return;
+
+    let clicks = 0;
+    let isOpening = false;
+    const targetUrl = '/momonton/';
+
+    function pulseGate() {
+        gate.classList.remove('is-charged');
+        void gate.offsetWidth;
+        gate.classList.add('is-charged');
+    }
+
+    function openGate() {
+        isOpening = true;
+        const rect = gate.getBoundingClientRect();
+        const launch = document.createElement('div');
+        const appSurface = document.createElement('div');
+        const appMark = document.createElement('span');
+
+        launch.className = 'momonton-app-launch';
+        appSurface.className = 'momonton-app-launch__surface';
+        appMark.className = 'momonton-app-launch__mark';
+        appMark.dataset.face = ';)';
+        appMark.setAttribute('aria-hidden', 'true');
+
+        launch.style.setProperty('--launch-left', `${rect.left}px`);
+        launch.style.setProperty('--launch-top', `${rect.top}px`);
+        launch.style.setProperty('--launch-width', `${rect.width}px`);
+        launch.style.setProperty('--launch-height', `${rect.height}px`);
+
+        appSurface.appendChild(appMark);
+        launch.appendChild(appSurface);
+        document.body.appendChild(launch);
+
+        gate.dataset.face = ';)';
+        gate.classList.add('is-opening');
+
+        window.setTimeout(() => {
+            window.location.href = targetUrl;
+        }, 760);
+    }
+
+    gate.addEventListener('click', () => {
+        if (isOpening) return;
+
+        clicks += 1;
+        gate.dataset.clicks = clicks;
+
+        if (clicks >= 3) {
+            openGate();
+            return;
+        }
+
+        gate.dataset.face = clicks === 1 ? ':0' : ':D';
+        pulseGate();
+    });
+}
+
+initMomontonGate();
+
 async function loadActivities() {
     const container = document.getElementById('commitsContainer');
     if (!container) return;
