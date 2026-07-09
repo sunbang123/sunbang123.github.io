@@ -1,16 +1,17 @@
 # 파일 경로: .github/workflows/fetch_commits.yml
 
-name: Fetch GitHub Activities (Commits, Issues, Releases)
+name: Fetch GitHub Activities (Commits, Issues, Comments, Releases)
 
 on:
   push:
     branches:
       - main
-    # 🚨 무한 루프 방지: 세 파일 모두 제외
+    # 🚨 무한 루프 방지: 자동 갱신 데이터 파일은 제외
     paths-ignore:
       - '_data/commits_data.json'
       - '_data/issues_data.json'
       - '_data/releases_data.json'
+      - '_data/comments_data.json'
       
   workflow_dispatch:
   schedule:
@@ -117,7 +118,50 @@ jobs:
           done
           
           # =========================================================
-          # C. 릴리즈 데이터 수집 로직 (새로 추가)
+          # C. 댓글 데이터 수집 로직
+          # =========================================================
+          TEMP_COMMENTS_FILE=$(mktemp)
+          echo "[]" > "$TEMP_COMMENTS_FILE"
+
+          COMMENTS_REPO="${GITHUB_USERNAME}.github.io"
+          COMMENTS_ISSUES_URL="https://api.github.com/repos/${GITHUB_USERNAME}/${COMMENTS_REPO}/issues?state=all&sort=updated&direction=desc&per_page=100"
+          COMMENTS_ISSUES_RAW=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" "$COMMENTS_ISSUES_URL")
+
+          if echo "$COMMENTS_ISSUES_RAW" | jq -e 'type == "array"' > /dev/null 2>&1; then
+              echo "$COMMENTS_ISSUES_RAW" | jq -c '.[] | select(.pull_request | not) | select(.comments > 0)' | while read -r ISSUE; do
+                  ISSUE_TITLE=$(echo "$ISSUE" | jq -r '.title // "댓글 원문"')
+                  ISSUE_BODY=$(echo "$ISSUE" | jq -r '.body // ""')
+                  ISSUE_URL=$(echo "$ISSUE" | jq -r '.html_url')
+                  ISSUE_COMMENTS_URL=$(echo "$ISSUE" | jq -r '.comments_url + "?per_page=100"')
+                  COMMENTS_RAW_DATA=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" "$ISSUE_COMMENTS_URL")
+
+                  if echo "$COMMENTS_RAW_DATA" | jq -e 'type == "array"' > /dev/null 2>&1; then
+                      COMMENTS_ARRAY=$(echo "$COMMENTS_RAW_DATA" | jq -c \
+                          --arg issueTitle "$ISSUE_TITLE" \
+                          --arg issueBody "$ISSUE_BODY" \
+                          --arg issueUrl "$ISSUE_URL" '
+                          [.[] | {
+                              author: (.user.login // "unknown"),
+                              avatarUrl: (.user.avatar_url // ""),
+                              body: (.body // ""),
+                              createdAt: .created_at,
+                              issueTitle: $issueTitle,
+                              issueBody: $issueBody,
+                              issueUrl: $issueUrl,
+                              url: .html_url
+                          }]
+                      ')
+                      jq -s '.[0] + .[1]' "$TEMP_COMMENTS_FILE" <(echo "$COMMENTS_ARRAY") > "${TEMP_COMMENTS_FILE}.new"
+                      mv "${TEMP_COMMENTS_FILE}.new" "$TEMP_COMMENTS_FILE"
+                  fi
+              done
+          else
+              echo "Warning: Failed to fetch comment issues for ${COMMENTS_REPO}."
+              echo "API Response: $COMMENTS_ISSUES_RAW"
+          fi
+
+          # =========================================================
+          # D. 릴리즈 데이터 수집 로직
           # =========================================================
           TEMP_RELEASES_FILE=$(mktemp)
           echo "[]" > "$TEMP_RELEASES_FILE"
@@ -145,7 +189,7 @@ jobs:
 
 
           # =========================================================
-          # D. 최종 정리 및 저장
+          # E. 최종 정리 및 저장
           # =========================================================
           mkdir -p _data
           CURRENT_TIME=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
@@ -158,14 +202,18 @@ jobs:
           FINAL_ISSUES=$(jq 'sort_by(.date) | reverse | . + [{"last_updated": $time}]' --arg time "$CURRENT_TIME" "$TEMP_ISSUES_FILE")
           echo "$FINAL_ISSUES" > _data/issues_data.json
 
-          # 3. 릴리즈 데이터 저장
+          # 3. 댓글 데이터 저장
+          FINAL_COMMENTS=$(jq 'sort_by(.createdAt) | reverse | . + [{"last_updated": $time}]' --arg time "$CURRENT_TIME" "$TEMP_COMMENTS_FILE")
+          echo "$FINAL_COMMENTS" > _data/comments_data.json
+
+          # 4. 릴리즈 데이터 저장
           FINAL_RELEASES=$(jq 'sort_by(.date) | reverse | . + [{"last_updated": $time}]' --arg time "$CURRENT_TIME" "$TEMP_RELEASES_FILE")
           echo "$FINAL_RELEASES" > _data/releases_data.json
           
           # 임시 파일 삭제
-          rm -f "$TEMP_COMMITS_FILE" "$TEMP_ISSUES_FILE" "$TEMP_RELEASES_FILE"
+          rm -f "$TEMP_COMMITS_FILE" "$TEMP_ISSUES_FILE" "$TEMP_COMMENTS_FILE" "$TEMP_RELEASES_FILE"
           
-          echo "Successfully processed commit, issue, PR, and release data."
+          echo "Successfully processed commit, issue, comment, PR, and release data."
           
       # 5. 변경된 JSON 파일을 자동 커밋 및 푸시
       - name: Commit and push if changed
@@ -181,4 +229,5 @@ jobs:
           files: |
             _data/commits_data.json
             _data/issues_data.json
+            _data/comments_data.json
             _data/releases_data.json

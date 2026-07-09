@@ -90,12 +90,8 @@
     }
 
     function getIssuePageHref(issue) {
-        const title = issue.title || '';
-        if (title.startsWith('/')) {
-            return `${title.split(' ')[0]}#utterances`;
-        }
-
-        return issue.html_url;
+        const path = getIssuePath(issue);
+        return path ? `${path}#utterances` : issue.html_url;
     }
 
     function createCommentCard(comment) {
@@ -143,17 +139,120 @@
     }
 
     async function fetchJson(url) {
-        const response = await fetch(url, {
-            headers: {
-                Accept: 'application/vnd.github+json'
-            }
-        });
+        if (typeof window.fetch === 'function') {
+            const response = await window.fetch(url, {
+                headers: {
+                    Accept: 'application/vnd.github+json'
+                }
+            });
 
-        if (!response.ok) {
-            throw new Error(`GitHub API ${response.status}`);
+            if (!response.ok) {
+                const detail = await response.text().catch(() => '');
+                const error = new Error(detail || `GitHub API ${response.status}`);
+                error.status = response.status;
+                throw error;
+            }
+
+            return response.json();
         }
 
-        return response.json();
+        return new Promise((resolve, reject) => {
+            const request = new XMLHttpRequest();
+            request.open('GET', url, true);
+            request.setRequestHeader('Accept', 'application/vnd.github+json');
+            request.onload = () => {
+                if (request.status < 200 || request.status >= 300) {
+                    const error = new Error(request.responseText || `GitHub API ${request.status}`);
+                    error.status = request.status;
+                    reject(error);
+                    return;
+                }
+
+                try {
+                    resolve(JSON.parse(request.responseText));
+                } catch (error) {
+                    reject(error);
+                }
+            };
+            request.onerror = () => reject(new Error('GitHub API request failed'));
+            request.send();
+        });
+    }
+
+    function normalizeCommentRecord(record) {
+        const issue = {
+            title: record.issueTitle || '',
+            body: record.issueBody || '',
+            html_url: record.issueUrl || ''
+        };
+        const pageHref = record.pageHref || getIssuePageHref(issue);
+
+        return {
+            author: record.author || 'unknown',
+            avatarUrl: record.avatarUrl || '',
+            body: record.body || '',
+            createdAt: record.createdAt,
+            issueTitle: record.issueTitle || '댓글 원문',
+            pageHref,
+            url: record.url || issue.html_url || pageHref
+        };
+    }
+
+    async function loadStaticComments() {
+        const records = await fetchJson('/_data/comments_data.json');
+        const comments = records
+            .filter((record) => record.createdAt)
+            .map(normalizeCommentRecord)
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+        if (!comments.length) return null;
+
+        return {
+            comments,
+            issueCount: new Set(comments.map((comment) => comment.issueTitle)).size,
+            source: 'static'
+        };
+    }
+
+    async function loadLiveComments() {
+        const repo = 'sunbang123/sunbang123.github.io';
+        const issuesUrl = `https://api.github.com/repos/${repo}/issues?state=all&sort=updated&direction=desc&per_page=100`;
+        const issues = await fetchJson(issuesUrl);
+        const commentIssues = issues.filter((issue) => !issue.pull_request && issue.comments > 0);
+        const commentGroups = await Promise.all(commentIssues.slice(0, 24).map(async (issue) => {
+            try {
+                const comments = await fetchJson(`${issue.comments_url}?per_page=100`);
+                return comments.map((comment) => normalizeCommentRecord({
+                    author: comment.user?.login || 'unknown',
+                    avatarUrl: comment.user?.avatar_url || '',
+                    body: comment.body || '',
+                    createdAt: comment.created_at,
+                    issueTitle: issue.title || '댓글 원문',
+                    issueBody: issue.body || '',
+                    issueUrl: issue.html_url || '',
+                    pageHref: getIssuePageHref(issue),
+                    url: comment.html_url
+                }));
+            } catch (error) {
+                console.warn('Issue comments load failed', issue.title, error);
+                return [];
+            }
+        }));
+
+        return {
+            comments: commentGroups.flat().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)),
+            issueCount: commentIssues.length,
+            source: 'live'
+        };
+    }
+
+    function getCommentErrorMessage(error) {
+        const message = String(error?.message || '');
+        if (error?.status === 403 || error?.status === 429 || /rate limit/i.test(message)) {
+            return 'GitHub API 요청 제한에 걸려 댓글을 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.';
+        }
+
+        return '댓글을 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.';
     }
 
     async function renderComments() {
@@ -162,28 +261,13 @@
 
         const totalCount = document.getElementById('commentTotalCount');
         const issueCount = document.getElementById('commentIssueCount');
-        const repo = 'sunbang123/sunbang123.github.io';
-        const issuesUrl = `https://api.github.com/repos/${repo}/issues?state=all&sort=updated&direction=desc&per_page=100`;
 
         try {
-            const issues = await fetchJson(issuesUrl);
-            const commentIssues = issues.filter((issue) => !issue.pull_request && issue.comments > 0);
-            const commentGroups = await Promise.all(commentIssues.slice(0, 24).map(async (issue) => {
-                const comments = await fetchJson(`${issue.comments_url}?per_page=100`);
-                return comments.map((comment) => ({
-                    author: comment.user?.login || 'unknown',
-                    avatarUrl: comment.user?.avatar_url || '',
-                    body: comment.body || '',
-                    createdAt: comment.created_at,
-                    issueTitle: issue.title || '댓글 원문',
-                    pageHref: getIssuePageHref(issue),
-                    url: comment.html_url
-                }));
-            }));
-            const comments = commentGroups.flat().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            const result = await loadStaticComments().catch(() => null) || await loadLiveComments();
+            const comments = result.comments;
 
             if (totalCount) totalCount.textContent = comments.length;
-            if (issueCount) issueCount.textContent = `${commentIssues.length}개 이슈`;
+            if (issueCount) issueCount.textContent = `${result.issueCount}개 이슈`;
 
             if (!comments.length) {
                 list.replaceChildren();
@@ -195,10 +279,11 @@
 
             list.replaceChildren(...comments.slice(0, 10).map(createCommentCard));
         } catch (error) {
+            console.warn('Comments load failed', error);
             if (totalCount) totalCount.textContent = '0';
             list.replaceChildren();
             const message = document.createElement('p');
-            message.textContent = '댓글을 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.';
+            message.textContent = getCommentErrorMessage(error);
             list.append(message);
         }
     }
@@ -215,13 +300,40 @@
         return path.endsWith('/') ? path : `${path}/`;
     }
 
-    function getIssuePath(issue) {
-        const title = issue.title || '';
-        if (title.startsWith('/')) {
-            return normalizePath(title.split(/\s+/)[0]);
+    function extractPathFromText(text) {
+        const value = String(text || '').trim();
+        if (!value) return '';
+
+        try {
+            const url = new URL(value);
+            if (url.pathname) return normalizePath(url.pathname);
+        } catch (_) {
+            // Not a full URL. Fall through to pathname matching.
+        }
+
+        const pathMatch = value.match(/(?:^|[\s"'(<[])(\/?devlog\/[^\s?#"'<>),\]]+)/);
+        if (pathMatch) return normalizePath(pathMatch[1]);
+
+        if (value.startsWith('/')) {
+            return normalizePath(value.split(/\s+/)[0]);
         }
 
         return '';
+    }
+
+    function getIssuePath(issue) {
+        return extractPathFromText(issue.title) || extractPathFromText(issue.body);
+    }
+
+    async function loadStaticCommentCounts() {
+        const result = await loadStaticComments();
+        if (!result) return null;
+
+        return result.comments.reduce((counts, comment) => {
+            const path = normalizePath(comment.pageHref);
+            if (path) counts[path] = (counts[path] || 0) + 1;
+            return counts;
+        }, {});
     }
 
     async function renderDevlogCommentCounts() {
@@ -232,13 +344,14 @@
         const issuesUrl = `https://api.github.com/repos/${repo}/issues?state=all&sort=updated&direction=desc&per_page=100`;
 
         try {
-            const issues = await fetchJson(issuesUrl);
-            const countsByPath = issues.reduce((counts, issue) => {
-                if (issue.pull_request) return counts;
-                const path = getIssuePath(issue);
-                if (path) counts[path] = issue.comments || 0;
-                return counts;
-            }, {});
+            const countsByPath = await loadStaticCommentCounts().catch(() => null) || await fetchJson(issuesUrl).then((issues) => (
+                issues.reduce((counts, issue) => {
+                    if (issue.pull_request) return counts;
+                    const path = getIssuePath(issue);
+                    if (path) counts[path] = (counts[path] || 0) + (issue.comments || 0);
+                    return counts;
+                }, {})
+            ));
 
             badges.forEach((badge) => {
                 const path = normalizePath(badge.dataset.commentPath);
