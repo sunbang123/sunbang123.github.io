@@ -1,25 +1,33 @@
 ---
 permalink: /404.html
 layout: default
+title: 404
 ---
 
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+<section class="error-game-page" data-error-game-root>
+  <canvas
+    class="error-game-canvas"
+    data-error-game-canvas
+    width="1440"
+    height="720"
+    aria-label="Interactive 404 runner game"
+    role="img"></canvas>
 
-<div class="container">
-  <h1>404</h1>
+  <div class="error-game-hud" aria-label="Game status">
+    <span>Score <strong data-error-game-score>0</strong></span>
+    <span>Best <strong data-error-game-best>0</strong></span>
+    <span>Signals <strong data-error-game-signals>0</strong><small>Best <b data-error-game-best-signals>0</b></small></span>
+  </div>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+  <div class="error-game-panel" data-error-game-overlay aria-live="polite">
+    <h1 data-error-game-title>404</h1>
+    <p><strong data-error-game-state>Page not found :(</strong></p>
+    <p data-error-game-message>The requested page could not be found.</p>
+    <div class="error-game-actions">
+      <button class="error-game-button error-game-button--primary" type="button" data-error-game-start hidden>Retry</button>
+      <a class="error-game-button error-game-button--secondary" href="{{ '/' | relative_url }}">Home</a>
+    </div>
+  </div>
+</section>
+
+<script src="{{ '/assets/javascripts/custom/error-game.js' | relative_url }}"></script>

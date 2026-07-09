@@ -356,6 +356,7 @@ html[data-theme="light"] .reading-hero,
 html[data-theme="light"] .reading-overview,
 html[data-theme="light"] .reading-main,
 html[data-theme="light"] .home-activity-section,
+html[data-theme="light"] .error-game-page,
 html[data-theme="light"] .read-page,
 html[data-theme="light"] .game-page,
 html[data-theme="light"] .devlog-page,
@@ -569,6 +570,48 @@ html[data-theme="light"] .post-neighbor-card span,
 html[data-theme="light"] .settings-kicker,
 html[data-theme="light"] .reading-kicker {
   color: #1d4ed8 !important;
+}
+
+html[data-theme="light"] .error-game-page {
+  background:
+    linear-gradient(135deg, rgba(14, 165, 233, 0.16), transparent 36%),
+    linear-gradient(180deg, #eef7ff 0%, #eef2f6 54%, #f8fafc 100%) !important;
+}
+
+html[data-theme="light"] .error-game-panel {
+  background: rgba(255, 255, 255, 0.74) !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 20px 54px rgba(15, 23, 42, 0.16) !important;
+}
+
+html[data-theme="light"] .error-game-panel h1,
+html[data-theme="light"] .error-game-panel p strong {
+  color: #111827 !important;
+  text-shadow: none !important;
+}
+
+html[data-theme="light"] .error-game-panel p {
+  color: #475569 !important;
+}
+
+html[data-theme="light"] .error-game-hud span {
+  background: rgba(255, 255, 255, 0.78) !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  color: #475569 !important;
+}
+
+html[data-theme="light"] .error-game-hud strong {
+  color: #111827 !important;
+}
+
+html[data-theme="light"] .error-game-hud small {
+  color: #64748b !important;
+}
+
+html[data-theme="light"] .error-game-button--secondary {
+  background: #dbeafe !important;
+  border-color: rgba(37, 99, 235, 0.14) !important;
+  color: #1e3a8a !important;
 }
 
 html[data-theme="light"] .momonton-gate {
