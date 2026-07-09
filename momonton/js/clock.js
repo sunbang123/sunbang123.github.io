@@ -12,8 +12,8 @@ timestamp++;
 let timerId = setTimeout(function tick() {
     clock.innerText = getDateFormatByTimestamp(timestamp);
     timestamp++; // 
-    timerId = setTimeout(tick, 1000); // tick은 1초가 지나면 재귀 호출( 함수내에서 함수 자신을 불러오는거)
-  }, 1000); // 요청 간격 1초가 지나면 tick이 실행되도록...
+    timerId = setTimeout(tick, 1000 - (Date.now() % 1000)); // tick은 1초가 지나면 재귀 호출( 함수내에서 함수 자신을 불러오는거)
+  }, 1000 - (Date.now() % 1000)); // 요청 간격 1초가 지나면 tick이 실행되도록...
 
 // timestamp를 시계로 바꿔줌.
 function getDateFormatByTimestamp(timestamp) {
