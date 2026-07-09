@@ -1,6 +1,22 @@
 [
   {
     "type": "commit",
+    "repo": "DatabasePractice",
+    "message": "feat: MongoDB에 파이썬 스크래핑 데이터 저장 예제",
+    "author": "김선영",
+    "date": "2026-07-09T12:02:18Z",
+    "sha": "e564b07a02600327ae3ac4acf67bdca590484ced"
+  },
+  {
+    "type": "commit",
+    "repo": "DatabasePractice",
+    "message": "Initial commit",
+    "author": "김선영",
+    "date": "2026-07-09T11:59:28Z",
+    "sha": "7b6fda6e80dc38b20ad88cb3b2cdeb3b335cdd57"
+  },
+  {
+    "type": "commit",
     "repo": "Wafer-Vision-Simulator",
     "message": "Update README formatting and headings",
     "author": "김선영",
@@ -944,30 +960,6 @@
     "sha": "502673c1178f661bf1028f3307c798c4b0cebe4b"
   },
   {
-    "type": "commit",
-    "repo": "CodingTest",
-    "message": "Update README.md",
-    "author": "김선영",
-    "date": "2024-12-29T13:21:37Z",
-    "sha": "ca4fe06751dda397e55f9382cf82d3cb02aa2934"
-  },
-  {
-    "type": "commit",
-    "repo": "CodingTest",
-    "message": "Update README.md",
-    "author": "김선영",
-    "date": "2024-12-29T13:21:13Z",
-    "sha": "4391c9f8b0be91520e08b4c916a15340c0a46e3b"
-  },
-  {
-    "type": "commit",
-    "repo": "CodingTest",
-    "message": "Initial commit",
-    "author": "김선영",
-    "date": "2024-07-07T05:58:19Z",
-    "sha": "16570713b098f62a820864cf9c9ab28e4ae4526d"
-  },
-  {
-    "last_updated": "2026-07-09T10:00:29Z"
+    "last_updated": "2026-07-09T17:12:35Z"
   }
 ]
