@@ -1,0 +1,137 @@
+---
+layout: post
+title: "정보처리기사 문제는 쓸모가 많다. Pt.2"
+date: 2026-07-10 01:54:52 +0900
+categories: 
+tags: [ "c", "java", "Certification", "정보처리기사" ]
+---
+
+지난 글에 이어, 정보처리기사 문제들을 살펴보며 마주친 흥미로운 코드들을 두 번째로 정리해 본다. 언어마다 다른 듯 닮아있는 열거형(Enum)의 특성과, 컴퓨터 구조의 기초를 묻는 16진수 비트 연산 문제다.
+
+---
+
+## 1. 언어를 관통하는 열거형(Enum)
+
+C#에서 자주 다루던 `enum`을 최근 C++에서도 보게 되었다. 사실 열거형은 Java, Python, JavaScript 등 다양한 언어에서 광범위하게 사용되는 개념이다.
+
+열거형은 프로그래머가 직접 정의하는 '이름이 붙은 정수 상수들의 집합'이다. 숫자 0, 1, 2 대신 RED, GREEN, BLUE 같은 의미 있는 이름을 사용하여 코드의 가독성을 높여준다.
+
+### C++에서의 Enum 동작 방식
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	enum spectrum {
+		red, orange, yellow, green, blue,
+		violet, indigo, ultraviolet
+	};
+	
+	spectrum a = orange;
+	cout << a << endl;
+	
+	int b;
+	b = blue;
+	b = blue + 3;
+	cout << b << endl;
+}
+
+```
+
+이 코드의 출력 결과는 `1`과 `7`이다.
+기본적으로 열거형은 첫 번째 요소부터 0, 1, 2 순서대로 정수값을 부여받는다. 흥미로운 점은 내부 요소에 디폴트 값을 명시할 때 나타난다. 만약 `red = 3`으로 지정한다면, 이어지는 `orange`는 4, `blue`는 7이 되어 최종 출력은 `4`와 `10`이 된다. 열거형이 순열처럼 순서대로 존재하며 메모리에 매핑된다는 사실을 알 수 있다.
+
+### Java에서의 Enum과 메서드 체이닝
+
+Java에서의 Enum은 단순한 정수 상수를 넘어, 객체로서 더 많은 기능을 제공한다. 
+
+정보처리기사에서 나온 문제를 보자.
+
+```java
+enum Tri {
+    A("A"), B("AB"), C("ABC");
+ 
+    private String code;
+ 
+    Tri(String code) {
+        this.code = code;
+    }
+ 
+    public String code() {
+        return code;
+    }
+}
+ 
+public class Main {
+    public static void main(String[] args) {
+        Tri t = Tri.values()[Tri.A.name().length()];
+        System.out.print(t.code());
+    }
+}
+
+```
+
+출력 결과를 도출하기 위해서는 코드를 안쪽에서부터 해독해야 한다.
+
+1. `Tri.A.name()`: `name()` 메서드는 enum 상수의 이름을 문자열로 반환한다. 즉, `"A"`를 반환한다.
+2. `.length()`: 문자열 `"A"`의 길이는 `1`이다.
+3. `Tri.values()`: enum 상수들을 배열 형태 `{ A, B, C }`로 반환한다.
+4. `Tri.values()[1]`: 배열의 인덱스 1에 해당하는 값은 `Tri.B`이다.
+5. `t.code()`: `Tri.B` 생성 시 부여된 값인 `"AB"`를 반환한다.
+
+결과적으로 `AB`가 출력된다. 언어마다 Enum을 구현하고 활용하는 방식에 깊이 차이가 있음을 보여주는 좋은 예시다.
+
+---
+
+## 2. 16진수 비트 연산과 진법 변환
+
+다음은 정처기 기출 유형 중에서, 단연 특이했던 16진수 배열 문제다. 컴퓨터 구조론 첫 단원에서 진법 변환을 배워서 문제로 풀곤했는데 이 문제를 처음 접하고 16진수가 코드에 나온다는게 친숙하면서 신선했다.
+
+```c
+#include <stdio.h>
+ 
+typedef struct student {
+    char* name;
+    int score[3];
+} Student;
+ 
+int dec(int enc) {
+    return enc & 0xA5;
+}
+ 
+int sum(Student* p) {
+    return dec(p->score[0]) + dec(p->score[1]) + dec(p->score[2]);
+}
+ 
+int main() {
+    Student s[2] = { "Kim", {0xA0, 0xA5, 0xDB}, "Lee", {0xA0, 0xED, 0x81} };
+    int result = 0;
+ 
+    for (int i = 0; i < 2; i++) {
+        result += sum(&s[i]);
+    }
+    printf("%d", result);
+    return 0;
+}
+
+```
+
+이 문제의 핵심은 16진수를 2진수로 변환하여 비트 논리곱(AND, `&`) 연산을 수행한 뒤, 그 결과를 다시 10진수로 합산하는 과정에 있다. `dec()` 함수에서 기준이 되는 마스크 값은 `0xA5` (2진수로 `1010 0101`)이다.
+
+**첫 번째 학생 (Kim) 연산**
+
+* `0xA0` & `0xA5`: `1010 0000` & `1010 0101` = `1010 0000` (160)
+* `0xA5` & `0xA5`: 동일한 값이므로 `1010 0101` (165)
+* `0xDB` & `0xA5`: `1101 1011` & `1010 0101` = `1000 0001` (129)
+* 합계: 160 + 165 + 129 = **454**
+
+**두 번째 학생 (Lee) 연산**
+
+* `0xA0` & `0xA5`: 이전과 동일하게 `1010 0000` (160)
+* `0xED` & `0xA5`: `1110 1101` & `1010 0101` = `1010 0101` (165)
+* `0x81` & `0xA5`: `1000 0001` & `1010 0101` = `1000 0001` (129)
+* 합계: 160 + 165 + 129 = **454**
+
+최종 결과는 두 학생의 합산 값인 `454 + 454 = 908`이 된다.
