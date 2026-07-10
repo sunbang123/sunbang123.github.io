@@ -1,0 +1,130 @@
+.post-title-share {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+}
+
+.post-title-share .post-title {
+  min-width: 0;
+  margin: 0;
+}
+
+.post-title-share__trigger {
+  appearance: none;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  -webkit-text-fill-color: currentColor;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.post-title-share__trigger:hover {
+  text-decoration: underline;
+  text-decoration-color: rgba(147, 197, 253, 0.55);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+}
+
+.post-title-share__trigger:focus-visible,
+.post-copy-link:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 4px;
+}
+
+.post-copy-link {
+  flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid rgba(147, 197, 253, 0.34);
+  border-radius: 8px;
+  background: rgba(96, 165, 250, 0.14);
+  color: #bfdbfe;
+  cursor: pointer;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.post-copy-link[hidden] {
+  display: none;
+}
+
+.post-copy-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(147, 197, 253, 0.64);
+  background: rgba(96, 165, 250, 0.24);
+}
+
+.post-copy-link.is-copied {
+  border-color: rgba(74, 222, 128, 0.56);
+  background: rgba(34, 197, 94, 0.16);
+  color: #86efac;
+}
+
+.post-copy-link.has-error {
+  border-color: rgba(248, 113, 113, 0.58);
+  background: rgba(239, 68, 68, 0.16);
+  color: #fca5a5;
+}
+
+.post-copy-link i {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.post-copy-status {
+  display: block;
+  min-height: 1.3rem;
+  margin-top: 0.45rem;
+  color: #93c5fd;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+html[data-theme="light"] .post-copy-link {
+  border-color: rgba(37, 99, 235, 0.26);
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+html[data-theme="light"] .post-copy-link.is-copied {
+  border-color: rgba(22, 163, 74, 0.34);
+  background: #dcfce7;
+  color: #166534;
+}
+
+html[data-theme="light"] .post-copy-link.has-error {
+  border-color: rgba(220, 38, 38, 0.34);
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+html[data-theme="light"] .post-copy-status {
+  color: #1d4ed8;
+}
+
+@media (max-width: 600px) {
+  .post-title-share {
+    align-items: flex-start;
+  }
+
+  .post-copy-link {
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-top: 0.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .post-copy-link {
+    transition: none;
+  }
+}

@@ -4,7 +4,29 @@ layout: default
 <article class="post h-entry mt-5" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    <div class="post-title-share">
+      <h1 class="post-title p-name" itemprop="name headline">
+        <button
+          class="post-title-share__trigger"
+          type="button"
+          aria-expanded="false"
+          aria-controls="post-copy-link"
+          aria-label="{{ page.title | escape }} — 링크 복사 버튼 보기">
+          {{ page.title | escape }}
+        </button>
+      </h1>
+      <button
+        class="post-copy-link"
+        id="post-copy-link"
+        type="button"
+        data-copy-url="{{ page.url | absolute_url }}"
+        aria-label="{{ page.title | escape }} 글 링크 복사"
+        aria-describedby="post-copy-status"
+        hidden>
+        <i class="bi bi-copy" aria-hidden="true"></i>
+      </button>
+    </div>
+    <span class="post-copy-status" id="post-copy-status" role="status" aria-live="polite" aria-atomic="true"></span>
     <p class="post-meta">
       <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}

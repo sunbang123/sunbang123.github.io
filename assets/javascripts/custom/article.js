@@ -1,4 +1,83 @@
 document.addEventListener('DOMContentLoaded', function() {
+    initPostLinkCopy();
+
+    function initPostLinkCopy() {
+        const titleTrigger = document.querySelector('.post-title-share__trigger');
+        const copyButton = document.getElementById('post-copy-link');
+        const copyStatus = document.getElementById('post-copy-status');
+
+        if (!titleTrigger || !copyButton) return;
+
+        const icon = copyButton.querySelector('i');
+        const defaultLabel = copyButton.getAttribute('aria-label');
+        let resetTimer;
+
+        titleTrigger.addEventListener('click', function() {
+            const shouldShow = copyButton.hidden;
+            copyButton.hidden = !shouldShow;
+            titleTrigger.setAttribute('aria-expanded', String(shouldShow));
+            resetCopyState();
+        });
+
+        copyButton.addEventListener('click', async function() {
+            const postUrl = copyButton.dataset.copyUrl || window.location.href;
+
+            try {
+                await copyText(postUrl);
+                setCopyState('success', '글 링크를 복사했습니다.');
+            } catch (error) {
+                setCopyState('error', '링크를 복사하지 못했습니다. 다시 시도해 주세요.');
+            }
+        });
+
+        function setCopyState(state, message) {
+            window.clearTimeout(resetTimer);
+            copyButton.classList.toggle('is-copied', state === 'success');
+            copyButton.classList.toggle('has-error', state === 'error');
+            copyButton.setAttribute('aria-label', state === 'success' ? '글 링크 복사 완료' : '글 링크 복사 실패');
+
+            if (icon) {
+                icon.className = state === 'success' ? 'bi bi-check-lg' : 'bi bi-exclamation-lg';
+            }
+            if (copyStatus) {
+                copyStatus.textContent = message;
+            }
+
+            resetTimer = window.setTimeout(resetCopyState, 2400);
+        }
+
+        function resetCopyState() {
+            window.clearTimeout(resetTimer);
+            copyButton.classList.remove('is-copied', 'has-error');
+            copyButton.setAttribute('aria-label', defaultLabel);
+            if (icon) icon.className = 'bi bi-copy';
+            if (copyStatus) copyStatus.textContent = '';
+        }
+
+        async function copyText(text) {
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(text);
+                return;
+            }
+
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.setAttribute('readonly', '');
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            textarea.setSelectionRange(0, textarea.value.length);
+
+            const copied = document.execCommand('copy');
+            textarea.remove();
+
+            if (!copied) {
+                throw new Error('Copy command failed');
+            }
+        }
+    }
+
     // =========================================
     // 1. 전역 변수 설정
     // =========================================
