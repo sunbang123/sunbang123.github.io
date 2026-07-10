@@ -22,17 +22,28 @@
     const world = {
         width: 1440,
         height: 720,
-        groundY: 590
+        groundY: 590,
+        viewportZoom: 1
     };
 
     const player = {
         x: 148,
         y: 0,
-        width: 48,
-        height: 56,
+        width: 58,
+        height: 62,
         vy: 0,
         grounded: true
     };
+
+    const obstacleTypes = [
+        { kind: 'file', label: '404', width: 56, height: 54, color: '#f8fafc', accent: '#dc2626' },
+        { kind: 'file', label: 'NULL', width: 58, height: 48, color: '#e2e8f0', accent: '#64748b' },
+        { kind: 'server', label: '500', width: 46, height: 78, color: '#fecaca', accent: '#ef4444' },
+        { kind: 'dns', label: 'DNS?', width: 64, height: 52, color: '#bae6fd', accent: '#0284c7' },
+        { kind: 'loop', label: 'LOOP', width: 66, height: 66, color: '#ddd6fe', accent: '#7c3aed' },
+        { kind: 'timeout', label: 'TIMEOUT', width: 74, height: 44, color: '#fed7aa', accent: '#ea580c' },
+        { kind: 'broken-link', label: 'LINK', width: 70, height: 50, color: '#bbf7d0', accent: '#16a34a' }
+    ];
 
     let mode = 'idle';
     let lastTime = 0;
@@ -146,13 +157,20 @@
     function resizeCanvas() {
         const dpr = window.devicePixelRatio || 1;
         const rect = canvas.getBoundingClientRect();
-        world.width = Math.max(320, rect.width || 1440);
-        world.height = Math.max(360, rect.height || 720);
+        const layoutWidth = document.documentElement.clientWidth || window.innerWidth || rect.width || 1440;
+        const cssWidth = Math.max(320, Math.min(rect.width || layoutWidth, layoutWidth));
+        const cssHeight = Math.max(1, rect.height || 720);
+        const isPortraitPhone = cssWidth < 720 && cssHeight > cssWidth;
+        const isSmallLandscape = cssWidth < 940 && cssWidth > cssHeight;
+
+        world.viewportZoom = isPortraitPhone ? 1.58 : isSmallLandscape ? 1.18 : 1;
+        world.width = cssWidth * world.viewportZoom;
+        world.height = cssHeight * world.viewportZoom;
         world.groundY = Math.max(250, world.height - Math.min(112, world.height * 0.18));
 
-        canvas.width = Math.round(world.width * dpr);
-        canvas.height = Math.round(world.height * dpr);
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        canvas.width = Math.round(cssWidth * dpr);
+        canvas.height = Math.round(cssHeight * dpr);
+        ctx.setTransform(dpr / world.viewportZoom, 0, 0, dpr / world.viewportZoom, 0, 0);
 
         if (player.grounded || mode !== 'running') {
             placePlayerOnGround();
@@ -184,16 +202,21 @@
     }
 
     function spawnObstacle() {
-        const tall = Math.random() > 0.55;
-        const width = tall ? 42 : 56;
-        const height = tall ? 74 : 48;
+        const template = obstacleTypes[Math.floor(Math.random() * obstacleTypes.length)];
+        const scale = 0.92 + Math.random() * 0.18;
+        const width = Math.round(template.width * scale);
+        const height = Math.round(template.height * scale);
 
         obstacles.push({
             x: world.width + 28,
             y: world.groundY - height,
             width,
             height,
-            label: Math.random() > 0.42 ? '404' : 'NULL'
+            kind: template.kind,
+            label: template.label,
+            color: template.color,
+            accent: template.accent,
+            seed: Math.random() * Math.PI * 2
         });
     }
 
@@ -319,46 +342,163 @@
     }
 
     function drawPlayer() {
-        roundRect(player.x, player.y, player.width, player.height, 8);
+        const x = player.x;
+        const y = player.y;
+        const run = Math.sin(distance * 0.08) * 3;
+        const bob = player.grounded ? Math.sin(distance * 0.045) * 1.8 : -2;
+
+        ctx.save();
+        ctx.translate(x, y + bob);
+
+        ctx.strokeStyle = 'rgba(167, 243, 208, 0.34)';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(43, 15);
+        ctx.quadraticCurveTo(64, 4, 70, 24);
+        ctx.stroke();
+
+        ctx.fillStyle = '#facc15';
+        ctx.beginPath();
+        ctx.arc(72, 25, 4.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        roundRect(4, 7, 50, 43, 9);
         ctx.fillStyle = '#a7f3d0';
         ctx.fill();
 
+        roundRect(10, 14, 38, 25, 5);
         ctx.fillStyle = '#052e2b';
-        ctx.fillRect(player.x + 8, player.y + 12, player.width - 16, 5);
+        ctx.fill();
 
-        ctx.strokeStyle = '#052e2b';
-        ctx.lineWidth = 4;
+        ctx.fillStyle = '#67e8f9';
+        ctx.fillRect(17, 23, 6, 5);
+        ctx.fillRect(34, 23, 6, 5);
+
+        ctx.strokeStyle = '#a7f3d0';
+        ctx.lineWidth = 2.5;
         ctx.beginPath();
-        ctx.moveTo(player.x + 12, player.y + 32);
-        ctx.lineTo(player.x + 24, player.y + 21);
-        ctx.lineTo(player.x + 36, player.y + 32);
+        ctx.moveTo(18, 34);
+        ctx.lineTo(27, 34);
+        ctx.lineTo(31, 31);
+        ctx.lineTo(40, 31);
         ctx.stroke();
 
         ctx.fillStyle = '#052e2b';
-        ctx.fillRect(player.x + 18, player.y + 32, 12, 12);
+        ctx.fillRect(16, 50, 8, 10 + run);
+        ctx.fillRect(36, 50, 8, 10 - run);
+
+        ctx.fillStyle = '#a7f3d0';
+        ctx.fillRect(12, 60 + run, 15, 4);
+        ctx.fillRect(32, 60 - run, 15, 4);
+
+        ctx.fillStyle = '#f8fafc';
+        ctx.font = '900 11px Poppins, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('</>', 29, 4);
+
+        ctx.restore();
     }
 
     function drawObstacle(item) {
-        roundRect(item.x, item.y, item.width, item.height, 6);
-        ctx.fillStyle = '#f8fafc';
-        ctx.fill();
+        const x = item.x;
+        const y = item.y;
+        const w = item.width;
+        const h = item.height;
+        const accent = item.accent || '#dc2626';
 
-        ctx.fillStyle = '#fecaca';
-        ctx.beginPath();
-        ctx.moveTo(item.x + item.width - 15, item.y);
-        ctx.lineTo(item.x + item.width, item.y + 15);
-        ctx.lineTo(item.x + item.width - 15, item.y + 15);
-        ctx.closePath();
-        ctx.fill();
+        ctx.save();
 
-        ctx.fillStyle = '#dc2626';
-        ctx.fillRect(item.x + 7, item.y + 12, item.width - 18, 5);
-        ctx.fillRect(item.x + 7, item.y + 24, item.width - 14, 4);
+        if (item.kind === 'loop') {
+            ctx.strokeStyle = item.color;
+            ctx.lineWidth = 8;
+            ctx.beginPath();
+            ctx.arc(x + w * 0.36, y + h * 0.48, h * 0.22, 0.25, Math.PI * 1.9);
+            ctx.arc(x + w * 0.64, y + h * 0.48, h * 0.22, Math.PI * 1.25, Math.PI * 0.9, true);
+            ctx.stroke();
+            ctx.fillStyle = accent;
+            ctx.beginPath();
+            ctx.moveTo(x + w - 12, y + h * 0.38);
+            ctx.lineTo(x + w - 2, y + h * 0.49);
+            ctx.lineTo(x + w - 16, y + h * 0.56);
+            ctx.closePath();
+            ctx.fill();
+        } else if (item.kind === 'dns') {
+            roundRect(x, y + 5, w, h - 5, 8);
+            ctx.fillStyle = item.color;
+            ctx.fill();
+            ctx.strokeStyle = accent;
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(x + w * 0.5, y + h * 0.5, h * 0.24, 0, Math.PI * 2);
+            ctx.moveTo(x + w * 0.26, y + h * 0.5);
+            ctx.lineTo(x + w * 0.74, y + h * 0.5);
+            ctx.moveTo(x + w * 0.5, y + h * 0.24);
+            ctx.lineTo(x + w * 0.5, y + h * 0.76);
+            ctx.stroke();
+        } else if (item.kind === 'server') {
+            roundRect(x, y, w, h, 7);
+            ctx.fillStyle = item.color;
+            ctx.fill();
+            ctx.fillStyle = accent;
+            for (let i = 0; i < 3; i++) {
+                ctx.fillRect(x + 8, y + 13 + i * 18, w - 16, 4);
+                ctx.fillRect(x + w - 15, y + 10 + i * 18, 5, 5);
+            }
+        } else if (item.kind === 'timeout') {
+            roundRect(x, y, w, h, 8);
+            ctx.fillStyle = item.color;
+            ctx.fill();
+            ctx.strokeStyle = accent;
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.arc(x + 18, y + h / 2, 11, 0, Math.PI * 2);
+            ctx.moveTo(x + 18, y + h / 2);
+            ctx.lineTo(x + 18, y + h / 2 - 7);
+            ctx.moveTo(x + 18, y + h / 2);
+            ctx.lineTo(x + 25, y + h / 2 + 4);
+            ctx.stroke();
+            ctx.fillRect(x + 38, y + 17, w - 48, 5);
+        } else if (item.kind === 'broken-link') {
+            roundRect(x, y + 5, w, h - 10, 9);
+            ctx.fillStyle = item.color;
+            ctx.fill();
+            ctx.strokeStyle = accent;
+            ctx.lineWidth = 5;
+            ctx.beginPath();
+            ctx.arc(x + 22, y + h / 2, 13, Math.PI * 0.2, Math.PI * 1.8);
+            ctx.arc(x + w - 22, y + h / 2, 13, Math.PI * 1.2, Math.PI * 0.8, true);
+            ctx.stroke();
+            ctx.strokeStyle = '#052e2b';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(x + w / 2 - 6, y + 12);
+            ctx.lineTo(x + w / 2 + 3, y + h - 13);
+            ctx.moveTo(x + w / 2 + 4, y + 12);
+            ctx.lineTo(x + w / 2 + 13, y + h - 13);
+            ctx.stroke();
+        } else {
+            roundRect(x, y, w, h, 6);
+            ctx.fillStyle = item.color || '#f8fafc';
+            ctx.fill();
+
+            ctx.fillStyle = '#fecaca';
+            ctx.beginPath();
+            ctx.moveTo(x + w - 15, y);
+            ctx.lineTo(x + w, y + 15);
+            ctx.lineTo(x + w - 15, y + 15);
+            ctx.closePath();
+            ctx.fill();
+
+            ctx.fillStyle = accent;
+            ctx.fillRect(x + 7, y + 12, w - 18, 5);
+            ctx.fillRect(x + 7, y + 24, w - 14, 4);
+        }
 
         ctx.fillStyle = '#0f172a';
-        ctx.font = '900 13px Poppins, sans-serif';
+        ctx.font = `900 ${item.label.length > 5 ? 10 : 12}px Poppins, sans-serif`;
         ctx.textAlign = 'center';
-        ctx.fillText(item.label, item.x + item.width / 2, item.y + item.height - 11);
+        ctx.fillText(item.label, x + w / 2, y + h - 9);
+        ctx.restore();
     }
 
     function drawSignal(item) {
@@ -424,12 +564,20 @@
         jump();
     });
     window.addEventListener('resize', resizeCanvas);
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', resizeCanvas);
+    }
+    if (window.ResizeObserver) {
+        new ResizeObserver(resizeCanvas).observe(canvas);
+    }
 
     startButton.textContent = 'Retry';
     setRetryButton(false);
     setOverlay(true, 'Page not found :(', 'The requested page could not be found.');
     setLabels();
     resizeCanvas();
+    requestAnimationFrame(resizeCanvas);
+    window.setTimeout(resizeCanvas, 120);
     requestAnimationFrame((time) => {
         lastTime = time;
         requestAnimationFrame(loop);
