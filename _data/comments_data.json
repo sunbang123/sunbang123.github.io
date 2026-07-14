@@ -2,6 +2,16 @@
   {
     "author": "sunbang123",
     "avatarUrl": "https://avatars.githubusercontent.com/u/93497158?v=4",
+    "body": "진법코딩에 대한 얘기를 더 하자면, 10진수는 보통 0이 앞자리에 안오기 때문에 진법이 다른수를 표현할때 0은 앞자리수로 쓰인다. 16진수 0x는 hexagon이라 x를 쓴다! 그렇다면 8진수는 octagon의 o를 붙여서 0o 2진수는 binary라서 0b 이렇게 접두사를 붙인다 :)",
+    "createdAt": "2026-07-13T11:53:26Z",
+    "issueTitle": "enum-and-16bit-problem-solve/",
+    "issueBody": "# 정보처리기사 문제는 쓸모가 많다. Pt.2 | Tech Blog\n\n지난 글에 이어, 정보처리기사 문제들을 살펴보며 마주친 흥미로운 코드들을 두 번째로 정리해 본다. 언어마다 다른 듯 닮아있는 열거형(Enum)의 특성과, 컴퓨터 구조의 기초를 묻는 16진수 비트 연산 문제다.\n\n[https://sunbang123.github.io/enum-and-16bit-problem-solve/](https://sunbang123.github.io/enum-and-16bit-problem-solve/)",
+    "issueUrl": "https://github.com/sunbang123/sunbang123.github.io/issues/46",
+    "url": "https://github.com/sunbang123/sunbang123.github.io/issues/46#issuecomment-4957647482"
+  },
+  {
+    "author": "sunbang123",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/93497158?v=4",
     "body": "각 프로젝트마다 이해를 돕는 소프트웨어 아키텍처 플로우차트 제작 완료!",
     "createdAt": "2026-07-07T14:51:20Z",
     "issueTitle": "devlog/2026-06-26-project-end/",
@@ -900,6 +910,6 @@
     "url": "https://github.com/sunbang123/sunbang123.github.io/issues/1#issuecomment-1641921341"
   },
   {
-    "last_updated": "2026-07-13T02:30:06Z"
+    "last_updated": "2026-07-14T02:09:34Z"
   }
 ]
