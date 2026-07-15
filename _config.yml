@@ -15,17 +15,18 @@
 # in the templates via {{ site.myvariable }}.
 
 # custom_layout은 _layouts 폴더에 있는 파일 이름
-title: Tech Blog
+title: Sun Dev Notes
 lang: ko
 email: ilikeksy99@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  C#, Unity, .NET, OpenCV와 컴퓨터 과학 학습 기록, 프로젝트 회고, 개발 문제 해결 과정을 정리하는 개인 기술 블로그입니다.
+  Sun Kim의 C#, .NET, OpenCV와 컴퓨터 과학, Unity를 직접 공부하고 구현하며 남기는 개발 기록과 프로젝트 회고 블로그입니다.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://sunbang123.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  sunbang123
+author: Sun Kim
 
 author-profile:
-  name: "김선영"
+  name: "김선영(Sun Kim)"
   bio: "한세대학교 22학번 컴퓨터공학과"
   email: "ilikeksy99@gmail.com"
   linkedin: "sunyoung-kim-86a54b283"
@@ -99,6 +100,23 @@ defaults:
       path: ""
     values:
       image: /assets/images/thumbnail/default-og.jpg
+  - scope:
+      path: "_posts"
+      type: "posts"
+    values:
+      author: "Sun Kim"
+  - scope:
+      path: "report-main"
+    values:
+      sitemap: false
+  - scope:
+      path: "momonton"
+    values:
+      sitemap: false
+  - scope:
+      path: "naverec6b76c63fe7a72720cfad89fdb480f6.html"
+    values:
+      sitemap: false
   - scope:
       path: "_projects"
       type: "projects"
