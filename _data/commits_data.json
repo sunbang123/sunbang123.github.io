@@ -1,6 +1,30 @@
 [
   {
     "type": "commit",
+    "repo": "sunbang123",
+    "message": "Update README.md",
+    "author": "김선영",
+    "date": "2026-07-15T09:46:00Z",
+    "sha": "8046842ca5aabae34a08715f5d87bf9ae0b28fff"
+  },
+  {
+    "type": "commit",
+    "repo": "sunbang123",
+    "message": "Revise current projects and learning topics\n\nUpdated current work and learning sections in README.",
+    "author": "김선영",
+    "date": "2026-07-15T09:43:13Z",
+    "sha": "9152305efee1edc268c9f7547f0bc31ecfc07c2b"
+  },
+  {
+    "type": "commit",
+    "repo": "sunbang123",
+    "message": "Revise README content and links\n\nUpdated personal information and links in README.",
+    "author": "김선영",
+    "date": "2026-07-15T09:27:25Z",
+    "sha": "f31ae4078101c996f3d3c70ac47a82d317f83151"
+  },
+  {
+    "type": "commit",
     "repo": "DatabasePractice",
     "message": "feat: MongoDB에 파이썬 스크래핑 데이터 저장 예제",
     "author": "김선영",
@@ -689,14 +713,6 @@
   },
   {
     "type": "commit",
-    "repo": "sunbang123",
-    "message": "Update README.md",
-    "author": "김선영",
-    "date": "2025-09-11T11:27:59Z",
-    "sha": "5fcdeb0a294a17e394561029792b6fb32d1853cc"
-  },
-  {
-    "type": "commit",
     "repo": "capstone_project",
     "message": "README.md 업데이트",
     "author": "김선영",
@@ -766,22 +782,6 @@
     "author": "sunbang123",
     "date": "2025-06-25T08:14:39Z",
     "sha": "21aa7c97948d40b364ac16185562a28fe1bd037b"
-  },
-  {
-    "type": "commit",
-    "repo": "sunbang123",
-    "message": "Update README.md",
-    "author": "김선영",
-    "date": "2025-06-25T07:02:46Z",
-    "sha": "29e4694ffc85ec0c7a964b4e0cd7340633cba295"
-  },
-  {
-    "type": "commit",
-    "repo": "sunbang123",
-    "message": "README.md 업데이트",
-    "author": "김선영",
-    "date": "2025-06-20T13:05:00Z",
-    "sha": "23fb7eec253a28f675dc1f89f24a26f871f0d5b4"
   },
   {
     "type": "commit",
@@ -976,6 +976,6 @@
     "sha": "16570713b098f62a820864cf9c9ab28e4ae4526d"
   },
   {
-    "last_updated": "2026-07-15T06:25:54Z"
+    "last_updated": "2026-07-15T10:34:22Z"
   }
 ]
