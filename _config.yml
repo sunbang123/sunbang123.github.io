@@ -142,16 +142,14 @@ tag_categories:
     - AI
     - Network  
 
-  소프트웨어:
+  소프트웨어 공학:
     - Software
     - Software-Engineering
     - Software-Development
     - Software-Testing
     - Software-Design
     - Software-Architecture
-    - DevLog
     - Debugging
-    - web-development
 
   프로그래밍:
     - c
@@ -161,6 +159,7 @@ tag_categories:
     - Java
     - Programming
     - Embedded
+    - DevLog
 
   Configuration:
     - Git
