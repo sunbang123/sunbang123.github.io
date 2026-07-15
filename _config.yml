@@ -140,15 +140,26 @@ tag_categories:
     - MATLAB
     - Artificial Intelligence
     - AI
-    - Network
-  
+    - Network  
+
+  소프트웨어:
+    - Software
+    - Software-Engineering
+    - Software-Development
+    - Software-Testing
+    - Software-Design
+    - Software-Architecture
+    - DevLog
+    - Debugging
+    - web-development
+
   프로그래밍:
+    - c
     - Csharp
     - Cpp
     - Python
     - Java
     - Programming
-    - web-development
     - Embedded
 
   Configuration:
@@ -156,6 +167,8 @@ tag_categories:
     - git-pages
     - jekyll
     - SDK
+    - Node-red
+    - Open-Graph
   
   자격증:
     - Certification
