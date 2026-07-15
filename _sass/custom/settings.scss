@@ -354,6 +354,7 @@ html[data-theme="light"] .page-content,
 html[data-theme="light"] .site-footer,
 html[data-theme="light"] .reading-hero,
 html[data-theme="light"] .reading-overview,
+html[data-theme="light"] .featured-writing-section,
 html[data-theme="light"] .reading-main,
 html[data-theme="light"] .home-activity-section,
 html[data-theme="light"] .error-game-page,
@@ -396,7 +397,9 @@ html[data-theme="light"] h1.post-title {
 }
 
 html[data-theme="light"] .reading-description,
+html[data-theme="light"] .featured-writing-section__description,
 html[data-theme="light"] .featured-post p,
+html[data-theme="light"] .featured-writing-card p,
 html[data-theme="light"] .post-preview p,
 html[data-theme="light"] .read-header p,
 html[data-theme="light"] .read-post-card p,
@@ -428,6 +431,7 @@ html[data-theme="light"] .footer-col-wrapper a:hover {
 }
 
 html[data-theme="light"] .featured-post,
+html[data-theme="light"] .featured-writing-card,
 html[data-theme="light"] .post-preview,
 html[data-theme="light"] .profile-panel,
 html[data-theme="light"] .topic-panel,
@@ -506,6 +510,7 @@ html[data-theme="light"] .project-content h3,
 html[data-theme="light"] .project-content h4,
 html[data-theme="light"] .post-neighbor-card strong,
 html[data-theme="light"] .featured-post h2 a,
+html[data-theme="light"] .featured-writing-card h3 a,
 html[data-theme="light"] .post-preview h3 a,
 html[data-theme="light"] .read-post-card h3 a,
 html[data-theme="light"] .game-card h2 a,
@@ -560,6 +565,7 @@ html[data-theme="light"] .settings-search input {
 }
 
 html[data-theme="light"] .featured-post__tags a,
+html[data-theme="light"] .featured-writing-card span,
 html[data-theme="light"] .post-preview__tags a,
 html[data-theme="light"] .read-post-card__tags a,
 html[data-theme="light"] .game-card__tags span,
@@ -568,8 +574,103 @@ html[data-theme="light"] .roadmap-tags span,
 html[data-theme="light"] .commit-badge,
 html[data-theme="light"] .post-neighbor-card span,
 html[data-theme="light"] .settings-kicker,
+html[data-theme="light"] .section-heading p,
 html[data-theme="light"] .reading-kicker {
   color: #1d4ed8 !important;
+}
+
+html[data-theme="light"] .featured-writing-card span {
+  background: #dbeafe !important;
+  border: 1px solid rgba(37, 99, 235, 0.14) !important;
+  color: #1e3a8a !important;
+}
+
+html[data-theme="light"] .series-book:nth-child(4n + 1) {
+  --series-cover-start: #dbeafe;
+  --series-cover-end: #93c5fd;
+  --series-accent-rgb: 37, 99, 235;
+  --series-strong: #0f172a;
+  --series-muted: rgba(30, 64, 175, 0.78);
+}
+
+html[data-theme="light"] .series-book:nth-child(4n + 2) {
+  --series-cover-start: #dcfce7;
+  --series-cover-end: #86efac;
+  --series-accent-rgb: 22, 163, 74;
+  --series-strong: #052e16;
+  --series-muted: rgba(22, 101, 52, 0.78);
+}
+
+html[data-theme="light"] .series-book:nth-child(4n + 3) {
+  --series-cover-start: #ede9fe;
+  --series-cover-end: #c4b5fd;
+  --series-accent-rgb: 124, 58, 237;
+  --series-strong: #2e1065;
+  --series-muted: rgba(91, 33, 182, 0.78);
+}
+
+html[data-theme="light"] .series-book:nth-child(4n + 4) {
+  --series-cover-start: #fef3c7;
+  --series-cover-end: #fbbf24;
+  --series-accent-rgb: 217, 119, 6;
+  --series-strong: #451a03;
+  --series-muted: rgba(146, 64, 14, 0.78);
+}
+
+html[data-theme="light"] .series-book:nth-child(4n + 1),
+html[data-theme="light"] .series-book:nth-child(4n + 2),
+html[data-theme="light"] .series-book:nth-child(4n + 3),
+html[data-theme="light"] .series-book:nth-child(4n + 4) {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.56), transparent 26px),
+    linear-gradient(135deg, var(--series-cover-start) 0%, var(--series-cover-end) 100%) !important;
+  border-color: rgba(var(--series-accent-rgb), 0.24) !important;
+  color: var(--series-strong) !important;
+  box-shadow: 0 16px 34px rgba(var(--series-accent-rgb), 0.16) !important;
+}
+
+html[data-theme="light"] .series-book:nth-child(4n + 1):hover,
+html[data-theme="light"] .series-book:nth-child(4n + 1).is-active,
+html[data-theme="light"] .series-book:nth-child(4n + 2):hover,
+html[data-theme="light"] .series-book:nth-child(4n + 2).is-active,
+html[data-theme="light"] .series-book:nth-child(4n + 3):hover,
+html[data-theme="light"] .series-book:nth-child(4n + 3).is-active,
+html[data-theme="light"] .series-book:nth-child(4n + 4):hover,
+html[data-theme="light"] .series-book:nth-child(4n + 4).is-active {
+  color: var(--series-strong) !important;
+  border-color: rgba(var(--series-accent-rgb), 0.42) !important;
+  box-shadow: 0 22px 44px rgba(var(--series-accent-rgb), 0.22) !important;
+}
+
+html[data-theme="light"] .series-book:nth-child(4n + 1) .series-book__spine,
+html[data-theme="light"] .series-book:nth-child(4n + 2) .series-book__spine,
+html[data-theme="light"] .series-book:nth-child(4n + 3) .series-book__spine,
+html[data-theme="light"] .series-book:nth-child(4n + 4) .series-book__spine {
+  background: rgba(var(--series-accent-rgb), 0.16) !important;
+  border-right-color: rgba(var(--series-accent-rgb), 0.16) !important;
+  box-shadow: inset -5px 0 10px rgba(var(--series-accent-rgb), 0.1) !important;
+}
+
+html[data-theme="light"] .series-book:nth-child(4n + 1) .series-book__label,
+html[data-theme="light"] .series-book:nth-child(4n + 1) .series-book__body span,
+html[data-theme="light"] .series-book:nth-child(4n + 1) .series-book__body em,
+html[data-theme="light"] .series-book:nth-child(4n + 2) .series-book__label,
+html[data-theme="light"] .series-book:nth-child(4n + 2) .series-book__body span,
+html[data-theme="light"] .series-book:nth-child(4n + 2) .series-book__body em,
+html[data-theme="light"] .series-book:nth-child(4n + 3) .series-book__label,
+html[data-theme="light"] .series-book:nth-child(4n + 3) .series-book__body span,
+html[data-theme="light"] .series-book:nth-child(4n + 3) .series-book__body em,
+html[data-theme="light"] .series-book:nth-child(4n + 4) .series-book__label,
+html[data-theme="light"] .series-book:nth-child(4n + 4) .series-book__body span,
+html[data-theme="light"] .series-book:nth-child(4n + 4) .series-book__body em {
+  color: var(--series-muted) !important;
+}
+
+html[data-theme="light"] .series-book:nth-child(4n + 1) .series-book__body strong,
+html[data-theme="light"] .series-book:nth-child(4n + 2) .series-book__body strong,
+html[data-theme="light"] .series-book:nth-child(4n + 3) .series-book__body strong,
+html[data-theme="light"] .series-book:nth-child(4n + 4) .series-book__body strong {
+  color: var(--series-strong) !important;
 }
 
 html[data-theme="light"] .error-game-page {
@@ -704,6 +805,7 @@ html[data-theme="light"] .btn-offcanvas {
 }
 
 html[data-theme="light"] .game-card__links a:hover,
+html[data-theme="light"] .featured-writing-card h3 a:hover,
 html[data-theme="light"] .read-post-card h3 a:hover,
 html[data-theme="light"] .game-card h2 a:hover,
 html[data-theme="light"] .devlog-card h2 a:hover {
