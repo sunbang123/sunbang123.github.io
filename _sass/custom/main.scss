@@ -1276,6 +1276,70 @@ body {
     gap: 1rem;
 }
 
+.featured-writing-section {
+    background: linear-gradient(180deg, #0f1419 0%, #111827 100%);
+    padding: 4rem 1.5rem 2rem;
+}
+
+.featured-writing-section__inner {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.featured-writing-section__description {
+    max-width: 760px;
+    margin: -0.25rem 0 1.4rem;
+    color: #a8b3c7;
+    line-height: 1.75;
+}
+
+.featured-writing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.featured-writing-card {
+    min-height: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(15, 23, 42, 0.72);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+}
+
+.featured-writing-card span {
+    display: inline-flex;
+    min-height: 28px;
+    align-items: center;
+    padding: 0.24rem 0.52rem;
+    border-radius: 999px;
+    background: rgba(96, 165, 250, 0.14);
+    color: #bfdbfe;
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.featured-writing-card h3 {
+    margin: 0.75rem 0 0.5rem;
+    font-size: 1.08rem;
+    line-height: 1.45;
+}
+
+.featured-writing-card h3 a {
+    color: #f8fafc;
+    text-decoration: none;
+}
+
+.featured-writing-card h3 a:hover {
+    color: #bfdbfe;
+}
+
+.featured-writing-card p {
+    margin: 0;
+    color: #a8b3c7;
+    line-height: 1.7;
+}
+
 .reading-stat {
     padding: 1rem 1.15rem;
     border-left: 3px solid #60a5fa;
@@ -2990,6 +3054,10 @@ body[data-width="wide"] .devlog-post__inner {
         grid-template-columns: 1fr 1fr;
     }
 
+    .featured-writing-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
 }
 
 @media (max-width: 720px) {
@@ -3061,6 +3129,7 @@ body[data-width="wide"] .devlog-post__inner {
     }
 
     .reading-overview__inner,
+    .featured-writing-grid,
     .activity-panel--featured .commits-container,
     .visit-summary,
     .reading-sidebar {

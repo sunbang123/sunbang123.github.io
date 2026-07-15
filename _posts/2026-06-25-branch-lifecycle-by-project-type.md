@@ -4,9 +4,13 @@ title: "GitHub 프로젝트에서 브랜치의 생명주기"
 date: 2026-06-25 12:00:00 +0900
 categories:
 tags: ["Git", "GitHub", "Branch", "Workflow"]
+description: "개인 프로젝트와 팀 프로젝트에서 브랜치를 만들고 관리하며 느낀 차이를 GitHub Flow, Gitflow, trunk-based development와 함께 정리한 글입니다."
+experience_note: "개인 프로젝트와 팀 프로젝트에서 직접 브랜치를 만들고 병합하며 겪은 흐름을 바탕으로, 브랜치가 언제 만들어지고 언제 정리되어야 하는지 정리했습니다."
 ---
 
 # GitHub 프로젝트에서 브랜치의 생명주기
+
+이 글은 개인 프로젝트와 팀 프로젝트에서 브랜치를 사용하며 느낀 차이를 정리한 기록이다. 혼자 작업할 때의 브랜치는 임시 작업 공간에 가깝지만, 팀 프로젝트에서는 리뷰와 배포 안정성을 지키는 경계가 되었다. 그 경험을 바탕으로 GitHub Flow, Gitflow, trunk-based development를 비교해 보았다.
 
 GitHub 프로젝트를 하다 보면 브랜치는 단순히 코드를 나누는 도구가 아니라, 작업의 상태를 표현하는 단위가 된다.
 

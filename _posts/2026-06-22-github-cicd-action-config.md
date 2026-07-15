@@ -4,9 +4,13 @@ title: "GitHub Actions 자동 커밋과 잔디 그래프"
 date: 2026-06-22 00:19:00 +0900
 categories: 
 tags: ["Github", "web-development", "Git", "git-pages"]
+description: "GitHub Actions 자동 커밋이 개인 기여도 그래프에 섞이지 않도록 봇 작성자 정보를 설정한 방법과 이유를 정리했습니다."
+experience_note: "블로그 자동화 커밋이 개인 GitHub 잔디에 섞이는 문제를 발견하고, 자동 커밋 작성자 정보를 분리하며 해결한 내용을 기록했습니다."
 ---
 
 ## GitHub Actions 자동 커밋을 기여도 그래프(잔디)에서 제외하는 방법
+
+이 글은 블로그 데이터를 자동으로 갱신하는 GitHub Actions를 운영하면서 생긴 작은 불편에서 출발했다. 자동 커밋이 많아질수록 실제로 코드를 작성한 기록과 기계적인 갱신 기록이 기여도 그래프에서 섞였고, 이를 분리하기 위해 커밋 작성자 정보를 어떻게 설정해야 하는지 확인했다.
 
 <img src="/post_img/260622/image.png" width="500px">
 

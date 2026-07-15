@@ -79,6 +79,29 @@ layout: default
   </div>
 </section>
 
+{%- if site.data.featured_posts and site.data.featured_posts.size > 0 -%}
+<section class="featured-writing-section" aria-label="대표 글">
+  <div class="featured-writing-section__inner">
+    <div class="section-heading">
+      <p>Selected Notes</p>
+      <h2>먼저 읽으면 좋은 대표 글</h2>
+    </div>
+    <p class="featured-writing-section__description">
+      직접 구현하거나 디버깅하며 남긴 기록 중, 이 블로그의 방향을 가장 잘 보여주는 글을 따로 모았습니다.
+    </p>
+    <div class="featured-writing-grid">
+      {%- for item in site.data.featured_posts -%}
+      <article class="featured-writing-card">
+        <span>{{ item.focus | escape }}</span>
+        <h3><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a></h3>
+        <p>{{ item.summary | escape }}</p>
+      </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{%- endif -%}
+
 <section class="home-activity-section" aria-label="최근 개발 활동과 방문자수 기록">
   <div class="home-activity-section__inner">
     <section class="activity-panel activity-panel--featured">
