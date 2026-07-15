@@ -5,7 +5,7 @@ tags: []
 ---
 
 이전에 스마트디바이스 실습때, AWS MQTT를 사용하기 위해 AWS계정을 생성한적 있다.
-AWS에 사물 정책을 추가하고 온습도 Topic을 구독Subscribe 해서 데이터 흐름을 연결하고 메시지를 확인하는 핵심적인 브로커 용도로 사용했었다. 쉽게 말해 이것도 클라우드를 활용한 통신실습 [헤당_글_바로가기]https://sunbang123.github.io/report-main/practice/day15.2/index.html
+AWS에 사물 정책을 추가하고 온습도 Topic을 구독Subscribe 해서 데이터 흐름을 연결하고 메시지를 확인하는 핵심적인 브로커 용도로 사용했었다. 쉽게 말해 이것도 클라우드를 활용한 통신실습 [해당_글_바로가기](https://sunbang123.github.io/report-main/practice/day15.2/index.html)
 
 하지만 최근들어 웹페이지 배포를 위해 백엔드 서버용으로 AWS를 다시 사용한적이 있는데, 분명 Free Tier 요금은 무료라고 들었는데 5달러를 청구받았다. 한도를 초과했나? 하고 결제 대시보드의 Free Tier항목을 클릭해서 확인했는데, 사용량이 전혀 없다고 떴다. 다시말해 일반 요금으로 전환되서 청구됬다는 뜻!
 
