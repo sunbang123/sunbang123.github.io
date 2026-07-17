@@ -1,6 +1,30 @@
 [
   {
     "type": "commit",
+    "repo": "your-reader",
+    "message": "feat: Your Reader MVP 디자인, Supabase schema 작성",
+    "author": "sunbang123",
+    "date": "2026-07-16T13:59:48Z",
+    "sha": "3ff4cde03d799b5f954b3f511c1908e0c82b4fdd"
+  },
+  {
+    "type": "commit",
+    "repo": "your-reader",
+    "message": "Initial README.md with project details\n\nAdded project overview, core user flow, key features, system architecture, and unique value propositions for the web service '당신의 독자'.",
+    "author": "김선영",
+    "date": "2026-07-16T13:05:58Z",
+    "sha": "14f7cabf9f6affddaf3a43b8c3ba4fca70fb1852"
+  },
+  {
+    "type": "commit",
+    "repo": "your-reader",
+    "message": "Initial commit",
+    "author": "김선영",
+    "date": "2026-07-16T12:55:14Z",
+    "sha": "9ceb7b623eb58ebd32b4793b0a6c4021905a0bee"
+  },
+  {
+    "type": "commit",
     "repo": "sunbang123",
     "message": "Update README.md",
     "author": "김선영",
@@ -952,30 +976,6 @@
     "sha": "502673c1178f661bf1028f3307c798c4b0cebe4b"
   },
   {
-    "type": "commit",
-    "repo": "CodingTest",
-    "message": "Update README.md",
-    "author": "김선영",
-    "date": "2024-12-29T13:21:37Z",
-    "sha": "ca4fe06751dda397e55f9382cf82d3cb02aa2934"
-  },
-  {
-    "type": "commit",
-    "repo": "CodingTest",
-    "message": "Update README.md",
-    "author": "김선영",
-    "date": "2024-12-29T13:21:13Z",
-    "sha": "4391c9f8b0be91520e08b4c916a15340c0a46e3b"
-  },
-  {
-    "type": "commit",
-    "repo": "CodingTest",
-    "message": "Initial commit",
-    "author": "김선영",
-    "date": "2024-07-07T05:58:19Z",
-    "sha": "16570713b098f62a820864cf9c9ab28e4ae4526d"
-  },
-  {
-    "last_updated": "2026-07-16T02:21:32Z"
+    "last_updated": "2026-07-17T02:24:31Z"
   }
 ]
