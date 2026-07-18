@@ -2,6 +2,15 @@
   {
     "type": "pull_request",
     "repo": "your-reader",
+    "title": "feat: Your Reader v2 AI 감정 분석 서비스 구현",
+    "state": "closed",
+    "date": "2026-07-18T13:34:07Z",
+    "url": "https://github.com/sunbang123/your-reader/pull/3",
+    "number": 3
+  },
+  {
+    "type": "pull_request",
+    "repo": "your-reader",
     "title": "feat: MVP 1 인증, 글 CRUD 및 자동 저장 에디터 구현",
     "state": "closed",
     "date": "2026-07-17T13:55:43Z",
@@ -288,6 +297,6 @@
     "number": 1
   },
   {
-    "last_updated": "2026-07-18T02:08:15Z"
+    "last_updated": "2026-07-18T13:49:23Z"
   }
 ]

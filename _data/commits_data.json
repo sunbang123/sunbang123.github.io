@@ -2,6 +2,22 @@
   {
     "type": "commit",
     "repo": "your-reader",
+    "message": "Merge pull request #3 from sunbang123/feature/prototype(v.2)\n\nfeat: Your Reader v2 AI 감정 분석 서비스 구현",
+    "author": "김선영",
+    "date": "2026-07-18T13:34:13Z",
+    "sha": "517971d83b746848a227c94662b6a525e7b99df5"
+  },
+  {
+    "type": "commit",
+    "repo": "your-reader",
+    "message": "feat: Your Reader v2 AI 감정 분석 서비스 구현\n\n- Supabase 인증 및 글 저장 기능 추가\n- Hugging Face 기반 감정 분석 파이프라인 구현\n- 독자 페르소나별 공감 답장 생성\n- 영문 번역과 펜팔 답장 기능 추가\n- 분석 결과 및 감정 점수 저장\n- 분석 API와 결과 조회 API 구현\n- AI 응답 파싱 및 오류 처리 보강\n- Vercel 배포 환경 구성",
+    "author": "sunbang123",
+    "date": "2026-07-18T13:33:44Z",
+    "sha": "ee4111ea937e369b1eb6c8dd61b6ed7734d29002"
+  },
+  {
+    "type": "commit",
+    "repo": "your-reader",
     "message": "Merge pull request #2 from sunbang123/feature/prototype(v.1)\n\nfeat: MVP 1 인증, 글 CRUD 및 자동 저장 에디터 구현",
     "author": "김선영",
     "date": "2026-07-17T13:55:49Z",
@@ -22,22 +38,6 @@
     "author": "sunbang123",
     "date": "2026-07-17T13:36:27Z",
     "sha": "32bbae97546543de9ef0da2941192bf6ca0a0944"
-  },
-  {
-    "type": "commit",
-    "repo": "your-reader",
-    "message": "feat: npm 기반 AI 프로토타입 파이프라인 구현\n\n- Transformers.js 실제 모델 3종 연동\n- 감정 분석 및 하이라이트 선정 구현\n- EXAONE 페르소나 답글 생성 추가\n- NLLB 한국어-영어 번역 추가\n- 모델 캐시 및 다운로드 진행률 표시\n- 페르소나 규칙 위반 검사와 PoC 테스트 추가",
-    "author": "sunbang123",
-    "date": "2026-07-17T13:19:17Z",
-    "sha": "fd3e7f385821a35d039165b15ff15f366a45cbea"
-  },
-  {
-    "type": "commit",
-    "repo": "your-reader",
-    "message": "feat: Your Reader MVP 디자인, Supabase schema 작성",
-    "author": "sunbang123",
-    "date": "2026-07-16T13:59:48Z",
-    "sha": "3ff4cde03d799b5f954b3f511c1908e0c82b4fdd"
   },
   {
     "type": "commit",
@@ -992,6 +992,6 @@
     "sha": "502673c1178f661bf1028f3307c798c4b0cebe4b"
   },
   {
-    "last_updated": "2026-07-18T02:08:15Z"
+    "last_updated": "2026-07-18T13:49:23Z"
   }
 ]
