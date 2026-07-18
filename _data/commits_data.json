@@ -2,26 +2,42 @@
   {
     "type": "commit",
     "repo": "your-reader",
+    "message": "Merge pull request #2 from sunbang123/feature/prototype(v.1)\n\nfeat: MVP 1 인증, 글 CRUD 및 자동 저장 에디터 구현",
+    "author": "김선영",
+    "date": "2026-07-17T13:55:49Z",
+    "sha": "c584d0aebe8e40cb06e5804fb9708cd3317f5eb1"
+  },
+  {
+    "type": "commit",
+    "repo": "your-reader",
+    "message": "Merge pull request #1 from sunbang123/feature/AI-Model\n\nfeat: npm 기반 AI 프로토타입 파이프라인 구현",
+    "author": "김선영",
+    "date": "2026-07-17T13:55:34Z",
+    "sha": "5ad3b4539f058c321a280ef98b4ab31b36f6faa9"
+  },
+  {
+    "type": "commit",
+    "repo": "your-reader",
+    "message": "feat: MVP 1 인증, 글 CRUD 및 자동 저장 에디터 구현",
+    "author": "sunbang123",
+    "date": "2026-07-17T13:36:27Z",
+    "sha": "32bbae97546543de9ef0da2941192bf6ca0a0944"
+  },
+  {
+    "type": "commit",
+    "repo": "your-reader",
+    "message": "feat: npm 기반 AI 프로토타입 파이프라인 구현\n\n- Transformers.js 실제 모델 3종 연동\n- 감정 분석 및 하이라이트 선정 구현\n- EXAONE 페르소나 답글 생성 추가\n- NLLB 한국어-영어 번역 추가\n- 모델 캐시 및 다운로드 진행률 표시\n- 페르소나 규칙 위반 검사와 PoC 테스트 추가",
+    "author": "sunbang123",
+    "date": "2026-07-17T13:19:17Z",
+    "sha": "fd3e7f385821a35d039165b15ff15f366a45cbea"
+  },
+  {
+    "type": "commit",
+    "repo": "your-reader",
     "message": "feat: Your Reader MVP 디자인, Supabase schema 작성",
     "author": "sunbang123",
     "date": "2026-07-16T13:59:48Z",
     "sha": "3ff4cde03d799b5f954b3f511c1908e0c82b4fdd"
-  },
-  {
-    "type": "commit",
-    "repo": "your-reader",
-    "message": "Initial README.md with project details\n\nAdded project overview, core user flow, key features, system architecture, and unique value propositions for the web service '당신의 독자'.",
-    "author": "김선영",
-    "date": "2026-07-16T13:05:58Z",
-    "sha": "14f7cabf9f6affddaf3a43b8c3ba4fca70fb1852"
-  },
-  {
-    "type": "commit",
-    "repo": "your-reader",
-    "message": "Initial commit",
-    "author": "김선영",
-    "date": "2026-07-16T12:55:14Z",
-    "sha": "9ceb7b623eb58ebd32b4793b0a6c4021905a0bee"
   },
   {
     "type": "commit",
@@ -976,6 +992,6 @@
     "sha": "502673c1178f661bf1028f3307c798c4b0cebe4b"
   },
   {
-    "last_updated": "2026-07-17T02:24:31Z"
+    "last_updated": "2026-07-18T02:08:15Z"
   }
 ]
