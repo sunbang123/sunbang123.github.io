@@ -1,6 +1,38 @@
 [
   {
     "type": "commit",
+    "repo": "bitcoin_trading_simulation",
+    "message": "feat: 실시간 시세 기반 주문 체결 및 배포 환경 구성\n\n- 업비트 WebSocket 바이너리 메시지 처리\n- 코인별 실시간 가격 캐싱 및 재연결 구현\n- 다중 코인 구독 요청 병합\n- 시장가 주문 즉시 체결 및 잘못된 0원 체결 방지\n- 공개 시세 API와 JWT 화이트리스트 수정\n- Next.js 백엔드 프록시 구성\n- Docker Compose 및 AWS EC2 배포 문서 추가\n- WebSocket과 주문 서비스 테스트 추가",
+    "author": "sunbang123",
+    "date": "2026-07-18T15:40:34Z",
+    "sha": "94766fbe37e45752c2d1d8e16b7a3d65e48c5f95"
+  },
+  {
+    "type": "commit",
+    "repo": "your-reader",
+    "message": "feat: make web app installable as PWA",
+    "author": "sunbang123",
+    "date": "2026-07-18T14:36:06Z",
+    "sha": "bdd6205291fb32f101b7bd7a93e711d9a48a087c"
+  },
+  {
+    "type": "commit",
+    "repo": "DatabasePractice",
+    "message": "feat: 리퀘스트 응답 확인 예제",
+    "author": "김선영",
+    "date": "2026-07-18T14:16:10Z",
+    "sha": "ae69caebcedf55e443044fa755d392d9570f533c"
+  },
+  {
+    "type": "commit",
+    "repo": "DatabasePractice",
+    "message": "feat: db 조회 예제",
+    "author": "김선영",
+    "date": "2026-07-18T14:15:51Z",
+    "sha": "dd35867fbc7b8dc882e40d054b2624f98ab08e32"
+  },
+  {
+    "type": "commit",
     "repo": "your-reader",
     "message": "Merge pull request #3 from sunbang123/feature/prototype(v.2)\n\nfeat: Your Reader v2 AI 감정 분석 서비스 구현",
     "author": "김선영",
@@ -30,14 +62,6 @@
     "author": "김선영",
     "date": "2026-07-17T13:55:34Z",
     "sha": "5ad3b4539f058c321a280ef98b4ab31b36f6faa9"
-  },
-  {
-    "type": "commit",
-    "repo": "your-reader",
-    "message": "feat: MVP 1 인증, 글 CRUD 및 자동 저장 에디터 구현",
-    "author": "sunbang123",
-    "date": "2026-07-17T13:36:27Z",
-    "sha": "32bbae97546543de9ef0da2941192bf6ca0a0944"
   },
   {
     "type": "commit",
@@ -166,14 +190,6 @@
     "author": "김선영",
     "date": "2026-06-30T08:25:26Z",
     "sha": "03ce35a1d9aeb82aafd39b4c13d1708908952142"
-  },
-  {
-    "type": "commit",
-    "repo": "bitcoin_trading_simulation",
-    "message": "feat: 내정보 페이지와 backend API 연동",
-    "author": "sunbang123",
-    "date": "2026-06-30T08:22:48Z",
-    "sha": "e178bc5d0aad62fc07913a8a0d378a6d575d3a7a"
   },
   {
     "type": "commit",
@@ -992,6 +1008,6 @@
     "sha": "502673c1178f661bf1028f3307c798c4b0cebe4b"
   },
   {
-    "last_updated": "2026-07-18T13:49:23Z"
+    "last_updated": "2026-07-19T02:25:30Z"
   }
 ]
