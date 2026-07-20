@@ -2,6 +2,16 @@
   {
     "author": "sunbang123",
     "avatarUrl": "https://avatars.githubusercontent.com/u/93497158?v=4",
+    "body": "크래프톤 정글 면접은 역대최악이다. 다시는 안가",
+    "createdAt": "2026-07-20T02:50:04Z",
+    "issueTitle": "three-tier-architecture/",
+    "issueBody": "# AWS EC2와 3계층 구조 3-Tier Architecture | Sun Dev Notes\n\n최근 크래프톤에서 주도하는 부트캠프인 ‘SW AI 정글’ 면접 과제를 하다가 AWS EC2를 활용해야 하는 항목을 마주했다. 이를 보니 작년에 진행했던 비트코인 웹 서비스 프로젝트가 떠올랐다.\n\n[https://sunbang123.github.io/three-tier-architecture/](https://sunbang123.github.io/three-tier-architecture/)",
+    "issueUrl": "https://github.com/sunbang123/sunbang123.github.io/issues/48",
+    "url": "https://github.com/sunbang123/sunbang123.github.io/issues/48#issuecomment-5018311305"
+  },
+  {
+    "author": "sunbang123",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/93497158?v=4",
     "body": "카카오메일 iamksy99@kakao.com로 AWS계정 새로 만들었다.\n\n<img width=\"500\" alt=\"image\" src=\"https://github.com/user-attachments/assets/1f6729f9-4629-4272-9add-23f95175b1ac\" />\n\n크레딧이 지급됬고 남은 기간(185일)이 아직 많이 남아 있더라도 제공된 크레딧(100달러)을 모두 사용하게 되면 그 즉시 해당 무료 서비스에 대한 액세스가 종료된다고 적혀있다. 크레딧을 다 쓰지 않았더라도 남은 일수 185일이 지나면 기간 만료로 종료된다.\n\n기간동한 계속쓸수있는게 아니라 아쉽지만 앞으로 개인 학습용 프로젝트로 웹서비스를 단기간 배포하는 정도로 넉넉하게 활용하는 방안을 생각해봐야겠다. ",
     "createdAt": "2026-07-17T09:04:07Z",
     "issueTitle": "devlog/2026-07-15-aws-cost-holy-moly/",
@@ -920,6 +930,6 @@
     "url": "https://github.com/sunbang123/sunbang123.github.io/issues/1#issuecomment-1641921341"
   },
   {
-    "last_updated": "2026-07-19T02:25:30Z"
+    "last_updated": "2026-07-20T03:18:10Z"
   }
 ]
