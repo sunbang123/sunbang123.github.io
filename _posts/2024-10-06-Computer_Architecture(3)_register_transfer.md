@@ -6,54 +6,49 @@ categories:
 tags:  [computer-architecture, computer-science]
 ---
 
-# Register transfer
+# Register Transfer
 
-### 한학기동안 배울것
+레지스터 사이에서 데이터가 어떻게 옮겨 다니는지를 표기하는 방법이 RTL(Register Transfer Level)이다. CPU 설계도 결국 "어느 레지스터에서 어느 레지스터로, 언제, 어떤 조건에서 데이터가 이동하는가"를 정의하는 작업이므로, 이 표기법을 읽을 줄 알아야 이후 명령어 사이클(Fetch-Decode-Execute) 설계를 따라갈 수 있다.
 
-- 레지스터 종류와 쓰임 (하드웨어)
-- 시퀀스 (소프트웨어)
-- 컨트롤 (컨트롤)
+## 기본 구성 요소
 
-### Block Diagram of Register
+컴퓨터 하나를 구성할 때 등장하는 레지스터는 크게 다음과 같다.
+
+- AR (Address Register)
+- DR / BR (Data Register / Buffer Register)
+- IR (Instruction Register)
+- PC (Program Counter)
+- R0~R15 또는 A~H (범용 레지스터)
 
 <img src="/post_img/image1006.png" width="500px">
 
-- AR (Address Register)
-- DR(Data Register) or BR(Buffer Register)
-- IR(Instruction Register)
-- PC(Program Counter)
-- R0 ~ R15  or  A ~ H.
+## RTL 기호 정리
 
+| 기호 | 의미 | 예시 |
+|---|---|---|
+| `A ← B` | B의 값을 A로 옮긴다 | `AC ← DR` — DR의 값을 AC로 복사 |
+| `,` | 동시에 수행 | `AR ← PC, PC ← PC+1` — 같은 클럭에 두 동작 실행 |
+| `[ ]` | 메모리의 지정된 주소 | `DR ← M[AR]` — AR이 가리키는 메모리 주소의 값을 DR로 |
+| `P: R2 ← R1` | 조건 P가 참일 때만 실행 | `If (P=1) then R2 ← R1` |
 
-### RTL, Basic symbols for register transfer
+예를 들어 `DR ← M[AR]`은 "AR 레지스터에 저장된 주소를 찾아가서, 그 메모리 위치의 값을 DR로 가져온다"는 뜻이다. 조건부 표기 `T: R1 ↔ R2`는 "타이밍 신호 T가 1일 때 R1과 R2를 맞바꿔라"라는 의미로, 실제 회로에서는 이 T가 특정 클럭 사이클에만 1이 되도록 설계되어 있다.
 
-- Register-transfer level
-    - 하드웨어 레지스터 간의 디지털 신호 흐름과 해당 신호에 대해 수행되는 논리 연산 측면에서 동기식 디지털 회로를 모델링하는 설계 추상화입니다.
+## BUS
 
-- Symbol: Microoperation을 활용한 데이터의 이동을 나타냄.
-    - (ex) A <- B
-    - B라는 레지스터에서 A레지스터로 데이터를 옮겨라!
-    - ',' : at the same time 동시에 시행하라.
-    - [ ]  : 지정된 메모리의 주소
-    - (ex) DR <- M[AR]
-    - 메모리 안의 AR이라는 주소에 있는 데이터를 DR에 옮긴다.
-    - P : R2 <- R1
-    - P 조건을 만족하면! Control한다는 뜻.
-    - If (P=1) then R2 <- R1
-    - T가 1일때 R1과 R2를 스와핑하라!
+레지스터끼리 데이터를 주고받으려면 실제로는 물리적인 전선 다발, 즉 버스(BUS)를 공유한다. 버스는 용도에 따라 세 종류로 나뉜다.
 
-### BUS
-
-- A set of common lines
-- Bus types: 
-    - Address bus 
-    - Data bus 
-    - Control bus
-
-> 버스 예시 그림 (책 참고: Computer System Architecture - Morris Mano)
+- **Address bus** — 주소 정보 전달
+- **Data bus** — 실제 데이터 전달
+- **Control bus** — 제어 신호(읽기/쓰기 등) 전달
 
 <img src="/post_img/image1006-1.png" width="500px">
 
-#### DR <- AC, AC <- DR 이때 버스는 누가 잡을까?
+### 버스는 한 번에 하나만 쓸 수 있다 — 동시 요청은 어떻게 처리할까
 
-- Bypass라고, DR에서 AC로 이어지는 라인 때문에 동시상황일때 AC가 버스를 잡아야함.
+`DR ← AC`와 `AC ← DR`처럼 두 레지스터가 서로 자리를 맞바꾸는 것처럼 보이는 상황을 생각해보자. 버스는 한 순간에 하나의 값만 실어 나를 수 있으므로, 두 레지스터가 동시에 버스를 "요청"하면 충돌이 난다.
+
+이를 피하려고 회로 설계 단계에서 DR→AC로 가는 경로에는 버스를 거치지 않는 별도의 직결 라인(bypass)을 따로 만들어 둔다. 그러면 동시 상황에서는 버스를 AC가 잡아 `AC → 버스 → DR` 경로로 쓰고, DR→AC 쪽은 bypass 라인으로 처리해 충돌 자체를 없앤다. 즉 "누가 버스를 잡을지"는 실행 중에 즉흥적으로 결정되는 게 아니라, 설계자가 미리 정해둔 우선순위와 별도 경로 설계로 해결되는 문제다.
+
+## 핵심 정리
+- RTL은 "레지스터 간 데이터 이동"을 수식처럼 표기하는 방법이며, `←`(이동), `,`(동시), `[ ]`(메모리 참조), 조건부 표기를 조합해 하드웨어 동작을 정확히 서술한다.
+- 버스는 공유 자원이라 동시에 여러 레지스터가 쓸 수 없고, 충돌 가능성이 있는 경로는 설계 단계에서 bypass나 우선순위로 미리 해결해둔다.
