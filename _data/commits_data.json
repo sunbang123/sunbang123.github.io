@@ -2,6 +2,14 @@
   {
     "type": "commit",
     "repo": "timeattack-code-dojo",
+    "message": "feat: 문제은행 구축 및 모드별 문제 조회 API 구현\n\n- 난이도별 MVP 시드 문제 6개 추가\n- Python/C++ 정답과 히든 테스트 검증\n- 모드·언어별 문제 조회 API 구현\n- 민감한 채점 데이터 비노출 테스트 추가",
+    "author": "sunbang123",
+    "date": "2026-07-21T00:20:06Z",
+    "sha": "21e3b128a3fd8fbfb81799a9aa5bdc7824320e5d"
+  },
+  {
+    "type": "commit",
+    "repo": "timeattack-code-dojo",
     "message": "feat: Next.js·Flask 프로젝트 기반 및 Vercel 배포 구성\n\n- Judge0와 Hugging Face 연동 PoC 및 검증 결과 추가\n- Next.js 16 App Router 프런트엔드 구성\n- Flask 상태 확인 API와 공통 오류 응답 구현\n- 로컬 통합 실행 및 Python 환경 설정 스크립트 추가\n- ESLint, TypeScript, 단위 테스트와 빌드 명령 구성\n- Vercel Preview 배포 및 API 라우팅 검증",
     "author": "sunbang123",
     "date": "2026-07-20T14:33:35Z",
@@ -984,6 +992,6 @@
     "sha": "a8beb9b2111f615ea2bd3156f251a010b3142cb0"
   },
   {
-    "last_updated": "2026-07-20T14:56:14Z"
+    "last_updated": "2026-07-21T00:29:10Z"
   }
 ]
