@@ -961,6 +961,10 @@ html[data-theme="light"] .itch-card__link {
   gap: 0.6rem;
 }
 
+.page-error-game .floating-nav {
+  display: none;
+}
+
 .floating-nav__button {
   display: inline-flex;
   align-items: center;

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: "en" }}" data-theme="dark">
   {%- include head.html -%}
-  <body id="top">
+  <body id="top" {% if page.url == '/404.html' %}class="page-error-game"{% endif %}>
     {%- include header.html -%}
     {%- include offcanvas.html -%}
     <main class="page-content" aria-label="Content">

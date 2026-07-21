@@ -10,13 +10,26 @@ title: 404
     data-error-game-canvas
     width="1440"
     height="720"
-    aria-label="Interactive 404 runner game. Tap the screen or press Space or Arrow Up to jump."
+    aria-label="Interactive 404 runner game. Press Space/Arrow Up to jump (double jump available) or Arrow Down to duck. On touch devices, use the Jump and Duck buttons."
     role="img"></canvas>
+
+  <div class="error-game-touch-controls" aria-hidden="true">
+    <button type="button" class="error-game-touch-btn error-game-touch-btn--duck" data-error-game-touch-duck>
+      <span class="error-game-touch-btn__icon">&#9660;</span>
+      <small>Duck</small>
+    </button>
+    <button type="button" class="error-game-touch-btn error-game-touch-btn--jump" data-error-game-touch-jump>
+      <span class="error-game-touch-btn__icon">&#9650;</span>
+      <small>Jump</small>
+    </button>
+  </div>
 
   <div class="error-game-hud" aria-label="Game status">
     <span>Score <strong data-error-game-score>0</strong></span>
     <span>Best <strong data-error-game-best>0</strong></span>
     <span>Signals <strong data-error-game-signals>0</strong><small>Best <b data-error-game-best-signals>0</b></small></span>
+    <span data-error-game-combo-badge>Combo <strong data-error-game-combo>x1</strong></span>
+    <span data-error-game-shield-badge>Shield <strong data-error-game-shield>0</strong></span>
   </div>
 
   <div class="error-game-panel" data-error-game-overlay aria-live="polite">
@@ -30,4 +43,4 @@ title: 404
   </div>
 </section>
 
-<script src="{{ '/assets/javascripts/custom/error-game.js' | relative_url }}"></script>
+<script type="module" src="{{ '/assets/javascripts/custom/error-game/main.js' | relative_url }}"></script>
