@@ -15,12 +15,17 @@ import {
     GHOST_DASH_OVERSHOOT,
     GHOST_MISS_FLY_TIME,
     GHOST_MISS_SPEED_MULTIPLIER,
-    SHIELD_ATTACK_THRESHOLD
+    SHIELD_ATTACK_THRESHOLD,
+    GHOST_FALLEN_GRAVITY,
+    GHOST_FALLEN_BOUNCE_VY,
+    GHOST_FALLEN_LIFETIME,
+    SLAM_SIGNAL_REWARD
 } from './constants.js';
 import { collide } from './draw-utils.js';
 import { triggerShake, spawnParticles, spawnFloatingText } from './effects.js';
 import { setLabels } from './hud.js';
 import { gameOver } from './game-flow.js';
+import { saveBestSignals } from './state.js';
 
 export function spawnGhost(state) {
     // Half the time it creeps up from behind (its usual chase spot);
@@ -87,9 +92,68 @@ function resolveGhostCollision(state) {
     gameOver(state);
 }
 
+// Landing a slam attack (ducking mid-air, a committed ground pound) knocks
+// the ghost down instead of hurting the player. No screen shake here - a
+// stomp lands constantly enough that shaking the whole screen for it gets
+// nauseating fast.
+function slamGhost(state) {
+    const { ghost, player } = state;
+    const knockDir = (ghost.x + ghost.width / 2 < player.x + player.width / 2) ? -1 : 1;
+
+    ghost.dashPhase = 'fallen';
+    ghost.dashClock = GHOST_FALLEN_LIFETIME;
+    ghost.dashVX = knockDir * (140 + Math.random() * 80);
+    ghost.dashVY = GHOST_FALLEN_BOUNCE_VY;
+
+    spawnParticles(state, ghost.x + ghost.width / 2, ghost.y + ghost.height / 2, '#facc15', 18);
+    spawnFloatingText(state, player.x, player.y - 30, 'SLAM!', '#facc15');
+}
+
+// A fallen ghost tumbles to the ground under its own little gravity, rests
+// there dazed, and either gets touched for a signal payout or times out.
+function updateFallenGhost(state, delta) {
+    const { ghost, player, world } = state;
+    ghost.dashClock -= delta;
+
+    const restY = world.groundY - ghost.height;
+    if (ghost.y < restY) {
+        ghost.dashVY += GHOST_FALLEN_GRAVITY * delta;
+        ghost.x += ghost.dashVX * delta;
+        ghost.y += ghost.dashVY * delta;
+        ghost.dashVX *= Math.max(0, 1 - 4 * delta);
+        if (ghost.y >= restY) {
+            ghost.y = restY;
+            ghost.dashVX = 0;
+            ghost.dashVY = 0;
+        }
+    }
+
+    if (collide(player, ghost)) {
+        state.signals += SLAM_SIGNAL_REWARD;
+        saveBestSignals(state);
+        spawnParticles(state, ghost.x + ghost.width / 2, ghost.y + ghost.height / 2, '#facc15', 22);
+        spawnFloatingText(state, ghost.x, ghost.y - 16, `+${SLAM_SIGNAL_REWARD} SIGNALS`, '#facc15');
+        setLabels(state);
+        state.ghost = null;
+        state.ghostCooldown = 6 + Math.random() * 5;
+        return;
+    }
+
+    if (ghost.dashClock <= 0) {
+        spawnParticles(state, ghost.x + ghost.width / 2, ghost.y + ghost.height / 2, '#c084fc', 12);
+        state.ghost = null;
+        state.ghostCooldown = 7 + Math.random() * 6;
+    }
+}
+
 export function updateGhost(state, delta) {
-    const { ghost } = state;
+    const { ghost, player } = state;
     if (!ghost) return;
+
+    if (ghost.dashPhase === 'fallen') {
+        updateFallenGhost(state, delta);
+        return;
+    }
 
     ghost.life -= delta;
     if (ghost.life <= 0) {
@@ -154,9 +218,15 @@ export function updateGhost(state, delta) {
         }
     }
 
-    if (state.invulnTime <= 0 && collide(state.player, ghost)) {
-        resolveGhostCollision(state);
-        if (!state.ghost) return;
+    if (collide(state.player, ghost)) {
+        if (player.fastFalling) {
+            slamGhost(state);
+            return;
+        }
+        if (state.invulnTime <= 0) {
+            resolveGhostCollision(state);
+            if (!state.ghost) return;
+        }
     }
 
     // A dash that finished without ever connecting (not just this frame -
@@ -194,13 +264,16 @@ export function drawGhost(ctx, g, state) {
     const isTelegraph = g.dashPhase === 'telegraph';
     const isDash = g.dashPhase === 'dash';
     const isMiss = g.dashPhase === 'miss';
+    const isFallen = g.dashPhase === 'fallen';
     const telegraphProgress = isTelegraph ? 1 - Math.max(0, g.dashClock) / GHOST_TELEGRAPH_TIME : 0;
     const pulse = isTelegraph ? 1 + telegraphProgress * 0.35 : 1;
     const missFade = isMiss ? Math.max(0, g.dashClock / GHOST_MISS_FLY_TIME) : 1;
+    const fallenFade = isFallen ? Math.min(1, g.dashClock / 0.5) : 1;
 
     ctx.save();
-    ctx.globalAlpha = Math.max(0, alpha * flicker * missFade);
+    ctx.globalAlpha = Math.max(0, alpha * (isFallen ? fallenFade : flicker) * missFade);
     ctx.translate(g.x + g.width / 2, g.y + g.height / 2);
+    if (isFallen) ctx.rotate(Math.PI * 0.4);
 
     if (isTelegraph) {
         ctx.save();
@@ -247,7 +320,7 @@ export function drawGhost(ctx, g, state) {
     ctx.restore();
 
     traceGhostBody(ctx, g.width, g.height);
-    ctx.fillStyle = isTelegraph ? 'rgba(248, 113, 113, 0.82)' : 'rgba(232, 121, 249, 0.82)';
+    ctx.fillStyle = isFallen ? 'rgba(148, 163, 184, 0.82)' : isTelegraph ? 'rgba(248, 113, 113, 0.82)' : 'rgba(232, 121, 249, 0.82)';
     ctx.fill();
 
     ctx.save();
@@ -262,16 +335,44 @@ export function drawGhost(ctx, g, state) {
     }
     ctx.restore();
 
-    ctx.fillStyle = '#1b0b23';
-    ctx.beginPath();
-    ctx.arc(-g.width * 0.16, -4, 4.5, 0, Math.PI * 2);
-    ctx.arc(g.width * 0.16, -4, 4.5, 0, Math.PI * 2);
-    ctx.fill();
+    if (isFallen) {
+        ctx.strokeStyle = '#1b0b23';
+        ctx.lineWidth = 2;
+        [-g.width * 0.16, g.width * 0.16].forEach((ex) => {
+            ctx.beginPath();
+            ctx.moveTo(ex - 4, -8);
+            ctx.lineTo(ex + 4, 0);
+            ctx.moveTo(ex + 4, -8);
+            ctx.lineTo(ex - 4, 0);
+            ctx.stroke();
+        });
+    } else {
+        ctx.fillStyle = '#1b0b23';
+        ctx.beginPath();
+        ctx.arc(-g.width * 0.16, -4, 4.5, 0, Math.PI * 2);
+        ctx.arc(g.width * 0.16, -4, 4.5, 0, Math.PI * 2);
+        ctx.fill();
+    }
 
     ctx.fillStyle = '#fdf4ff';
     ctx.font = '900 10px Poppins, sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText('PING…', 0, g.height / 2 + 15);
+    ctx.fillText(isFallen ? 'K.O.' : 'PING…', 0, g.height / 2 + 15);
 
     ctx.restore();
+
+    if (isFallen) {
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, fallenFade);
+        ctx.fillStyle = '#facc15';
+        ctx.font = '900 13px Poppins, sans-serif';
+        ctx.textAlign = 'center';
+        for (let i = 0; i < 3; i++) {
+            const a = state.elapsed * 4 + (i / 3) * Math.PI * 2;
+            const sx = g.x + g.width / 2 + Math.cos(a) * (g.width * 0.55);
+            const sy = g.y - 6 + Math.sin(a) * 6;
+            ctx.fillText('*', sx, sy);
+        }
+        ctx.restore();
+    }
 }

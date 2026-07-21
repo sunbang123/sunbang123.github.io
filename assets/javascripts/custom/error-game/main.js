@@ -1,7 +1,7 @@
 import { GRAVITY, COMBO_WINDOW, GHOST_SPEED_THRESHOLD, FAST_FALL_GRAVITY_MULTIPLIER } from './constants.js';
 import { createState } from './state.js';
 import { isLightTheme } from './draw-utils.js';
-import { updateEffects, drawParticles, drawFloatingTexts, drawBannerHint, spawnParticles, triggerShake } from './effects.js';
+import { updateEffects, drawParticles, drawFloatingTexts, drawBannerHint, spawnParticles } from './effects.js';
 import { setLabels, setOverlay, setRetryButton } from './hud.js';
 import { placePlayerOnGround } from './player.js';
 import { spawnObstacle, maybeSpawnPattern, drawObstacle, handleObstacleCollisions } from './obstacles.js';
@@ -98,7 +98,6 @@ function initErrorGame() {
             if (player.fastFalling) {
                 player.fastFalling = false;
                 spawnParticles(state, player.x + player.width / 2, world.groundY, dustColor, 14);
-                triggerShake(state, 5, 0.18);
             } else {
                 spawnParticles(state, player.x + player.width / 2, world.groundY, dustColor, 6);
             }

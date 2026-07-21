@@ -7,8 +7,8 @@ export const DOUBLE_JUMP_POWER = -640;
 export const STAND_HEIGHT = 62;
 export const DUCK_HEIGHT = 34;
 export const PLAYER_WIDTH = 58;
-export const FAST_FALL_VELOCITY = 1500;
-export const FAST_FALL_GRAVITY_MULTIPLIER = 2.6;
+export const FAST_FALL_VELOCITY = 480;
+export const FAST_FALL_GRAVITY_MULTIPLIER = 1.5;
 
 export const SHIELD_SIGNAL_THRESHOLD = 5;
 export const MAX_SHIELD = 3;
@@ -32,6 +32,14 @@ export const GHOST_DASH_RECOVER = 0.55;
 export const GHOST_DASH_OVERSHOOT = 1.6;
 export const GHOST_MISS_FLY_TIME = 0.5;
 export const GHOST_MISS_SPEED_MULTIPLIER = 1.5;
+
+// Slam attack: ducking mid-air (a committed ground pound) lets the player
+// stomp the ghost instead of taking a hit. The ghost is knocked to the
+// ground and stays there, dazed, until touched (reward) or its time runs out.
+export const GHOST_FALLEN_GRAVITY = 1600;
+export const GHOST_FALLEN_BOUNCE_VY = -420;
+export const GHOST_FALLEN_LIFETIME = 3.5;
+export const SLAM_SIGNAL_REWARD = 2;
 
 export const SCORE_STORAGE_KEY = 'error-runner-best';
 export const SIGNAL_STORAGE_KEY = 'error-runner-best-signals';

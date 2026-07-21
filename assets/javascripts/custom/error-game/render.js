@@ -80,7 +80,7 @@ export function drawPlayer(ctx, state) {
     ctx.save();
     ctx.translate(x, y + bob);
 
-    if (shieldCount > 0) {
+    if (shieldCount > 0 && !player.fastFalling) {
         const pulse = 3 + Math.sin(distance * 0.02) * 2;
         ctx.strokeStyle = 'rgba(103, 232, 249, 0.65)';
         ctx.lineWidth = 3;
