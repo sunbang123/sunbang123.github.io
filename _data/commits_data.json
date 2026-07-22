@@ -2,6 +2,14 @@
   {
     "type": "commit",
     "repo": "timeattack-code-dojo",
+    "message": "fix: recover from grading provider HTTP 400",
+    "author": "sunbang123",
+    "date": "2026-07-22T03:28:51Z",
+    "sha": "b29a62594eb5cedaae602fc127e68eb59b5f991c"
+  },
+  {
+    "type": "commit",
+    "repo": "timeattack-code-dojo",
     "message": "fix: Vercel 런타임에 문제은행 번들 제공",
     "author": "sunbang123",
     "date": "2026-07-22T02:35:32Z",
@@ -30,14 +38,6 @@
     "author": "sunbang123",
     "date": "2026-07-22T02:11:34Z",
     "sha": "313407df9a3336fe054a8615bd14bf53d0e14d9e"
-  },
-  {
-    "type": "commit",
-    "repo": "timeattack-code-dojo",
-    "message": "feat: AI 문제 생성과 저장 전 정답 검증 추가",
-    "author": "sunbang123",
-    "date": "2026-07-22T01:56:27Z",
-    "sha": "691e85dd1f4e2a6b68ae878be5d00a0ed7aabcc7"
   },
   {
     "type": "commit",
@@ -1016,6 +1016,6 @@
     "sha": "a8beb9b2111f615ea2bd3156f251a010b3142cb0"
   },
   {
-    "last_updated": "2026-07-22T03:10:22Z"
+    "last_updated": "2026-07-22T03:50:12Z"
   }
 ]
