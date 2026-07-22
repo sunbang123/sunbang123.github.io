@@ -8,7 +8,7 @@ icon: "fas fa-book-open"
 tags: ["Next.js", "React", "TypeScript", "Hugging Face", "Supabase", "Vercel", "AI"]
 demo_url: "https://your-reader.vercel.app"
 github_url: ""
-status: "in-progress"
+status: "completed"
 ---
 
 # Your Reader
