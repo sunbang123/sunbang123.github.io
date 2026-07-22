@@ -2,6 +2,22 @@
   {
     "type": "commit",
     "repo": "timeattack-code-dojo",
+    "message": "fix: Vercel 런타임에 문제은행 번들 제공",
+    "author": "sunbang123",
+    "date": "2026-07-22T02:35:32Z",
+    "sha": "f94558dd2ec6bfdcfba6f6cc899d58eb7f1dfae2"
+  },
+  {
+    "type": "commit",
+    "repo": "timeattack-code-dojo",
+    "message": "fix: Vercel 문제은행 중첩 파일 포함",
+    "author": "sunbang123",
+    "date": "2026-07-22T02:24:14Z",
+    "sha": "5f9709322ab3cf5407dfa57f4a0327cb2bcc68c7"
+  },
+  {
+    "type": "commit",
+    "repo": "timeattack-code-dojo",
     "message": "chore: 서버 내부 오류 로깅 보강",
     "author": "sunbang123",
     "date": "2026-07-22T02:17:36Z",
@@ -22,22 +38,6 @@
     "author": "sunbang123",
     "date": "2026-07-22T01:56:27Z",
     "sha": "691e85dd1f4e2a6b68ae878be5d00a0ed7aabcc7"
-  },
-  {
-    "type": "commit",
-    "repo": "timeattack-code-dojo",
-    "message": "feat: 시간제한 타이머 생성, 문제마다 시간표 부여",
-    "author": "sunbang123",
-    "date": "2026-07-22T00:04:51Z",
-    "sha": "21c5c2df2cae9ade37c36f1effdac77aa3d77233"
-  },
-  {
-    "type": "commit",
-    "repo": "timeattack-code-dojo",
-    "message": "feat: 전체 문제 학습 모드와 오답 후 풀이보기 추가\n\n- 문제은행을 12개로 확장\n- 모든 문제에 초보·중수·고수 모드 지원\n- 초보 의사코드 채점 기준 완화\n- 첫 오답 후 정답보기와 풀이 페이지 제공",
-    "author": "sunbang123",
-    "date": "2026-07-21T06:32:16Z",
-    "sha": "95a3141c8b13eeba37c7936d242d4b796cfe3503"
   },
   {
     "type": "commit",
@@ -1016,6 +1016,6 @@
     "sha": "a8beb9b2111f615ea2bd3156f251a010b3142cb0"
   },
   {
-    "last_updated": "2026-07-22T02:23:12Z"
+    "last_updated": "2026-07-22T03:10:22Z"
   }
 ]
