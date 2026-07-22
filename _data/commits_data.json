@@ -2,18 +2,42 @@
   {
     "type": "commit",
     "repo": "timeattack-code-dojo",
-    "message": "feat: 문제은행 구축 및 모드별 문제 조회 API 구현\n\n- 난이도별 MVP 시드 문제 6개 추가\n- Python/C++ 정답과 히든 테스트 검증\n- 모드·언어별 문제 조회 API 구현\n- 민감한 채점 데이터 비노출 테스트 추가",
+    "message": "chore: 서버 내부 오류 로깅 보강",
     "author": "sunbang123",
-    "date": "2026-07-21T00:20:06Z",
-    "sha": "21e3b128a3fd8fbfb81799a9aa5bdc7824320e5d"
+    "date": "2026-07-22T02:17:36Z",
+    "sha": "50ad27db0d8b3f8948b8a059a00f73e13c5cab52"
   },
   {
     "type": "commit",
     "repo": "timeattack-code-dojo",
-    "message": "feat: Next.js·Flask 프로젝트 기반 및 Vercel 배포 구성\n\n- Judge0와 Hugging Face 연동 PoC 및 검증 결과 추가\n- Next.js 16 App Router 프런트엔드 구성\n- Flask 상태 확인 API와 공통 오류 응답 구현\n- 로컬 통합 실행 및 Python 환경 설정 스크립트 추가\n- ESLint, TypeScript, 단위 테스트와 빌드 명령 구성\n- Vercel Preview 배포 및 API 라우팅 검증",
+    "message": "fix: Vercel 함수에 문제은행 데이터 포함",
     "author": "sunbang123",
-    "date": "2026-07-20T14:33:35Z",
-    "sha": "867264fec6dc5e23a914dc80c6ef38709bdc2dff"
+    "date": "2026-07-22T02:11:34Z",
+    "sha": "313407df9a3336fe054a8615bd14bf53d0e14d9e"
+  },
+  {
+    "type": "commit",
+    "repo": "timeattack-code-dojo",
+    "message": "feat: AI 문제 생성과 저장 전 정답 검증 추가",
+    "author": "sunbang123",
+    "date": "2026-07-22T01:56:27Z",
+    "sha": "691e85dd1f4e2a6b68ae878be5d00a0ed7aabcc7"
+  },
+  {
+    "type": "commit",
+    "repo": "timeattack-code-dojo",
+    "message": "feat: 시간제한 타이머 생성, 문제마다 시간표 부여",
+    "author": "sunbang123",
+    "date": "2026-07-22T00:04:51Z",
+    "sha": "21c5c2df2cae9ade37c36f1effdac77aa3d77233"
+  },
+  {
+    "type": "commit",
+    "repo": "timeattack-code-dojo",
+    "message": "feat: 전체 문제 학습 모드와 오답 후 풀이보기 추가\n\n- 문제은행을 12개로 확장\n- 모든 문제에 초보·중수·고수 모드 지원\n- 초보 의사코드 채점 기준 완화\n- 첫 오답 후 정답보기와 풀이 페이지 제공",
+    "author": "sunbang123",
+    "date": "2026-07-21T06:32:16Z",
+    "sha": "95a3141c8b13eeba37c7936d242d4b796cfe3503"
   },
   {
     "type": "commit",
@@ -992,6 +1016,6 @@
     "sha": "a8beb9b2111f615ea2bd3156f251a010b3142cb0"
   },
   {
-    "last_updated": "2026-07-21T05:41:58Z"
+    "last_updated": "2026-07-22T02:23:12Z"
   }
 ]
