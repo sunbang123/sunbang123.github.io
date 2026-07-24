@@ -41,6 +41,38 @@
   },
   {
     "type": "commit",
+    "repo": "action_hunters",
+    "message": "feat(unity): import production assets and build expanded main arena",
+    "author": "sunbang123",
+    "date": "2026-07-21T01:32:52Z",
+    "sha": "072634949e2524925c0fa548bb717e39e208d504"
+  },
+  {
+    "type": "commit",
+    "repo": "action_hunters",
+    "message": "chore: Unity, Assets, Photon Fusion 2.0.12 설치 및 초기 설정",
+    "author": "sunbang123",
+    "date": "2026-07-21T00:30:41Z",
+    "sha": "71f8aa5426bbc21acf9d1d4aa7086c300a8863a3"
+  },
+  {
+    "type": "commit",
+    "repo": "action_hunters",
+    "message": "feat: 문제 데이터 모델과 MVP 시드 문제 6개 추가",
+    "author": "sunbang123",
+    "date": "2026-07-20T23:59:57Z",
+    "sha": "5a3f78f9ab711afe16b4ac7da2a14b30088d7e3d"
+  },
+  {
+    "type": "commit",
+    "repo": "action_hunters",
+    "message": "Initial commit",
+    "author": "김선영",
+    "date": "2026-07-20T23:17:32Z",
+    "sha": "213691606b2975b68e0baa414ffb0ed7eed62921"
+  },
+  {
+    "type": "commit",
     "repo": "bitcoin_trading_simulation",
     "message": "feat: 실시간 시세 기반 주문 체결 및 배포 환경 구성\n\n- 업비트 WebSocket 바이너리 메시지 처리\n- 코인별 실시간 가격 캐싱 및 재연결 구현\n- 다중 코인 구독 요청 병합\n- 시장가 주문 즉시 체결 및 잘못된 0원 체결 방지\n- 공개 시세 API와 JWT 화이트리스트 수정\n- Next.js 백엔드 프록시 구성\n- Docker Compose 및 AWS EC2 배포 문서 추가\n- WebSocket과 주문 서비스 테스트 추가",
     "author": "sunbang123",
@@ -976,46 +1008,6 @@
     "sha": "c54acd1d0a51a5d1b5ab520d2dd93507191090fb"
   },
   {
-    "type": "commit",
-    "repo": "spring_crud",
-    "message": "회원조회 로직 구현\n\n* 진행사항 *\n- UserController에 /{id} 엔드포인트 추가, 특정 회원 조회 요청 처리\n- UserService에 getUserById 메서드 추가. 회원 정보 조회 로직 구현\n- 회원이 존재하지 않을 경우 예외처리\n- Postman HTTP 요청 성공 (http://localhost:8080/api/users/{id} -> Get 요청)\n- SQL 테이블에서 회원 데이터 조회 확인.",
-    "author": "김선영",
-    "date": "2025-03-04T23:37:55Z",
-    "sha": "5dcdecf78544af640596ab8cbbfa275073a7db38"
-  },
-  {
-    "type": "commit",
-    "repo": "spring_crud",
-    "message": "보안 강화 및 코드 간결화\n\n* 변경 사항 *\n- allowPublicKeyRetrieval=true 옵션 추가로 보안 강화 (런타임 에러 해결용도)\n- Lombok @Getter와 @Setter 사용으로 코드",
-    "author": "김선영",
-    "date": "2025-03-03T21:15:09Z",
-    "sha": "3b7d0a6a196675cf75d469c2183656b3b8c94c41"
-  },
-  {
-    "type": "commit",
-    "repo": "spring_crud",
-    "message": "회원가입 로직 구현\n\n* 진행사항 *\n- UserController에 /signup 엔드포인트 추가. 회원가입 요청 처리\n- UserService에 registerUser 메서드 추가. 회원 정보 저장 로직 구현\n- 로깅 추가하여 회원가입 요청 데이터 확인\n- Postman HTTP 요청 성공 (http://localhost:8080/api/users/signup -> Post 주소)\n- SQL 테이블에 데이터베이스 저장 확인됨.",
-    "author": "김선영",
-    "date": "2025-03-03T07:31:34Z",
-    "sha": "3f0d3058f8db707b89cf1d84e143343322bbc9dc"
-  },
-  {
-    "type": "commit",
-    "repo": "spring_crud",
-    "message": "java 파일 생성 및 디렉토리 구조 구성\n\n* 변경사항 *\n- 디렉토리 구조를 MVC 패턴에 맞게 수정\n- spring_crud 디렉토리 아래에 다음과 같이 구성:\n  - controller: UserController.java\n  - entity: User.java\n  - repository: UserRepository.java\n  - service: UserService.java",
-    "author": "김선영",
-    "date": "2025-03-01T10:09:00Z",
-    "sha": "ac31c848438faa17c049f9131f3186d6cd32a50b"
-  },
-  {
-    "type": "commit",
-    "repo": "spring_crud",
-    "message": "application.yml 구성\n\n* 구성사항 *\n1. 데이터베이스 연결(MySQL) localhost:3306의 spring_member에 연결. 비밀번호는 환경변수 사용.\n2. JPA 설정(스키마 자동 업데이트/쿼리를 콘솔에 출력/포맷팅)\n3. 서버 설정: 8080 포트를 사용함.",
-    "author": "김선영",
-    "date": "2025-03-01T09:16:34Z",
-    "sha": "a8beb9b2111f615ea2bd3156f251a010b3142cb0"
-  },
-  {
-    "last_updated": "2026-07-23T02:28:25Z"
+    "last_updated": "2026-07-24T02:25:29Z"
   }
 ]
