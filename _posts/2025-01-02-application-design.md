@@ -2,6 +2,7 @@
 layout: post
 title: "common module design"
 date: 2025-01-02 10:14:32 +0900
+last_modified_at: 2026-07-24 00:00:00 +0900
 categories: 
 tags: ["Certification", "정보처리기사"]
 ---
@@ -164,5 +165,5 @@ tags: ["Certification", "정보처리기사"]
 * **정의**: 자신이 호출하는 모듈의 수
 * **특징**: 높은 제어도는 업무로직 단순화 검토 필요
 
-<img src="/post_img/250103/image-1.png" width="400px">
+<img src="/post_img/250103/image-1.png" width="400px" alt="모듈 호출 관계로 공유도 Fan-In과 제어도 Fan-Out을 설명한 구조도">
 

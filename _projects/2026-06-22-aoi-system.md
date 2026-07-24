@@ -2,6 +2,7 @@
 layout: project
 title: "AOI-System"
 date: 2026-06-22
+last_modified_at: 2026-07-24
 description: "웨이퍼 표면 결함 탐지를 위한 딥러닝 및 C++/C# 기반 자동 광학 검사(AOI) 시스템"
 thumbnail: "/assets/images/thumbnail/aoi-system.png"
 icon: ""
@@ -17,7 +18,7 @@ status: "completed"
 ### Project Title: AOI-System
 
 
-<img width="1000" src="https://github.com/user-attachments/assets/1924055e-8161-4039-8379-8ea5722a8a0e" />
+<img width="1000" src="https://github.com/user-attachments/assets/1924055e-8161-4039-8379-8ea5722a8a0e" alt="웨이퍼 결함 탐지 AOI 시스템의 구성과 실행 결과" />
 
 * * *
 
@@ -54,15 +55,15 @@ status: "completed"
 
 ## 프로젝트 산출물 v.1 (WPF)
 
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/88416609-f8ff-49c1-9380-c6099b9a5973" />
+<img width="800" alt="WPF 기반 AOI 시스템의 웨이퍼 검사 화면" src="https://github.com/user-attachments/assets/88416609-f8ff-49c1-9380-c6099b9a5973" />
 
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/dce65fbe-6321-464a-ac79-c15b648b4748" />
+<img width="800" alt="WPF 기반 AOI 시스템의 결함 분류 및 통계 화면" src="https://github.com/user-attachments/assets/dce65fbe-6321-464a-ac79-c15b648b4748" />
 
 ## 프로젝트 산출물 v.2 (MFC)
 
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/8aa3c7c6-5700-410b-bcac-36af2638f18f" />
+<img width="800" alt="MFC 기반 AOI 시스템의 웨이퍼 검사 화면" src="https://github.com/user-attachments/assets/8aa3c7c6-5700-410b-bcac-36af2638f18f" />
 
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/e1fc92db-696b-4cbf-8c0d-a49cae6dfa88" />
+<img width="800" alt="MFC 기반 AOI 시스템의 결함 분류 신뢰도 화면" src="https://github.com/user-attachments/assets/e1fc92db-696b-4cbf-8c0d-a49cae6dfa88" />
 
 C# 결과보다 C++ 네이티브 UI에서 신뢰도가 더 높게 나온 이유는 모델 자체가 달라서가 아니라, 같은 이미지를 모델 입력값으로 변환하는 전처리 과정이 다르기 때문으로 해석된다. 학습 과정에서는 원본 웨이퍼 맵 배열을 `64x64` 크기로 줄인 뒤 값을 `0.0`, `0.5`, `1.0` 형태로 변환하여 모델에 입력하였다. 그러나 실행 단계에서는 저장된 PNG 이미지를 다시 읽고, 색상을 분석하여 원래의 웨이퍼 값으로 복원한다.
 

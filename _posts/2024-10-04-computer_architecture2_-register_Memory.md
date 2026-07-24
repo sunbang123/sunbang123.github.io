@@ -2,7 +2,7 @@
 layout: post
 title: "Register Memory"
 date: 2024-10-04 19:38:57 +0900
-last_modified_at: 2026-07-20 00:00:00 +0900
+last_modified_at: 2026-07-24 00:00:00 +0900
 categories: 
 tags:  [computer-architecture, computer-science]
 ---
@@ -13,7 +13,7 @@ tags:  [computer-architecture, computer-science]
 
 레지스터 하나의 용량은 보통 32~64비트 수준으로 매우 작다. 대신 CPU 코어 바로 옆에 있어서 접근 지연이 사실상 0에 가깝다. "CPU가 빠르다"는 말은 상당 부분 레지스터가 얼마나 많고 얼마나 넓은가와 관련이 있다 — 레지스터가 부족하면 CPU는 자주 메모리를 오가야 하고, 그때마다 RAM 접근 지연이 그대로 성능 손실이 된다.
 
-<img src="/post_img/image1004.png" width="500px">
+<img src="/post_img/image1004.png" width="500px" alt="CPU 내부 레지스터·연산 논리 장치·제어 장치와 주기억장치 연결 구조">
 
 레지스터-메모리 아키텍처에서는 연산의 피연산자가 레지스터에만 있을 수도(레지스터 전용), 레지스터와 메모리에 하나씩 걸쳐 있을 수도 있다. 어느 쪽이든 메모리 접근 없이 처리할 수 있는 연산이 많을수록 빠르다.
 

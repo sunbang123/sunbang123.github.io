@@ -223,3 +223,9 @@ exclude:
   - new_post.rb
   - new_project.rb
   - report-main/README.md
+  # 공개 글에서 마스킹 버전으로 교체한 민감정보 포함 원본 스크린샷
+  - post_img/260715/image-4.png
+  - post_img/260715/image-5.png
+  - post_img/260715/image-6.png
+  - post_img/260715/image-8.png
+  - post_img/260715/image-10.png

@@ -2,6 +2,7 @@
 layout: post
 title: "Basic computer organization & design"
 date: 2024-10-18 19:27:03 +0900
+last_modified_at: 2026-07-24 00:00:00 +0900
 categories: 
 tags:  [computer-architecture, computer-science]
 ---
@@ -25,7 +26,7 @@ tags:  [computer-architecture, computer-science]
 
 ### 2.1 명령어 형식
 
-<img src="/post_img/1018-2/image.png" width="500px">
+<img src="/post_img/1018-2/image.png" width="500px" alt="16비트 명령어의 연산 코드와 주소 필드 형식">
 
 - 연산 코드(Op-code): 수행할 연산 지정, 피연산자의 주소 지정
   - 예: ADD, SUB, MUL, DIV, LOAD, STORE 등
@@ -76,7 +77,7 @@ tags:  [computer-architecture, computer-science]
 
 ## 3. 간단한 저장 프로그램 구조
 
-<img src="/post_img/1018-2/image-1.png" width="500px">
+<img src="/post_img/1018-2/image-1.png" width="500px" alt="명령어와 피연산자를 메모리에 저장하는 저장 프로그램 구조">
 
 - AC (누산기): 레지스터 + 산술 연산 기능
   - 주요 기능: 데이터 저장, 산술 및 논리 연산 수행
@@ -84,7 +85,7 @@ tags:  [computer-architecture, computer-science]
 
 ## 4. 주소 지정 모드 상세 예시
 
-<img src="/post_img/1018-2/image-3.png" width="500px">
+<img src="/post_img/1018-2/image-3.png" width="500px" alt="직접 주소 지정과 간접 주소 지정의 메모리 접근 비교">
 
 ### 4.1 직접 주소 지정 vs 간접 주소 지정
 
@@ -123,7 +124,7 @@ tags:  [computer-architecture, computer-science]
 
 ## 5. 레지스터
 
-<img src="/post_img/1018-2/image-4.png" width="500px">
+<img src="/post_img/1018-2/image-4.png" width="500px" alt="기본 컴퓨터의 레지스터별 기능과 비트 수 및 메모리 구성">
 
 - AC (Accumulator): 16비트, 산술 및 논리 연산 결과 저장
 - DR (Data Register): 16비트, 메모리와 데이터 교환
@@ -152,11 +153,11 @@ tags:  [computer-architecture, computer-science]
    - 예: INPUT, OUTPUT
    - 형식: |Op-code|Device address|
 
-<img src="/post_img/1018-2/image-6.png" width="500px">
+<img src="/post_img/1018-2/image-6.png" width="500px" alt="메모리 참조·레지스터 참조·입출력 명령어의 16비트 형식">
 
 ## 7. 명령어 세트 (최소 명령어 세트)
 
-<img src="/post_img/1018-2/image-7.png" width="500px">
+<img src="/post_img/1018-2/image-7.png" width="500px" alt="기본 컴퓨터의 메모리·레지스터·입출력 명령어 표">
 
 주요 명령어 설명:
 1. AND: AC ← AC AND M[X]
@@ -169,7 +170,7 @@ tags:  [computer-architecture, computer-science]
 
 ## 8. 제어 장치
 
-<img src="/post_img/1018-2/image-8.png" width="500px">
+<img src="/post_img/1018-2/image-8.png" width="500px" alt="명령어 레지스터와 디코더 및 시퀀스 카운터로 구성한 제어 장치">
 
 구성 요소 상세 설명:
 - IR (명령어 레지스터): 현재 실행 중인 명령어 저장
@@ -290,7 +291,7 @@ T4-T7: Execute instruction
 
 ## 12. I/O 구성 상세
 
-<img src="/post_img/1018-2/image-16.png" width="500px">
+<img src="/post_img/1018-2/image-16.png" width="500px" alt="직렬 통신 인터페이스와 입출력 레지스터 연결 구성">
 
 FGI (Input Flag), FGO (Output Flag) 동작:
 - FGI: 
@@ -360,7 +361,7 @@ CLR(AR) = RT0
 INR(AR) = D5T4
 ```
 
-<img src="/post_img/1018-2/image-26.png" width="500px">
+<img src="/post_img/1018-2/image-26.png" width="500px" alt="주소 레지스터 AR의 로드·증가·초기화 제어 게이트">
 
 
 메모리 읽기 연산:
@@ -377,7 +378,7 @@ pB6 : IEN ← 0
 RT2 : IEN ← 0
 ```
 
-<img src="/post_img/1018-2/image-27.png" width="500px">
+<img src="/post_img/1018-2/image-27.png" width="500px" alt="인터럽트 허용 플립플롭 IEN의 입력 제어 회로">
 
 ### 14.3 공통 버스 제어
 

@@ -2,6 +2,7 @@
 layout: post
 title: "깃 블로그 공유 썸네일 설정"
 date: 2026-06-25 11:55:00 +0900
+last_modified_at: 2026-07-24 00:00:00 +0900
 categories:
 tags: ["Jekyll", "GitHub-Pages", "Open-Graph", "Kakao", "Debugging"]
 description: "카카오톡 공유 썸네일이 의도와 다르게 프로필 이미지로 표시된 문제를 Jekyll SEO 태그와 Open Graph 이미지 설정으로 해결한 기록입니다."
@@ -131,7 +132,7 @@ Jekyll 빌드를 다시 실행한 뒤 `_site/index.html`을 확인했다.
 ## 6. 카카오 디벨로퍼스 공유 디버거 사용
 
 
-<img src="/post_img/260625/image.png" width="500px">
+<img src="/post_img/260625/image.png" width="500px" alt="카카오 공유 디버거에서 블로그 URL의 Open Graph 미리보기를 확인한 화면">
 
 메타 태그를 수정해도 카카오톡 공유 화면이 바로 바뀌지 않을 수 있다.
 

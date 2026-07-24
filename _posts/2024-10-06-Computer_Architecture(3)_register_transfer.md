@@ -2,7 +2,7 @@
 layout: post
 title: "Register Transfer"
 date: 2024-10-06 16:10:47 +0900
-last_modified_at: 2026-07-20 00:00:00 +0900
+last_modified_at: 2026-07-24 00:00:00 +0900
 categories: 
 tags:  [computer-architecture, computer-science]
 ---
@@ -21,7 +21,7 @@ tags:  [computer-architecture, computer-science]
 - PC (Program Counter)
 - R0~R15 또는 A~H (범용 레지스터)
 
-<img src="/post_img/image1006.png" width="500px">
+<img src="/post_img/image1006.png" width="500px" alt="레지스터의 비트 번호와 PC 상위·하위 필드 구분 예시">
 
 ## RTL 기호 정리
 
@@ -42,7 +42,7 @@ tags:  [computer-architecture, computer-science]
 - **Data bus** — 실제 데이터 전달
 - **Control bus** — 제어 신호(읽기/쓰기 등) 전달
 
-<img src="/post_img/image1006-1.png" width="500px">
+<img src="/post_img/image1006-1.png" width="500px" alt="메모리와 AR·PC·DR·AC 등 기본 컴퓨터 레지스터를 연결한 16비트 공통 버스">
 
 ### 버스는 한 번에 하나만 쓸 수 있다 — 동시 요청은 어떻게 처리할까
 

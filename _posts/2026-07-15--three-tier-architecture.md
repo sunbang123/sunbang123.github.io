@@ -2,8 +2,10 @@
 layout: post
 title: "AWS EC2와 3계층 구조 3-Tier Architecture"
 date: 2026-07-15 14:29:42 +0900
+last_modified_at: 2026-07-24 00:00:00 +0900
 categories: 
 tags: [ "Software-Architecture", "Database" ]
+description: "1·2·3계층 구조의 차이를 비교하고 AWS EC2, Flask, MongoDB로 3계층 환경을 구성하며 겪은 인증 문제와 보안 원칙을 정리합니다."
 ---
 
 
@@ -21,23 +23,23 @@ tags: [ "Software-Architecture", "Database" ]
 
 **1계층 구조 (1 Tier Architecture)**
 
-<img src="/post_img/260715/image.png" width="500px">
+<img src="/post_img/260715/image.png" width="500px" alt="프레젠테이션·비즈니스·데이터 접근 로직과 데이터베이스가 한 서버에 있는 1계층 구조">
 
 하나의 물리적인 컴퓨터 또는 서버에 프론트엔드, 백엔드, DB 등 3가지의 다른 기능을 모두 함께 구현하는 방식이다. 구조가 단순하지만, 물리적인 장비를 새로운 장비로 변경하고자 할 때는 모든 구성을 함께 변경해야 한다는 치명적인 단점이 있다.
 
 **2계층 구조 (2 Tier Architecture)**
 
-<img src="/post_img/260715/image-1.png" width="500px">
+<img src="/post_img/260715/image-1.png" width="500px" alt="클라이언트 계층과 데이터 계층을 분리한 2계층 구조">
 
 1계층의 단점을 개선하여, 클라이언트 계층과 데이터 계층을 각각 별도의 물리적인 컴퓨터나 서버로 구분한 구조이다. 이렇게 나누어두면 클라이언트 계층에서의 변경이나 데이터베이스의 변경 시 서로 영향을 받지 않는다.
 
 **3계층 구조 (3 Tier Architecture)**
 
-<img src="/post_img/260715/image-2.png" width="500px">
+<img src="/post_img/260715/image-2.png" width="500px" alt="프레젠테이션·애플리케이션·데이터 계층을 분리한 3계층 구조">
 
 어떠한 플랫폼을 클라이언트(프레젠테이션), 어플리케이션, 데이터 계층으로 3등분 하여 서버를 모두 물리적으로 나누어 구성하는 방식이다. 각 계층에서 변화가 일어나도 서로 독립적으로 운영된다는 특징이 있으며, 다음과 같이 나뉜다.
 
-<img src="/post_img/260715/image-3.png" width="500px">
+<img src="/post_img/260715/image-3.png" width="500px" alt="AWS 환경의 클라이언트·애플리케이션·데이터 3계층 배치도">
 
 * **Client Tier - Presentation Layer**: 사용자가 직접 마주하게 되는 인터넷 브라우저 등의 인터페이스를 지원하며 프론트엔드 혹은 GUI라고도 부른다. 사용자 인터페이스와 관계없는 데이터 처리 로직은 포함하지 않고 HTML, Javascript, CSS 등이 속한다. 내가 수많은 요청을 날렸던 React와 Next.js 로컬 서버가 바로 이 계층이었다.
 * **Application Tier - Business Logic Layer**: 클라이언트 계층의 요청을 받아 특정 규칙(비즈니스 로직, 트랜잭션 로직)에 따라 정보를 처리하고 가공한다. 첫 번째 계층에게는 서버처럼 응답하고, 세 번째 계층에게는 클라이언트처럼 요청하므로 미들웨어(Middleware) 또는 백엔드라고 불린다. 주로 Java, PHP 등이 쓰인다. 내가 로컬에서 무작정 요청을 보냈을 때 부하를 견디지 못하고 뻗어버린 팀원의 EC2 서버가 바로 이 역할을 하고 있었다.
@@ -51,34 +53,34 @@ tags: [ "Software-Architecture", "Database" ]
 
 최근에 진행한 과제에서 3계층 구조의 백엔드와 DB를 올렸던 AWS EC2 환경 구성과 DB 연결 과정을 다시 짚어본다.
 
-<img src="/post_img/260715/image-4.png" width="500px">
+<img src="/post_img/260715/image-4-redacted.webp" width="500px" alt="인스턴스 ID를 마스킹한 AWS EC2 생성 완료 화면">
 
 **EC2 인스턴스 접속 (Bash 터미널 활용) 및 파일 전송**
 먼저 AWS에서 새 인스턴스를 생성하고, 연결 탭의 SSH 클라이언트 가이드에 적힌 대로 Bash 터미널에서 접속을 시도한다.
 
 - 하단에 우분투 ip로 접속한것을 볼수있다.
 
-<img src="/post_img/260715/image-5.png" width="1200px">
+<img src="/post_img/260715/image-5-redacted.webp" width="1200px" alt="IP·키 경로·지문을 마스킹하고 Ubuntu EC2에 SSH로 접속한 터미널">
 
 
 리눅스 명령어를 통해 접속하는 과정에서 'key fingerprint' 메시지가 나오면 'yes'를 입력하여 우분투 IP로 접속을 완료한다.
 
-<img src="/post_img/260715/image-6.png" width="1200px">
+<img src="/post_img/260715/image-6-redacted.webp" width="1200px" alt="EC2 IP와 로컬 키 경로를 마스킹한 FileZilla SFTP 설정 화면">
 
 이후 서버에 파일이나 코드를 옮길 때는 FileZilla 같은 FTP 프로그램을 사용해 서버와 연결하면 간편하게 전송할 수 있다.
 
 **Flask 서버 실행 및 백그라운드 유지 (nohup 활용)**
 
-<img src="/post_img/260715/image-7.png" width="300px">
+<img src="/post_img/260715/image-7.png" width="300px" alt="127.0.0.1의 Flask 테스트 API가 GET 요청에 success를 반환한 화면">
 
 
-EC2 내에서 파일 전송이 끝났다면 Flask 서버를 실행하고 외부에서 접속할 수 있게 포트를 열어야 한다. AWS 보안 그룹 설정에서 웹 서버용 5000번 포트와 MongoDB 연동을 위한 27017번 포트를 열어주면, 지정된 형태(http://[EC2_IP]:5000/)로 접속이 가능해진다. 
+EC2 내에서 파일 전송이 끝났다면 Flask 서버를 실행하고 필요한 애플리케이션 포트만 보안 그룹에 허용한다. MongoDB가 Flask와 같은 인스턴스에 있다면 `127.0.0.1:27017`로 연결하고 27017번 포트는 인터넷에 공개하지 않는다. 데이터베이스가 별도 인스턴스에 있다면 애플리케이션 서버의 보안 그룹이나 사설 IP만 접근하도록 제한한다.
 
 여기서 주의할 점이 있다. Bash 터미널에서 일반적인 명령어로 서버를 실행하면 포그라운드 프로세스로 동작하기 때문에, 연결해 둔 Bash 터미널을 종료하면 웹 서버도 함께 꺼져버린다. 따라서 터미널을 종료하더라도 백그라운드에서 서버가 멈추지 않고 돌아가게 하려면 `nohup python app.py &`와 같은 명령어를 활용하여 실행해 주어야 한다.
 
 **MongoDB 유저 생성 및 백엔드 DB 연결**
 
-<img src="/post_img/260715/image-8.png" width="500px">
+<img src="/post_img/260715/image-8-redacted.webp" width="500px" alt="계정·비밀번호·UUID를 마스킹한 MongoDB 사용자 생성과 조회 결과">
 
 ```bash
 # mongoDB 쉘에 들어가기
@@ -88,20 +90,28 @@ mongosh
 - 백엔드 코드에서 연결
 
 ```python
+import os
 from pymongo import MongoClient
-client = MongoClient('mongodb://jungle:1234@{당신의 ip:)}}',27017)
+
+mongo_uri = os.environ.get("MONGODB_URI")
+if not mongo_uri:
+    raise RuntimeError("MONGODB_URI 환경 변수가 필요합니다.")
+
+client = MongoClient(mongo_uri)
 db = client.dbsparta
 ```
 
+연결 문자열에는 비밀번호가 들어가므로 소스 코드나 게시물에 직접 적지 않는다. 예를 들어 서버 환경 변수에는 `mongodb://<사용자>:<강력한-비밀번호>@127.0.0.1:27017/?authSource=admin` 형태로 보관하고, 저장소에는 실제 값을 커밋하지 않는다.
+
 **MongoDB 연결 트러블슈팅 및 명령어**
 
-<img src="/post_img/260715/image-9.png" width="500px">
+<img src="/post_img/260715/image-9.png" width="500px" alt="MongoDB 데이터베이스 조회 중 인증이 필요하다는 오류 메시지">
 
 데이터 계층인 DB를 설정할 때 유저를 생성하고 검색하는 과정에서 에러가 발생하는 경우가 있다. 이는 터미널 접속 시 계정 정보가 누락된 인증 문제이다. MongoDB 터미널(mongosh)이 현재 `test>` 상태로 접속되어 있다면 일단 `exit`를 입력해 터미널을 빠져나와야 한다.
 
 그 후 단순 접속이 아니라, 계정 정보를 포함하여 권한을 얻은 상태로 다시 로그인해야 한다. cmd나 bash 환경에서 
 
-<img src="/post_img/260715/image-10.png" width="500px">
+<img src="/post_img/260715/image-10-redacted.webp" width="500px" alt="계정과 비밀번호를 마스킹한 mongosh 인증 접속 화면">
 
 ```mongosh -u <생성한 아이디> -p <비밀번호> --authenticationDatabase admin```
 

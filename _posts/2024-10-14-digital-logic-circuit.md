@@ -2,7 +2,7 @@
 layout: post
 title: "Digital logic circuit"
 date: 2024-10-14 17:19:11 +0900
-last_modified_at: 2026-07-20 00:00:00 +0900
+last_modified_at: 2026-07-24 00:00:00 +0900
 categories: 
 tags:  [computer-architecture, computer-science]
 ---
@@ -11,7 +11,7 @@ tags:  [computer-architecture, computer-science]
 
 디지털 회로는 결국 전압이라는 물리량을 0과 1 두 가지 상태로만 해석해서 계산한다. 예를 들어 어떤 회로는 3V를 1로, 0.5V를 0으로 정의해 사용한다. 이 0과 1을 다루는 규칙 체계가 불 대수(Boolean Algebra)이고, 그 규칙을 물리적으로 구현한 것이 게이트다.
 
-<img src="/post_img/1014/image1014.jpg" width="500px">
+<img src="/post_img/1014/image1014.jpg" width="500px" alt="NOT·AND·OR·NAND·NOR·XOR 게이트의 기호와 진리표">
 
 ## 불 대수 기본
 
@@ -21,7 +21,7 @@ tags:  [computer-architecture, computer-science]
 - **OR** (`+`): 둘 중 하나라도 참이면 참
 - **NOT** (변수 위 줄): 참/거짓을 뒤집음
 
-<img src="/post_img/1014/image1014-01.jpg" width="500px">
+<img src="/post_img/1014/image1014-01.jpg" width="500px" alt="불 대수의 기본 법칙과 드모르간 정리 표">
 
 예를 들어 `F = ABC + ABC' + A'C`는 대수적으로 `F = AB + A'C`로 단순화할 수 있다. 회로에서 게이트 수를 줄이는 것은 곧 비용·발열·지연시간을 줄이는 것과 직결되므로, 이런 단순화 자체가 실제 설계에서 중요한 작업이다.
 
@@ -43,7 +43,7 @@ n개의 변수가 있으면 2ⁿ개의 minterm이 존재한다. 진리표에서 
 
 진리표에서 얻은 논리식은 그대로 회로로 만들면 게이트가 많아지므로, Karnaugh Map(K-Map)으로 시각적으로 묶어서 항을 줄인다.
 
-<img src="/post_img/1014/image1014_edit-01.png" width="500px">
+<img src="/post_img/1014/image1014_edit-01.png" width="500px" alt="드모르간 정리를 나타낸 논리 회로와 진리표">
 
 K-Map을 쓰는 절차는 다음과 같다.
 
@@ -53,7 +53,7 @@ K-Map을 쓰는 절차는 다음과 같다.
 
 묶는 칸이 클수록(2칸→4칸→8칸) 최종 식에서 사라지는 변수가 많아진다는 점이 핵심이다. 예를 들어 4칸을 하나로 묶을 수 있으면 그 그룹 안에서 값이 바뀌는 변수 2개가 식에서 통째로 빠진다 — 이게 바로 게이트 수가 줄어드는 원리다.
 
-<img src="/post_img/1014/image1014_edit-02.jpg" width="500px">
+<img src="/post_img/1014/image1014_edit-02.jpg" width="500px" alt="2변수·3변수·4변수 카르노 맵의 셀 배치">
 
 ## 조합회로 vs 순차회로
 
@@ -68,13 +68,13 @@ K-Map을 쓰는 절차는 다음과 같다.
 
 플립플롭은 1비트를 저장하는 순차논리회로의 기본 단위다. 클럭펄스가 들어오는 순간(트리거)에만 상태를 바꾸고, 그 사이에는 이전 값을 그대로 유지한다는 점이 조합회로와의 결정적 차이다.
 
-<img src="/post_img/1014/image1014_edit-03.png" width="300px">
+<img src="/post_img/1014/image1014_edit-03.png" width="300px" alt="조합회로와 플립플롭이 피드백으로 연결된 순차회로 구조">
 
 ## 상태도 읽는 법
 
 상태도에서 원은 "현재 상태", 화살표는 "다음 클럭에서의 전이"를 의미한다. 화살표 위의 `입력/출력` 표기는 그 입력이 들어왔을 때 어떤 출력이 나오는지를 나타낸다. 자기 자신으로 돌아가는 화살표(self-loop)는 그 입력에서는 상태 변화가 없다는 뜻이다.
 
-<img src="/post_img/1014/image1014_edit-04.png" width="400px">
+<img src="/post_img/1014/image1014_edit-04.png" width="400px" alt="현재 상태·입력·다음 상태·출력을 정리한 상태표">
 
 상태가 2비트로 표현된다면 최소 2개의 플립플롭이 필요하고, 이를 일반화하면 m개의 플립플롭·n개의 입력변수·p개의 출력변수를 갖는 순차회로는 (현재상태 m열 + 입력 n열 + 다음상태 m열 + 출력 p열)로 이루어진 상태표로 정리할 수 있다.
 

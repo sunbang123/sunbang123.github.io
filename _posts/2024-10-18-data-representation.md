@@ -2,7 +2,7 @@
 layout: post
 title: "Data representation"
 date: 2024-10-18 19:12:41 +0900
-last_modified_at: 2026-07-20 00:00:00 +0900
+last_modified_at: 2026-07-24 00:00:00 +0900
 categories: 
 tags:  [computer-architecture, computer-science]
 ---
@@ -64,7 +64,7 @@ tags:  [computer-architecture, computer-science]
 - 예: (1010 1111 0110 0011)₂ = (AF63)₁₆
   - 각 4비트 그룹을 16진수 한 자리로 변환
 
-<img src="/post_img/1018/image.png" width="500px">
+<img src="/post_img/1018/image.png" width="500px" alt="이진수의 8진수·16진수 변환 대응표">
 
 > 이진수 → 8진수/16진수 변환표. 그룹 비트 수만 다를 뿐 원리는 동일하다.
 
@@ -73,7 +73,7 @@ tags:  [computer-architecture, computer-science]
 - 예: (10010011)BCD = (93)₁₀
   - 1001 = 9, 0011 = 3
 
-<img src="/post_img/1018/image-1.png" width="500px">
+<img src="/post_img/1018/image-1.png" width="500px" alt="10진수 각 자릿수의 BCD 4비트 대응표">
 
 ## 4. 문자 표현
 
@@ -140,7 +140,7 @@ tags:  [computer-architecture, computer-science]
 3. 부호화된 2의 보수 표현
    - 예: -14 (8비트) = 1 1110010
 
-<img src="/post_img/1018/image-2.png" width="500px">
+<img src="/post_img/1018/image-2.png" width="500px" alt="부호 절댓값·1의 보수·2의 보수 표현 비교표">
 
 ## 7. 산술 연산
 
@@ -194,13 +194,13 @@ tags:  [computer-architecture, computer-science]
 - 연속된 숫자 간 1비트만 변경
 - 제어 연산에 사용 가능. 일반 이진수 카운터는 값이 바뀔 때 여러 비트가 동시에 바뀔 수 있어 순간적으로 잘못된 중간값이 읽힐 위험이 있는데, 그레이 코드는 인접한 값끼리 항상 1비트만 달라서 이 문제가 원천적으로 없다.
 
-<img src="/post_img/1018/image-3.png" width="500px">
+<img src="/post_img/1018/image-3.png" width="500px" alt="0부터 15까지 4비트 그레이 코드 대응표">
 
 ### 9.2 기타 10진 코드
 - 10진 숫자 표현에 최소 4비트 필요
 - 예: 2421 코드, 5421 코드, Excess-3 코드
 
-<img src="/post_img/1018/image-4.png" width="500px">
+<img src="/post_img/1018/image-4.png" width="500px" alt="BCD·2421·5421·Excess-3 10진 코드 비교표">
 
 ## 10. 오류 검출
 
@@ -208,7 +208,7 @@ tags:  [computer-architecture, computer-science]
 - 가장 일반적인 오류 검출 코드
 - 예: 데이터 1011 → 패리티 비트 1 → 전송 11011
 
-<img src="/post_img/1018/image-5.png" width="500px">
+<img src="/post_img/1018/image-5.png" width="500px" alt="짝수·홀수 패리티 생성과 검사 회로 및 결과표">
 
 - 패리티 비트는 전송되는 데이터 비트들에 추가로 붙는 비트로, 보통 짝수 패리티나 홀수 패리티 방식이 있습니다.
 - 예를 들어, 짝수 패리티의 경우 전송되는 데이터의 비트 합이 짝수가 되도록 패리티 비트를 설정합니다.

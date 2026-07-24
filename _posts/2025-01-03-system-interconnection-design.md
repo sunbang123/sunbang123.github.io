@@ -65,7 +65,7 @@ published: false
 
 ### 웹서비스 연동
 
-<img src="/post_img/250103/image.png" width="400px">
+<img src="/post_img/250103/image.png" width="400px" alt="서비스 제공자·요청자·브로커 간 WSDL·SOAP 웹서비스 연동 구조">
 
 * 네트워크 기반 연동 방식
 * 주요 구성요소:

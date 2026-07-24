@@ -2,7 +2,7 @@
 layout: post
 title: "DFT Convolution"
 date: 2024-12-09 16:49:50 +0900
-last_modified_at: 2026-07-20 00:00:00 +0900
+last_modified_at: 2026-07-24 00:00:00 +0900
 categories: 
 tags: [MATLAB, Digital Image Processing]
 ---
@@ -46,7 +46,7 @@ Figure 1은 **노이즈 상태의 원본 이미지**이고, Figure 2는 해당 �
 ### 주요 작업 요약:
 
 
-<img src="/post_img/1209/image.png" width="500px">
+<img src="/post_img/1209/image.png" width="500px" alt="랜덤 노이즈 원본과 2차원 DFT 컨볼루션 결과 비교">
 
 1. **원본 이미지 (Figure 1)**:
    - rand(256, 256)으로 생성된 랜덤 노이즈 이미지입니다.

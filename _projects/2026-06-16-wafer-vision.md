@@ -17,7 +17,7 @@ status: "completed"
 ### Project Title: 웨이퍼 결함 탐지 및 모니터링 시뮬레이터
 
 
-<img width="1000" src="https://github.com/user-attachments/assets/677d0352-77dd-4c33-9bb6-e4a175a27f53" />
+<img width="1000" src="https://github.com/user-attachments/assets/677d0352-77dd-4c33-9bb6-e4a175a27f53" alt="웨이퍼 결함 탐지 및 모니터링 시뮬레이터 실행 화면" />
 
 
 * * *
