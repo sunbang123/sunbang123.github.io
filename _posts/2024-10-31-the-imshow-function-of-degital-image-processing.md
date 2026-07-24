@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "The imshow function of degital image processing"
+title: "MATLAB 디지털 영상처리와 imshow 함수"
 date: 2024-10-31 19:57:23 +0900
+last_modified_at: 2026-07-24 00:00:00 +0900
 categories: 
 tags: [MATLAB, Digital Image Processing]
 ---

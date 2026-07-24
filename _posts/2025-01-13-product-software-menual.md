@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "Product software menual"
+title: "제품 소프트웨어 설치·사용자 매뉴얼 작성"
 date: 2025-01-13 17:47:12 +0900
+last_modified_at: 2026-07-21 00:00:00 +0900
 categories: 
 tags: ["Certification", "정보처리기사"]
 ---

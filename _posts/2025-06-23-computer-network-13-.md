@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "Computer network 13"
+title: "네트워크 혼잡 제어의 원리와 효과"
 date: 2025-06-23 06:32:55 +0900
+last_modified_at: 2026-07-21 00:00:00 +0900
 categories: 
 tags: ["Computer Network", "computer-science"]
 ---

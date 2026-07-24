@@ -2,6 +2,7 @@
 layout: post
 title: "LAN 개관: 종류, 토폴로지, 매체 접근 제어"
 date: 2025-06-23 06:33:37 +0900
+last_modified_at: 2026-07-21 00:00:00 +0900
 categories: 
 tags: ["Computer Network", "computer-science"]
 ---

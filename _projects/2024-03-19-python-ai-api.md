@@ -2,6 +2,7 @@
 layout: project
 title: "API 사용 예제 만들기"
 date: 2024-03-19
+last_modified_at: 2026-07-24
 description: "Python Tkinter와 다양한 AI API를 연동한 텍스트/이미지 생성, 분석, 편집 및 자동 작곡 데스크톱 애플리케이션 구축"
 thumbnail: "/assets/images/thumbnail/python-ai-api.png"
 icon: ""
@@ -14,10 +15,6 @@ status: "completed"
 # API 사용 예제 만들기
 
 ### Project Title: AI API 활용 데스크톱 애플리케이션
-
-> 프로젝트 대시보드 Preview 이미지
-
-> <h4><a href="#">상세한 아키텍처 보러가기</a></h4>
 
 * * *
 

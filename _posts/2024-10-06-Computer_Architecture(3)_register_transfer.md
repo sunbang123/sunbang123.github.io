@@ -2,6 +2,7 @@
 layout: post
 title: "Register Transfer"
 date: 2024-10-06 16:10:47 +0900
+last_modified_at: 2026-07-20 00:00:00 +0900
 categories: 
 tags:  [computer-architecture, computer-science]
 ---

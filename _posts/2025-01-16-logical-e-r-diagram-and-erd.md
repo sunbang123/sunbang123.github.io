@@ -2,6 +2,7 @@
 layout: post
 title: "Logical E-R diagram and erd"
 date: 2025-01-16 17:43:54 +0900
+last_modified_at: 2026-07-20 00:00:00 +0900
 categories: 
 tags: ["Certification", "정보처리기사"]
 ---

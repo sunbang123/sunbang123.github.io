@@ -101,11 +101,11 @@ layout: default
     </div>
 
     <div class="read-result-bar">
-      <h2 id="readResultTitle">읽을 묶음을 선택해 주세요</h2>
+      <h2 id="readResultTitle">전체 글</h2>
       <span id="readResultCount">{{ site.posts.size }}개 글</span>
     </div>
 
-    <div class="read-post-list read-post-list--picker-source" id="readPostList" aria-hidden="true">
+    <div class="read-post-list" id="readPostList">
       {%- for post in site.posts -%}
       <article class="read-post-card" data-tags="{{ post.tags | join: '||' | escape }}">
         <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>

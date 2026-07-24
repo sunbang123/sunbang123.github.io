@@ -2,6 +2,7 @@
 layout: post
 title: "Database basic"
 date: 2025-01-15 17:50:26 +0900
+last_modified_at: 2026-07-20 00:00:00 +0900
 categories: 
 tags: ["Certification", "정보처리기사"]
 ---

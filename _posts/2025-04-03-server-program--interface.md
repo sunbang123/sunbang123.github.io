@@ -2,6 +2,7 @@
 layout: post
 title: "Server program / interface"
 date: 2025-04-03 01:58:52 +0900
+last_modified_at: 2026-07-21 00:00:00 +0900
 categories: 
 tags: ["Certification", "정보처리기사"]
 ---

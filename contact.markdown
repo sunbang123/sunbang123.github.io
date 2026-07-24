@@ -2,6 +2,8 @@
 layout: page
 title: 문의
 permalink: /contact/
+last_modified_at: 2026-07-24
+description: Sun Dev Notes의 글, 프로젝트, 오류, 출처, 개인정보와 관련해 운영자 김선영에게 문의하는 방법입니다.
 ---
 
 블로그 글, 프로젝트, 오류 제보, 출처 요청, 개인정보 관련 문의는 아래 연락처로 보내 주세요.

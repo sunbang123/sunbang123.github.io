@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "Unity transform: object hierachy in unity engine"
+title: "Unity 계층 구조에서 Transform으로 자식 오브젝트 찾기"
 date: 2025-04-08 17:14:02 +0900
+last_modified_at: 2026-07-24 00:00:00 +0900
 categories: 
 tags: [Unity]
 ---

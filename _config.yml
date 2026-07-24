@@ -16,14 +16,22 @@
 
 # custom_layout은 _layouts 폴더에 있는 파일 이름
 title: Sun Dev Notes
+tagline: C# · .NET · Unity 개발 기록
 lang: ko
 email: ilikeksy99@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Sun Kim의 C#, .NET, OpenCV와 컴퓨터 과학, Unity를 직접 공부하고 구현하며 남기는 개발 기록과 프로젝트 회고 블로그입니다.
+  김선영의 C#, .NET, OpenCV와 컴퓨터 과학, Unity를 직접 공부하고 구현하며 남기는 개발 기록과 프로젝트 회고 블로그입니다.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://sunbang123.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  sunbang123
-author: Sun Kim
+author: 김선영
+
+social:
+  name: 김선영
+  links:
+    - https://github.com/sunbang123
+    - https://www.linkedin.com/in/sunyoung-kim-86a54b283/
+    - https://www.youtube.com/channel/UCfFOEhFPrz3EoLfflhr1NGA
 
 author-profile:
   name: "김선영"
@@ -104,7 +112,7 @@ defaults:
       path: "_posts"
       type: "posts"
     values:
-      author: "Sun Kim"
+      author: "김선영"
   - scope:
       path: "report-main"
     values:
@@ -127,6 +135,8 @@ defaults:
       type: "devlogs"
     values:
       layout: "devlog_post"
+      sitemap: false
+      robots: "noindex, follow"
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -204,3 +214,12 @@ include:
   - icon-192.png
   - icon-512.png
   - robots.txt
+
+# 로컬 작성 도구와 로그는 GitHub 저장소에서만 관리하고 공개 사이트에는 복사하지 않습니다.
+exclude:
+  - install_rfs.rb
+  - jekyll-serve.log
+  - new_devlog.rb
+  - new_post.rb
+  - new_project.rb
+  - report-main/README.md

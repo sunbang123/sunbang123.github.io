@@ -2,6 +2,7 @@
 layout: post
 title: "Product software version"
 date: 2025-01-13 17:48:09 +0900
+last_modified_at: 2026-07-21 00:00:00 +0900
 categories: 
 tags: ["Certification", "정보처리기사"]
 ---

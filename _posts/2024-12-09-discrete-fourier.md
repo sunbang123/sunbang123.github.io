@@ -2,6 +2,7 @@
 layout: post
 title: "Discrete fourier"
 date: 2024-12-09 14:42:39 +0900
+last_modified_at: 2026-07-20 00:00:00 +0900
 categories: 
 tags: [MATLAB, Digital Image Processing]
 ---

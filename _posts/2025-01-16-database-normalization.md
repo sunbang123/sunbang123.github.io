@@ -2,6 +2,7 @@
 layout: post
 title: "Database normalization"
 date: 2025-01-16 17:45:03 +0900
+last_modified_at: 2026-07-20 00:00:00 +0900
 categories: 
 tags: ["Certification", "정보처리기사"]
 ---

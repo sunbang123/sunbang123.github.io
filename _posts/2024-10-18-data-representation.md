@@ -2,6 +2,7 @@
 layout: post
 title: "Data representation"
 date: 2024-10-18 19:12:41 +0900
+last_modified_at: 2026-07-20 00:00:00 +0900
 categories: 
 tags:  [computer-architecture, computer-science]
 ---

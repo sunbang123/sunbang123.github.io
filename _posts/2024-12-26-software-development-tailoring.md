@@ -2,6 +2,7 @@
 layout: post
 title: "Software development tailoring"
 date: 2024-12-26 19:40:50 +0900
+last_modified_at: 2026-07-21 00:00:00 +0900
 categories: 
 tags: ["Certification", "정보처리기사"]
 ---

@@ -2,6 +2,7 @@
 layout: project
 title: "스마트홈 시스템"
 date: 2024-10-16
+last_modified_at: 2026-07-24
 description: "ESP32와 Home Assistant, ESPHome을 활용한 스마트홈 IoT 연동 및 통합 제어 시스템 구축"
 thumbnail: "/assets/images/thumbnail/smart-home.jpg"
 icon: ""
@@ -15,9 +16,7 @@ status: "completed"
 
 ### Project Title: 스마트홈 시스템
 
-> 프로젝트 대시보드 Preview 이미지
-
-> <h4><a href="#">상세한 아키텍처 보러가기</a></h4>
+> <h4><a href="https://github.com/sunbang123/Graduation_Project/wiki">구현 문서와 아키텍처 보기</a></h4>
 
 * * *
 

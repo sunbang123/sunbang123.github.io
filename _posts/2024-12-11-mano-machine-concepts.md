@@ -2,6 +2,7 @@
 layout: post
 title: "Mano machine concepts"
 date: 2024-12-11 16:14:03 +0900
+last_modified_at: 2026-07-20 00:00:00 +0900
 categories: 
 tags: 
 ---

@@ -2,6 +2,7 @@
 layout: project
 title: "웨이퍼 결함 탐지 및 모니터링 시뮬레이터"
 date: 2026-06-16
+last_modified_at: 2026-07-24
 description: "가상의 반도체 웨이퍼 이미지를 분석하여 결함을 탐지하고 실시간으로 모니터링하는 소프트웨어"
 thumbnail: "/assets/images/thumbnail/wafer-simulator.png"
 icon: "fas fa-microchip"

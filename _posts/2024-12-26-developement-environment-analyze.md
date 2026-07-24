@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "Developement environment analyze"
+title: "현행 시스템과 소프트웨어 개발 환경 분석"
 date: 2024-12-26 19:44:56 +0900
+last_modified_at: 2026-07-21 00:00:00 +0900
 categories: 
 tags: ["Certification", "정보처리기사"]
 ---

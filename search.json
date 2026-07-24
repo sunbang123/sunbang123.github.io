@@ -1,0 +1,41 @@
+---
+layout: null
+permalink: /search.json
+sitemap: false
+---
+[
+{%- assign first_search_item = true -%}
+{%- for post in site.posts -%}
+  {%- unless first_search_item -%},{%- endunless -%}
+  {%- capture post_search_text -%}{{ post.content | strip_html | normalize_whitespace | truncate: 260 }} {{ post.tags | join: ' ' }}{%- endcapture -%}
+  {
+    "url": {{ post.url | relative_url | jsonify }},
+    "title": {{ post.title | jsonify }},
+    "type": "글",
+    "text": {{ post_search_text | strip | jsonify }}
+  }
+  {%- assign first_search_item = false -%}
+{%- endfor -%}
+{%- for project in site.projects -%}
+  {%- unless first_search_item -%},{%- endunless -%}
+  {%- capture project_search_text -%}{{ project.description }} {{ project.tags | join: ' ' }}{%- endcapture -%}
+  {
+    "url": {{ project.url | relative_url | jsonify }},
+    "title": {{ project.title | jsonify }},
+    "type": {% if project.hobby_game %}"게임"{% else %}"프로젝트"{% endif %},
+    "text": {{ project_search_text | strip | jsonify }}
+  }
+  {%- assign first_search_item = false -%}
+{%- endfor -%}
+{%- for log in site.devlogs -%}
+  {%- unless first_search_item -%},{%- endunless -%}
+  {%- capture log_search_text -%}{{ log.content | strip_html | normalize_whitespace | truncate: 180 }} {{ log.tags | join: ' ' }}{%- endcapture -%}
+  {
+    "url": {{ log.url | relative_url | jsonify }},
+    "title": {{ log.title | jsonify }},
+    "type": "DevLog",
+    "text": {{ log_search_text | strip | jsonify }}
+  }
+  {%- assign first_search_item = false -%}
+{%- endfor -%}
+]

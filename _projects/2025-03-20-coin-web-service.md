@@ -2,6 +2,7 @@
 layout: project
 title: "코인 시세 조회 웹 서비스"
 date: 2025-03-20
+last_modified_at: 2026-07-24
 description: "실시간 암호화폐 시세 조회 및 회원제 시스템을 동반한 웹 서비스 개발 (프론트엔드 UI 및 통신 연동)"
 thumbnail: "/assets/images/thumbnail/coin-web-service.png"
 icon: ""
@@ -15,9 +16,7 @@ status: "completed"
 
 ### Project Title: 코인 시세 조회 웹 서비스
 
-> 프로젝트 대시보드 Preview 이미지
-
-> <h4><a href="#">상세한 아키텍처 보러가기</a></h4>
+> <h4><a href="https://github.com/sunbang123/bitcoin_trading_simulation">소스와 프로젝트 문서 보기</a></h4>
 
 * * *
 

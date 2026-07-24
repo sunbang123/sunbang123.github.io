@@ -2,6 +2,8 @@
 layout: about
 title: 소개
 permalink: /about/
+last_modified_at: 2026-07-24
+description: Sun Dev Notes 운영자 김선영의 전공, 개발 분야, 글 작성 기준과 이 블로그가 독자에게 제공하려는 가치를 소개합니다.
 ---
 
 안녕하세요. 이곳은 김선영이 컴퓨터 과학, 프로그래밍, 게임 개발을 공부하며 직접 구현한 내용과 시행착오를 정리하는 개인 기술 블로그입니다.

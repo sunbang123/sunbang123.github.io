@@ -2,6 +2,7 @@
 layout: post
 title: "Computer network: CRC(Cyclic Redundancy Check)"
 date: 2025-06-09 22:57:26 +0900
+last_modified_at: 2026-07-21 00:00:00 +0900
 categories: 
 tags: ["Computer Network", "computer-science"]
 ---

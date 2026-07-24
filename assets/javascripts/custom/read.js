@@ -173,7 +173,7 @@ function initReadPage() {
         card.hidden = false;
     });
 
-    if (title) title.textContent = '읽을 묶음을 선택해 주세요';
+    if (title) title.textContent = '전체 글';
     if (count) count.textContent = `${cards.length}개 글`;
     if (empty) empty.hidden = true;
     setActiveChoice({ tag: null, series: null });

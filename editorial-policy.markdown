@@ -2,10 +2,11 @@
 layout: page
 title: 콘텐츠 원칙
 permalink: /editorial-policy/
-description: SunYeong Dev Notes의 글 작성 기준, 출처 표기, 수정 정책, 광고 고지를 안내합니다.
+last_modified_at: 2026-07-24
+description: Sun Dev Notes의 글 작성 기준, 출처 표기, 수정 정책, 광고 고지를 안내합니다.
 ---
 
-이 페이지는 SunYeong Dev Notes가 어떤 기준으로 글을 작성하고 관리하는지 설명합니다.
+이 페이지는 Sun Dev Notes가 어떤 기준으로 글을 작성하고 관리하는지 설명합니다.
 
 ## 직접 경험을 우선합니다
 

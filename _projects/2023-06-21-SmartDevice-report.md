@@ -2,6 +2,9 @@
 layout: project
 title: "SmartDevice Report"
 date: 2023-06-21
+last_modified_at: 2026-07-24
+robots: "noindex, follow"
+sitemap: false
 description: "스마트 디바이스 실습 보고서와 포트폴리오 페이지를 정리한 정적 웹 페이지"
 thumbnail: "/assets/images/thumbnail/SmartDevice-Report.png"
 icon: "fas fa-file-lines"
