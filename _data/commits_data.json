@@ -1000,14 +1000,6 @@
     "sha": "4a3331a22d305dd638f3c7c62d581cbb77bf09f0"
   },
   {
-    "type": "commit",
-    "repo": "sample-repository",
-    "message": "initialize commit",
-    "author": "김선영",
-    "date": "2025-03-19T01:38:18Z",
-    "sha": "c54acd1d0a51a5d1b5ab520d2dd93507191090fb"
-  },
-  {
-    "last_updated": "2026-07-24T14:01:44Z"
+    "last_updated": "2026-07-25T02:07:57Z"
   }
 ]
