@@ -1,6 +1,22 @@
 [
   {
     "type": "commit",
+    "repo": "library-contest",
+    "message": "feat: 실시간 데이터 전송, 다음 책장 프로토타입",
+    "author": "sunbang123",
+    "date": "2026-07-25T03:48:51Z",
+    "sha": "990b43ac3dfffd715a9315b3de8ed0f6901d63e9"
+  },
+  {
+    "type": "commit",
+    "repo": "library-contest",
+    "message": "init: 도서관 공모전 프로로타입",
+    "author": "sunbang123",
+    "date": "2026-07-25T03:08:48Z",
+    "sha": "740977a5a96920e67e9e6f75d078ac4864319107"
+  },
+  {
+    "type": "commit",
     "repo": "timeattack-code-dojo",
     "message": "fix: recover from grading provider HTTP 400",
     "author": "sunbang123",
@@ -1000,6 +1016,6 @@
     "sha": "4a3331a22d305dd638f3c7c62d581cbb77bf09f0"
   },
   {
-    "last_updated": "2026-07-25T02:24:12Z"
+    "last_updated": "2026-07-25T05:08:46Z"
   }
 ]
