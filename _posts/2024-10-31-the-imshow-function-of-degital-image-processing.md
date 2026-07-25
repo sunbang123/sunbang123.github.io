@@ -1,148 +1,148 @@
 ---
 layout: post
-title: "MATLAB 디지털 영상처리와 imshow 함수"
+title: "MATLAB imshow 사용법: 자료형·표시 범위·비트 평면"
 date: 2024-10-31 19:57:23 +0900
-last_modified_at: 2026-07-24 00:00:00 +0900
-categories: 
-tags: [MATLAB, Digital Image Processing]
+last_modified_at: 2026-07-25 00:00:00 +0900
+categories: []
+tags: [MATLAB, Digital Image Processing, imshow]
+description: "MATLAB imshow가 uint8, double, logical, RGB 영상을 해석하는 방법을 비교하고, 표시 범위 문제와 비트 평면 분해를 실행 가능한 코드로 확인합니다."
 ---
-# MATLAB 디지털 영상처리
 
-## 1. 디지털 영상처리 개요
+`imshow`는 배열의 값을 화면의 밝기나 색으로 매핑하는 함수다. 같은 숫자 배열이라도 **자료형과 지정한 표시 범위**에 따라 전혀 다르게 보일 수 있다. 영상 처리 결과가 검게 나오거나 대비가 사라졌다면 계산보다 먼저 이 규칙을 확인해야 한다.
 
-### 1.1 영상처리의 정의
-1. 인간의 시각적 해석을 위한 화질 개선
-2. 기계 인식을 위한 영상 처리
+## `imshow`가 입력을 해석하는 기본 규칙
 
-### 1.2 주요 응용 분야
-1. 의료 분야: X-ray, MRI, CAT 스캔 분석, 세포 이미지 분석
-2. 농업 분야: 위성/항공 이미지 분석, 작물 상태 검사
-3. 산업 분야: 생산라인 자동 검사, 품질 관리
-4. 법 집행: 지문 분석, 속도 카메라 이미지 개선
+| 입력 | 기본 해석 |
+|---|---|
+| `logical` 2차원 배열 | `false`는 검정, `true`는 흰색인 이진 영상 |
+| `uint8` 회색조 | 전체 자료형 범위 0~255를 검정~흰색으로 표시 |
+| `uint16` 회색조 | 전체 자료형 범위 0~65535를 검정~흰색으로 표시 |
+| `single`, `double` 회색조 | 기본적으로 0~1을 검정~흰색으로 표시 |
+| M×N×3 RGB 배열 | 세 번째 차원을 R·G·B 채널로 해석 |
+| 인덱스 영상 `X`와 색상표 `map` | `imshow(X,map)` 형태로 색상표의 행을 참조 |
 
-## 2. 이미지 타입과 데이터 구조
+“회색조는 항상 8비트”, “RGB는 항상 24비트”라고 단정하면 실제 MATLAB 배열을 설명하지 못한다. 회색조와 RGB 모두 여러 정수·부동소수점 자료형을 사용할 수 있으며, 자료형에 따라 값의 허용 범위와 표시 규칙이 달라진다.
 
-### 2.1 기본 이미지 타입
-1. 이진 이미지 (Binary)
-   - 픽셀당 1비트 (흑백)
-   - 텍스트, 지문, 도면에 적합
+## 같은 값도 자료형에 따라 다르게 보이는 이유
 
-2. 그레이스케일 (Greyscale)
-   - 픽셀당 8비트 (0-255)
-   - X-ray, 인쇄물에 주로 사용
+다음 코드는 0부터 255까지 증가하는 그라데이션을 두 자료형으로 표시한다.
 
-3. RGB 컬러
-   - 픽셀당 24비트
-   - 적색, 녹색, 청색 각각 8비트
-
-4. 인덱스 컬러
-   - 컬러맵 사용
-   - 제한된 색상 수
-
-### 2.2 데이터 타입
-- int8: -128 ~ 127
-- uint8: 0 ~ 255
-- int16: -32768 ~ 32767
-- uint16: 0 ~ 65535
-- double: 실수형
-
-## 3. MATLAB 기본 이미지 처리
-
-### 3.1 이미지 읽기 및 정보 확인
 ```matlab
-w = imread('wombats.tif');            % 이미지 읽기
-figure, imshow(w), impixelinfo        % 표시 및 픽셀값 확인
-imfinfo('image.tif')                  % 이미지 정보 확인
+u8 = repmat(uint8(0:255), 80, 1);
+d255 = double(u8);       % 값 범위는 여전히 0~255
+d01 = im2double(u8);     % 값을 0~1로 정규화
+
+tiledlayout(1, 3)
+nexttile; imshow(u8);      title("uint8: 0..255")
+nexttile; imshow(d255);    title("double: interpreted as 0..1")
+nexttile; imshow(d01);     title("double: 0..1")
 ```
 
-### 3.2 이미지 타입별 처리
-```matlab
-% RGB 이미지
-a = imread('autumn.tif');
-size(a)                               % 크기 확인
-a(100,200,:)                         % RGB 값 확인
-impixel(a,200,100)                   % 픽셀값 반환
+`double(u8)`은 자료형만 바꾸고 값의 크기는 바꾸지 않는다. 그래서 1보다 큰 대부분의 값이 흰색으로 포화된다. 반면 `im2double(u8)`은 `uint8` 범위를 0~1로 변환하므로 원래 계조가 유지된다.
 
-% 인덱스 컬러 이미지
-[em,emap] = imread('emu.tif');       % 이미지와 컬러맵 함께 읽기
-imshow(em,emap)                      % 컬러맵 적용하여 표시
+## 결과의 최소·최대값을 화면 전체에 펼치기
+
+필터 결과가 100~140처럼 좁은 범위에 있거나 음수를 포함하면 `imshow(I)`만으로 대비가 약하게 보일 수 있다.
+
+```matlab
+I = peaks(256);  % 음수와 양수를 포함하는 재현 가능한 예제
+
+tiledlayout(1, 2)
+nexttile; imshow(I);     title("default double range: 0..1")
+nexttile; imshow(I, []); title("data minimum..maximum")
 ```
 
-## 4. 고급 이미지 처리 기법
+`imshow(I,[])`는 현재 배열의 최소값을 검정, 최대값을 흰색에 대응시킨다. 이는 **화면 표시만 조절**하며 `I`의 값 자체는 바꾸지 않는다. 실제 값을 0~1 범위로 바꾼 새 배열이 필요하면 `rescale(I)`를 사용할 수 있다.
 
-### 4.1 비트 평면 분석
 ```matlab
-c = imread('cameraman.tif');
-cd = double(c);
-% 비트 평면 분리
-c0 = mod(cd,2);                      % 최하위 비트
-c7 = mod(floor(cd/128),2);           % 최상위 비트
-
-% 이미지 복원
-cc = 2*(2*(2*(2*(2*(2*(2*c7+c6)+c5)+c4)+c3)+c2)+c1)+c0;
-imshow(uint8(cc))
+J = rescale(I);
+fprintf("J range: %.1f .. %.1f\n", min(J(:)), max(J(:)));
 ```
 
-### 4.2 공간 해상도 조정
+정량 분석 중에는 보기 좋게 늘어난 화면만 보고 값이 정규화되었다고 판단하지 않도록 `min`, `max`, `class`를 함께 확인하는 습관이 중요하다.
+
+## 이진·회색조·RGB·인덱스 영상 구분
+
 ```matlab
-x2 = imresize(imresize(x,1/2),2);    % 1/2 해상도
-x4 = imresize(imresize(x,1/4),4);    % 1/4 해상도
+binaryImage = rand(80, 120) > 0.65;       % logical, MxN
+grayImage = uint8(repmat(0:119, 80, 1));  % uint8, MxN
+
+rgbImage = zeros(80, 120, 3, "uint8");    % uint8, MxNx3
+rgbImage(:, :, 1) = 220;                  % red channel
+rgbImage(:, :, 2) = grayImage;            % green channel
+
+indexImage = repmat(uint8(0:119), 80, 1);
+map = parula(120);
+
+tiledlayout(2, 2)
+nexttile; imshow(binaryImage);          title("logical")
+nexttile; imshow(grayImage);            title("grayscale")
+nexttile; imshow(rgbImage);             title("RGB")
+nexttile; imshow(indexImage, map);       title("indexed + colormap")
 ```
 
-### 4.3 데이터 타입 변환
-```matlab
-% uint8 ↔ double 변환
-cd = double(c)                        % 값 유지
-cd = im2double(c)                     % 0-1 정규화
-c2 = uint8(255*cd)                    % 수동 변환
-c3 = im2uint8(cd)                     % 자동 변환
+인덱스 영상은 픽셀 값 자체가 밝기가 아니라 색상표의 행을 가리킨다. 정수형 인덱스 영상은 값 `0`이 색상표의 첫 행을, `1`이 둘째 행을 가리키지만 `double`·`single` 인덱스 영상은 값 `1`이 첫 행을 가리킨다. 따라서 자료형을 확인해야 하며, `map` 없이 회색조처럼 표시하면 원래 의도한 색을 재현할 수 없다.
 
-% 컬러 타입 변환
-rgb_img = ind2rgb(x,map)             % 인덱스 → RGB
-gray_img = rgb2gray(rgb_img)         % RGB → 그레이스케일
+## `uint8` 영상의 비트 평면 분해
+
+8비트 회색조 픽셀은 8개의 비트로 표현할 수 있다. `bitget(I,k)`는 각 픽셀의 k번째 비트를 `0` 또는 `1`로 꺼낸다.
+
+```matlab
+% 외부 파일 없이 생성하는 256x256 회색조 테스트 영상
+[x, y] = meshgrid(uint8(0:255), uint8(0:255));
+I = uint8((double(x) + double(y)) / 2);
+
+planes = false([size(I), 8]);
+for k = 1:8
+    planes(:, :, k) = logical(bitget(I, k));
+end
+
+tiledlayout(2, 4)
+for k = 1:8
+    nexttile
+    imshow(planes(:, :, k))
+    title(sprintf("bit %d (weight %d)", k, 2^(k-1)))
+end
 ```
 
-## 5. 이미지 표시 기술
+상위 비트일수록 밝기 구조에 큰 영향을 주고, 하위 비트는 미세 변화나 잡음의 영향을 더 많이 보이는 경우가 많다. 다만 이것은 영상 내용에 따라 달라지므로 실제 비트 평면을 확인해야 한다.
 
-### 5.1 기본 표시 함수
+### 비트 평면으로 원본 복원하기
+
+이전 코드처럼 `c1`, `c2` 등의 정의되지 않은 변수를 사용하면 실행되지 않는다. 위에서 만든 `planes`를 가중치와 함께 더하면 원본을 정확히 복원할 수 있다.
+
 ```matlab
-% image 함수
-image(c)                              % 기본 표시
-image(c), truesize, axis off         % 기본 설정
-colormap(gray(247))                   % 그레이스케일 설정
+reconstructed = zeros(size(I), "uint16");
 
-% imshow 함수
-imshow(x)                            % uint8 직접 표시
-imshow(cd/255)                       % double 정규화 표시
+for k = 1:8
+    reconstructed = reconstructed + ...
+        uint16(planes(:, :, k)) .* uint16(2^(k-1));
+end
+
+reconstructed = uint8(reconstructed);
+assert(isequal(I, reconstructed))
+
+figure
+imshow(reconstructed)
+title("reconstructed from 8 bit planes")
 ```
 
-### 5.2 이진 이미지 표시
-```matlab
-cl = c > 120                         % 임계값 이진화
-imshow(logical(cl))                  % logical 표시
-imshow(double(cl))                   % double 변환 표시
-```
+중요한 점은 k번째 평면의 가중치가 `2^(k-1)`이라는 것이다. 비트 평면을 그대로 더하기만 하면 원래 밝기를 복원할 수 없다.
 
-## 6. 작업 시 주의사항
+## 영상 표시 문제를 확인하는 순서
 
-### 6.1 표시 영향 요인
-1. 주변 조명
-2. 모니터 타입과 설정
-3. 그래픽 카드
-4. 모니터 해상도
-5. 개인의 시각 시스템
+1. `class(I)`로 자료형을 확인한다.
+2. `size(I)`로 회색조(M×N)인지 RGB(M×N×3)인지 확인한다.
+3. `min(I(:))`, `max(I(:))`로 실제 값 범위를 확인한다.
+4. 부동소수점 영상이면 값이 0~1인지 확인한다.
+5. 회색조 영상을 관찰만 할 때는 `imshow(I,[])`, 값을 변환해야 할 때는 `im2double`이나 `rescale`을 목적에 맞게 선택한다.
+6. RGB truecolor에는 `imshow(I,[])`의 표시 범위 조정이 적용되지 않는다. `single`·`double` RGB는 채널 값을 0~1 범위에 맞춰 전달한다.
 
-### 6.2 타입 변환 주의사항
-- double() vs im2double() 차이 이해
-- uint8 변환 시 스케일링 주의
-- 연산 전 데이터 타입 확인
-- logical 플래그 상태 확인
+이후 주파수 영역 필터링까지 연결하려면 [DFT 합성곱과 제로 패딩](/dft-convolution/)의 실행 예제를 참고할 수 있다.
 
-## 7. 권장 작업 순서
-1. 이미지 정보 확인 (imfinfo)
-2. 적절한 방식으로 이미지 읽기 (imread)
-3. 필요시 타입 변환 (im2double)
-4. 이미지 처리 작업 수행
-5. 결과 표시 전 타입/범위 확인
-6. 적절한 방식으로 표시 (imshow)
-7. 필요시 픽셀값 확인 (impixelinfo)
+## 참고 자료
+
+- [MathWorks `imshow` 문서](https://www.mathworks.com/help/images/ref/imshow.html)
+- [MathWorks: 여러 영상 자료형 표시하기](https://www.mathworks.com/help/images/display-different-image-types.html)
+- [MathWorks `im2double` 문서](https://www.mathworks.com/help/matlab/ref/im2double.html)
+- [MathWorks `bitget` 문서](https://www.mathworks.com/help/matlab/ref/bitget.html)

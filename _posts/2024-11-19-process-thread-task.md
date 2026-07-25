@@ -1,15 +1,25 @@
 ---
 layout: post
-title: "Windows 가상 메모리와 C# Thread·Task 이해하기"
+title: "프로세스·Thread·Task의 차이: C# async/await 실행 실험"
 date: 2024-11-19 18:07:28 +0900
-last_modified_at: 2026-07-24 00:00:00 +0900
+last_modified_at: 2026-07-25 00:00:00 +0900
 categories: Process
 tags: [Csharp, computer-science, threading]
-description: Windows 가상 메모리의 Reserve·Commit 상태와 C#의 값·참조 타입, Thread와 Task, Blocking과 비동기 I/O의 차이를 함께 정리합니다.
-experience_note: Windows와 .NET의 메모리·동시성 개념을 한 문서에서 섞어 적었던 학습 노트를 공식 문서 기준으로 다시 구분해 정리했습니다.
+description: 프로세스·스레드·Task의 경계를 Windows 메모리와 .NET 실행 모델로 설명하고, Task.Delay·WhenAll·CancellationToken 예제를 직접 실행해 차이를 확인합니다.
+experience_note: Windows와 .NET의 메모리·동시성 개념을 한 문서에서 섞어 적었던 학습 노트를 공식 문서 기준으로 다시 구분하고, 외부 서버 없이 실행 가능한 .NET 예제를 추가했습니다.
 ---
 
-메모리, 스레드, `Task`는 모두 프로그램 실행과 관련되지만 서로 다른 층의 개념이다. 예전 학습 노트에서는 이 항목들을 한데 적어 두어 경계가 모호했다. 여기서는 먼저 Windows의 가상 메모리 상태를 확인하고, 그 위에서 동작하는 .NET 타입과 동시성 모델을 구분한다.
+프로세스, 스레드, `Task`는 모두 프로그램 실행과 관련되지만 서로 다른 층의 개념이다. 예전 학습 노트에서는 메모리와 동시성 항목을 한데 적어 두어 경계가 모호했다. 여기서는 프로세스가 소유하는 가상 주소 공간, 그 안에서 코드를 실행하는 스레드, 실행할 작업을 표현하는 .NET `Task`를 차례로 구분한다.
+
+## Process·Thread·Task 한눈에 비교
+
+| 구분 | 무엇을 나타내는가 | 주요 자원과 상태 | 다른 항목과의 관계 |
+|---|---|---|---|
+| Process | 실행 중인 프로그램의 격리·자원 경계 | 가상 주소 공간, 핸들, 로드된 모듈 | 한 프로세스 안에서 하나 이상의 스레드가 실행됨 |
+| Thread | 운영체제가 스케줄링하는 실행 흐름 | 명령 포인터, 레지스터 상태, 스택 | 같은 프로세스의 코드·힙과 자원을 공유함 |
+| `Task` | 완료될 작업을 표현하는 .NET 추상화 | 완료 상태, 결과, 예외, 취소 정보 | 스레드 풀에서 실행될 수도 있고, 비동기 I/O를 기다리는 동안 스레드를 점유하지 않을 수도 있음 |
+
+`Task` 하나가 전용 스레드 하나와 일대일로 대응한다고 생각하면 안 된다. CPU 연산을 담은 `Task`는 스레드 풀에서 실행될 수 있지만, 네트워크 I/O를 `await`하는 `Task`는 운영체제의 완료 알림을 기다리는 동안 실행할 스레드가 필요하지 않을 수 있다.
 
 ## 물리 메모리와 가상 주소 공간
 
@@ -54,7 +64,7 @@ Windows에서 가상 메모리 페이지의 상태는 다음처럼 구분할 수
 
 **Blocking**은 작업이 끝날 때까지 현재 스레드가 다음 일을 진행하지 못하고 기다리는 상태다. 예를 들어 `Task.Result`, `Task.Wait()` 또는 동기 파일·네트워크 API는 호출 스레드를 점유한 채 완료를 기다릴 수 있다.
 
-**비동기 I/O**는 기다리는 동안 호출 스레드를 반환하고, 작업이 완료되면 이어서 실행할 코드를 예약한다. C#의 `await`는 이 흐름을 읽기 쉬운 코드로 표현한다.
+**비동기 I/O**는 기다리는 동안 호출 스레드를 반환하고, 작업이 완료되면 이어서 실행할 코드를 예약한다. C#의 `await`는 이 흐름을 읽기 쉬운 코드로 표현한다. `await` 자체가 작업을 다른 스레드로 옮기는 것은 아니며, 미완료 작업을 만나기 전까지는 호출 스레드에서 동기적으로 실행된다.
 
 ```csharp
 // 호출 스레드를 막을 수 있는 동기 대기
@@ -64,7 +74,9 @@ string text = httpClient.GetStringAsync(url).Result;
 string text = await httpClient.GetStringAsync(url);
 ```
 
-`async`라고 해서 언제나 새 스레드가 생기는 것은 아니다. 네트워크나 파일 I/O는 운영체제의 완료 알림을 이용할 수 있고, CPU 연산을 병렬로 실행해야 할 때는 `Task.Run`이나 병렬 API가 스레드 풀을 사용할 수 있다. UI와 서버 코드에서는 동기 대기로 인한 교착이나 스레드 풀 고갈을 피하기 위해 호출 경로 전체에 `async`/`await`를 이어 주는 것이 중요하다.
+`async`라고 해서 언제나 새 스레드가 생기는 것은 아니다. 네트워크나 파일 I/O는 운영체제의 완료 알림을 이용할 수 있고, CPU 연산을 병렬로 실행해야 할 때는 `Task.Run`이나 병렬 API가 스레드 풀을 사용할 수 있다.
+
+`Result`나 `Wait()`는 어떤 환경에서도 호출 스레드를 막는다. 단일 `SynchronizationContext`를 사용하는 UI 환경에서는 continuation이 같은 스레드로 돌아오지 못해 교착이 생길 수 있고, ASP.NET Core처럼 그러한 문맥이 없는 서버에서도 동기 대기가 누적되면 스레드 풀 고갈과 처리량 저하를 일으킬 수 있다. 따라서 호출 경로 전체에 `async`/`await`를 이어 주는 것이 중요하다.
 
 ## Thread와 Task의 역할
 
@@ -79,8 +91,80 @@ string text = await httpClient.GetStringAsync(url);
 
 직접 수명과 우선순위를 제어해야 하는 전용 작업이 아니라면 `Thread`를 바로 만드는 것보다 `Task`와 `async`/`await`를 먼저 검토하는 편이 일반적이다. 다만 CPU 병렬 처리와 I/O 비동기는 목적이 다르므로, 단순히 모든 코드를 `Task.Run`으로 감싸는 것은 해결책이 아니다.
 
+## 실행 실험: 여러 Task의 대기와 취소
+
+다음 예제는 외부 API나 패키지 없이 실행할 수 있다. `Task.Delay`로 I/O 대기를 모사하고, 세 작업을 `Task.WhenAll`로 함께 기다리며, 700ms 뒤 `CancellationToken`으로 협력적 취소를 요청한다.
+
+```csharp
+using System.Diagnostics;
+
+Console.WriteLine(
+    $"process={Environment.ProcessId}, main-thread={Environment.CurrentManagedThreadId}");
+
+using var cts = new CancellationTokenSource(
+    TimeSpan.FromMilliseconds(700));
+
+var stopwatch = Stopwatch.StartNew();
+var tasks = Enumerable.Range(1, 3)
+    .Select(id => SimulatedIoAsync(id, cts.Token))
+    .ToArray();
+
+try
+{
+    await Task.WhenAll(tasks);
+}
+catch (OperationCanceledException)
+{
+    Console.WriteLine($"cancelled at {stopwatch.ElapsedMilliseconds}ms");
+}
+
+foreach (var task in tasks)
+{
+    Console.WriteLine($"task status={task.Status}");
+}
+
+static async Task SimulatedIoAsync(
+    int id,
+    CancellationToken cancellationToken)
+{
+    Console.WriteLine(
+        $"start {id}: thread={Environment.CurrentManagedThreadId}");
+
+    for (var step = 1; step <= 5; step++)
+    {
+        await Task.Delay(
+            TimeSpan.FromMilliseconds(250),
+            cancellationToken);
+
+        Console.WriteLine(
+            $"resume {id}/{step}: thread={Environment.CurrentManagedThreadId}");
+    }
+}
+```
+
+빈 폴더에서 다음 명령으로 콘솔 프로젝트를 만든 뒤 생성된 `Program.cs`를 위 코드로 바꾸면 된다.
+
+```bash
+dotnet new console -n ThreadTaskLab
+cd ThreadTaskLab
+dotnet run
+```
+
+### 실행 결과에서 확인할 것
+
+- 세 작업은 차례로 1.25초씩 기다리지 않고 같은 시간 구간에 진행된다.
+- `await Task.Delay(...)` 중에는 해당 작업을 위해 전용 스레드가 계속 잠들어 있는 것이 아니다.
+- 시작과 재개 시점의 managed thread ID가 같다는 보장은 없다. 이것이 `Task`가 특정 스레드와 동일하지 않다는 단서다.
+- 취소는 런타임이 작업을 강제로 죽이는 동작이 아니다. 코드가 token을 전달하고 `OperationCanceledException`을 처리하는 협력적 방식이다.
+- 로그 순서, 스레드 ID와 정확한 취소 시각은 실행 환경마다 달라질 수 있다. 이 예제는 성능 벤치마크가 아니라 실행 모델 확인용이다.
+
+실제 HTTP 호출이라면 `Task.Delay` 대신 `HttpClient.GetStringAsync`처럼 cancellation token을 받는 비동기 API를 사용하고, 요청별 timeout도 함께 정한다. CPU를 오래 쓰는 계산은 I/O 대기와 목적이 다르므로 `Task.Run`, `Parallel` 또는 별도 작업 큐가 적절한지 측정 후 결정한다.
+
 ## 참고 자료
 
 - [Microsoft Learn: Page State](https://learn.microsoft.com/windows/win32/memory/page-state)
+- [Microsoft Learn: Using threads and threading](https://learn.microsoft.com/dotnet/standard/threading/using-threads-and-threading)
+- [Microsoft Learn: await operator](https://learn.microsoft.com/dotnet/csharp/language-reference/operators/await)
+- [Microsoft Learn: Common async/await bugs](https://learn.microsoft.com/dotnet/standard/asynchronous-programming-patterns/common-async-bugs)
 - [Microsoft Learn: Task-based asynchronous programming](https://learn.microsoft.com/dotnet/standard/parallel-programming/task-based-asynchronous-programming)
 - [Microsoft Learn: Task Parallel Library](https://learn.microsoft.com/dotnet/standard/parallel-programming/task-parallel-library-tpl)
