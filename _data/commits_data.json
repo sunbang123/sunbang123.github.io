@@ -2,6 +2,14 @@
   {
     "type": "commit",
     "repo": "library-contest",
+    "message": "chore: Cloudflare Workers 배포",
+    "author": "sunbang123",
+    "date": "2026-07-25T05:13:30Z",
+    "sha": "b6c13248f2b99fdfd357a6219aa37c80145a89a1"
+  },
+  {
+    "type": "commit",
+    "repo": "library-contest",
     "message": "feat: 실시간 데이터 전송, 다음 책장 프로토타입",
     "author": "sunbang123",
     "date": "2026-07-25T03:48:51Z",
@@ -1016,6 +1024,6 @@
     "sha": "4a3331a22d305dd638f3c7c62d581cbb77bf09f0"
   },
   {
-    "last_updated": "2026-07-25T05:08:46Z"
+    "last_updated": "2026-07-25T05:35:31Z"
   }
 ]
