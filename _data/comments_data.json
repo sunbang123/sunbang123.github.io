@@ -1,5 +1,25 @@
 [
   {
+    "author": "sunbang123",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/93497158?v=4",
+    "body": "SQL 고유 연산자\n= : 대입이 아니라 '같다' 이다.\n<> : 같지 않다\n!< : ~보다 작지 않다 (!> : ~보다 크지 않다)\nBETWEEN A AND B : 찾는값이 A와 B 사이\nIS NULL : 값이 NULL이다.",
+    "createdAt": "2026-07-29T10:43:37Z",
+    "issueTitle": "sqld-note/",
+    "issueBody": "# SQLD 공부하기 전 읽어야 할 글 | Sun Dev Notes\n\nSQL의 기본 뼈대인 절, 구, 함수, 문의 개념을 명확히 분류하고, SQLD 시험의 핵심 주제(JOIN, 서브쿼리 등)와 연관 지어 학습 구조를 정리한다.\n\n[https://sunbang123.github.io/sqld-note/](https://sunbang123.github.io/sqld-note/)",
+    "issueUrl": "https://github.com/sunbang123/sunbang123.github.io/issues/49",
+    "url": "https://github.com/sunbang123/sunbang123.github.io/issues/49#issuecomment-5116673203"
+  },
+  {
+    "author": "sunbang123",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/93497158?v=4",
+    "body": "SQL 연산순서는 작성 순서와 실행 순서를 구분해야함! 논리전 처리 순서를 먼저보자.\nFROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY",
+    "createdAt": "2026-07-29T09:59:45Z",
+    "issueTitle": "sqld-note/",
+    "issueBody": "# SQLD 공부하기 전 읽어야 할 글 | Sun Dev Notes\n\nSQL의 기본 뼈대인 절, 구, 함수, 문의 개념을 명확히 분류하고, SQLD 시험의 핵심 주제(JOIN, 서브쿼리 등)와 연관 지어 학습 구조를 정리한다.\n\n[https://sunbang123.github.io/sqld-note/](https://sunbang123.github.io/sqld-note/)",
+    "issueUrl": "https://github.com/sunbang123/sunbang123.github.io/issues/49",
+    "url": "https://github.com/sunbang123/sunbang123.github.io/issues/49#issuecomment-5116152851"
+  },
+  {
     "author": "eunnyoung",
     "avatarUrl": "https://avatars.githubusercontent.com/u/80451794?v=4",
     "body": "멋있다. 나도 이거 해보고 싶어! 마지막에 아키텍처 관점에서 전체를 보는 시야라는 말이 정말 딱 맞는 표현이라고 느꼈어. 개발을 오래할수록 도메인과 시야가 넓고 깊어지잖아. 그러면서 아키텍처를 설계할 수 있는 프로젝트 리더로 성장하는 걸 목표해야되지 않나 싶어",
@@ -940,6 +960,6 @@
     "url": "https://github.com/sunbang123/sunbang123.github.io/issues/1#issuecomment-1641921341"
   },
   {
-    "last_updated": "2026-07-29T06:08:48Z"
+    "last_updated": "2026-07-30T02:04:22Z"
   }
 ]
