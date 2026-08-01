@@ -6,9 +6,8 @@ let timerId;
 // 현재시각
 function syncTimestamp() {
   const date = new Date();
-                      // 현재시간을 초단위로.. // 현재 날짜 객체를 초단위로! (형변환도) // 1000으로 나눈다 => milisecond 뺀, 초 값
-  timestamp = Math.floor((date.getTime() - new Date(date.toLocaleDateString())) / 1000);
-  // date.toLocaleDateString() -> 날짜 객체의 날짜(시간을 제외한)를 문자열로 반환해준다.
+  // Safari에서도 안전하도록 지역별 날짜 문자열을 다시 파싱하지 않는다.
+  timestamp = (date.getHours() * 3600) + (date.getMinutes() * 60) + date.getSeconds();
 }
 
 function tick() {
