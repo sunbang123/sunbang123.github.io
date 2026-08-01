@@ -1,6 +1,15 @@
 [
   {
     "type": "pull_request",
+    "repo": "timeattack-code-dojo",
+    "title": "feat: refresh dojo branding and metadata",
+    "state": "open",
+    "date": "2026-08-01T01:42:55Z",
+    "url": "https://github.com/sunbang123/timeattack-code-dojo/pull/1",
+    "number": 1
+  },
+  {
+    "type": "pull_request",
     "repo": "your-reader",
     "title": "feat: Your Reader v2 AI 감정 분석 서비스 구현",
     "state": "closed",
@@ -280,15 +289,6 @@
   },
   {
     "type": "pull_request",
-    "repo": "Apple_Game",
-    "title": "Bug Fix",
-    "state": "closed",
-    "date": "2025-03-28T10:04:02Z",
-    "url": "https://github.com/sunbang123/Apple_Game/pull/1",
-    "number": 1
-  },
-  {
-    "type": "pull_request",
     "repo": "capstone_project",
     "title": "플레이 규칙을 설명하는 동영상 입니다.",
     "state": "closed",
@@ -297,6 +297,6 @@
     "number": 1
   },
   {
-    "last_updated": "2026-07-31T02:31:38Z"
+    "last_updated": "2026-08-01T02:30:57Z"
   }
 ]

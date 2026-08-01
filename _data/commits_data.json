@@ -1,6 +1,78 @@
 [
   {
     "type": "commit",
+    "repo": "your-reader",
+    "message": "fix: refresh cached PWA icons",
+    "author": "sunbang123",
+    "date": "2026-08-01T01:20:30Z",
+    "sha": "54d2088b0f99b7c338fd79dbf6ef01cb4c7031d8"
+  },
+  {
+    "type": "commit",
+    "repo": "your-reader",
+    "message": "chore: update app icons",
+    "author": "sunbang123",
+    "date": "2026-08-01T01:16:52Z",
+    "sha": "f0964c2fab5754c8474b78ce46d7d4784f0cfa99"
+  },
+  {
+    "type": "commit",
+    "repo": "Gijigae",
+    "message": "feat: add stretch catalog and app branding",
+    "author": "sunbang123",
+    "date": "2026-08-01T00:57:51Z",
+    "sha": "098a9b2681d5f4eccc8c2d5a469046de96d29d7d"
+  },
+  {
+    "type": "commit",
+    "repo": "Gijigae",
+    "message": "feat: initialize Gijigae Flutter foundation",
+    "author": "sunbang123",
+    "date": "2026-08-01T00:20:51Z",
+    "sha": "208cd79fa0f234c85554f18d11a09f6ee37dc535"
+  },
+  {
+    "type": "commit",
+    "repo": "action_hunters",
+    "message": "Delete Assets directory",
+    "author": "김선영",
+    "date": "2026-07-31T12:21:12Z",
+    "sha": "4bed4a6950424fd44c2bd9126c8113413ab2f1a1"
+  },
+  {
+    "type": "commit",
+    "repo": "action_hunters",
+    "message": "Update .gitignore",
+    "author": "김선영",
+    "date": "2026-07-31T12:18:35Z",
+    "sha": "4554ac0cabbc6d8120a89e880a5de1f561dacbe1"
+  },
+  {
+    "type": "commit",
+    "repo": "study_report",
+    "message": "add: sqld 문제풀이 pivot_query",
+    "author": "김선영",
+    "date": "2026-07-31T08:04:25Z",
+    "sha": "3e90948c9e1767371861974edb63948ade92e3a1"
+  },
+  {
+    "type": "commit",
+    "repo": "study_report",
+    "message": "add: BitMask study",
+    "author": "김선영",
+    "date": "2026-07-31T07:41:16Z",
+    "sha": "0617360e84ab145f11303c030d2e76bfe8d07c4a"
+  },
+  {
+    "type": "commit",
+    "repo": "study_report",
+    "message": "README.md 업데이트",
+    "author": "김선영",
+    "date": "2026-07-31T07:16:53Z",
+    "sha": "552d241402ba2ec8a2b8c7adb8a87b1074d89f33"
+  },
+  {
+    "type": "commit",
     "repo": "library-contest",
     "message": "chore: Cloudflare Workers 배포",
     "author": "sunbang123",
@@ -89,14 +161,6 @@
   },
   {
     "type": "commit",
-    "repo": "action_hunters",
-    "message": "Initial commit",
-    "author": "김선영",
-    "date": "2026-07-20T23:17:32Z",
-    "sha": "213691606b2975b68e0baa414ffb0ed7eed62921"
-  },
-  {
-    "type": "commit",
     "repo": "bitcoin_trading_simulation",
     "message": "feat: 실시간 시세 기반 주문 체결 및 배포 환경 구성\n\n- 업비트 WebSocket 바이너리 메시지 처리\n- 코인별 실시간 가격 캐싱 및 재연결 구현\n- 다중 코인 구독 요청 병합\n- 시장가 주문 즉시 체결 및 잘못된 0원 체결 방지\n- 공개 시세 API와 JWT 화이트리스트 수정\n- Next.js 백엔드 프록시 구성\n- Docker Compose 및 AWS EC2 배포 문서 추가\n- WebSocket과 주문 서비스 테스트 추가",
     "author": "sunbang123",
@@ -142,22 +206,6 @@
     "author": "sunbang123",
     "date": "2026-07-18T13:33:44Z",
     "sha": "ee4111ea937e369b1eb6c8dd61b6ed7734d29002"
-  },
-  {
-    "type": "commit",
-    "repo": "your-reader",
-    "message": "Merge pull request #2 from sunbang123/feature/prototype(v.1)\n\nfeat: MVP 1 인증, 글 CRUD 및 자동 저장 에디터 구현",
-    "author": "김선영",
-    "date": "2026-07-17T13:55:49Z",
-    "sha": "c584d0aebe8e40cb06e5804fb9708cd3317f5eb1"
-  },
-  {
-    "type": "commit",
-    "repo": "your-reader",
-    "message": "Merge pull request #1 from sunbang123/feature/AI-Model\n\nfeat: npm 기반 AI 프로토타입 파이프라인 구현",
-    "author": "김선영",
-    "date": "2026-07-17T13:55:34Z",
-    "sha": "5ad3b4539f058c321a280ef98b4ab31b36f6faa9"
   },
   {
     "type": "commit",
@@ -689,30 +737,6 @@
   },
   {
     "type": "commit",
-    "repo": "study_report",
-    "message": "Update README.md",
-    "author": "김선영",
-    "date": "2025-11-28T11:59:53Z",
-    "sha": "e28337c6c10ef474aa3c8df9faf40565b7db608b"
-  },
-  {
-    "type": "commit",
-    "repo": "study_report",
-    "message": "Update README.md",
-    "author": "김선영",
-    "date": "2025-11-28T11:59:12Z",
-    "sha": "01b686ab7f65b433b849b947ddfb283fc8979185"
-  },
-  {
-    "type": "commit",
-    "repo": "study_report",
-    "message": "Update README.md",
-    "author": "김선영",
-    "date": "2025-11-28T11:14:36Z",
-    "sha": "ef67d89227a0ff1f52d5515fc0eaf2879a39d09e"
-  },
-  {
-    "type": "commit",
     "repo": "UnityLessonTurnBattle",
     "message": "feat: Initialize Sample Project\n\nTurn Battle",
     "author": "leehansan9963-cmyk",
@@ -984,46 +1008,6 @@
     "sha": "bbef0d1c7ed8c61342649640ae28574a88454acd"
   },
   {
-    "type": "commit",
-    "repo": "Apple_Game",
-    "message": "Update GameController.cs",
-    "author": "김선영",
-    "date": "2025-03-28T10:55:38Z",
-    "sha": "66bb23f9af6ba8349d745ed95e8f59a1524a1c4f"
-  },
-  {
-    "type": "commit",
-    "repo": "Apple_Game",
-    "message": "Merge pull request #1 from sunbang123/bugfix\n\nBug Fix",
-    "author": "김선영",
-    "date": "2025-03-28T10:04:08Z",
-    "sha": "d6686bf420495f78b382162e8c3a432e83b09371"
-  },
-  {
-    "type": "commit",
-    "repo": "Apple_Game",
-    "message": "Bug Fix\n\n- 게임 재시작 버튼 클릭하는 소리가 안나는 버그 해결\n- 재시작 버튼을 누르면 Score 패널이 안 사라지는 버그 해결",
-    "author": "김선영",
-    "date": "2025-03-28T10:01:46Z",
-    "sha": "4a24ca370020c8241a95d4a4face4268d6e2570e"
-  },
-  {
-    "type": "commit",
-    "repo": "Apple_Game",
-    "message": "Delete Assets/TextMesh Pro directory",
-    "author": "김선영",
-    "date": "2025-03-28T09:39:59Z",
-    "sha": "e4a46440ce600cb65e5502020159885814716c7f"
-  },
-  {
-    "type": "commit",
-    "repo": "Apple_Game",
-    "message": "게임 완성\n\n- UI (일러스트, 시작 리셋 재시작버튼)\n- 점수계산 기능구현\n- 시간 제한 기능구현",
-    "author": "김선영",
-    "date": "2025-03-28T09:38:32Z",
-    "sha": "4a3331a22d305dd638f3c7c62d581cbb77bf09f0"
-  },
-  {
-    "last_updated": "2026-07-31T02:31:38Z"
+    "last_updated": "2026-08-01T02:30:57Z"
   }
 ]
