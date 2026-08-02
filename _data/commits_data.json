@@ -1,6 +1,62 @@
 [
   {
     "type": "commit",
+    "repo": "Gijigae",
+    "message": "feat: 운영자 콘텐츠 관리와 로컬 스트레칭 루틴 프로토타입 추가",
+    "author": "sunbang123",
+    "date": "2026-08-01T06:54:07Z",
+    "sha": "ad0caacfab9f493e88cab7e6c9758a09afd15032"
+  },
+  {
+    "type": "commit",
+    "repo": "timeattack-code-dojo",
+    "message": "Merge pull request #1 from sunbang123/codex/neon-branding\n\nfeat: refresh dojo UI and add persistent problem authoring",
+    "author": "김선영",
+    "date": "2026-08-01T05:21:18Z",
+    "sha": "630ebd1e3f8600b83cd0e0f8ead5d2729add4d47"
+  },
+  {
+    "type": "commit",
+    "repo": "timeattack-code-dojo",
+    "message": "perf: reduce problem bank latency",
+    "author": "sunbang123",
+    "date": "2026-08-01T05:15:08Z",
+    "sha": "de1d4aa5288edebc700c28aa4cb3cd5856768d5d"
+  },
+  {
+    "type": "commit",
+    "repo": "timeattack-code-dojo",
+    "message": "fix: normalize Supabase pooler URL",
+    "author": "sunbang123",
+    "date": "2026-08-01T04:40:51Z",
+    "sha": "32fce85d6f6df4d185b65aaa1081dff621721a04"
+  },
+  {
+    "type": "commit",
+    "repo": "timeattack-code-dojo",
+    "message": "feat: persist problem bank in Supabase",
+    "author": "sunbang123",
+    "date": "2026-08-01T04:38:17Z",
+    "sha": "5441bc49b5df70084d1718214d2f3b59414d1e9b"
+  },
+  {
+    "type": "commit",
+    "repo": "your-reader",
+    "message": "feat: split emotion analysis from text generation",
+    "author": "sunbang123",
+    "date": "2026-08-01T03:19:26Z",
+    "sha": "c624289492a629305afa9f7bb69b262a2d43aa7e"
+  },
+  {
+    "type": "commit",
+    "repo": "timeattack-code-dojo",
+    "message": "feat: add manual problem creation flow",
+    "author": "sunbang123",
+    "date": "2026-08-01T03:15:26Z",
+    "sha": "5fe7f40bb46d2f79d26a17738b3a03f4976e056e"
+  },
+  {
+    "type": "commit",
     "repo": "your-reader",
     "message": "fix: refresh cached PWA icons",
     "author": "sunbang123",
@@ -97,46 +153,6 @@
   },
   {
     "type": "commit",
-    "repo": "timeattack-code-dojo",
-    "message": "fix: recover from grading provider HTTP 400",
-    "author": "sunbang123",
-    "date": "2026-07-22T03:28:51Z",
-    "sha": "b29a62594eb5cedaae602fc127e68eb59b5f991c"
-  },
-  {
-    "type": "commit",
-    "repo": "timeattack-code-dojo",
-    "message": "fix: Vercel 런타임에 문제은행 번들 제공",
-    "author": "sunbang123",
-    "date": "2026-07-22T02:35:32Z",
-    "sha": "f94558dd2ec6bfdcfba6f6cc899d58eb7f1dfae2"
-  },
-  {
-    "type": "commit",
-    "repo": "timeattack-code-dojo",
-    "message": "fix: Vercel 문제은행 중첩 파일 포함",
-    "author": "sunbang123",
-    "date": "2026-07-22T02:24:14Z",
-    "sha": "5f9709322ab3cf5407dfa57f4a0327cb2bcc68c7"
-  },
-  {
-    "type": "commit",
-    "repo": "timeattack-code-dojo",
-    "message": "chore: 서버 내부 오류 로깅 보강",
-    "author": "sunbang123",
-    "date": "2026-07-22T02:17:36Z",
-    "sha": "50ad27db0d8b3f8948b8a059a00f73e13c5cab52"
-  },
-  {
-    "type": "commit",
-    "repo": "timeattack-code-dojo",
-    "message": "fix: Vercel 함수에 문제은행 데이터 포함",
-    "author": "sunbang123",
-    "date": "2026-07-22T02:11:34Z",
-    "sha": "313407df9a3336fe054a8615bd14bf53d0e14d9e"
-  },
-  {
-    "type": "commit",
     "repo": "action_hunters",
     "message": "feat(unity): import production assets and build expanded main arena",
     "author": "sunbang123",
@@ -198,14 +214,6 @@
     "author": "김선영",
     "date": "2026-07-18T13:34:13Z",
     "sha": "517971d83b746848a227c94662b6a525e7b99df5"
-  },
-  {
-    "type": "commit",
-    "repo": "your-reader",
-    "message": "feat: Your Reader v2 AI 감정 분석 서비스 구현\n\n- Supabase 인증 및 글 저장 기능 추가\n- Hugging Face 기반 감정 분석 파이프라인 구현\n- 독자 페르소나별 공감 답장 생성\n- 영문 번역과 펜팔 답장 기능 추가\n- 분석 결과 및 감정 점수 저장\n- 분석 API와 결과 조회 API 구현\n- AI 응답 파싱 및 오류 처리 보강\n- Vercel 배포 환경 구성",
-    "author": "sunbang123",
-    "date": "2026-07-18T13:33:44Z",
-    "sha": "ee4111ea937e369b1eb6c8dd61b6ed7734d29002"
   },
   {
     "type": "commit",
@@ -1008,6 +1016,6 @@
     "sha": "bbef0d1c7ed8c61342649640ae28574a88454acd"
   },
   {
-    "last_updated": "2026-08-01T03:04:34Z"
+    "last_updated": "2026-08-02T02:29:03Z"
   }
 ]
