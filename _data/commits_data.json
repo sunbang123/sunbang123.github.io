@@ -1,6 +1,30 @@
 [
   {
     "type": "commit",
+    "repo": "study_report",
+    "message": "Add: ref keyword example in C#\n\nDemonstrate the use of 'ref' keyword in C# for passing strings by reference.",
+    "author": "김선영",
+    "date": "2026-08-03T13:44:42Z",
+    "sha": "efe8babc3ab80cabb50538a4edf87a949409a11b"
+  },
+  {
+    "type": "commit",
+    "repo": "study_report",
+    "message": "Add: 조건부 데이터 조회 연습문제",
+    "author": "김선영",
+    "date": "2026-08-03T13:30:18Z",
+    "sha": "34c21145ae0397d6718b1364e620edaea370061c"
+  },
+  {
+    "type": "commit",
+    "repo": "study_report",
+    "message": "Add: 조건부 데이터 조회 연습문제",
+    "author": "김선영",
+    "date": "2026-08-03T13:29:29Z",
+    "sha": "9a1083c6467f9e02d3d2ef7b5e7787c60eebcd4d"
+  },
+  {
+    "type": "commit",
     "repo": "Gijigae",
     "message": "feat: 운영자 콘텐츠 관리와 로컬 스트레칭 루틴 프로토타입 추가",
     "author": "sunbang123",
@@ -118,14 +142,6 @@
     "author": "김선영",
     "date": "2026-07-31T07:41:16Z",
     "sha": "0617360e84ab145f11303c030d2e76bfe8d07c4a"
-  },
-  {
-    "type": "commit",
-    "repo": "study_report",
-    "message": "README.md 업데이트",
-    "author": "김선영",
-    "date": "2026-07-31T07:16:53Z",
-    "sha": "552d241402ba2ec8a2b8c7adb8a87b1074d89f33"
   },
   {
     "type": "commit",
@@ -545,27 +561,11 @@
   },
   {
     "type": "commit",
-    "repo": "study_report",
-    "message": "feat: 자료구조 C#PriorityQueue",
-    "author": "김선영",
-    "date": "2026-03-10T22:24:10Z",
-    "sha": "66566d5b140e9a0974c5abbfc2a56c753e796991"
-  },
-  {
-    "type": "commit",
     "repo": "HexaStack",
     "message": "Refact: Set 활용",
     "author": "sunbang123",
     "date": "2026-02-15T12:38:55Z",
     "sha": "ad2c0634e93fdfbaaf62b0389c43ed3361a2a300"
-  },
-  {
-    "type": "commit",
-    "repo": "study_report",
-    "message": "Add BounceBall script for jumping and color change",
-    "author": "김선영",
-    "date": "2026-02-14T04:20:09Z",
-    "sha": "1ef7cbfbf3d766eebbd8a9217a93ead3d4c4f778"
   },
   {
     "type": "commit",
@@ -1016,6 +1016,6 @@
     "sha": "bbef0d1c7ed8c61342649640ae28574a88454acd"
   },
   {
-    "last_updated": "2026-08-03T02:31:55Z"
+    "last_updated": "2026-08-04T02:11:08Z"
   }
 ]
