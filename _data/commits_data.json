@@ -2,26 +2,42 @@
   {
     "type": "commit",
     "repo": "study_report",
+    "message": "update: 삼진트리 자료형",
+    "author": "김선영",
+    "date": "2026-08-04T08:59:19Z",
+    "sha": "ae980dea5ba24d120daaf11f8136017e40678649"
+  },
+  {
+    "type": "commit",
+    "repo": "study_report",
+    "message": "add: 삼진트리를 활용한 접미사배열 탐색 및 단어검색",
+    "author": "김선영",
+    "date": "2026-08-04T08:57:48Z",
+    "sha": "db64a5c838923c903dcfddb4869854a61b21ab20"
+  },
+  {
+    "type": "commit",
+    "repo": "study_report",
+    "message": "update: 집계함수추가",
+    "author": "김선영",
+    "date": "2026-08-04T08:02:17Z",
+    "sha": "9552961a9e38a20f65276882a355eb0942766ca7"
+  },
+  {
+    "type": "commit",
+    "repo": "study_report",
+    "message": "Add: cross join, self join, inner, outer join 예제",
+    "author": "김선영",
+    "date": "2026-08-04T07:52:53Z",
+    "sha": "ed7bba8d81d11772e59ad10d9ecd81f61a8cb538"
+  },
+  {
+    "type": "commit",
+    "repo": "study_report",
     "message": "Add: ref keyword example in C#\n\nDemonstrate the use of 'ref' keyword in C# for passing strings by reference.",
     "author": "김선영",
     "date": "2026-08-03T13:44:42Z",
     "sha": "efe8babc3ab80cabb50538a4edf87a949409a11b"
-  },
-  {
-    "type": "commit",
-    "repo": "study_report",
-    "message": "Add: 조건부 데이터 조회 연습문제",
-    "author": "김선영",
-    "date": "2026-08-03T13:30:18Z",
-    "sha": "34c21145ae0397d6718b1364e620edaea370061c"
-  },
-  {
-    "type": "commit",
-    "repo": "study_report",
-    "message": "Add: 조건부 데이터 조회 연습문제",
-    "author": "김선영",
-    "date": "2026-08-03T13:29:29Z",
-    "sha": "9a1083c6467f9e02d3d2ef7b5e7787c60eebcd4d"
   },
   {
     "type": "commit",
@@ -126,22 +142,6 @@
     "author": "김선영",
     "date": "2026-07-31T12:18:35Z",
     "sha": "4554ac0cabbc6d8120a89e880a5de1f561dacbe1"
-  },
-  {
-    "type": "commit",
-    "repo": "study_report",
-    "message": "add: sqld 문제풀이 pivot_query",
-    "author": "김선영",
-    "date": "2026-07-31T08:04:25Z",
-    "sha": "3e90948c9e1767371861974edb63948ade92e3a1"
-  },
-  {
-    "type": "commit",
-    "repo": "study_report",
-    "message": "add: BitMask study",
-    "author": "김선영",
-    "date": "2026-07-31T07:41:16Z",
-    "sha": "0617360e84ab145f11303c030d2e76bfe8d07c4a"
   },
   {
     "type": "commit",
@@ -1016,6 +1016,6 @@
     "sha": "bbef0d1c7ed8c61342649640ae28574a88454acd"
   },
   {
-    "last_updated": "2026-08-04T02:11:08Z"
+    "last_updated": "2026-08-05T02:10:28Z"
   }
 ]
