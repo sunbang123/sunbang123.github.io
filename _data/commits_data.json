@@ -2,10 +2,10 @@
   {
     "type": "commit",
     "repo": "study_report",
-    "message": "update: 삼진트리 자료형",
+    "message": "Add: transaction.sql for item table and transactions",
     "author": "김선영",
-    "date": "2026-08-04T08:59:19Z",
-    "sha": "ae980dea5ba24d120daaf11f8136017e40678649"
+    "date": "2026-08-05T08:00:05Z",
+    "sha": "8904d568517fd916deae4ccac0824e8e645223c2"
   },
   {
     "type": "commit",
@@ -13,7 +13,7 @@
     "message": "add: 삼진트리를 활용한 접미사배열 탐색 및 단어검색",
     "author": "김선영",
     "date": "2026-08-04T08:57:48Z",
-    "sha": "db64a5c838923c903dcfddb4869854a61b21ab20"
+    "sha": "e15fb3077e3245684a65340d255110ae91a9d613"
   },
   {
     "type": "commit",
@@ -1016,6 +1016,6 @@
     "sha": "bbef0d1c7ed8c61342649640ae28574a88454acd"
   },
   {
-    "last_updated": "2026-08-05T02:10:28Z"
+    "last_updated": "2026-08-06T02:13:50Z"
   }
 ]
