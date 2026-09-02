@@ -8,7 +8,7 @@ icon: "fas fa-book-open"
 tags: ["JavaScript", "Node.js", "Cloudflare Workers", "Open API", "Data Visualization", "GitHub Actions"]
 demo_url: "https://daeum-chaekjang.ilikeksy99.workers.dev/#/home"
 github_url: "https://github.com/sunbang123/library-contest"
-status: "in-progress"
+status: "completed"
 ---
 
 # 다음 책장
