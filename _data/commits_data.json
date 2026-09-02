@@ -1,6 +1,14 @@
 [
   {
     "type": "commit",
+    "repo": "HexaStack",
+    "message": "fix(android): Firebase D8/R8 호환성 문제 해결\n\n- R8 버전을 8.3.37로 고정\n- 중복된 수동 의존성 버전 강제 설정 제거\n- Android Resolver로 의존성 재정리\n- API 36 대상 AAB 빌드 성공 확인",
+    "author": "sunbang123",
+    "date": "2026-09-02T07:29:33Z",
+    "sha": "79f5caebec5d4bd0b0ba9897ed1a3b9e2d2cb0da"
+  },
+  {
+    "type": "commit",
     "repo": "study_report",
     "message": "Add: transaction.sql for item table and transactions",
     "author": "김선영",
@@ -593,14 +601,6 @@
   },
   {
     "type": "commit",
-    "repo": "HexaStack",
-    "message": "feat: BuildManager로 빌드 설정(개발용,출시용)바꾸기\n\nfix: Release keystore",
-    "author": "sunbang123",
-    "date": "2026-02-03T13:17:53Z",
-    "sha": "9c483bb5c05bb656a3d990f2c668aa0c84c31421"
-  },
-  {
-    "type": "commit",
     "repo": "developer-portfolios",
     "message": "Merge pull request #3059 from emmabostian/python-link-prefixes\n\nPython link prefixes",
     "author": "Chuck",
@@ -1016,6 +1016,6 @@
     "sha": "bbef0d1c7ed8c61342649640ae28574a88454acd"
   },
   {
-    "last_updated": "2026-09-02T07:03:45Z"
+    "last_updated": "2026-09-02T07:52:54Z"
   }
 ]
