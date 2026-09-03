@@ -1,6 +1,30 @@
 [
   {
     "type": "commit",
+    "repo": "corporate-agent-workflow",
+    "message": "Update: readme & .env.example",
+    "author": "sunbang123",
+    "date": "2026-09-02T09:34:16Z",
+    "sha": "d93c7114ae89cc1096cff8bc084178011d007761"
+  },
+  {
+    "type": "commit",
+    "repo": "corporate-agent-workflow",
+    "message": "Create .gitignore",
+    "author": "sunbang123",
+    "date": "2026-09-02T09:17:05Z",
+    "sha": "6138811b0b3c2675a5751ca3dd936961dc9bdbeb"
+  },
+  {
+    "type": "commit",
+    "repo": "corporate-agent-workflow",
+    "message": "Initialize Resources",
+    "author": "sunbang123",
+    "date": "2026-09-02T09:16:22Z",
+    "sha": "0e717324c0dee57933d9fdc56c82534f3e9e0ce1"
+  },
+  {
+    "type": "commit",
     "repo": "HexaStack",
     "message": "fix(android): Firebase D8/R8 호환성 문제 해결\n\n- R8 버전을 8.3.37로 고정\n- 중복된 수동 의존성 버전 강제 설정 제거\n- Android Resolver로 의존성 재정리\n- API 36 대상 AAB 빌드 성공 확인",
     "author": "sunbang123",
@@ -961,14 +985,6 @@
   },
   {
     "type": "commit",
-    "repo": "WinFormsPingPong",
-    "message": "style: change image",
-    "author": "sunbang123",
-    "date": "2025-06-25T08:14:39Z",
-    "sha": "21aa7c97948d40b364ac16185562a28fe1bd037b"
-  },
-  {
-    "type": "commit",
     "repo": "capstone_project",
     "message": "feat: 기말 업로드\n\n- 재도전, 수락 기능 구현\n- GPGS 구글플레이 게임서비스로 업적, 유저정보 구현\n- 인벤토리 구현\n- 아이템 구현\n- 로딩 바 구현\n- 게임내 프로필 이미지, 정보 추가\n- MMR 시스템 추가\n- 채팅 기능 추가",
     "author": "김선영",
@@ -982,22 +998,6 @@
     "author": "김선영",
     "date": "2025-06-18T01:41:30Z",
     "sha": "3b37a97c633c8a1d43e77e4bd0513e7af8666625"
-  },
-  {
-    "type": "commit",
-    "repo": "WinFormsPingPong",
-    "message": "feat: initialize winform pingpong",
-    "author": "Administrator",
-    "date": "2025-06-08T09:20:03Z",
-    "sha": "5b875d1ed4ec6699bdcd1f9ac279e1376ce8e743"
-  },
-  {
-    "type": "commit",
-    "repo": "WinFormsPingPong",
-    "message": ".gitattributes 및 .gitignore을(를) 추가합니다.",
-    "author": "Administrator",
-    "date": "2025-06-08T09:20:01Z",
-    "sha": "f9f85fe93de47fa8e5ee806958160a2599177662"
   },
   {
     "type": "commit",
@@ -1016,6 +1016,6 @@
     "sha": "bbef0d1c7ed8c61342649640ae28574a88454acd"
   },
   {
-    "last_updated": "2026-09-02T07:52:54Z"
+    "last_updated": "2026-09-03T02:50:04Z"
   }
 ]
