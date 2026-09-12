@@ -2,6 +2,16 @@
   {
     "author": "sunbang123",
     "avatarUrl": "https://avatars.githubusercontent.com/u/93497158?v=4",
+    "body": "SQLD합격♡",
+    "createdAt": "2026-09-11T03:26:23Z",
+    "issueTitle": "sqld-note/",
+    "issueBody": "# SQLD 공부하기 전 읽어야 할 글 | Sun Dev Notes\n\nSQL의 기본 뼈대인 절, 구, 함수, 문의 개념을 명확히 분류하고, SQLD 시험의 핵심 주제(JOIN, 서브쿼리 등)와 연관 지어 학습 구조를 정리한다.\n\n[https://sunbang123.github.io/sqld-note/](https://sunbang123.github.io/sqld-note/)",
+    "issueUrl": "https://github.com/sunbang123/sunbang123.github.io/issues/49",
+    "url": "https://github.com/sunbang123/sunbang123.github.io/issues/49#issuecomment-5628991210"
+  },
+  {
+    "author": "sunbang123",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/93497158?v=4",
     "body": "SQL 고유 연산자\n= : 대입이 아니라 '같다' 이다.\n<> : 같지 않다\n!< : ~보다 작지 않다 (!> : ~보다 크지 않다)\nBETWEEN A AND B : 찾는값이 A와 B 사이\nIS NULL : 값이 NULL이다.",
     "createdAt": "2026-07-29T10:43:37Z",
     "issueTitle": "sqld-note/",
@@ -960,6 +970,6 @@
     "url": "https://github.com/sunbang123/sunbang123.github.io/issues/1#issuecomment-1641921341"
   },
   {
-    "last_updated": "2026-09-11T02:53:43Z"
+    "last_updated": "2026-09-12T03:00:44Z"
   }
 ]
