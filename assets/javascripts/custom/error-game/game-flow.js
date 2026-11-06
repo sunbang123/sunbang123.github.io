@@ -86,12 +86,12 @@ export function revealGame(state) {
     state.secretClicks += 1;
 
     if (state.secretClicks === 1) {
-        setOverlay(state, true, 'Page still not found :0', 'A recovery route is hiding nearby.');
+        setOverlay(state, true, 'The Page is still not found :0', 'A recovery route is hiding nearby.');
         return;
     }
 
     if (state.secretClicks === 2) {
-        setOverlay(state, true, 'Oh, You still not found? :)', 'Hi, Player!', 'Run!');
+        setOverlay(state, true, 'Oh, You still haven\'t found? :)', 'Hi, Player!', 'Run!');
         return;
     }
 
