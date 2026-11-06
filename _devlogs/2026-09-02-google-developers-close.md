@@ -8,10 +8,14 @@ tags: []
 
 계정은 아직 해지되지 않았으며 조치 기한은 2026년 10월 7일까지라고 전달받았다.
 
+기존에 비공개 테스트로 업로드 했던 게임 앱(Cosmic Hexa Puzzle)을 버전 업그레이드 해서 업로드했고,
+
+혹시나 싶어서 과거에 연습삼아 제작했던 또 다른 게임 앱(AppleGame)도 내부테스트로 등록했다.
+
+결과적으로 개발자 계정 해지는 막을 수 있었다.
+
 <br>
 
-[현재 상태]
-<br>
 이메일·전화번호 인증: 모두 완료
 <br>
 Android 개발자 인증: 완료
@@ -47,6 +51,8 @@ Firebase/Google 라이브러리와 Unity 기본 R8(D8)의 호환성 문제로 An
 AI의 도움으로 Gradle 설정을 수정하고 External Dependency Manager → Android Resolver → Force Resolve로 의존성을 다시 정리해 해결했다.
 
 <br>
+
+<hr>
 
 추가로,
 
