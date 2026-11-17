@@ -1,6 +1,22 @@
 [
   {
     "type": "commit",
+    "repo": "EcountManager",
+    "message": "feat: Ecount API 연동과 상담 메모 위젯 추가",
+    "author": "sunbang123",
+    "date": "2026-11-17T11:03:12Z",
+    "sha": "3a1ebf0061c063a7d6f92b8d1ddf2d84fd65e845"
+  },
+  {
+    "type": "commit",
+    "repo": "EcountManager",
+    "message": "feat: 영업 상담용 통합 뷰어 MVP 구현",
+    "author": "sunbang123",
+    "date": "2026-11-17T09:51:37Z",
+    "sha": "25b9a68462e2e792134eae08804a81eef6d42480"
+  },
+  {
+    "type": "commit",
     "repo": "corporate-agent-workflow",
     "message": "Update: readme & .env.example",
     "author": "sunbang123",
@@ -984,6 +1000,6 @@
     "sha": "bbef0d1c7ed8c61342649640ae28574a88454acd"
   },
   {
-    "last_updated": "2026-11-17T09:32:23Z"
+    "last_updated": "2026-11-17T11:56:09Z"
   }
 ]
