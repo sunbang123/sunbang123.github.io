@@ -8,7 +8,7 @@ icon: "fas fa-boxes"
 tags: ["C#", ".NET 8", "WPF", "MVVM", "Ecount Open API", "Windows"]
 demo_url: ""
 github_url: "https://github.com/sunbang123/EcountManager"
-status: "in-progress"
+status: "completed"
 ---
 
 # Ecount Manager
