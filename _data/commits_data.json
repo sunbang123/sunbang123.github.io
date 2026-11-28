@@ -953,30 +953,6 @@
   },
   {
     "type": "commit",
-    "repo": "Sunbang_Engine",
-    "message": "feat: Win Main test",
-    "author": "sunbang123",
-    "date": "2025-07-11T11:07:56Z",
-    "sha": "5353d23e142772efcd718480614ba71db9d3c92a"
-  },
-  {
-    "type": "commit",
-    "repo": "Sunbang_Engine",
-    "message": "초기 커밋.",
-    "author": "sunbang123",
-    "date": "2025-07-11T09:54:23Z",
-    "sha": "0fbb87644afef4dab989dcb7fe55d5648442e0d6"
-  },
-  {
-    "type": "commit",
-    "repo": "Sunbang_Engine",
-    "message": ".gitattributes 및 .gitignore을(를) 추가합니다.",
-    "author": "sunbang123",
-    "date": "2025-07-11T09:54:22Z",
-    "sha": "e6bbd87e646361cab0b1ab58f8acdce908c0710f"
-  },
-  {
-    "type": "commit",
     "repo": "capstone_project",
     "message": "feat: 기말 업로드\n\n- 재도전, 수락 기능 구현\n- GPGS 구글플레이 게임서비스로 업적, 유저정보 구현\n- 인벤토리 구현\n- 아이템 구현\n- 로딩 바 구현\n- 게임내 프로필 이미지, 정보 추가\n- MMR 시스템 추가\n- 채팅 기능 추가",
     "author": "김선영",
@@ -1008,6 +984,6 @@
     "sha": "bbef0d1c7ed8c61342649640ae28574a88454acd"
   },
   {
-    "last_updated": "2026-11-28T06:11:01Z"
+    "last_updated": "2026-11-28T11:58:12Z"
   }
 ]
